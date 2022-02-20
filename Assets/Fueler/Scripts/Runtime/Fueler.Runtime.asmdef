@@ -1,0 +1,20 @@
+{
+    "name": "Fueler.Runtime",
+    "rootNamespace": "Fueler",
+    "references": [
+        "GUID:9a64ff96d3b16d7498c8f46b660d81a0",
+        "GUID:66f84fddbd56756439bdf88a8207ce7e",
+        "GUID:9e2a0871e420eb64685e511167cd0d57",
+        "GUID:8bc451827501f8e45a97f2e2d20a6338",
+        "GUID:4307f53044263cf4b835bd812fc161a4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
