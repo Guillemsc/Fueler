@@ -1,8 +1,8 @@
-using Fueler.Content.Stage.Configuration;
-using Fueler.Content.Stage.Level.Entities;
+using Fueler.Content.General.ConfigurationAssets.Levels;
 using Fueler.Contexts.Camera;
 using Fueler.Contexts.LoadingScreen;
 using Fueler.Contexts.Stage;
+using Fueler.Contexts.StageUi;
 using Juce.Core.Disposables;
 using Juce.Core.Loading;
 using Juce.CoreUnity.Bootstraps;
@@ -15,7 +15,7 @@ namespace Fueler.Bootstraps
 {
     public class LevelBootstrap : Bootstrap
     {
-        [SerializeField] private LevelEntity levelEntityPrefab = default;
+        [SerializeField] private LevelConfigurationAsset levelConfiguration = default;
 
         protected override async Task Run()
         {
@@ -29,7 +29,14 @@ namespace Fueler.Bootstraps
                 = new ContextFactory<ILoadingScreenContextInteractor, LoadingScreenContextInstance>(
                     "LoadingScreenContext",
                     new LoadingScreenContextInstaller()
-                    );      
+                    );
+
+
+            ContextFactory<IStageUiContextInteractor, StageUiContextInstance> stageUiContextFactory
+                = new ContextFactory<IStageUiContextInteractor, StageUiContextInstance>(
+                    "StageUiContext",
+                    new StageUiContextInstaller()
+                    );
 
             ContextFactory<IStageContextInteractor, StageContextInstance> stageContextFactory 
                 = new ContextFactory<IStageContextInteractor, StageContextInstance>(
@@ -42,9 +49,10 @@ namespace Fueler.Bootstraps
             ITaskDisposable<ILoadingScreenContextInteractor> loadingScreenInteractor = await loadingScreenContextFactory.Create();
             ILoadingToken loadingToken = await loadingScreenInteractor.Value.Show(CancellationToken.None);
 
+            ITaskDisposable<IStageUiContextInteractor> stageUiInteractor = await stageUiContextFactory.Create();
             ITaskDisposable<IStageContextInteractor> stageInteractor = await stageContextFactory.Create();
 
-            await stageInteractor.Value.Load(new LevelConfiguration(levelEntityPrefab), CancellationToken.None);
+            await stageInteractor.Value.Load(levelConfiguration.ToConfiguration(), CancellationToken.None);
 
             loadingToken.Complete();
         }

@@ -5,19 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Fueler/Scenes/Others/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Fueler/Scenes/Bootstraps/LevelBootstrap.unity
     guid: 5c5d9a5a1ef153c4bb60e499fb892d54
-  - enabled: 1
-    path: Assets/Fueler/Scenes/Contexts/StageContext.unity
-    guid: eeb9c2f06bb232c4c95893ae124016b7
   - enabled: 1
     path: Assets/Fueler/Scenes/Contexts/LoadingScreenContext.unity
     guid: 9f351c5e787f1b246becf53e1f640c0d
   - enabled: 1
     path: Assets/Fueler/Scenes/Contexts/CameraContext.unity
     guid: 58eab755f4a4568429f2c9108ffef654
+  - enabled: 1
+    path: Assets/Fueler/Scenes/Contexts/StageUiContext.unity
+    guid: 1c35c541a77d7ae4f8623c65b74d2e8d
+  - enabled: 1
+    path: Assets/Fueler/Scenes/Contexts/StageContext.unity
+    guid: eeb9c2f06bb232c4c95893ae124016b7
   m_configObjects: {}

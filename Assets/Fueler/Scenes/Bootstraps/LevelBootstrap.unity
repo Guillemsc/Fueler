@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4cc8d1e550219540b324095d9ace465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelEntityPrefab: {fileID: 3166591651800058605, guid: bb4eb97495cd53747b14522e8ac5cc21, type: 3}
+  levelConfiguration: {fileID: 11400000, guid: 781b088d9d1f3574ab51e926f6dde509, type: 2}
 --- !u!4 &1862379442
 Transform:
   m_ObjectHideFlags: 0

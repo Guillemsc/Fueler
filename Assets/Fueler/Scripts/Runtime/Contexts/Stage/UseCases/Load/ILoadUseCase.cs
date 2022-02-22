@@ -1,4 +1,4 @@
-﻿using Fueler.Content.Stage.Configuration;
+﻿using Fueler.Content.General.Configuration.Levels;
 using System.Threading;
 using System.Threading.Tasks;
 

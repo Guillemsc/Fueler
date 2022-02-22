@@ -1,4 +1,4 @@
-﻿using Fueler.Content.Stage.Configuration;
+﻿using Fueler.Content.General.Configuration.Levels;
 using Fueler.Content.Stage.Level.UseCases.LoadLevel;
 using Fueler.Content.Stage.Ship.Entities;
 using Fueler.Content.Stage.Ship.UseCases.LoadShip;

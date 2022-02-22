@@ -1,6 +1,6 @@
 ﻿using Fueler.Content.Stage.Level.Entities;
 
-namespace Fueler.Content.Stage.Configuration
+namespace Fueler.Content.General.Configuration.Levels
 {
     public class LevelConfiguration
     {

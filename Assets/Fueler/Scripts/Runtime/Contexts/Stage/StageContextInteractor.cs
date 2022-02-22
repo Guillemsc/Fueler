@@ -1,4 +1,4 @@
-﻿using Fueler.Content.Stage.Configuration;
+﻿using Fueler.Content.General.Configuration.Levels;
 using Fueler.Content.Stage.Data;
 using Fueler.Contexts.Stage.UseCases.End;
 using Fueler.Contexts.Stage.UseCases.Load;
