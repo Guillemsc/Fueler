@@ -5,12 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Fueler/Scenes/Bootstraps/LevelBootstrap.unity
     guid: 5c5d9a5a1ef153c4bb60e499fb892d54
+  - enabled: 1
+    path: Assets/Fueler/Scenes/Contexts/ServicesContext.unity
+    guid: 5e21a3a562177cc48b2cd6cfb8bd1e01
   - enabled: 1
     path: Assets/Fueler/Scenes/Contexts/LoadingScreenContext.unity
     guid: 9f351c5e787f1b246becf53e1f640c0d

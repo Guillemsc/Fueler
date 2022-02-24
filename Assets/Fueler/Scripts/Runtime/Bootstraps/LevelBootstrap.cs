@@ -38,7 +38,6 @@ namespace Fueler.Bootstraps
                     new LoadingScreenContextInstaller()
                     );
 
-
             ContextFactory<IStageUiContextInteractor, StageUiContextInstance> stageUiContextFactory
                 = new ContextFactory<IStageUiContextInteractor, StageUiContextInstance>(
                     "StageUiContext",

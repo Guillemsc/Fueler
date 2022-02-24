@@ -8,7 +8,6 @@ using Fueler.Content.Stage.Ship.UseCases.SetupShipCamera;
 using Fueler.Contexts.Stage.UseCases.End;
 using Fueler.Contexts.Stage.UseCases.Load;
 using Juce.Core.DI.Builder;
-using Juce.Core.DI.Installers;
 using Juce.CoreUnity.Contexts;
 using UnityEngine;
 
@@ -20,6 +19,7 @@ namespace Fueler.Contexts.Stage
         {
             container.Bind<StageContextInstance>().FromInstance(instance);
 
+            container.InstallBase();
             container.InstallLevel();
             container.InstallShip();
 

@@ -1,4 +1,5 @@
-﻿using Fueler.Content.Stage.Level.Entities;
+﻿using Fueler.Content.General.UseCases.WaitUnscaledTime;
+using Fueler.Content.Stage.Level.Entities;
 using Fueler.Content.Stage.Level.Factories;
 using Fueler.Content.Stage.Level.State;
 using Fueler.Content.Stage.Level.UseCases.EndLevel;
@@ -9,6 +10,8 @@ using Juce.Core.DI.Builder;
 using Juce.Core.Disposables;
 using Juce.Core.Factories;
 using Juce.Core.Repositories;
+using Juce.CoreUnity.ViewStack;
+using JuceUnity.Core.DI.Extensions;
 
 namespace Fueler.Content.Stage.Level.Installers
 {
@@ -33,7 +36,9 @@ namespace Fueler.Content.Stage.Level.Installers
 
             container.Bind<IEndLevelUseCase>().FromFunction(c => new EndLevelUseCase(
                 c.Resolve<LevelState>(),
-                c.Resolve<ISingleRepository<IDisposable<ShipEntity>>>()
+                c.Resolve<ISingleRepository<IDisposable<ShipEntity>>>(),
+                c.Resolve<IUiViewStack>(),
+                c.Resolve<IWaitUnscaledTimeUseCase>()
                 ));
         }
     }
