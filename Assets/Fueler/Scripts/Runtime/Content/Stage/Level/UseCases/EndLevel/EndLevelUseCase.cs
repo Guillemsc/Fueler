@@ -1,4 +1,5 @@
-﻿using Fueler.Content.General.UseCases.WaitUnscaledTime;
+﻿using Fueler.Content.Shared.Levels.UseCases.LoadNextLevel;
+using Fueler.Content.Shared.Time.UseCases.WaitUnscaledTime;
 using Fueler.Content.Stage.Data;
 using Fueler.Content.Stage.Level.State;
 using Fueler.Content.Stage.Ship.Entities;
@@ -18,18 +19,21 @@ namespace Fueler.Content.Stage.Level.UseCases.EndLevel
         private readonly ISingleRepository<IDisposable<ShipEntity>> shipEntityRepository;
         private readonly IUiViewStack viewStack;
         private readonly IWaitUnscaledTimeUseCase waitUnscaledTimeUseCase;
+        private readonly ILoadNextLevelUseCase loadNextLevelUseCase;
 
         public EndLevelUseCase(
             LevelState levelState,
             ISingleRepository<IDisposable<ShipEntity>> shipEntityRepository,
             IUiViewStack viewStack,
-            IWaitUnscaledTimeUseCase waitUnscaledTimeUseCase
+            IWaitUnscaledTimeUseCase waitUnscaledTimeUseCase,
+            ILoadNextLevelUseCase loadNextLevelUseCase
             )
         {
             this.levelState = levelState;
             this.shipEntityRepository = shipEntityRepository;
             this.viewStack = viewStack;
             this.waitUnscaledTimeUseCase = waitUnscaledTimeUseCase;
+            this.loadNextLevelUseCase = loadNextLevelUseCase;
         }
 
         public void Execute(LevelEndData levelEndedData)
@@ -66,6 +70,10 @@ namespace Fueler.Content.Stage.Level.UseCases.EndLevel
             await waitUnscaledTimeUseCase.Execute(TimeSpan.FromSeconds(1), cancellationToken);
 
             await viewStack.New().Show<IEndStageUiInteractor>(instantly: false).Execute(cancellationToken);
+
+            await waitUnscaledTimeUseCase.Execute(TimeSpan.FromSeconds(1), cancellationToken);
+
+            await loadNextLevelUseCase.Execute(cancellationToken);
         }
     }
 }

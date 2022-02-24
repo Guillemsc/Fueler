@@ -1,4 +1,5 @@
-﻿using Juce.Core.DI.Builder;
+﻿using Fueler.Content.Services.Configuration;
+using Juce.Core.DI.Builder;
 using Juce.CoreUnity.Contexts;
 using Juce.CoreUnity.ViewStack;
 using JuceUnity.Core.DI.Extensions;
@@ -9,6 +10,13 @@ namespace Fueler.Contexts.Services
     {
         public void Install(IDIContainerBuilder container, ServicesContextInstance instance)
         {
+            container.Bind<IConfigurationService>()
+                .FromInstance(new ConfigurationService(
+                    instance.FuelerConfigurationAsset.LevelsConfigurationAsset.ToConfiguration())
+                    )
+                .ToServicesLocator()
+                .NonLazy(); 
+
             container.Bind<IUiViewStack>()
                 .FromFunction(c => new UiViewStack(
                     instance.UiFrame

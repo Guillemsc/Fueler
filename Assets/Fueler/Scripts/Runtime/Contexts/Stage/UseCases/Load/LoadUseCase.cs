@@ -1,4 +1,4 @@
-﻿using Fueler.Content.General.Configuration.Levels;
+﻿using Fueler.Content.Shared.Levels.Configuration;
 using Fueler.Content.Stage.Level.UseCases.LoadLevel;
 using Fueler.Content.Stage.Ship.Entities;
 using Fueler.Content.Stage.Ship.UseCases.LoadShip;
@@ -29,7 +29,7 @@ namespace Fueler.Contexts.Stage.UseCases.Load
             this.setupShipCameraUseCase = setupShipCameraUseCase;
         }
 
-        public Task Execute(LevelConfiguration levelConfiguration, CancellationToken cancellationToken)
+        public Task Execute(ILevelConfiguration levelConfiguration, CancellationToken cancellationToken)
         {
             loadLevelUseCase.Execute(levelConfiguration.LevelEntityPrefab, out _);
 

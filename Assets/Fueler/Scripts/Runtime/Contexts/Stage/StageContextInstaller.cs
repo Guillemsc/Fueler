@@ -19,6 +19,7 @@ namespace Fueler.Contexts.Stage
         {
             container.Bind<StageContextInstance>().FromInstance(instance);
 
+            container.InstallServices();
             container.InstallBase();
             container.InstallLevel();
             container.InstallShip();

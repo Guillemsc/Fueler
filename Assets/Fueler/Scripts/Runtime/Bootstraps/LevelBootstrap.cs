@@ -1,13 +1,15 @@
-using Fueler.Content.General.ConfigurationAssets.Levels;
+using Fueler.Content.Shared.Levels.ConfigurationAssets;
 using Fueler.Contexts.Camera;
 using Fueler.Contexts.LoadingScreen;
 using Fueler.Contexts.Services;
+using Fueler.Contexts.Shared;
 using Fueler.Contexts.Stage;
 using Fueler.Contexts.StageUi;
 using Juce.Core.Disposables;
 using Juce.Core.Loading;
 using Juce.CoreUnity.Bootstraps;
 using Juce.CoreUnity.Contexts;
+using Juce.CoreUnity.Service;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -20,35 +22,45 @@ namespace Fueler.Bootstraps
 
         protected override async Task Run()
         {
-            ContextFactory<IServicesContextInteractor, ServicesContextInstance> servicesContextFactory
+            IContextFactory<IServicesContextInteractor, ServicesContextInstance> servicesContextFactory
                 = new ContextFactory<IServicesContextInteractor, ServicesContextInstance>(
                     "ServicesContext",
                     new ServicesContextInstaller()
                     );
 
-            ContextFactory<ICameraContextInteractor, CameraContextInstance> cameraContextFactory
+            IContextFactory<ICameraContextInteractor, CameraContextInstance> cameraContextFactory
                 = new ContextFactory<ICameraContextInteractor, CameraContextInstance>(
                     "CameraContext",
                     new CameraContextInstaller()
                     );
 
-            ContextFactory<ILoadingScreenContextInteractor, LoadingScreenContextInstance> loadingScreenContextFactory
+            IContextFactory<ILoadingScreenContextInteractor, LoadingScreenContextInstance> loadingScreenContextFactory
                 = new ContextFactory<ILoadingScreenContextInteractor, LoadingScreenContextInstance>(
                     "LoadingScreenContext",
                     new LoadingScreenContextInstaller()
                     );
 
-            ContextFactory<IStageUiContextInteractor, StageUiContextInstance> stageUiContextFactory
+            IContextFactory<IStageUiContextInteractor, StageUiContextInstance> stageUiContextFactory
                 = new ContextFactory<IStageUiContextInteractor, StageUiContextInstance>(
                     "StageUiContext",
                     new StageUiContextInstaller()
                     );
 
-            ContextFactory<IStageContextInteractor, StageContextInstance> stageContextFactory 
+            IContextFactory<IStageContextInteractor, StageContextInstance> stageContextFactory 
                 = new ContextFactory<IStageContextInteractor, StageContextInstance>(
                     "StageContext",
                     new StageContextInstaller()
                     );
+
+            IContextFactories contextFactories = new ContextFactories(
+                servicesContextFactory,
+                cameraContextFactory,
+                loadingScreenContextFactory,
+                stageUiContextFactory,
+                stageContextFactory
+                );
+
+            ServiceLocator.Register(contextFactories);
 
             await servicesContextFactory.Create();
             await cameraContextFactory.Create();
