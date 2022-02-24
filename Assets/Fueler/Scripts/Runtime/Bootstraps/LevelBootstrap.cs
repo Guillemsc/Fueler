@@ -1,6 +1,7 @@
 using Fueler.Content.General.ConfigurationAssets.Levels;
 using Fueler.Contexts.Camera;
 using Fueler.Contexts.LoadingScreen;
+using Fueler.Contexts.Services;
 using Fueler.Contexts.Stage;
 using Fueler.Contexts.StageUi;
 using Juce.Core.Disposables;
@@ -19,6 +20,12 @@ namespace Fueler.Bootstraps
 
         protected override async Task Run()
         {
+            ContextFactory<IServicesContextInteractor, ServicesContextInstance> servicesContextFactory
+                = new ContextFactory<IServicesContextInteractor, ServicesContextInstance>(
+                    "ServicesContext",
+                    new ServicesContextInstaller()
+                    );
+
             ContextFactory<ICameraContextInteractor, CameraContextInstance> cameraContextFactory
                 = new ContextFactory<ICameraContextInteractor, CameraContextInstance>(
                     "CameraContext",
@@ -44,6 +51,7 @@ namespace Fueler.Bootstraps
                     new StageContextInstaller()
                     );
 
+            await servicesContextFactory.Create();
             await cameraContextFactory.Create();
 
             ITaskDisposable<ILoadingScreenContextInteractor> loadingScreenInteractor = await loadingScreenContextFactory.Create();

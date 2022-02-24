@@ -1,33 +1,25 @@
 using Fueler.Content.LoadingScreen.LoadingScreenUi;
 using Fueler.Context.LoadingScreen.UseCases.Show;
 using Juce.Core.DI.Builder;
-using Juce.Core.DI.Container;
-using Juce.Core.Disposables;
 using Juce.CoreUnity.Contexts;
 
 namespace Fueler.Contexts.LoadingScreen
 {
-    public class LoadingScreenContextInstaller : IContextInstaller<ILoadingScreenContextInteractor, LoadingScreenContextInstance>
+    public class LoadingScreenContextInstaller : IContextInstaller<LoadingScreenContextInstance>
     {
-        public IDisposable<ILoadingScreenContextInteractor> Install(LoadingScreenContextInstance instance, params IDIContainer[] parentContainers)
+        public void Install(IDIContainerBuilder container, LoadingScreenContextInstance instance)
         {
-            IDIContainerBuilder containerBuilder = new DIContainerBuilder();
-            {
-                containerBuilder.Bind(parentContainers);
+            container.Bind(instance.LoadingScreenUiInstaller);
 
-                containerBuilder.Bind(instance.LoadingScreenUiInstaller);
+            container.Bind<IShowUseCase>()
+                .FromFunction(c => new ShowUseCase(
+                    c.Resolve<ILoadingScreenUiInteractor>()
+                    ));
 
-                containerBuilder.Bind<IShowUseCase>()
-                    .FromFunction(c => new ShowUseCase(
-                        c.Resolve<ILoadingScreenUiInteractor>()
-                        ));
-            }
-            IDIContainer container = containerBuilder.Build();
-
-            return new Disposable<ILoadingScreenContextInteractor>(
-                new LoadingScreenContextInteractor(container.Resolve<IShowUseCase>()),
-                (ILoadingScreenContextInteractor _) => { container.Dispose(); }
-                );
+            container.Bind<ILoadingScreenContextInteractor>()
+                .FromFunction(c => new LoadingScreenContextInteractor(
+                    c.Resolve<IShowUseCase>()
+                    ));
         }
     }
 }

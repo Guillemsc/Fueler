@@ -1,32 +1,17 @@
 ﻿using Juce.Core.DI.Builder;
-using Juce.Core.DI.Container;
-using Juce.Core.Disposables;
 using Juce.CoreUnity.Contexts;
+using UnityEngine;
 
 namespace Fueler.Contexts.StageUi
 {
-    public class StageUiContextInstaller : IContextInstaller<IStageUiContextInteractor, StageUiContextInstance>
+    public class StageUiContextInstaller : MonoBehaviour, IContextInstaller<StageUiContextInstance>
     {
-        public IDisposable<IStageUiContextInteractor> Install(StageUiContextInstance instance, params IDIContainer[] parentContainers)
+        public void Install(IDIContainerBuilder container, StageUiContextInstance instance)
         {
-            IDIContainerBuilder uiContainerBuilder = new DIContainerBuilder();
-            {
-                uiContainerBuilder.Bind(parentContainers);
+            container.Bind(instance.EndStageUiInstaller);
 
-                uiContainerBuilder.Bind<StageUiContextInstance>().FromInstance(instance);
-            }
-            IDIContainer uiContainer = uiContainerBuilder.Build();
-
-            IDIContainerBuilder containerBuilder = new DIContainerBuilder();
-            {
- 
-            }
-            IDIContainer container = uiContainerBuilder.Build();
-
-            IStageUiContextInteractor interactor = new StageUiContextInteractor(
-                );
-
-            return new Disposable<IStageUiContextInteractor>(interactor, (IStageUiContextInteractor _) => { });
+            container.Bind<IStageUiContextInteractor>()
+                .FromFunction(c => new StageUiContextInteractor());
         }
     }
 }

@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "com.juce.core": "git+https://github.com/Juce-Assets/Juce-Core#1.2.2",
-    "com.juce.coreunity": "git+https://github.com/Juce-Assets/Juce-CoreUnity#1.1.8",
+    "com.juce.core": "git+https://github.com/Juce-Assets/Juce-Core#1.2.4",
+    "com.juce.coreunity": "git+https://github.com/Juce-Assets/Juce-CoreUnity#1.2.6",
     "com.juce.implementationselector": "git+https://github.com/Juce-Assets/Juce-ImplementationSelector#1.0.4",
     "com.juce.scenemanagement": "git+https://github.com/Juce-Assets/Juce-SceneManagement#1.1.0",
     "com.juce.tween": "git+https://github.com/Juce-Assets/Juce-Tween#1.6.2",
