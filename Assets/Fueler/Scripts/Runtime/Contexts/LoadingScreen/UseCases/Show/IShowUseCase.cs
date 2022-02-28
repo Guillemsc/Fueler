@@ -6,6 +6,6 @@ namespace Fueler.Context.LoadingScreen.UseCases.Show
 {
     public interface IShowUseCase 
     {
-        Task<ILoadingToken> Execute(CancellationToken cancellationToken);
+        Task<ITaskLoadingToken> Execute(CancellationToken cancellationToken);
     }
 }

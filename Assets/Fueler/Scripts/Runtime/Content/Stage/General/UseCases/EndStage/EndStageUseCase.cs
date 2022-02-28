@@ -1,7 +1,7 @@
 ﻿using Fueler.Content.Shared.Levels.UseCases.LoadNextLevel;
 using Fueler.Content.Shared.Time.UseCases.WaitUnscaledTime;
 using Fueler.Content.Stage.Data;
-using Fueler.Content.Stage.Level.State;
+using Fueler.Content.Stage.General.State;
 using Fueler.Content.Stage.Ship.Entities;
 using Fueler.Content.StageUi.Ui.EndStage;
 using Juce.Core.Disposables;
@@ -11,9 +11,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Fueler.Content.Stage.Level.UseCases.EndLevel
+namespace Fueler.Content.Stage.General.UseCases.EndStage
 {
-    public class EndLevelUseCase : IEndLevelUseCase
+    public class EndStageUseCase : IEndStageUseCase
     {
         private readonly LevelState levelState;
         private readonly ISingleRepository<IDisposable<ShipEntity>> shipEntityRepository;
@@ -21,7 +21,7 @@ namespace Fueler.Content.Stage.Level.UseCases.EndLevel
         private readonly IWaitUnscaledTimeUseCase waitUnscaledTimeUseCase;
         private readonly ILoadNextLevelUseCase loadNextLevelUseCase;
 
-        public EndLevelUseCase(
+        public EndStageUseCase(
             LevelState levelState,
             ISingleRepository<IDisposable<ShipEntity>> shipEntityRepository,
             IUiViewStack viewStack,

@@ -1,11 +1,11 @@
 {
   "dependencies": {
     "com.juce.core": {
-      "version": "git+https://github.com/Juce-Assets/Juce-Core#1.2.4",
+      "version": "git+https://github.com/Juce-Assets/Juce-Core#1.2.5",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "8a4093ad348d83d3ea64fc801be6d9d423e65e34"
+      "hash": "73841baadc127393b97a4a098427e1e9c19f20aa"
     },
     "com.juce.coreunity": {
       "version": "git+https://github.com/Juce-Assets/Juce-CoreUnity#1.2.11",

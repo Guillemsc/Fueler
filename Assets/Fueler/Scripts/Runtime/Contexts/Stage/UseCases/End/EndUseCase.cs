@@ -1,14 +1,14 @@
 ﻿using Fueler.Content.Stage.Data;
-using Fueler.Content.Stage.Level.UseCases.EndLevel;
+using Fueler.Content.Stage.General.UseCases.EndStage;
 
 namespace Fueler.Contexts.Stage.UseCases.End
 {
     public class EndUseCase : IEndUseCase
     {
-        private readonly IEndLevelUseCase endLevelUseCase;
+        private readonly IEndStageUseCase endLevelUseCase;
 
         public EndUseCase(
-            IEndLevelUseCase endLevelUseCase
+            IEndStageUseCase endLevelUseCase
             )
         {
             this.endLevelUseCase = endLevelUseCase;

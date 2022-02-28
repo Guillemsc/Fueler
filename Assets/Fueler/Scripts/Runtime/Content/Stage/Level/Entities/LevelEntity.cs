@@ -1,7 +1,7 @@
 ﻿using Juce.CoreUnity.Physics;
 using UnityEngine;
 
-namespace Fueler.Content.Stage.Level.Entities
+namespace Fueler.Content.Stage.General.Entities
 {
     public class LevelEntity : MonoBehaviour
     {

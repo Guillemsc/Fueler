@@ -66,14 +66,18 @@ namespace Fueler.Bootstraps
             await cameraContextFactory.Create();
 
             ITaskDisposable<ILoadingScreenContextInteractor> loadingScreenInteractor = await loadingScreenContextFactory.Create();
-            ILoadingToken loadingToken = await loadingScreenInteractor.Value.Show(CancellationToken.None);
+            ITaskLoadingToken loadingToken = await loadingScreenInteractor.Value.Show(CancellationToken.None);
 
             ITaskDisposable<IStageUiContextInteractor> stageUiInteractor = await stageUiContextFactory.Create();
-            ITaskDisposable<IStageContextInteractor> stageInteractor = await stageContextFactory.Create();
+            ITaskDisposable<IStageContextInteractor> stageInteractor = await stageContextFactory.Create(
+                stageUiInteractor.Value.ToContainer()
+                );
 
             await stageInteractor.Value.Load(levelConfiguration.ToConfiguration(), CancellationToken.None);
 
-            loadingToken.Complete();
+            await loadingToken.Complete();
+
+            stageInteractor.Value.Start();
         }
     }
 }

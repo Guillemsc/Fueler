@@ -1,5 +1,5 @@
 ﻿using Cinemachine;
-using Fueler.Content.Stage.Level.Entities;
+using Fueler.Content.Stage.General.Entities;
 using Fueler.Content.Stage.Ship.Entities;
 using Juce.Core.Disposables;
 using Juce.Core.Repositories;

@@ -53,13 +53,11 @@ namespace Fueler.Content.Shared.Levels.UseCases.LoadNextLevel
 
             ITaskDisposable<ILoadingScreenContextInteractor> loadingScreen = ServiceLocator.Get<ITaskDisposable<ILoadingScreenContextInteractor>>();
 
-            ILoadingToken loadingToken = await loadingScreen.Value.Show(cancellationToken);
+            ITaskLoadingToken loadingToken = await loadingScreen.Value.Show(cancellationToken);
 
             await Unload(cancellationToken);
 
-            await Load(nextLevelConfiguration, cancellationToken);
-
-            loadingToken.Complete();
+            await Load(nextLevelConfiguration, loadingToken, cancellationToken);
         }
 
         private async Task Unload(CancellationToken cancellationToken)
@@ -71,14 +69,20 @@ namespace Fueler.Content.Shared.Levels.UseCases.LoadNextLevel
             await stageUi.Dispose();
         }
 
-        private async Task Load(ILevelConfiguration nextLevelConfiguration, CancellationToken cancellationToken)
+        private async Task Load(ILevelConfiguration nextLevelConfiguration, ITaskLoadingToken loadingToken, CancellationToken cancellationToken)
         {
             IContextFactories contextFactories = ServiceLocator.Get<IContextFactories>();
 
             ITaskDisposable<IStageUiContextInteractor> stageUiInteractor = await contextFactories.StageUi.Create();
-            ITaskDisposable<IStageContextInteractor> stageInteractor = await contextFactories.Stage.Create();
+            ITaskDisposable<IStageContextInteractor> stageInteractor = await contextFactories.Stage.Create(
+                stageUiInteractor.Value.ToContainer()
+                );
 
             await stageInteractor.Value.Load(nextLevelConfiguration, cancellationToken);
+
+            await loadingToken.Complete();
+
+            stageInteractor.Value.Start();
         }
     }
 }

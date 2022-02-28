@@ -1,4 +1,4 @@
-﻿using Fueler.Content.Stage.Level.Entities;
+﻿using Fueler.Content.Stage.General.Entities;
 using System;
 
 namespace Fueler.Content.Shared.Levels.Configuration

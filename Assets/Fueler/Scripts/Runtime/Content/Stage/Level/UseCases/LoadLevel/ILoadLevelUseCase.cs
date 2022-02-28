@@ -1,6 +1,6 @@
-﻿using Fueler.Content.Stage.Level.Entities;
+﻿using Fueler.Content.Stage.General.Entities;
 
-namespace Fueler.Content.Stage.Level.UseCases.LoadLevel
+namespace Fueler.Content.Stage.General.UseCases.LoadLevel
 {
     public interface ILoadLevelUseCase
     {

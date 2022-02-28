@@ -1,9 +1,13 @@
-﻿using Fueler.Content.Stage.Level.Entities;
+﻿using Fueler.Content.Services.Configuration;
+using Fueler.Content.Stage.General.Entities;
+using Fueler.Content.Stage.Ship.Data;
 using Fueler.Content.Stage.Ship.Entities;
 using Fueler.Content.Stage.Ship.Factories;
 using Fueler.Content.Stage.Ship.UseCases.LoadShip;
 using Fueler.Content.Stage.Ship.UseCases.SetShipInitialPosition;
 using Fueler.Content.Stage.Ship.UseCases.SetupShipCamera;
+using Fueler.Content.Stage.Ship.UseCases.ShipFuelUsed;
+using Fueler.Content.StageUi.Ui.Level;
 using Fueler.Contexts.Stage;
 using Juce.Core.DI.Builder;
 using Juce.Core.Disposables;
@@ -16,6 +20,8 @@ namespace Fueler.Content.Stage.Ship.Installers
     {
         public static void InstallShip(this IDIContainerBuilder container)
         {
+            container.Bind<ShipFuelData>().FromNew();
+
             container.Bind<IFactory<ShipEntityFactoryDefinition, IDisposable<ShipEntity>>>()
                 .FromFunction(c => new ShipEntityFactory(
                     c.Resolve<StageContextInstance>().ShipEntityPrefab,
@@ -40,6 +46,13 @@ namespace Fueler.Content.Stage.Ship.Installers
                     c.Resolve<StageContextInstance>().ShipVirtualCamera,
                      c.Resolve<StageContextInstance>().CameraConfiner,
                      c.Resolve<ISingleRepository<IDisposable<LevelEntity>>>()
+                    ));
+
+            container.Bind<IShipFuelUsedUseCase>()
+                .FromFunction(c => new ShipFuelUsedUseCase(
+                    c.Resolve< ShipFuelData>(),
+                    c.Resolve<ILevelUiInteractor>(),
+                    c.Resolve<IConfigurationService>().ShipFuelConfiguration
                     ));
         }
     }

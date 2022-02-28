@@ -8,6 +8,7 @@ namespace Fueler.Contexts.Stage
     public interface IStageContextInteractor
     {
         Task Load(ILevelConfiguration levelConfiguration, CancellationToken cancellationToken);
+        void Start();
         void End(LevelEndData levelEndData);
     }
 }

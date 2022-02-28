@@ -6,6 +6,6 @@ namespace Fueler.Contexts.LoadingScreen
 {
     public interface ILoadingScreenContextInteractor
     {
-        Task<ILoadingToken> Show(CancellationToken cancellationToken);
+        Task<ITaskLoadingToken> Show(CancellationToken cancellationToken);
     }
 }

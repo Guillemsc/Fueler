@@ -1,10 +1,10 @@
-﻿using Fueler.Content.Stage.Level.Entities;
-using Fueler.Content.Stage.Level.Factories;
+﻿using Fueler.Content.Stage.General.Entities;
+using Fueler.Content.Stage.General.Factories;
 using Juce.Core.Disposables;
 using Juce.Core.Factories;
 using Juce.Core.Repositories;
 
-namespace Fueler.Content.Stage.Level.UseCases.LoadLevel
+namespace Fueler.Content.Stage.General.UseCases.LoadLevel
 {
     public class LoadLevelUseCase : ILoadLevelUseCase
     {

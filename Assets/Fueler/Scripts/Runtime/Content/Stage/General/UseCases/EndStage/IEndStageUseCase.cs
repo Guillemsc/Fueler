@@ -1,8 +1,8 @@
 ﻿using Fueler.Content.Stage.Data;
 
-namespace Fueler.Content.Stage.Level.UseCases.EndLevel
+namespace Fueler.Content.Stage.General.UseCases.EndStage
 {
-    public interface IEndLevelUseCase
+    public interface IEndStageUseCase
     {
         void Execute(LevelEndData levelEndedData);
     }

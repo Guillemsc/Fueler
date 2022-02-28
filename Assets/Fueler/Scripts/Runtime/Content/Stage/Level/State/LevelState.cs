@@ -1,4 +1,4 @@
-﻿namespace Fueler.Content.Stage.Level.State
+﻿namespace Fueler.Content.Stage.General.State
 {
     public class LevelState
     {

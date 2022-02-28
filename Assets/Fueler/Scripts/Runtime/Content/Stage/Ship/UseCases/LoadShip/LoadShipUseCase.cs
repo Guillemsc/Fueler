@@ -1,5 +1,6 @@
 ﻿using Fueler.Content.Stage.Ship.Entities;
 using Fueler.Content.Stage.Ship.Factories;
+using Fueler.Content.Stage.Ship.UseCases.ShipFuelUsed;
 using Juce.Core.Disposables;
 using Juce.Core.Factories;
 using Juce.Core.Repositories;

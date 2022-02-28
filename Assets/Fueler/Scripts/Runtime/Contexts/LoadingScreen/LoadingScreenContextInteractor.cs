@@ -16,7 +16,7 @@ namespace Fueler.Contexts.LoadingScreen
             this.showUseCase = showUseCase;
         }
 
-        public Task<ILoadingToken> Show(CancellationToken cancellationToken)
+        public Task<ITaskLoadingToken> Show(CancellationToken cancellationToken)
         {
             return showUseCase.Execute(cancellationToken);
         }

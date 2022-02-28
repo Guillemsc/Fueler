@@ -5,7 +5,7 @@ using Fueler.Contexts.Stage;
 using Juce.Core.Disposables;
 using Juce.CoreUnity.Service;
 
-namespace Fueler.Content.Stage.Level.Actors
+namespace Fueler.Content.Stage.General.Actors
 {
     public class CompleteLevelOnShipTriggerActor : ExecuteActionOnTriggerActor<ShipEntity>
     {

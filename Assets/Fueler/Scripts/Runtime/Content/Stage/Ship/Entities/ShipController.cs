@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Fueler.Content.Stage.Ship.Entities
@@ -7,10 +8,12 @@ namespace Fueler.Content.Stage.Ship.Entities
         [SerializeField] private float acceleration = default;
         [SerializeField] private float rotationSpeed = default;
 
+        private Vector2 currentSpeed;
+
         public bool Autobreak { get; set; }
         public bool CanMove { get; set; } = true;
 
-        private Vector2 currentSpeed;
+        public event Action OnForwardOrBackward;
 
         private void Update()
         {
@@ -33,10 +36,14 @@ namespace Fueler.Content.Stage.Ship.Entities
             if (Input.GetKey("w"))
             {
                 currentSpeed += forward * acceleration * Time.deltaTime;
+
+                OnForwardOrBackward?.Invoke();
             }
             else if (Input.GetKey("s"))
             {
                 currentSpeed -= forward * acceleration * Time.deltaTime;
+
+                OnForwardOrBackward?.Invoke();
             }
 
             if (Input.GetKey("a"))

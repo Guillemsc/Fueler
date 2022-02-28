@@ -16,12 +16,12 @@ namespace Fueler.Context.LoadingScreen.UseCases.Show
             this.loadingScreenUiInteractor = loadingScreenUiInteractor;
         }
 
-        public async Task<ILoadingToken> Execute(CancellationToken cancellationToken)
+        public async Task<ITaskLoadingToken> Execute(CancellationToken cancellationToken)
         {
             await loadingScreenUiInteractor.SetVisible(visibe: true, cancellationToken);
 
-            return new CallbackLoadingToken(
-                () => loadingScreenUiInteractor.SetVisible(visibe: false, cancellationToken).RunAsync()
+            return new TaskCallbackLoadingToken(
+                () => loadingScreenUiInteractor.SetVisible(visibe: false, cancellationToken)
                 );
         }
     }
