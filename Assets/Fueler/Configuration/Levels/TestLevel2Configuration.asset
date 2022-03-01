@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88921b4200b5ad8449122e06480e3253, type: 3}
-  m_Name: LevelsConfiguration
+  m_Script: {fileID: 11500000, guid: 72259cfdb7570124e838eaa37e4b396a, type: 3}
+  m_Name: TestLevel2Configuration
   m_EditorClassIdentifier: 
-  levels:
-  - {fileID: 11400000, guid: 781b088d9d1f3574ab51e926f6dde509, type: 2}
-  - {fileID: 11400000, guid: da541d757c4bd1e4483fb78b1152884c, type: 2}
+  id: 562ee85f-a5dd-4d51-b8c7-5e4e2b642b82
+  levelEntityPrefab: {fileID: 3166591651800058605, guid: 85c96a5372aeb644cbdd24857e3a6f78, type: 3}
+  initialFuel: 50

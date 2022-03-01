@@ -8,34 +8,37 @@ namespace Fueler.Content.Shared.Levels.UseCases.LoadNextLevel
 {
     public class LoadNextLevelUseCase : ILoadNextLevelUseCase
     {
+        private readonly ILevelConfiguration levelConfiguration;
         private readonly ITryGetLevelIndexByLevelIdUseCase tryGetLevelIndexByLevelIdUseCase;
         private readonly ITryGetLevelByIndexUseCase tryGetLevelByIndexUseCase;
         private readonly IUnloadAndLoadStageUseCase unloadAndLoadStageUseCase;
 
         public LoadNextLevelUseCase(
+            ILevelConfiguration levelConfiguration,
             ITryGetLevelIndexByLevelIdUseCase tryGetLevelIndexByLevelIdUseCase,
             ITryGetLevelByIndexUseCase tryGetLevelByIndexUseCase,
             IUnloadAndLoadStageUseCase unloadAndLoadStageUseCase
             )
         {
+            this.levelConfiguration = levelConfiguration;
             this.tryGetLevelIndexByLevelIdUseCase = tryGetLevelIndexByLevelIdUseCase;
             this.tryGetLevelByIndexUseCase = tryGetLevelByIndexUseCase;
             this.unloadAndLoadStageUseCase = unloadAndLoadStageUseCase;
         }
 
-        public async void Execute()
+        public void Execute()
         {
-            //bool levelIndexFound = tryGetLevelIndexByLevelIdUseCase.Execute(default, out int levelIndex);
+            bool levelIndexFound = tryGetLevelIndexByLevelIdUseCase.Execute(
+                levelConfiguration.Id, 
+                out int levelIndex
+                );
 
-            //if(!levelIndexFound)
-            //{
-            //    return;
-            //}
+            if (!levelIndexFound)
+            {
+                return;
+            }
 
-            //int nextLevelIndex = levelIndex + 1;
-
-            // Debug
-            int nextLevelIndex = 0;
+            int nextLevelIndex = levelIndex + 1;
 
             bool nextLevelFound = tryGetLevelByIndexUseCase.Execute(
                 nextLevelIndex,
@@ -44,7 +47,17 @@ namespace Fueler.Content.Shared.Levels.UseCases.LoadNextLevel
 
             if(!nextLevelFound)
             {
-                return;
+                bool fallbackLevelFound = tryGetLevelByIndexUseCase.Execute(
+                    0,
+                    out nextLevelConfiguration
+                    );
+
+                if(!fallbackLevelFound)
+                {
+                    return;
+                }
+
+                UnityEngine.Debug.Log($"Level with index {nextLevelIndex} not found. Loading fallback");
             }
 
             unloadAndLoadStageUseCase.Execute(nextLevelConfiguration, CancellationToken.None).RunAsync();

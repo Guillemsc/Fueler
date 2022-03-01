@@ -1,4 +1,5 @@
 ﻿using Fueler.Content.Services.Configuration;
+using Fueler.Content.Shared.Levels.Configuration;
 using Fueler.Content.Shared.Levels.UseCases.LoadNextLevel;
 using Fueler.Content.Shared.Levels.UseCases.TryGetLevelByIndex;
 using Fueler.Content.Shared.Levels.UseCases.TryGetLevelIndexByLevelId;
@@ -41,6 +42,7 @@ namespace Fueler.Content.Stage.General.Installers
 
             container.Bind<ILoadNextLevelUseCase>()
                 .FromFunction(c => new LoadNextLevelUseCase(
+                    c.Resolve<ILevelConfiguration>(),
                     c.Resolve<ITryGetLevelIndexByLevelIdUseCase>(),
                     c.Resolve<ITryGetLevelByIndexUseCase>(),
                     c.Resolve<IUnloadAndLoadStageUseCase>()
