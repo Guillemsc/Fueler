@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5154cd6e04823499b16f1f5ee6529d, type: 3}
   m_Name: FuelerConfiguration
   m_EditorClassIdentifier: 
-  levelsConfigurationAsset: {fileID: 11400000, guid: edbc7a6488f0745449097cfa60c6b41a, type: 2}
+  levelsConfigurationAsset: {fileID: 11400000, guid: beeb37d9a3b5cd34d879afdcb63a140c, type: 2}
   fuelConfigurationAsset: {fileID: 11400000, guid: cc752bef0dfa5b94288818a0044103aa, type: 2}

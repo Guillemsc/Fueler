@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6285277800664074912}
-  - component: {fileID: 4941203142239696874}
+  - component: {fileID: 5421263774019002509}
+  - component: {fileID: 1471001210987191582}
+  - component: {fileID: 8001900690718437356}
   m_Layer: 0
   m_Name: CameraConfiner
   m_TagString: Untagged
@@ -31,8 +33,29 @@ Transform:
   m_Father: {fileID: 3166591651800058594}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &4941203142239696874
-PolygonCollider2D:
+--- !u!50 &5421263774019002509
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146139161778262550}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!66 &1471001210987191582
+CompositeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -41,10 +64,46 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_GeometryType: 1
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 8001900690718437356}
+    m_ColliderPaths:
+    - - X: 84159307
+        Y: 9040537
+      - X: 84159307
+        Y: 91421960
+      - X: -60920084
+        Y: 91421667
+      - X: -60919791
+        Y: 9040537
+  m_CompositePaths:
+    m_Paths:
+    - - {x: 8.415902, y: 0.9040537}
+      - {x: 8.415902, y: 9.142196}
+      - {x: -6.0920086, y: 9.142138}
+      - {x: -6.0919495, y: 0.9040537}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+--- !u!61 &8001900690718437356
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146139161778262550}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 1
+  m_Offset: {x: 1.1619759, y: 5.0231247}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -54,12 +113,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 29.211748, y: 11.049524}
-      - {x: -9.14797, y: 11.133282}
-      - {x: -9.071245, y: -13.955738}
-      - {x: 29.124973, y: -14.381256}
+  serializedVersion: 2
+  m_Size: {x: 14.507969, y: 8.238142}
+  m_EdgeRadius: 0
 --- !u!1 &3166591650694667817
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71214ba2152e63c42bd5e71c15778bd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraConfiner: {fileID: 4941203142239696874}
+  cameraConfiner: {fileID: 1471001210987191582}
   startingPosition: {fileID: 3787590165253604145}
   endCallback: {fileID: 4475418467887446773}
 --- !u!1 &4527379615095649195

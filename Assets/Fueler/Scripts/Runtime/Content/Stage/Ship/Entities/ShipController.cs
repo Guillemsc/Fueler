@@ -10,6 +10,7 @@ namespace Fueler.Content.Stage.Ship.Entities
 
         private Vector2 currentSpeed;
 
+        public bool CanInputForwardOrBackward { get; set; } = true;
         public bool Autobreak { get; set; }
         public bool CanMove { get; set; } = true;
 
@@ -31,20 +32,7 @@ namespace Fueler.Content.Stage.Ship.Entities
                 return;
             }
 
-            Vector2 forward = new Vector2(gameObject.transform.up.x, gameObject.transform.up.y);
-
-            if (Input.GetKey("w"))
-            {
-                currentSpeed += forward * acceleration * Time.deltaTime;
-
-                OnForwardOrBackward?.Invoke();
-            }
-            else if (Input.GetKey("s"))
-            {
-                currentSpeed -= forward * acceleration * Time.deltaTime;
-
-                OnForwardOrBackward?.Invoke();
-            }
+            InputForwardOrBackward();
 
             if (Input.GetKey("a"))
             {
@@ -65,6 +53,29 @@ namespace Fueler.Content.Stage.Ship.Entities
                     0,
                     -deltaRotationSpeed
                     );
+            }
+        }
+
+        private void InputForwardOrBackward()
+        {
+            if(!CanInputForwardOrBackward)
+            {
+                return;
+            }
+
+            Vector2 forward = new Vector2(gameObject.transform.up.x, gameObject.transform.up.y);
+
+            if (Input.GetKey("w"))
+            {
+                currentSpeed += forward * acceleration * Time.deltaTime;
+
+                OnForwardOrBackward?.Invoke();
+            }
+            else if (Input.GetKey("s"))
+            {
+                currentSpeed -= forward * acceleration * Time.deltaTime;
+
+                OnForwardOrBackward?.Invoke();
             }
         }
 

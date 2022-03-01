@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 1882054802}
   - component: {fileID: 1882054801}
   - component: {fileID: 1882054803}
+  - component: {fileID: 1882054804}
   m_Layer: 0
   m_Name: ShipVirtualCamera
   m_TagString: Untagged
@@ -373,6 +374,18 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 0}
   m_ConfineScreenEdges: 1
   m_Damping: 3
+--- !u!114 &1882054804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882054800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2008950179
 GameObject:
   m_ObjectHideFlags: 0

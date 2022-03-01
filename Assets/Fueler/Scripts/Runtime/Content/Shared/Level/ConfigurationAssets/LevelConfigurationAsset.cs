@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Fueler.Content.Shared.Levels.ConfigurationAssets
 {
-    [CreateAssetMenu(fileName = "LevelsConfiguration", menuName = "Fueler/Configuration/Level")]
+    [CreateAssetMenu(fileName = "LevelConfiguration", menuName = "Fueler/Configuration/Level")]
     public class LevelConfigurationAsset : ScriptableObject
     {
         [Header("Uid")]
