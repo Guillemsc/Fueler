@@ -6,6 +6,6 @@ namespace Fueler.Contexts.Stage.UseCases.Load
 {
     public interface ILoadUseCase
     {
-        Task Execute(ILevelConfiguration levelConfiguration, CancellationToken cancellationToken);
+        Task Execute(CancellationToken cancellationToken);
     }
 }

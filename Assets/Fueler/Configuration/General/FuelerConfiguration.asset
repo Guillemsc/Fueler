@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: FuelerConfiguration
   m_EditorClassIdentifier: 
   levelsConfigurationAsset: {fileID: 11400000, guid: edbc7a6488f0745449097cfa60c6b41a, type: 2}
-  shipFuelConfigurationAsset: {fileID: 11400000, guid: cc752bef0dfa5b94288818a0044103aa, type: 2}
+  fuelConfigurationAsset: {fileID: 11400000, guid: cc752bef0dfa5b94288818a0044103aa, type: 2}

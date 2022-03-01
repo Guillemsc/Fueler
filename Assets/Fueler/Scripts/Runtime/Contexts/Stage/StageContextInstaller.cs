@@ -10,6 +10,8 @@ using Juce.CoreUnity.Contexts;
 using UnityEngine;
 using Fueler.Contexts.Stage.UseCases.Start;
 using Fueler.Content.Stage.General.UseCases.StartStage;
+using Fueler.Content.Stage.Fuel.Installers;
+using Fueler.Context.Shared.Installers;
 
 namespace Fueler.Contexts.Stage
 {
@@ -19,10 +21,12 @@ namespace Fueler.Contexts.Stage
         {
             container.Bind<StageContextInstance>().FromInstance(instance);
 
+            container.InstallContextShared();
             container.InstallServices();
             container.InstallGeneral();
             container.InstallLevel();
             container.InstallShip();
+            container.InstallFuel();
 
             container.Bind<ILoadUseCase>()
                 .FromFunction(c => new LoadUseCase(

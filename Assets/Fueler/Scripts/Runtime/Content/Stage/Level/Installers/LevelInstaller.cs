@@ -6,6 +6,7 @@ using Fueler.Content.Stage.General.Entities;
 using Fueler.Content.Stage.General.Factories;
 using Fueler.Content.Stage.General.State;
 using Fueler.Content.Stage.General.UseCases.LoadLevel;
+using Fueler.Contexts.Shared.UseCases.UnloadAndLoadStage;
 using Fueler.Contexts.Stage;
 using Juce.Core.DI.Builder;
 using Juce.Core.Disposables;
@@ -41,7 +42,8 @@ namespace Fueler.Content.Stage.General.Installers
             container.Bind<ILoadNextLevelUseCase>()
                 .FromFunction(c => new LoadNextLevelUseCase(
                     c.Resolve<ITryGetLevelIndexByLevelIdUseCase>(),
-                    c.Resolve<ITryGetLevelByIndexUseCase>()
+                    c.Resolve<ITryGetLevelByIndexUseCase>(),
+                    c.Resolve<IUnloadAndLoadStageUseCase>()
                     ));
 
             container.Bind<ILoadLevelUseCase>().FromFunction(c => new LoadLevelUseCase(

@@ -1,5 +1,5 @@
 ﻿using Fueler.Content.Shared.Levels.Configuration;
-using Fueler.Content.Stage.Data;
+using Fueler.Content.Stage.Level.Data;
 using Fueler.Contexts.Stage.UseCases.End;
 using Fueler.Contexts.Stage.UseCases.Load;
 using Fueler.Contexts.Stage.UseCases.Start;
@@ -25,9 +25,9 @@ namespace Fueler.Contexts.Stage
             this.endUseCase = endUseCase;
         }
 
-        public Task Load(ILevelConfiguration levelConfiguration, CancellationToken cancellationToken)
+        public Task Load(CancellationToken cancellationToken)
         {
-            return loadUseCase.Execute(levelConfiguration, cancellationToken);
+            return loadUseCase.Execute(cancellationToken);
         }
 
         public void Start()

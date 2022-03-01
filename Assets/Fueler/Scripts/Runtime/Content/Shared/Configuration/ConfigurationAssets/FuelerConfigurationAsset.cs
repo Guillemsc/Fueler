@@ -1,5 +1,5 @@
 ﻿using Fueler.Content.Shared.Levels.ConfigurationAssets;
-using Fueler.Content.Shared.Ship.ConfigurationAssets;
+using Fueler.Content.Shared.Fuel.ConfigurationAssets;
 using UnityEngine;
 
 namespace Fueler.Content.Shared.Configuration.ConfigurationAssets
@@ -8,9 +8,9 @@ namespace Fueler.Content.Shared.Configuration.ConfigurationAssets
     public class FuelerConfigurationAsset : ScriptableObject
     {
         [SerializeField] private LevelsConfigurationAsset levelsConfigurationAsset = default;
-        [SerializeField] private ShipFuelConfigurationAsset shipFuelConfigurationAsset = default;
+        [SerializeField] private FuelConfigurationAsset fuelConfigurationAsset = default;
 
         public LevelsConfigurationAsset LevelsConfigurationAsset => levelsConfigurationAsset;
-        public ShipFuelConfigurationAsset ShipFuelConfigurationAsset => shipFuelConfigurationAsset;
+        public FuelConfigurationAsset FuelConfigurationAsset => fuelConfigurationAsset;
     }
 }

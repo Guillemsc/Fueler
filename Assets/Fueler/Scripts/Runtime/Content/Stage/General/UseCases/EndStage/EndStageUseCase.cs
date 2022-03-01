@@ -1,7 +1,7 @@
 ﻿using Fueler.Content.Shared.Levels.UseCases.LoadNextLevel;
 using Fueler.Content.Shared.Time.UseCases.WaitUnscaledTime;
-using Fueler.Content.Stage.Data;
 using Fueler.Content.Stage.General.State;
+using Fueler.Content.Stage.Level.Data;
 using Fueler.Content.Stage.Ship.Entities;
 using Fueler.Content.StageUi.Ui.EndStage;
 using Juce.Core.Disposables;
@@ -73,7 +73,7 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
 
             await waitUnscaledTimeUseCase.Execute(TimeSpan.FromSeconds(1), cancellationToken);
 
-            await loadNextLevelUseCase.Execute(cancellationToken);
+            loadNextLevelUseCase.Execute();
         }
     }
 }

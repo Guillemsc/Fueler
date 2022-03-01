@@ -1,11 +1,11 @@
 ﻿using Fueler.Content.Shared.Levels.Configuration;
-using Fueler.Content.Shared.Ship.Configuration;
+using Fueler.Content.Shared.Fuel.Configuration;
 
 namespace Fueler.Content.Services.Configuration
 {
     public interface IConfigurationService
     {
         ILevelsConfiguration LevelsConfiguration { get; }
-        IShipFuelConfiguration ShipFuelConfiguration { get; }
+        IFuelConfiguration FuelConfiguration { get; }
     }
 }

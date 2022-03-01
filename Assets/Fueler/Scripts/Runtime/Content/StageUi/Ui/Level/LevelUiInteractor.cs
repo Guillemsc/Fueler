@@ -1,21 +1,21 @@
-﻿using Fueler.Content.StageUi.Ui.Level.UseCase.SetFuelLeftNormalized;
+﻿using Fueler.Content.StageUi.Ui.Level.UseCase.SetFuel;
 
 namespace Fueler.Content.StageUi.Ui.Level
 {
     public class LevelUiInteractor : ILevelUiInteractor
     {
-        private readonly ISetFuelLeftNormalizedUseCase setFuelLeftNormalizedUseCase;
+        private readonly ISetFuelUseCase setFuelUseCase;
 
         public LevelUiInteractor(
-            ISetFuelLeftNormalizedUseCase setFuelLeftNormalizedUseCase
+            ISetFuelUseCase setFuelUseCase
             )
         {
-            this.setFuelLeftNormalizedUseCase = setFuelLeftNormalizedUseCase;
+            this.setFuelUseCase = setFuelUseCase;
         }
 
-        public void SetFuelNormalized(float fuelNormalized)
+        public void SetFuel(float maxFuel, float currentFuel)
         {
-            setFuelLeftNormalizedUseCase.Execute(fuelNormalized);
+            setFuelUseCase.Execute(maxFuel, currentFuel);
         }
     }
 }

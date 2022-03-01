@@ -13,7 +13,9 @@ using Juce.CoreUnity.ViewStack;
 using Fueler.Content.Shared.Levels.UseCases.LoadNextLevel;
 using Juce.Core.Disposables;
 using Fueler.Content.Stage.Ship.Entities;
-using Fueler.Content.Stage.Ship.UseCases.ShipFuelUsed;
+using Fueler.Content.Stage.Fuel.UseCases.ShipFuelUsed;
+using Fueler.Content.Shared.Levels.Configuration;
+using Fueler.Content.Stage.Fuel.UseCases.InitFuel;
 
 namespace Fueler.Content.Stage.General.Installers
 {
@@ -25,10 +27,12 @@ namespace Fueler.Content.Stage.General.Installers
                 .FromFunction(c => new WaitUnscaledTimeUseCase());
 
             container.Bind<ILoadStageUseCase>().FromFunction(c => new LoadStageUseCase(
+                c.Resolve<ILevelConfiguration>(),
                 c.Resolve<ILoadLevelUseCase>(),
                 c.Resolve<ILoadShipUseCase>(),
                 c.Resolve<ISetShipInitialPositionUseCase>(),
                 c.Resolve<ISetupShipCameraUseCase>(),
+                c.Resolve<IInitFuelUseCase>(),
                 c.Resolve<IShipFuelUsedUseCase>()
                 ));
 

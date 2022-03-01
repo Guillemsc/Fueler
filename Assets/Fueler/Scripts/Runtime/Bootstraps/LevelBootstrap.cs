@@ -1,12 +1,14 @@
 using Fueler.Content.Shared.Levels.ConfigurationAssets;
+using Fueler.Context.Shared.Installers;
 using Fueler.Contexts.Camera;
 using Fueler.Contexts.LoadingScreen;
 using Fueler.Contexts.Services;
 using Fueler.Contexts.Shared;
+using Fueler.Contexts.Shared.UseCases.UnloadAndLoadStage;
 using Fueler.Contexts.Stage;
 using Fueler.Contexts.StageUi;
-using Juce.Core.Disposables;
-using Juce.Core.Loading;
+using Juce.Core.DI.Builder;
+using Juce.Core.DI.Container;
 using Juce.CoreUnity.Bootstraps;
 using Juce.CoreUnity.Contexts;
 using Juce.CoreUnity.Service;
@@ -20,7 +22,7 @@ namespace Fueler.Bootstraps
     {
         [SerializeField] private LevelConfigurationAsset levelConfiguration = default;
 
-        protected override async Task Run()
+        protected override async Task Run(CancellationToken cancellationToken)
         {
             IContextFactory<IServicesContextInteractor, ServicesContextInstance> servicesContextFactory
                 = new ContextFactory<IServicesContextInteractor, ServicesContextInstance>(
@@ -64,20 +66,17 @@ namespace Fueler.Bootstraps
 
             await servicesContextFactory.Create();
             await cameraContextFactory.Create();
+            await loadingScreenContextFactory.Create();
 
-            ITaskDisposable<ILoadingScreenContextInteractor> loadingScreenInteractor = await loadingScreenContextFactory.Create();
-            ITaskLoadingToken loadingToken = await loadingScreenInteractor.Value.Show(CancellationToken.None);
+            IDIContainerBuilder sharedContextBuilder = new DIContainerBuilder();
+            {
+                sharedContextBuilder.InstallContextShared();
+            }
+            IDIContainer sharedContextContainer = sharedContextBuilder.Build();
 
-            ITaskDisposable<IStageUiContextInteractor> stageUiInteractor = await stageUiContextFactory.Create();
-            ITaskDisposable<IStageContextInteractor> stageInteractor = await stageContextFactory.Create(
-                stageUiInteractor.Value.ToContainer()
-                );
+            IUnloadAndLoadStageUseCase unloadAndLoadStageUseCase = sharedContextContainer.Resolve<IUnloadAndLoadStageUseCase>();
 
-            await stageInteractor.Value.Load(levelConfiguration.ToConfiguration(), CancellationToken.None);
-
-            await loadingToken.Complete();
-
-            stageInteractor.Value.Start();
+            await unloadAndLoadStageUseCase.Execute(levelConfiguration.ToConfiguration(), cancellationToken);
         }
     }
 }

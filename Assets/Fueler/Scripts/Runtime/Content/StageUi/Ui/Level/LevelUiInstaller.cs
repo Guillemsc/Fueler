@@ -1,13 +1,16 @@
-﻿using Fueler.Content.StageUi.Ui.Level.UseCase.SetFuelLeftNormalized;
+﻿using Fueler.Content.Shared.Levels.Configuration;
+using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
+using Fueler.Content.StageUi.Ui.Level.UseCase.SetFuel;
+using Fueler.Content.StageUi.Ui.Level.UseCase.SubscribeToButtons;
+using Fueler.Contexts.Shared.UseCases.UnloadAndLoadStage;
 using Juce.Core.DI.Builder;
 using Juce.Core.DI.Installers;
 using Juce.Core.Refresh;
-using Juce.Core.Visibility;
+using Juce.CoreUnity.PointerCallback;
 using Juce.CoreUnity.TweenComponent;
 using Juce.CoreUnity.ViewStack;
 using Juce.CoreUnity.Visibles;
 using Juce.TweenComponent;
-using JuceUnity.Core.DI.Extensions;
 using UnityEngine;
 
 namespace Fueler.Content.StageUi.Ui.Level
@@ -21,20 +24,37 @@ namespace Fueler.Content.StageUi.Ui.Level
         [Header("Tween")]
         [SerializeField] private TweenPlayer setFuelTween = default;
 
+        [Header("Buttons")]
+        [SerializeField] private PointerCallbacks replayPointerCallbacks = default;
+
         private IViewStackEntry viewStackEntry;
 
         public void Install(IDIContainerBuilder container)
         {
             viewStackEntry = CreateStackEntry();
 
-            container.Bind<ISetFuelLeftNormalizedUseCase>()
-                .FromFunction(c => new SetFuelLeftNormalizedUseCase(
+            container.Bind<IReloadLevelUseCase>()
+                .FromFunction(c => new ReloadLevelUseCase(
+                    c.Resolve<ILevelConfiguration>(),
+                    c.Resolve<IUnloadAndLoadStageUseCase>()
+                    ));
+
+            container.Bind<ISetFuelUseCase>()
+                .FromFunction(c => new SetFuelUseCase(
                     setFuelTween
                     ));
 
+            container.Bind<ISubscribeToButtonsUseCase>()
+                .FromFunction(c => new SubscribeToButtonsUseCase(
+                    replayPointerCallbacks,
+                    c.Resolve<IReloadLevelUseCase>()
+                    ))
+                .WhenInit((c, o) => o.Execute())
+                .NonLazy();
+
             container.Bind<ILevelUiInteractor>()
                 .FromFunction(c => new LevelUiInteractor(
-                    c.Resolve<ISetFuelLeftNormalizedUseCase>()
+                    c.Resolve<ISetFuelUseCase>()
                     ))
                 .WhenInit((c, o) => c.Resolve<IUiViewStack>().Register(viewStackEntry))
                 .WhenDispose((c, o) => c.Resolve<IUiViewStack>().Unregister(viewStackEntry))

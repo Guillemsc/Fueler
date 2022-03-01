@@ -16,9 +16,9 @@ namespace Fueler.Contexts.Stage.UseCases.Load
             this.loadStageUseCase = loadStageUseCase;
         }
 
-        public Task Execute(ILevelConfiguration levelConfiguration, CancellationToken cancellationToken)
+        public Task Execute(CancellationToken cancellationToken)
         {
-            return loadStageUseCase.Execute(levelConfiguration, cancellationToken);
+            return loadStageUseCase.Execute(cancellationToken);
         }
     }
 }

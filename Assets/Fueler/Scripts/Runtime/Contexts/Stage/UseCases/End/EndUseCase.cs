@@ -1,5 +1,5 @@
-﻿using Fueler.Content.Stage.Data;
-using Fueler.Content.Stage.General.UseCases.EndStage;
+﻿using Fueler.Content.Stage.General.UseCases.EndStage;
+using Fueler.Content.Stage.Level.Data;
 
 namespace Fueler.Contexts.Stage.UseCases.End
 {

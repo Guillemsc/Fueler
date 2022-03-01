@@ -2,6 +2,6 @@
 {
     public interface ILevelUiInteractor
     {
-        void SetFuelNormalized(float fuelNormalized);
+        void SetFuel(float maxFuel, float currentFuel);
     }
 }

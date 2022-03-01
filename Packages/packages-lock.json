@@ -1,20 +1,20 @@
 {
   "dependencies": {
     "com.juce.core": {
-      "version": "git+https://github.com/Juce-Assets/Juce-Core#1.2.5",
+      "version": "git+https://github.com/Juce-Assets/Juce-Core#1.2.6",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "73841baadc127393b97a4a098427e1e9c19f20aa"
+      "hash": "dc2eddc02d57f6630bfa51750be7e59974f4699b"
     },
     "com.juce.coreunity": {
-      "version": "git+https://github.com/Juce-Assets/Juce-CoreUnity#1.2.11",
+      "version": "git+https://github.com/Juce-Assets/Juce-CoreUnity#1.2.13",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.juce.core": "https://github.com/Juce-Assets/Juce-Core#1.1.0"
       },
-      "hash": "bf47532ba4743661089111ffd1915b0b2295ed4c"
+      "hash": "03bccc1ed81497b162bf6e8fad76e99892167852"
     },
     "com.juce.implementationselector": {
       "version": "git+https://github.com/Juce-Assets/Juce-ImplementationSelector#1.0.4",

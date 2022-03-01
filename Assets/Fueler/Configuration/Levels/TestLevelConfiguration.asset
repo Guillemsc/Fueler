@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72259cfdb7570124e838eaa37e4b396a, type: 3}
   m_Name: TestLevelConfiguration
   m_EditorClassIdentifier: 
+  id: 562ee85f-a5dd-4d51-b8c7-5e4e2b642b84
   levelEntityPrefab: {fileID: 3166591651800058605, guid: bb4eb97495cd53747b14522e8ac5cc21, type: 3}
+  initialFuel: 50
