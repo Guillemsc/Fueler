@@ -30,7 +30,7 @@ namespace Fueler.Content.Stage.Fuel.UseCases.CheckShipMovementIfNoFuel
 
             bool hasFuel = shipFuelData.CurrentFuel > 0;
 
-            shipEntity.Value.ShipController.CanInputForwardOrBackward = hasFuel;
+            shipEntity.Value.ShipController.CanInputForward = hasFuel;
         }
     }
 }
