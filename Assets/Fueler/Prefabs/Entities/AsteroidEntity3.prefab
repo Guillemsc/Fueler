@@ -101,11 +101,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.16681108, y: 0.18904155}
-      - {x: -0.09903693, y: 0.18070076}
-      - {x: -0.16899505, y: 0.063706435}
-      - {x: -0.036006927, y: -0.17643881}
-      - {x: 0.19547713, y: 0.07472888}
+    - - {x: 0.16795415, y: 0.20161514}
+      - {x: -0.09903693, y: 0.20013268}
+      - {x: -0.18614088, y: 0.068278655}
+      - {x: -0.040579148, y: -0.19358464}
+      - {x: 0.23548405, y: 0.073585816}
 --- !u!1 &5255549440666667579
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 9010821695200993921}
   - component: {fileID: 8028909336547290632}
   m_Layer: 0
-  m_Name: Asteroid3
+  m_Name: AsteroidEntity3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
