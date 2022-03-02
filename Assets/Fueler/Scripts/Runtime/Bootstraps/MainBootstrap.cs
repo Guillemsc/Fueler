@@ -1,17 +1,17 @@
-﻿using Fueler.Content.Shared.Levels.Configuration;
-using Fueler.Context.Shared.Installers;
+﻿using Fueler.Context.Shared.Installers;
 using Fueler.Contexts.Shared;
-using Fueler.Contexts.Shared.UseCases.UnloadAndLoadStage;
+using Fueler.Contexts.Shared.UseCases.LoadMainEntryPoint;
 using Juce.Core.DI.Builder;
 using Juce.Core.DI.Container;
+using Juce.CoreUnity.Bootstraps;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Fueler.Bootstraps.Utils
+namespace Fueler.Bootstraps
 {
-    public static class LevelBootstrapUtils
+    public class MainBootstrap : Bootstrap
     {
-        public static async Task Run(ILevelConfiguration levelConfiguration, CancellationToken cancellationToken)
+        protected override async Task Run(CancellationToken cancellationToken)
         {
             IContextFactories contextFactories = ContextUtils.CreateContextFactories();
 
@@ -25,9 +25,9 @@ namespace Fueler.Bootstraps.Utils
             }
             IDIContainer sharedContextContainer = sharedContextBuilder.Build();
 
-            IUnloadAndLoadStageUseCase unloadAndLoadStageUseCase = sharedContextContainer.Resolve<IUnloadAndLoadStageUseCase>();
+            ILoadMainEntryPointUseCase loadMainEntryPointUseCase = sharedContextContainer.Resolve<ILoadMainEntryPointUseCase>();
 
-            await unloadAndLoadStageUseCase.Execute(levelConfiguration, cancellationToken);
+            await loadMainEntryPointUseCase.Execute(cancellationToken);
         }
     }
 }

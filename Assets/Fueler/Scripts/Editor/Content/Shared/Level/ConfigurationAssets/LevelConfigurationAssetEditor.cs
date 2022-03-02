@@ -55,11 +55,19 @@ namespace Fueler.Content.Shared.Levels.ConfigurationAssets
 
             AutoloadLevelBootstrap.SetLevelConfigurationAsset(actualTarget);
 
-            SceneAutoLoader.LoadMasterOnPlay = false;
+            bool autoLoadWasEnabled = SceneAutoLoader.LoadMasterOnPlay;
+
+            if (autoLoadWasEnabled)
+            {
+                SceneAutoLoader.LoadMasterOnPlay = false;
+            }
 
             EditorApplication.isPlaying = true;
 
-            SceneAutoLoader.LoadMasterOnPlay = true;
+            if (autoLoadWasEnabled)
+            {
+                SceneAutoLoader.LoadMasterOnPlay = true;
+            }
         }
     }
 }

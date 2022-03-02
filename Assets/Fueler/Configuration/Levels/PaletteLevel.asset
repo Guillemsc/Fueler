@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3d6b7318-b390-4366-bd62-ba0fcb5fecbe
   levelEntityPrefab: {fileID: 3166591651800058605, guid: 31707d2c5f79d364a990cc7cc9c79e8c, type: 3}
-  initialFuel: 999999
+  initialFuel: 99999
