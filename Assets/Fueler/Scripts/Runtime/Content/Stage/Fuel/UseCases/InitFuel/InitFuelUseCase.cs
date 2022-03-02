@@ -26,7 +26,7 @@ namespace Fueler.Content.Stage.Fuel.UseCases.InitFuel
             shipFuelData.MaxFuel = levelConfiguration.InitialFuel;
             shipFuelData.CurrentFuel = shipFuelData.MaxFuel;
 
-            levelUiInteractor.SetFuel(shipFuelData.MaxFuel, shipFuelData.CurrentFuel);
+            levelUiInteractor.SetFuel(decimal.ToSingle(shipFuelData.MaxFuel), decimal.ToSingle(shipFuelData.CurrentFuel));
         }
     }
 }

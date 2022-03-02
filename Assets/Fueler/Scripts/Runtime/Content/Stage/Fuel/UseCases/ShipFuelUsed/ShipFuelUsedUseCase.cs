@@ -29,13 +29,13 @@ namespace Fueler.Content.Stage.Fuel.UseCases.ShipFuelUsed
 
         public void Execute()
         {
-            float currentFuel = shipFuelData.CurrentFuel - fuelConfiguration.FuelConsumptionRate * Time.deltaTime;
+            decimal currentFuel = shipFuelData.CurrentFuel - (decimal)fuelConfiguration.FuelConsumptionRate * (decimal)Time.deltaTime;
 
             currentFuel = Math.Max(0, currentFuel);
 
             shipFuelData.CurrentFuel = currentFuel;
 
-            levelUiInteractor.SetFuel(shipFuelData.MaxFuel, shipFuelData.CurrentFuel);
+            levelUiInteractor.SetFuel(decimal.ToSingle(shipFuelData.MaxFuel), decimal.ToSingle(shipFuelData.CurrentFuel));
 
             checkShipMovementIfNoFuelUseCase.Execute();
         }

@@ -2,7 +2,7 @@
 {
     public class FuelData
     {
-        public float MaxFuel { get; set; }
-        public float CurrentFuel { get; set; }
+        public decimal MaxFuel { get; set; }
+        public decimal CurrentFuel { get; set; }
     }
 }

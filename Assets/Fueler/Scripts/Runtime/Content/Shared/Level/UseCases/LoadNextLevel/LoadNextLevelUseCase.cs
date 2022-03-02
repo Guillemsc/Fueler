@@ -35,6 +35,7 @@ namespace Fueler.Content.Shared.Levels.UseCases.LoadNextLevel
 
             if (!levelIndexFound)
             {
+                UnityEngine.Debug.Log($"Could not find level index of level {levelConfiguration.Id}. Won't play next level.");
                 return;
             }
 
