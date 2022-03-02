@@ -1,7 +1,12 @@
 {
     "name": "Fueler.Editor",
     "rootNamespace": "Fueler",
-    "references": [],
+    "references": [
+        "GUID:908b80f2aacc36f469597e425de56631",
+        "GUID:6ed3c73bb9c372a438b5861d4777dbb6",
+        "GUID:66f84fddbd56756439bdf88a8207ce7e",
+        "GUID:e0c13596d568ddb45ac614d4cabc6676"
+    ],
     "includePlatforms": [
         "Editor"
     ],
