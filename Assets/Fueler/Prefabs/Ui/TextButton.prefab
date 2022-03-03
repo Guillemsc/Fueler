@@ -437,11 +437,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1041904810330288308}
+  - component: {fileID: 7796310819418208755}
   - component: {fileID: 1313727668497947449}
+  - component: {fileID: 5327215453266568808}
   - component: {fileID: 1681145655933573798}
   - component: {fileID: 1216461149469271374}
   m_Layer: 0
-  m_Name: PointerCallbacks
+  m_Name: PointerAndSelectableCallbacks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -466,6 +468,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7796310819418208755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600963603339350807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1698b3d29207bd94b902965cc8590b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointerCallbacks: {fileID: 1313727668497947449}
+  selectableCallbacks: {fileID: 5327215453266568808}
 --- !u!114 &1313727668497947449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,6 +495,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerPointerUpOnPointerExit: 1
+--- !u!114 &5327215453266568808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600963603339350807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e54521a031011e41b62657f39b785f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1216461149469271374}
 --- !u!222 &1681145655933573798
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -760,7 +817,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 762857860398575151}
-  - component: {fileID: 7205153011963880350}
+  - component: {fileID: 3402064023496813749}
   m_Layer: 0
   m_Name: Animations
   m_TagString: Untagged
@@ -789,7 +846,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7205153011963880350
+--- !u!114 &3402064023496813749
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -798,12 +855,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8382897136152096418}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8ff4784f499cf64a9b9d565be859850, type: 3}
+  m_Script: {fileID: 11500000, guid: b50a4ea51d4c4b544b5cb803435f8f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pointerCallbacks: {fileID: 1313727668497947449}
+  selectableCallbacks: {fileID: 5327215453266568808}
   onUpAnimation: {fileID: 0}
   onDownAnimation: {fileID: 0}
-  onEnterAnimation: {fileID: 3484988496085568149}
-  onExitAnimation: {fileID: 8614316020316598246}
-  onClickAnimation: {fileID: 0}
+  onEnterSelectAnimation: {fileID: 3484988496085568149}
+  onExitDeselectAnimation: {fileID: 8614316020316598246}
+  onClickSubmitAnimation: {fileID: 0}

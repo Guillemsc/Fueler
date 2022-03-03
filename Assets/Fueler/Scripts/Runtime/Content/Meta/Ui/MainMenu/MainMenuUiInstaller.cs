@@ -1,10 +1,11 @@
 ﻿using Juce.Core.DI.Builder;
 using Juce.Core.DI.Installers;
-using Juce.Core.Refresh;
+using Juce.CoreUnity.Ui.Others;
 using Juce.CoreUnity.TweenComponent;
 using Juce.CoreUnity.ViewStack;
 using Juce.CoreUnity.Visibles;
 using UnityEngine;
+using Juce.CoreUnity.Ui.SelectableCallback;
 
 namespace Fueler.Content.Meta.Ui.MainMenu
 {
@@ -13,6 +14,12 @@ namespace Fueler.Content.Meta.Ui.MainMenu
         [Header("Animations")]
         [SerializeField] private TweenPlayerAnimation showAnimation = default;
         [SerializeField] private TweenPlayerAnimation hideAnimation = default;
+
+        [Header("Selectables")]
+        [SerializeField] private SelectableCallbacks firstSelectable = default;
+
+        [Header("Buttons")]
+        [SerializeField] private PointerAndSelectableSubmitCallbacks playButton = default;
 
         private IViewStackEntry viewStackEntry;
 
@@ -36,7 +43,7 @@ namespace Fueler.Content.Meta.Ui.MainMenu
                     showAnimation,
                     hideAnimation
                     ),
-                NopRefreshable.Instance,
+                new SetAsSelectedRefreshable(firstSelectable),
                 isPopup: false
                 );
         }
