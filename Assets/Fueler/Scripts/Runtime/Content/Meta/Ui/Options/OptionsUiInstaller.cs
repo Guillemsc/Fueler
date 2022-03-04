@@ -1,17 +1,17 @@
 ﻿using Juce.Core.DI.Builder;
 using Juce.Core.DI.Installers;
-using Juce.CoreUnity.Ui.Others;
 using Juce.CoreUnity.TweenComponent;
 using Juce.CoreUnity.ViewStack;
 using Juce.CoreUnity.Visibles;
 using UnityEngine;
 using Juce.CoreUnity.Ui.SelectableCallback;
-using Fueler.Content.Meta.Ui.MainMenu.UseCases.SubscribeToButtons;
-using Fueler.Content.Meta.Ui.MainMenu.UseCases.OptionsButtonPressed;
+using Juce.CoreUnity.Ui.Others;
+using Fueler.Content.Meta.Ui.Options.UseCases.BackButtonPressed;
+using Fueler.Content.Meta.Ui.Options.UseCases.SubscribeToButtons;
 
-namespace Fueler.Content.Meta.Ui.MainMenu
+namespace Fueler.Content.Meta.Ui.Options
 {
-    public class MainMenuUiInstaller : MonoBehaviour, IInstaller
+    public class OptionsUiInstaller : MonoBehaviour, IInstaller
     {
         [Header("Animations")]
         [SerializeField] private TweenPlayerAnimation showAnimation = default;
@@ -21,8 +21,7 @@ namespace Fueler.Content.Meta.Ui.MainMenu
         [SerializeField] private SelectableCallbacks firstSelectable = default;
 
         [Header("Buttons")]
-        [SerializeField] private PointerAndSelectableSubmitCallbacks playButton = default;
-        [SerializeField] private PointerAndSelectableSubmitCallbacks optionsButton = default;
+        [SerializeField] private PointerAndSelectableSubmitCallbacks backButton = default;
 
         private IViewStackEntry viewStackEntry;
 
@@ -30,21 +29,21 @@ namespace Fueler.Content.Meta.Ui.MainMenu
         {
             viewStackEntry = CreateStackEntry();
 
-            container.Bind<IOptionsButtonPressedUseCase>()
-                .FromFunction(c => new OptionsButtonPressedUseCase(
-                    c.Resolve<IUiViewStack>()
-                    ));
+            container.Bind<IBackButtonPressedUseCase>()
+               .FromFunction(c => new BackButtonPressedUseCase(
+                   c.Resolve<IUiViewStack>()
+                   ));
 
             container.Bind<ISubscribeToButtonsUseCase>()
                 .FromFunction(c => new SubscribeToButtonsUseCase(
-                    optionsButton,
-                    c.Resolve<IOptionsButtonPressedUseCase>()
+                    backButton,
+                    c.Resolve<IBackButtonPressedUseCase>()
                     ))
                 .WhenInit((c, o) => o.Execute())
                 .NonLazy();
 
-            container.Bind<IMainMenuUiInteractor>()
-                .FromFunction(c => new MainMenuUiInteractor())
+            container.Bind<IOptionsUiInteractor>()
+                .FromFunction(c => new OptionsUiInteractor())
                 .WhenInit((c, o) => c.Resolve<IUiViewStack>().Register(viewStackEntry))
                 .WhenDispose((c, o) => c.Resolve<IUiViewStack>().Unregister(viewStackEntry))
                 .NonLazy();
@@ -53,7 +52,7 @@ namespace Fueler.Content.Meta.Ui.MainMenu
         private IViewStackEntry CreateStackEntry()
         {
             return new ViewStackEntry(
-                typeof(IMainMenuUiInteractor),
+                typeof(IOptionsUiInteractor),
                 gameObject.transform,
                 new TweenPlayerAnimationVisible(
                     showAnimation,

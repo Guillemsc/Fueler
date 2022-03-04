@@ -16,6 +16,7 @@ namespace Fueler.Contexts.Meta
 
             container.Bind(instance.SplashScreenUiInstaller);
             container.Bind(instance.MainMenuUiInstaller);
+            container.Bind(instance.OptionsUiInstaller);
 
             container.Bind<IMetaContextInteractor>()
                 .FromFunction(c => new MetaContextInteractor(
