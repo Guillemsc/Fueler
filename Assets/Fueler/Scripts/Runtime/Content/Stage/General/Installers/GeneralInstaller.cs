@@ -47,8 +47,7 @@ namespace Fueler.Content.Stage.General.Installers
                 c.Resolve<ISingleRepository<IDisposable<ShipEntity>>>(),
                 c.Resolve<IUiViewStack>(),
                 c.Resolve<IWaitUnscaledTimeUseCase>(),
-                c.Resolve<ILoadNextLevelUseCase>(),
-                c.Resolve<IReloadLevelUseCase>()
+                c.Resolve<ILoadNextLevelUseCase>()
                 ));
         }
     }

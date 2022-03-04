@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 353054386}
     m_Modifications:
+    - target: {fileID: 2959326716146037976, guid: a964f8997dc4cc842bd936a3399192f4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3413596312755163492, guid: a964f8997dc4cc842bd936a3399192f4, type: 3}
       propertyPath: m_Name
       value: LevelFailedUi
@@ -164,11 +168,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3413596312755163515, guid: a964f8997dc4cc842bd936a3399192f4, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -1280
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3413596312755163515, guid: a964f8997dc4cc842bd936a3399192f4, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -720
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3413596312755163515, guid: a964f8997dc4cc842bd936a3399192f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -332,6 +336,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 353054386}
     m_Modifications:
+    - target: {fileID: 2959326716146037976, guid: 506b1a4a2f2654547835dacd9abfc18a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3413596312755163492, guid: 506b1a4a2f2654547835dacd9abfc18a, type: 3}
       propertyPath: m_Name
       value: LevelCompletedUi

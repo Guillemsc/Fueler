@@ -1,4 +1,5 @@
-﻿using Fueler.Content.StageUi.Shared.Installers;
+﻿using Fueler.Content.StageUi.General.Installers;
+using Fueler.Content.StageUi.Shared.Installers;
 using Fueler.Content.StageUi.Ui.Level;
 using Fueler.Context.Shared.Installers;
 using Juce.Core.DI.Builder;
@@ -13,6 +14,7 @@ namespace Fueler.Contexts.StageUi
         {
             container.InstallContextShared();
             container.InstallServices();
+            container.InstallGeneral();
 
             container.Bind(instance.LevelUiInstaller);
             container.Bind(instance.LevelCompletedUiInstaller);

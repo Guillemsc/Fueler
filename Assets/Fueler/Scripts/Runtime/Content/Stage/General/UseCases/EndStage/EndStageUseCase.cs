@@ -22,15 +22,13 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
         private readonly IUiViewStack viewStack;
         private readonly IWaitUnscaledTimeUseCase waitUnscaledTimeUseCase;
         private readonly ILoadNextLevelUseCase loadNextLevelUseCase;
-        private readonly IReloadLevelUseCase reloadLevelUseCase;
 
         public EndStageUseCase(
             LevelState levelState,
             ISingleRepository<IDisposable<ShipEntity>> shipEntityRepository,
             IUiViewStack viewStack,
             IWaitUnscaledTimeUseCase waitUnscaledTimeUseCase,
-            ILoadNextLevelUseCase loadNextLevelUseCase,
-            IReloadLevelUseCase reloadLevelUseCase
+            ILoadNextLevelUseCase loadNextLevelUseCase
             )
         {
             this.levelState = levelState;
@@ -38,7 +36,6 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
             this.viewStack = viewStack;
             this.waitUnscaledTimeUseCase = waitUnscaledTimeUseCase;
             this.loadNextLevelUseCase = loadNextLevelUseCase;
-            this.reloadLevelUseCase = reloadLevelUseCase;
         }
 
         public void Execute(LevelEndData levelEndedData)
@@ -85,10 +82,6 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
             else
             {
                 await viewStack.New().Show<ILevelFailedUiInteractor>(instantly: false).Execute(cancellationToken);
-
-                await waitUnscaledTimeUseCase.Execute(TimeSpan.FromSeconds(1), cancellationToken);
-
-                reloadLevelUseCase.Execute();
             }
         }
     }

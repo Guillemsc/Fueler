@@ -33,12 +33,6 @@ namespace Fueler.Content.StageUi.Ui.Level
         {
             viewStackEntry = CreateStackEntry();
 
-            container.Bind<IReloadLevelUseCase>()
-                .FromFunction(c => new ReloadLevelUseCase(
-                    c.Resolve<ILevelConfiguration>(),
-                    c.Resolve<IUnloadAndLoadStageUseCase>()
-                    ));
-
             container.Bind<ISetFuelUseCase>()
                 .FromFunction(c => new SetFuelUseCase(
                     setFuelTween

@@ -12,6 +12,7 @@ using Fueler.Content.Meta.Ui.MainMenu.UseCases.PlayButtonPressed;
 using Fueler.Contexts.Shared.UseCases.UnloadMetaAndLoadStage;
 using Fueler.Content.Shared.Levels.UseCases.TryGetLevelByIndex;
 using Fueler.Content.Services.Configuration;
+using Fueler.Content.Meta.Ui.MainMenu.UseCases.QuitButtonPressed;
 
 namespace Fueler.Content.Meta.Ui.MainMenu
 {
@@ -27,6 +28,7 @@ namespace Fueler.Content.Meta.Ui.MainMenu
         [Header("Buttons")]
         [SerializeField] private PointerAndSelectableSubmitCallbacks playButton = default;
         [SerializeField] private PointerAndSelectableSubmitCallbacks optionsButton = default;
+        [SerializeField] private PointerAndSelectableSubmitCallbacks quitButton = default;
 
         private IViewStackEntry viewStackEntry;
 
@@ -50,12 +52,18 @@ namespace Fueler.Content.Meta.Ui.MainMenu
                     c.Resolve<IUiViewStack>()
                     ));
 
+            container.Bind<IQuitButtonPressedUseCase>()
+                .FromFunction(c => new QuitButtonPressedUseCase(
+                    ));
+
             container.Bind<ISubscribeToButtonsUseCase>()
                 .FromFunction(c => new SubscribeToButtonsUseCase(
                     playButton,
                     optionsButton,
+                    quitButton,
                     c.Resolve<IPlayButtonPressedUseCase>(),
-                    c.Resolve<IOptionsButtonPressedUseCase>()
+                    c.Resolve<IOptionsButtonPressedUseCase>(),
+                    c.Resolve<IQuitButtonPressedUseCase>()
                     ))
                 .WhenInit((c, o) => o.Execute())
                 .NonLazy();

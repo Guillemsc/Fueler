@@ -52,7 +52,7 @@ namespace Fueler.Content.Stage.General.Installers
             container.Bind<IReloadLevelUseCase>()
                 .FromFunction(c => new ReloadLevelUseCase(
                     c.Resolve<ILevelConfiguration>(),
-                     c.Resolve<IUnloadAndLoadStageUseCase>()
+                    c.Resolve<IUnloadAndLoadStageUseCase>()
                     ));
 
             container.Bind<ILoadLevelUseCase>().FromFunction(c => new LoadLevelUseCase(
