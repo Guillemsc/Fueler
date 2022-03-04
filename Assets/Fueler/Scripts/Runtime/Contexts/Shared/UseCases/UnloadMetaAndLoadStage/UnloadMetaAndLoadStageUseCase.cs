@@ -1,7 +1,7 @@
 ﻿using Fueler.Content.Shared.Levels.Configuration;
 using Fueler.Contexts.LoadingScreen;
+using Fueler.Contexts.Meta;
 using Fueler.Contexts.Shared.UseCases.LoadStage;
-using Fueler.Contexts.Shared.UseCases.UnloadStage;
 using Fueler.Contexts.Stage;
 using Juce.Core.Disposables;
 using Juce.Core.Loading;
@@ -9,20 +9,17 @@ using Juce.CoreUnity.Service;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Fueler.Contexts.Shared.UseCases.UnloadAndLoadStage
+namespace Fueler.Contexts.Shared.UseCases.UnloadMetaAndLoadStage
 {
-    public class UnloadAndLoadStageUseCase : IUnloadAndLoadStageUseCase
+    public class UnloadMetaAndLoadStageUseCase : IUnloadMetaAndLoadStageUseCase
     {
         private readonly ILoadStageUseCase loadStageUseCase;
-        private readonly IUnloadStageUseCase unloadStageUseCase;
 
-        public UnloadAndLoadStageUseCase(
-            ILoadStageUseCase loadStageUseCase,
-            IUnloadStageUseCase unloadStageUseCase
+        public UnloadMetaAndLoadStageUseCase(
+            ILoadStageUseCase loadStageUseCase
             )
         {
             this.loadStageUseCase = loadStageUseCase;
-            this.unloadStageUseCase = unloadStageUseCase;
         }
 
         public async Task Execute(ILevelConfiguration levelConfiguration, CancellationToken cancellationToken)
@@ -31,7 +28,14 @@ namespace Fueler.Contexts.Shared.UseCases.UnloadAndLoadStage
 
             ITaskLoadingToken loadingToken = await loadingScreen.Value.Show(cancellationToken);
 
-            await unloadStageUseCase.Execute(cancellationToken);
+            bool metaFound = ServiceLocator.TryGet(
+             out ITaskDisposable<IMetaContextInteractor> meta
+             );
+
+            if (metaFound)
+            {
+                await meta.Dispose();
+            }
 
             IStageContextInteractor stageInteractor = await loadStageUseCase.Execute(levelConfiguration, cancellationToken);
 

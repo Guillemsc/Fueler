@@ -8,6 +8,10 @@ using UnityEngine;
 using Juce.CoreUnity.Ui.SelectableCallback;
 using Fueler.Content.Meta.Ui.MainMenu.UseCases.SubscribeToButtons;
 using Fueler.Content.Meta.Ui.MainMenu.UseCases.OptionsButtonPressed;
+using Fueler.Content.Meta.Ui.MainMenu.UseCases.PlayButtonPressed;
+using Fueler.Contexts.Shared.UseCases.UnloadMetaAndLoadStage;
+using Fueler.Content.Shared.Levels.UseCases.TryGetLevelByIndex;
+using Fueler.Content.Services.Configuration;
 
 namespace Fueler.Content.Meta.Ui.MainMenu
 {
@@ -30,6 +34,17 @@ namespace Fueler.Content.Meta.Ui.MainMenu
         {
             viewStackEntry = CreateStackEntry();
 
+            container.Bind<ITryGetLevelByIndexUseCase>()
+                .FromFunction(c => new TryGetLevelByIndexUseCase(
+                    c.Resolve<IConfigurationService>().LevelsConfiguration
+                    ));
+
+            container.Bind<IPlayButtonPressedUseCase>()
+                .FromFunction(c => new PlayButtonPressedUseCase(
+                    c.Resolve<ITryGetLevelByIndexUseCase>(),
+                    c.Resolve<IUnloadMetaAndLoadStageUseCase>()
+                    ));
+
             container.Bind<IOptionsButtonPressedUseCase>()
                 .FromFunction(c => new OptionsButtonPressedUseCase(
                     c.Resolve<IUiViewStack>()
@@ -37,7 +52,9 @@ namespace Fueler.Content.Meta.Ui.MainMenu
 
             container.Bind<ISubscribeToButtonsUseCase>()
                 .FromFunction(c => new SubscribeToButtonsUseCase(
+                    playButton,
                     optionsButton,
+                    c.Resolve<IPlayButtonPressedUseCase>(),
                     c.Resolve<IOptionsButtonPressedUseCase>()
                     ))
                 .WhenInit((c, o) => o.Execute())
