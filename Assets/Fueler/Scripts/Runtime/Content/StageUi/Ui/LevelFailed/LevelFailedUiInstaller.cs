@@ -6,9 +6,9 @@ using Juce.CoreUnity.ViewStack;
 using Juce.CoreUnity.Visibles;
 using UnityEngine;
 
-namespace Fueler.Content.StageUi.Ui.EndStage
+namespace Fueler.Content.StageUi.Ui.LevelFailed
 {
-    public class EndStageUiInstaller : MonoBehaviour, IInstaller
+    public class LevelFailedUiInstaller : MonoBehaviour, IInstaller
     {
         [Header("Animations")]
         [SerializeField] private TweenPlayerAnimation showAnimation = default;
@@ -20,8 +20,8 @@ namespace Fueler.Content.StageUi.Ui.EndStage
         {
             viewStackEntry = CreateStackEntry();
 
-            container.Bind<IEndStageUiInteractor>()
-                .FromFunction(c => new EndStageUiInteractor())
+            container.Bind<ILevelFailedUiInteractor>()
+                .FromFunction(c => new LevelFailedUiInteractor())
                 .WhenInit((c, o) => c.Resolve<IUiViewStack>().Register(viewStackEntry))
                 .WhenDispose((c, o) => c.Resolve<IUiViewStack>().Unregister(viewStackEntry))
                 .NonLazy();
@@ -30,14 +30,14 @@ namespace Fueler.Content.StageUi.Ui.EndStage
         private IViewStackEntry CreateStackEntry()
         {
             return new ViewStackEntry(
-                typeof(IEndStageUiInteractor),
+                typeof(ILevelFailedUiInteractor),
                 gameObject.transform,
                 new TweenPlayerAnimationVisible(
                     showAnimation,
                     hideAnimation
                     ),
                 NopRefreshable.Instance,
-                isPopup : false
+                isPopup: false
                 );
         }
     }

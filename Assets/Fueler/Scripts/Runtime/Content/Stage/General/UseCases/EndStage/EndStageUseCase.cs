@@ -1,9 +1,11 @@
 ﻿using Fueler.Content.Shared.Levels.UseCases.LoadNextLevel;
+using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
 using Fueler.Content.Shared.Time.UseCases.WaitUnscaledTime;
 using Fueler.Content.Stage.General.State;
 using Fueler.Content.Stage.Level.Data;
 using Fueler.Content.Stage.Ship.Entities;
-using Fueler.Content.StageUi.Ui.EndStage;
+using Fueler.Content.StageUi.Ui.LevelCompleted;
+using Fueler.Content.StageUi.Ui.LevelFailed;
 using Juce.Core.Disposables;
 using Juce.Core.Repositories;
 using Juce.CoreUnity.ViewStack;
@@ -20,13 +22,15 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
         private readonly IUiViewStack viewStack;
         private readonly IWaitUnscaledTimeUseCase waitUnscaledTimeUseCase;
         private readonly ILoadNextLevelUseCase loadNextLevelUseCase;
+        private readonly IReloadLevelUseCase reloadLevelUseCase;
 
         public EndStageUseCase(
             LevelState levelState,
             ISingleRepository<IDisposable<ShipEntity>> shipEntityRepository,
             IUiViewStack viewStack,
             IWaitUnscaledTimeUseCase waitUnscaledTimeUseCase,
-            ILoadNextLevelUseCase loadNextLevelUseCase
+            ILoadNextLevelUseCase loadNextLevelUseCase,
+            IReloadLevelUseCase reloadLevelUseCase
             )
         {
             this.levelState = levelState;
@@ -34,6 +38,7 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
             this.viewStack = viewStack;
             this.waitUnscaledTimeUseCase = waitUnscaledTimeUseCase;
             this.loadNextLevelUseCase = loadNextLevelUseCase;
+            this.reloadLevelUseCase = reloadLevelUseCase;
         }
 
         public void Execute(LevelEndData levelEndedData)
@@ -69,11 +74,22 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
 
             await waitUnscaledTimeUseCase.Execute(TimeSpan.FromSeconds(1), cancellationToken);
 
-            await viewStack.New().Show<IEndStageUiInteractor>(instantly: false).Execute(cancellationToken);
+            if (levelEndedData.Completed)
+            {
+                await viewStack.New().Show<ILevelCompletedUiInteractor>(instantly: false).Execute(cancellationToken);
 
-            await waitUnscaledTimeUseCase.Execute(TimeSpan.FromSeconds(1), cancellationToken);
+                await waitUnscaledTimeUseCase.Execute(TimeSpan.FromSeconds(1), cancellationToken);
 
-            loadNextLevelUseCase.Execute();
+                loadNextLevelUseCase.Execute();
+            }
+            else
+            {
+                await viewStack.New().Show<ILevelFailedUiInteractor>(instantly: false).Execute(cancellationToken);
+
+                await waitUnscaledTimeUseCase.Execute(TimeSpan.FromSeconds(1), cancellationToken);
+
+                reloadLevelUseCase.Execute();
+            }
         }
     }
 }

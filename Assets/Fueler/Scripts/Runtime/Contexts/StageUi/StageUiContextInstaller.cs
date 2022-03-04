@@ -15,7 +15,8 @@ namespace Fueler.Contexts.StageUi
             container.InstallServices();
 
             container.Bind(instance.LevelUiInstaller);
-            container.Bind(instance.EndStageUiInstaller);
+            container.Bind(instance.LevelCompletedUiInstaller);
+            container.Bind(instance.LevelFailedUiInstaller);
 
             container.Bind<IStageUiContextInteractor>()
                 .FromFunction(c => new StageUiContextInteractor(

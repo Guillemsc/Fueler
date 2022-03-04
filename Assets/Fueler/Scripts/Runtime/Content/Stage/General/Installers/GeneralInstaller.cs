@@ -16,6 +16,7 @@ using Fueler.Content.Stage.Ship.Entities;
 using Fueler.Content.Stage.Fuel.UseCases.ShipFuelUsed;
 using Fueler.Content.Shared.Levels.Configuration;
 using Fueler.Content.Stage.Fuel.UseCases.InitFuel;
+using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
 
 namespace Fueler.Content.Stage.General.Installers
 {
@@ -46,7 +47,8 @@ namespace Fueler.Content.Stage.General.Installers
                 c.Resolve<ISingleRepository<IDisposable<ShipEntity>>>(),
                 c.Resolve<IUiViewStack>(),
                 c.Resolve<IWaitUnscaledTimeUseCase>(),
-                c.Resolve<ILoadNextLevelUseCase>()
+                c.Resolve<ILoadNextLevelUseCase>(),
+                c.Resolve<IReloadLevelUseCase>()
                 ));
         }
     }
