@@ -3,14 +3,14 @@ using Fueler.Content.Stage.Astrounats.Entities;
 using Fueler.Content.StageUi.Ui.Level;
 using UnityEngine;
 
-namespace Fueler.Content.Stage.Astrounats.UseCases.AstronautCollected
+namespace Fueler.Content.Stage.Astrounats.UseCases.ShipCollidedWithAstronaut
 {
-    public class AstronautCollectedUseCase : IAstronautCollectedUseCase
+    public class ShipCollidedWithAstronautUseCase : IShipCollidedWithAstronautUseCase
     {
         private readonly AstronautsData astronautsData;
         private readonly ILevelUiInteractor levelUiInteractor;
 
-        public AstronautCollectedUseCase(
+        public ShipCollidedWithAstronautUseCase(
             AstronautsData astronautsData,
             ILevelUiInteractor levelUiInteractor
             )
@@ -19,9 +19,16 @@ namespace Fueler.Content.Stage.Astrounats.UseCases.AstronautCollected
             this.levelUiInteractor = levelUiInteractor;
         }
 
-        public void Execute(AstronautEntity shipEntity)
+        public void Execute(AstronautEntity astronautEntity)
         {
-            shipEntity.PlayCollect();
+            if(astronautEntity.Collected)
+            {
+                return;
+            }
+
+            astronautEntity.Collected = true;
+
+            astronautEntity.PlayCollect();
 
             astronautsData.CollectedAstronauts += 1;
             astronautsData.CollectedAstronauts = Mathf.Min(astronautsData.CollectedAstronauts, astronautsData.TotalAstronauts);

@@ -12,6 +12,7 @@ using Fueler.Content.Stage.General.UseCases.StartStage;
 using Fueler.Content.Stage.Fuel.Installers;
 using Fueler.Context.Shared.Installers;
 using Fueler.Content.Stage.Astrounats.Installers;
+using Fueler.Content.Stage.Asteroids.Installers;
 
 namespace Fueler.Contexts.Stage
 {
@@ -26,6 +27,7 @@ namespace Fueler.Contexts.Stage
             container.InstallGeneral();
             container.InstallLevel();
             container.InstallShip();
+            container.InstallAsteroids();
             container.InstallFuel();
             container.InstallAstronauts();
 

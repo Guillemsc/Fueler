@@ -1,4 +1,5 @@
-﻿using Juce.TweenComponent;
+﻿using Juce.CoreUnity.Physics;
+using Juce.TweenComponent;
 using UnityEngine;
 
 namespace Fueler.Content.Stage.Ship.Entities
@@ -7,10 +8,12 @@ namespace Fueler.Content.Stage.Ship.Entities
     {
         [Header("References")]
         [SerializeField] private ShipController shipController = default;
+        [SerializeField] private PhysicsCallbacks physicsCallbacks = default;
 
         [Header("Tweens")]
         [SerializeField] private TweenPlayer destroyTween = default;
 
+        public PhysicsCallbacks PhysicsCallbacks => physicsCallbacks;
         public ShipController ShipController => shipController;
 
         public void PlayDestroy()

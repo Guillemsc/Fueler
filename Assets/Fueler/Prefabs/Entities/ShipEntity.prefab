@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipController: {fileID: 5192447903798093803}
+  physicsCallbacks: {fileID: 4844527817362800630}
   destroyTween: {fileID: 4768602111936819412}
 --- !u!114 &5192447903798093803
 MonoBehaviour:
@@ -224,7 +225,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7879949843307423965}
-  - component: {fileID: 5532117283803878584}
+  - component: {fileID: 4844527817362800630}
+  - component: {fileID: 8037808833508121932}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -246,8 +248,20 @@ Transform:
   m_Father: {fileID: 723830707984323120}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &5532117283803878584
-BoxCollider2D:
+--- !u!114 &4844527817362800630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2313624578933913395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d2955120046c3e429a618b0307cfbeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!60 &8037808833508121932
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -259,7 +273,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0008512661, y: -0.023483604}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -269,9 +283,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.18840383, y: 0.41964024}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 0.29159892}
+      - {x: -0.1377072, y: 0.15159447}
+      - {x: -0.14175497, y: -0.24637751}
+      - {x: 0.14467031, y: -0.24637742}
+      - {x: 0.13770708, y: 0.14576425}
 --- !u!1 &2322957484862244366
 GameObject:
   m_ObjectHideFlags: 0

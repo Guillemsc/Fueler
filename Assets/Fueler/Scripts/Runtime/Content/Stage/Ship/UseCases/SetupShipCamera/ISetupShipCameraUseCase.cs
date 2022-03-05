@@ -1,5 +1,4 @@
-﻿
-using Fueler.Content.Stage.Ship.Entities;
+﻿using Fueler.Content.Stage.Ship.Entities;
 
 namespace Fueler.Content.Stage.Ship.UseCases.SetupShipCamera
 {

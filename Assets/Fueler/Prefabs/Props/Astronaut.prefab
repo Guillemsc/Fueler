@@ -210,11 +210,135 @@ MonoBehaviour:
   loopMode: 0
   loopResetMode: 0
   loops: 0
-  Components: []
+  Components:
+  - id: 0
+  - id: 1
   bindingEnabled: 0
   bindableDataUid: 
   references:
     version: 1
+    00000000:
+      type: {class: TransformLocalScaleComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 8370831425804309590}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {x: 0, y: 0, z: 0}
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.4
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: -3.414513
+              outSlope: -3.414513
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0.028037483
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 2.6757874
+              outSlope: 2.6757874
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.038169026
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000001:
+      type: {class: TransformLocalRotationZComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 8370831425804309590}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 600
+        mode:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.1
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 2
+              outSlope: 2
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
 --- !u!1 &5994478355610678496
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,6 +396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6386784417191958472}
   - component: {fileID: 4826719419187768515}
+  - component: {fileID: 6456498073098766248}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -344,6 +469,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6456498073098766248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6386799570027323135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a3d9ec1f9c376440a88b1d236033ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - {fileID: 4826719419187768515}
+  layer: {fileID: 11400000, guid: b1c2d54ae7c610b49839cf4e223c6395, type: 2}
 --- !u!1 &7096995981256759638
 GameObject:
   m_ObjectHideFlags: 0

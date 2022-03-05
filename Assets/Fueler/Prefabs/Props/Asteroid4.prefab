@@ -79,9 +79,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3206483065734515906}
-  - component: {fileID: 4476300177451778123}
+  - component: {fileID: 4726744436817741784}
   m_Layer: 0
-  m_Name: AsteroidEntity4
+  m_Name: Asteroid4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,7 +102,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4476300177451778123
+--- !u!114 &4726744436817741784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,10 +111,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1845384668599247992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe1d5490a8f820e40adc93becb7c60c5, type: 3}
+  m_Script: {fileID: 11500000, guid: d1c32508b2db2104e83c9b0fee2feb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  physicsCallbacks: {fileID: 7721020121416076874}
 --- !u!1 &3039344763761966073
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,5 @@
 ﻿using Fueler.Content.Stage.Astrounats.Data;
-using Fueler.Content.Stage.Astrounats.UseCases.AstronautCollected;
+using Fueler.Content.Stage.Astrounats.UseCases.ShipCollidedWithAstronaut;
 using Fueler.Content.Stage.Astrounats.UseCases.InitAstronauts;
 using Fueler.Content.StageUi.Ui.Level;
 using Juce.Core.DI.Builder;
@@ -18,8 +18,8 @@ namespace Fueler.Content.Stage.Astrounats.Installers
                     c.Resolve<ILevelUiInteractor>()
                     ));
 
-            container.Bind<IAstronautCollectedUseCase>()
-                .FromFunction(c => new AstronautCollectedUseCase(
+            container.Bind<IShipCollidedWithAstronautUseCase>()
+                .FromFunction(c => new ShipCollidedWithAstronautUseCase(
                     c.Resolve<AstronautsData>(),
                     c.Resolve<ILevelUiInteractor>()
                     ));

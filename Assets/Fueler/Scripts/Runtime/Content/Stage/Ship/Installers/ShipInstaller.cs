@@ -1,4 +1,5 @@
-﻿using Fueler.Content.Stage.General.Entities;
+﻿using Fueler.Content.Stage.Ship.UseCases.ShipCollided;
+using Fueler.Content.Stage.General.Entities;
 using Fueler.Content.Stage.Ship.Entities;
 using Fueler.Content.Stage.Ship.Factories;
 using Fueler.Content.Stage.Ship.UseCases.LoadShip;
@@ -9,6 +10,11 @@ using Juce.Core.DI.Builder;
 using Juce.Core.Disposables;
 using Juce.Core.Factories;
 using Juce.Core.Repositories;
+using System.Collections.Generic;
+using System;
+using Fueler.Content.Stage.Asteroids.Entities;
+using Fueler.Content.Stage.Asteroids.UseCases.ShipCollidedWithAsteroid;
+using Fueler.Content.Stage.Astrounats.UseCases.ShipCollidedWithAstronaut;
 
 namespace Fueler.Content.Stage.Ship.Installers
 {
@@ -38,8 +44,14 @@ namespace Fueler.Content.Stage.Ship.Installers
             container.Bind<ISetupShipCameraUseCase>()
                 .FromFunction(c => new SetupShipCameraUseCase(
                     c.Resolve<StageContextInstance>().ShipVirtualCamera,
-                     c.Resolve<StageContextInstance>().CameraConfiner,
-                     c.Resolve<ISingleRepository<IDisposable<LevelEntity>>>()
+                    c.Resolve<StageContextInstance>().CameraConfiner,
+                    c.Resolve<ISingleRepository<IDisposable<LevelEntity>>>()
+                    ));
+
+            container.Bind<IShipCollidedUseCase>()
+                .FromFunction(c => new ShipCollidedUseCase(
+                    c.Resolve<IShipCollidedWithAsteroidUseCase>(),
+                    c.Resolve<IShipCollidedWithAstronautUseCase>()
                     ));
         }
     }
