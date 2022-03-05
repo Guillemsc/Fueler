@@ -10,13 +10,11 @@ using Fueler.Content.Stage.General.UseCases.EndStage;
 using Fueler.Content.Stage.General.State;
 using Juce.Core.Repositories;
 using Juce.CoreUnity.ViewStack;
-using Fueler.Content.Shared.Levels.UseCases.LoadNextLevel;
 using Juce.Core.Disposables;
 using Fueler.Content.Stage.Ship.Entities;
 using Fueler.Content.Stage.Fuel.UseCases.ShipFuelUsed;
 using Fueler.Content.Shared.Levels.Configuration;
 using Fueler.Content.Stage.Fuel.UseCases.InitFuel;
-using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
 using Fueler.Content.Stage.Astrounats.UseCases.InitAstronauts;
 using Fueler.Content.Stage.Ship.UseCases.ShipCollided;
 
@@ -50,8 +48,7 @@ namespace Fueler.Content.Stage.General.Installers
                 c.Resolve<LevelState>(),
                 c.Resolve<ISingleRepository<IDisposable<ShipEntity>>>(),
                 c.Resolve<IUiViewStack>(),
-                c.Resolve<IWaitUnscaledTimeUseCase>(),
-                c.Resolve<ILoadNextLevelUseCase>()
+                c.Resolve<IWaitUnscaledTimeUseCase>()
                 ));
         }
     }
