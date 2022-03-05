@@ -1,8 +1,10 @@
-﻿using Fueler.Content.Meta.Ui.LevelFailed.UseCases.SubscribeToButtons;
+﻿using Fueler.Content.Meta.Ui.LevelFailed.UseCases.BackToMainMenuButtonPressed;
+using Fueler.Content.Meta.Ui.LevelFailed.UseCases.SubscribeToButtons;
 using Fueler.Content.Meta.Ui.LevelFailed.UseCases.TryAgainButtonPressed;
 using Fueler.Content.Shared.Levels.Configuration;
 using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
 using Fueler.Contexts.Shared.UseCases.UnloadAndLoadStage;
+using Fueler.Contexts.Shared.UseCases.UnloadStageAndLoadMeta;
 using Juce.Core.DI.Builder;
 using Juce.Core.DI.Installers;
 using Juce.CoreUnity.TweenComponent;
@@ -25,6 +27,7 @@ namespace Fueler.Content.StageUi.Ui.LevelFailed
 
         [Header("Buttons")]
         [SerializeField] private PointerAndSelectableSubmitCallbacks tryAgainButton = default;
+        [SerializeField] private PointerAndSelectableSubmitCallbacks backToMainMenuButton = default;
 
         private IViewStackEntry viewStackEntry;
 
@@ -37,10 +40,17 @@ namespace Fueler.Content.StageUi.Ui.LevelFailed
                     c.Resolve<IReloadLevelUseCase>()
                     ));
 
+            container.Bind<IBackToMainMenuButtonPressedUseCase>()
+                .FromFunction(c => new BackToMainMenuButtonPressedUseCase(
+                    c.Resolve<IUnloadStageAndLoadMetaUseCase>()
+                    ));
+
             container.Bind<ISubscribeToButtonsUseCase>()
                 .FromFunction(c => new SubscribeToButtonsUseCase(
                     tryAgainButton,
-                    c.Resolve<ITryAgainButtonPressedUseCase>()
+                    backToMainMenuButton,
+                    c.Resolve<ITryAgainButtonPressedUseCase>(),
+                    c.Resolve<IBackToMainMenuButtonPressedUseCase>()
                     ))
                 .WhenInit((c, o) => o.Execute())
                 .NonLazy();

@@ -3,6 +3,7 @@ using Fueler.Contexts.Shared.UseCases.LoadStage;
 using Fueler.Contexts.Shared.UseCases.UnloadAndLoadStage;
 using Fueler.Contexts.Shared.UseCases.UnloadMetaAndLoadStage;
 using Fueler.Contexts.Shared.UseCases.UnloadStage;
+using Fueler.Contexts.Shared.UseCases.UnloadStageAndLoadMeta;
 using Juce.Core.DI.Builder;
 
 namespace Fueler.Context.Shared.Installers
@@ -32,6 +33,11 @@ namespace Fueler.Context.Shared.Installers
             container.Bind<IUnloadMetaAndLoadStageUseCase>()
                 .FromFunction(c => new UnloadMetaAndLoadStageUseCase(
                     c.Resolve<ILoadStageUseCase>()
+                    ));
+
+            container.Bind<IUnloadStageAndLoadMetaUseCase>()
+                .FromFunction(c => new UnloadStageAndLoadMetaUseCase(
+                    c.Resolve<IUnloadStageUseCase>()
                     ));
         }
     }
