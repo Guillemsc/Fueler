@@ -17,6 +17,7 @@ using Fueler.Content.Stage.Fuel.UseCases.ShipFuelUsed;
 using Fueler.Content.Shared.Levels.Configuration;
 using Fueler.Content.Stage.Fuel.UseCases.InitFuel;
 using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
+using Fueler.Content.Stage.Astrounats.UseCases.InitAstronauts;
 
 namespace Fueler.Content.Stage.General.Installers
 {
@@ -34,6 +35,7 @@ namespace Fueler.Content.Stage.General.Installers
                 c.Resolve<ISetShipInitialPositionUseCase>(),
                 c.Resolve<ISetupShipCameraUseCase>(),
                 c.Resolve<IInitFuelUseCase>(),
+                c.Resolve<IInitAstronautsUseCase>(),
                 c.Resolve<IShipFuelUsedUseCase>()
                 ));
 

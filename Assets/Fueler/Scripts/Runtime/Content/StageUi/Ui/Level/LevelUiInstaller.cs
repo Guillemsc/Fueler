@@ -1,5 +1,6 @@
 ﻿using Fueler.Content.Shared.Levels.Configuration;
 using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
+using Fueler.Content.StageUi.Ui.Level.UseCase.SetAstronauts;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SetFuel;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SubscribeToButtons;
 using Fueler.Contexts.Shared.UseCases.UnloadAndLoadStage;
@@ -23,6 +24,8 @@ namespace Fueler.Content.StageUi.Ui.Level
 
         [Header("Tween")]
         [SerializeField] private TweenPlayer setFuelTween = default;
+        [SerializeField] private TweenPlayer setAstronautsTween = default;
+        [SerializeField] private TweenPlayer hideAstronautsTween = default;
 
         [Header("Buttons")]
         [SerializeField] private PointerCallbacks replayPointerCallbacks = default;
@@ -38,6 +41,12 @@ namespace Fueler.Content.StageUi.Ui.Level
                     setFuelTween
                     ));
 
+            container.Bind<ISetAstronautsUseCase>()
+                .FromFunction(c => new SetAstronautsUseCase(
+                    setAstronautsTween,
+                    hideAstronautsTween
+                    ));
+
             container.Bind<ISubscribeToButtonsUseCase>()
                 .FromFunction(c => new SubscribeToButtonsUseCase(
                     replayPointerCallbacks,
@@ -48,7 +57,8 @@ namespace Fueler.Content.StageUi.Ui.Level
 
             container.Bind<ILevelUiInteractor>()
                 .FromFunction(c => new LevelUiInteractor(
-                    c.Resolve<ISetFuelUseCase>()
+                    c.Resolve<ISetFuelUseCase>(),
+                    c.Resolve<ISetAstronautsUseCase>()
                     ))
                 .WhenInit((c, o) => c.Resolve<IUiViewStack>().Register(viewStackEntry))
                 .WhenDispose((c, o) => c.Resolve<IUiViewStack>().Unregister(viewStackEntry))

@@ -1,6 +1,5 @@
 using Fueler.Content.Stage.General.Installers;
 using Fueler.Content.Stage.General.UseCases.LoadStage;
-using Fueler.Content.Stage.General.Installers;
 using Fueler.Content.Stage.General.UseCases.EndStage;
 using Fueler.Content.Stage.Ship.Installers;
 using Fueler.Contexts.Stage.UseCases.End;
@@ -12,6 +11,7 @@ using Fueler.Contexts.Stage.UseCases.Start;
 using Fueler.Content.Stage.General.UseCases.StartStage;
 using Fueler.Content.Stage.Fuel.Installers;
 using Fueler.Context.Shared.Installers;
+using Fueler.Content.Stage.Astrounats.Installers;
 
 namespace Fueler.Contexts.Stage
 {
@@ -27,6 +27,7 @@ namespace Fueler.Contexts.Stage
             container.InstallLevel();
             container.InstallShip();
             container.InstallFuel();
+            container.InstallAstronauts();
 
             container.Bind<ILoadUseCase>()
                 .FromFunction(c => new LoadUseCase(

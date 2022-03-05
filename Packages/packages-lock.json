@@ -8,13 +8,13 @@
       "hash": "baf2d7dfd84093fe0f91f93d3ad3addea4fc00ba"
     },
     "com.juce.coreunity": {
-      "version": "git+https://github.com/Juce-Assets/Juce-CoreUnity#1.2.45",
+      "version": "git+https://github.com/Juce-Assets/Juce-CoreUnity#1.2.46",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.juce.core": "https://github.com/Juce-Assets/Juce-Core#1.1.0"
       },
-      "hash": "4cd00e892f3c248d3c45e284590909740ad18e17"
+      "hash": "739d0e471744e802fc9deb81ef8a52d828ee4bc9"
     },
     "com.juce.implementationselector": {
       "version": "git+https://github.com/Juce-Assets/Juce-ImplementationSelector#1.0.4",
