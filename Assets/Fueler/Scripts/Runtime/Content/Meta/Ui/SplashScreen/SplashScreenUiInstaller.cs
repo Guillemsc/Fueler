@@ -37,6 +37,7 @@ namespace Fueler.Content.Meta.Ui.SplashScreen
                     hideAnimation
                     ),
                 NopRefreshable.Instance,
+                NopRefreshable.Instance,
                 isPopup: false
                 );
         }

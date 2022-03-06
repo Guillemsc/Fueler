@@ -7,6 +7,7 @@ using Fueler.Contexts.Shared.UseCases.UnloadAndLoadStage;
 using Fueler.Contexts.Shared.UseCases.UnloadStageAndLoadMeta;
 using Juce.Core.DI.Builder;
 using Juce.Core.DI.Installers;
+using Juce.Core.Refresh;
 using Juce.CoreUnity.TweenComponent;
 using Juce.CoreUnity.Ui.Others;
 using Juce.CoreUnity.Ui.SelectableCallback;
@@ -72,6 +73,7 @@ namespace Fueler.Content.StageUi.Ui.LevelFailed
                     hideAnimation
                     ),
                 new SetAsSelectedRefreshable(firstSelectable),
+                NopRefreshable.Instance,
                 isPopup: false
                 );
         }

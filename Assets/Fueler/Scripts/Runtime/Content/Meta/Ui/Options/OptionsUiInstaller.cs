@@ -8,6 +8,10 @@ using Juce.CoreUnity.Ui.SelectableCallback;
 using Juce.CoreUnity.Ui.Others;
 using Fueler.Content.Meta.Ui.Options.UseCases.BackButtonPressed;
 using Fueler.Content.Meta.Ui.Options.UseCases.SubscribeToButtons;
+using Fueler.Content.Meta.Ui.Options.UseCases.ToggleFullscreenButtonPressed;
+using Juce.Core.Refresh;
+using Fueler.Contexts.Shared.UseCases.ApplyGameSettings;
+using Fueler.Content.Services.Persistence;
 
 namespace Fueler.Content.Meta.Ui.Options
 {
@@ -21,6 +25,7 @@ namespace Fueler.Content.Meta.Ui.Options
         [SerializeField] private SelectableCallbacks firstSelectable = default;
 
         [Header("Buttons")]
+        [SerializeField] private PointerAndSelectableSubmitCallbacks toggleFullscreenButton = default;
         [SerializeField] private PointerAndSelectableSubmitCallbacks backButton = default;
 
         private IViewStackEntry viewStackEntry;
@@ -29,6 +34,12 @@ namespace Fueler.Content.Meta.Ui.Options
         {
             viewStackEntry = CreateStackEntry();
 
+            container.Bind<IToggleFullscreenButtonPressedUseCase>()
+                .FromFunction(c => new ToggleFullscreenButtonPressedUseCase(
+                    c.Resolve<IPersistenceService>().GameSettingsSerializable,
+                    c.Resolve<IApplyGameSettingsUseCase>()
+                    ));
+
             container.Bind<IBackButtonPressedUseCase>()
                .FromFunction(c => new BackButtonPressedUseCase(
                    c.Resolve<IUiViewStack>()
@@ -36,7 +47,9 @@ namespace Fueler.Content.Meta.Ui.Options
 
             container.Bind<ISubscribeToButtonsUseCase>()
                 .FromFunction(c => new SubscribeToButtonsUseCase(
+                    toggleFullscreenButton,
                     backButton,
+                    c.Resolve<IToggleFullscreenButtonPressedUseCase>(),
                     c.Resolve<IBackButtonPressedUseCase>()
                     ))
                 .WhenInit((c, o) => o.Execute())
@@ -59,6 +72,7 @@ namespace Fueler.Content.Meta.Ui.Options
                     hideAnimation
                     ),
                 new SetAsSelectedRefreshable(firstSelectable),
+                NopRefreshable.Instance,
                 isPopup: false
                 );
         }

@@ -1,4 +1,5 @@
 ﻿using Fueler.Content.Services.Configuration;
+using Fueler.Content.Services.Persistence;
 using Juce.Core.DI.Builder;
 using Juce.CoreUnity.Contexts;
 using Juce.CoreUnity.ViewStack;
@@ -17,6 +18,11 @@ namespace Fueler.Contexts.Services
                     ))
                 .ToServicesLocator()
                 .NonLazy(); 
+
+            container.Bind<IPersistenceService>()
+                .FromInstance(new PersistenceService())
+                .ToServicesLocator()
+                .NonLazy();
 
             container.Bind<IUiViewStack>()
                 .FromFunction(c => new UiViewStack(

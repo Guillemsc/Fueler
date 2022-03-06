@@ -81,6 +81,7 @@ namespace Fueler.Content.StageUi.Ui.LevelCompleted
                     hideAnimation
                     ),
                 new SetAsSelectedRefreshable(firstSelectable),
+                NopRefreshable.Instance,
                 isPopup : false
                 );
         }

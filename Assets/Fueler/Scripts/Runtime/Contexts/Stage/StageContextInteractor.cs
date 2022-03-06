@@ -1,5 +1,4 @@
-﻿using Fueler.Content.Shared.Levels.Configuration;
-using Fueler.Content.Stage.Level.Data;
+﻿using Fueler.Content.Stage.Level.Data;
 using Fueler.Contexts.Stage.UseCases.End;
 using Fueler.Contexts.Stage.UseCases.Load;
 using Fueler.Contexts.Stage.UseCases.Start;

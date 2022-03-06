@@ -13,6 +13,7 @@ using Fueler.Contexts.Shared.UseCases.UnloadMetaAndLoadStage;
 using Fueler.Content.Shared.Levels.UseCases.TryGetLevelByIndex;
 using Fueler.Content.Services.Configuration;
 using Fueler.Content.Meta.Ui.MainMenu.UseCases.QuitButtonPressed;
+using Juce.Core.Refresh;
 
 namespace Fueler.Content.Meta.Ui.MainMenu
 {
@@ -85,6 +86,7 @@ namespace Fueler.Content.Meta.Ui.MainMenu
                     hideAnimation
                     ),
                 new SetAsSelectedRefreshable(firstSelectable),
+                NopRefreshable.Instance,
                 isPopup: false
                 );
         }

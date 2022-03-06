@@ -1,5 +1,5 @@
-﻿using Fueler.Content.Meta.Ui.MainMenu;
-using Fueler.Content.StageUi.Shared.Installers;
+﻿using Fueler.Content.Meta.General.Installers;
+using Fueler.Content.Meta.Ui.MainMenu;
 using Fueler.Context.Shared.Installers;
 using Juce.Core.DI.Builder;
 using Juce.CoreUnity.Contexts;

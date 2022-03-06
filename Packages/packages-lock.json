@@ -8,13 +8,13 @@
       "hash": "baf2d7dfd84093fe0f91f93d3ad3addea4fc00ba"
     },
     "com.juce.coreunity": {
-      "version": "git+https://github.com/Juce-Assets/Juce-CoreUnity#1.2.46",
+      "version": "git+https://github.com/Juce-Assets/Juce-CoreUnity#1.2.48",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.juce.core": "https://github.com/Juce-Assets/Juce-Core#1.1.0"
       },
-      "hash": "739d0e471744e802fc9deb81ef8a52d828ee4bc9"
+      "hash": "3de01752d3057b6115191fb059e4bb2d8d1e13c4"
     },
     "com.juce.implementationselector": {
       "version": "git+https://github.com/Juce-Assets/Juce-ImplementationSelector#1.0.4",
@@ -22,6 +22,20 @@
       "source": "git",
       "dependencies": {},
       "hash": "122aa4b6456e80fb98ca76a835836c635c6bfa41"
+    },
+    "com.juce.input": {
+      "version": "git+https://github.com/Juce-Assets/Juce-Input#0.0.2",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "c3557290f8fdffc87c70b1d3c39cd9525520a1e8"
+    },
+    "com.juce.persistence": {
+      "version": "git+https://github.com/Juce-Assets/Juce-Persistence#1.0.2",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "83c8c0ebf2641652a7e3adb66386ab1afef66599"
     },
     "com.juce.scenemanagement": {
       "version": "git+https://github.com/Juce-Assets/Juce-SceneManagement#1.1.1",

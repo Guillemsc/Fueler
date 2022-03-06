@@ -75,6 +75,7 @@ namespace Fueler.Content.StageUi.Ui.Level
                     hideAnimation
                     ),
                 NopRefreshable.Instance,
+                NopRefreshable.Instance,
                 isPopup: false
                 );
         }

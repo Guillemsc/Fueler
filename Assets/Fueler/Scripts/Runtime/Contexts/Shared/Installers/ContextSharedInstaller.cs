@@ -1,4 +1,5 @@
-﻿using Fueler.Contexts.Shared.UseCases.LoadMainEntryPoint;
+﻿using Fueler.Contexts.Shared.UseCases.ApplyGameSettings;
+using Fueler.Contexts.Shared.UseCases.LoadMainEntryPoint;
 using Fueler.Contexts.Shared.UseCases.LoadStage;
 using Fueler.Contexts.Shared.UseCases.UnloadAndLoadStage;
 using Fueler.Contexts.Shared.UseCases.UnloadMetaAndLoadStage;
@@ -12,8 +13,13 @@ namespace Fueler.Context.Shared.Installers
     {
         public static void InstallContextShared(this IDIContainerBuilder container)
         {
+            container.Bind<IApplyGameSettingsUseCase>()
+                .FromFunction(c => new ApplyGameSettingsUseCase(
+                    ));
+
             container.Bind<ILoadMainEntryPointUseCase>()
                 .FromFunction(c => new LoadMainEntryPointUseCase(
+                    c.Resolve<IApplyGameSettingsUseCase>()
                     ));
 
             container.Bind<ILoadStageUseCase>()
