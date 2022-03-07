@@ -1,15 +1,13 @@
-﻿using Fueler.Content.Shared.Levels.Configuration;
-using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
+﻿using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SetAstronauts;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SetFuel;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SubscribeToButtons;
-using Fueler.Contexts.Shared.UseCases.UnloadAndLoadStage;
 using Juce.Core.DI.Builder;
 using Juce.Core.DI.Installers;
-using Juce.Core.Refresh;
 using Juce.CoreUnity.PointerCallback;
 using Juce.CoreUnity.TweenComponent;
 using Juce.CoreUnity.ViewStack;
+using Juce.CoreUnity.ViewStack.Entries;
 using Juce.CoreUnity.Visibles;
 using Juce.TweenComponent;
 using UnityEngine;
@@ -74,8 +72,6 @@ namespace Fueler.Content.StageUi.Ui.Level
                     showAnimation,
                     hideAnimation
                     ),
-                NopRefreshable.Instance,
-                NopRefreshable.Instance,
                 isPopup: false
                 );
         }

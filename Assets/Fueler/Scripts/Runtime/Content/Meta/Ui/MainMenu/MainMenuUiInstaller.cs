@@ -14,6 +14,8 @@ using Fueler.Content.Shared.Levels.UseCases.TryGetLevelByIndex;
 using Fueler.Content.Services.Configuration;
 using Fueler.Content.Meta.Ui.MainMenu.UseCases.QuitButtonPressed;
 using Juce.Core.Refresh;
+using Juce.CoreUnity.ViewStack.Entries;
+using System.Collections.Generic;
 
 namespace Fueler.Content.Meta.Ui.MainMenu
 {
@@ -85,9 +87,8 @@ namespace Fueler.Content.Meta.Ui.MainMenu
                     showAnimation,
                     hideAnimation
                     ),
-                new SetAsSelectedRefreshable(firstSelectable),
-                NopRefreshable.Instance,
-                isPopup: false
+                isPopup: false,
+                new ViewStackEntryRefresh(RefreshType.BeforeShow, new SetAsSelectedRefreshable(firstSelectable))
                 );
         }
     }

@@ -7,11 +7,11 @@ using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
 using Fueler.Contexts.Shared.UseCases.UnloadStageAndLoadMeta;
 using Juce.Core.DI.Builder;
 using Juce.Core.DI.Installers;
-using Juce.Core.Refresh;
 using Juce.CoreUnity.TweenComponent;
 using Juce.CoreUnity.Ui.Others;
 using Juce.CoreUnity.Ui.SelectableCallback;
 using Juce.CoreUnity.ViewStack;
+using Juce.CoreUnity.ViewStack.Entries;
 using Juce.CoreUnity.Visibles;
 using UnityEngine;
 
@@ -80,9 +80,8 @@ namespace Fueler.Content.StageUi.Ui.LevelCompleted
                     showAnimation,
                     hideAnimation
                     ),
-                new SetAsSelectedRefreshable(firstSelectable),
-                NopRefreshable.Instance,
-                isPopup : false
+                isPopup : false,
+                new ViewStackEntryRefresh(RefreshType.BeforeShow, new SetAsSelectedRefreshable(firstSelectable))
                 );
         }
     }

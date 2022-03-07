@@ -1,8 +1,8 @@
 ﻿using Juce.Core.DI.Builder;
 using Juce.Core.DI.Installers;
-using Juce.Core.Refresh;
 using Juce.CoreUnity.TweenComponent;
 using Juce.CoreUnity.ViewStack;
+using Juce.CoreUnity.ViewStack.Entries;
 using Juce.CoreUnity.Visibles;
 using UnityEngine;
 
@@ -36,8 +36,6 @@ namespace Fueler.Content.Meta.Ui.SplashScreen
                     showAnimation,
                     hideAnimation
                     ),
-                NopRefreshable.Instance,
-                NopRefreshable.Instance,
                 isPopup: false
                 );
         }

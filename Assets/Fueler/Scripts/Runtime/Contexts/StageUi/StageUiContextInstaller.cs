@@ -18,6 +18,7 @@ namespace Fueler.Contexts.StageUi
             container.Bind(instance.LevelUiInstaller);
             container.Bind(instance.LevelCompletedUiInstaller);
             container.Bind(instance.LevelFailedUiInstaller);
+            container.Bind(instance.ObjectivesPopupUiInstaller);
 
             container.Bind<IStageUiContextInteractor>()
                 .FromFunction(c => new StageUiContextInteractor(

@@ -1,5 +1,6 @@
 ﻿using Fueler.Content.Shared.Time.UseCases.WaitUnscaledTime;
 using Fueler.Content.StageUi.Ui.Level;
+using Fueler.Content.StageUi.Ui.ObjectivesPopup;
 using Juce.CoreUnity.ViewStack;
 using System;
 using System.Threading;
@@ -31,6 +32,8 @@ namespace Fueler.Content.Stage.General.UseCases.StartStage
             await waitUnscaledTimeUseCase.Execute(TimeSpan.FromSeconds(0.3f), cancellationToken);
 
             uiViewStack.New().Show<ILevelUiInteractor>(instantly: false).Execute();
+
+            uiViewStack.New().Show<IObjectivesPopupUiInteractor>(instantly: false).Execute();
         }
     }
 }

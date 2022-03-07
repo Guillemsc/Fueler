@@ -9,9 +9,9 @@ using Juce.CoreUnity.Ui.Others;
 using Fueler.Content.Meta.Ui.Options.UseCases.BackButtonPressed;
 using Fueler.Content.Meta.Ui.Options.UseCases.SubscribeToButtons;
 using Fueler.Content.Meta.Ui.Options.UseCases.ToggleFullscreenButtonPressed;
-using Juce.Core.Refresh;
 using Fueler.Contexts.Shared.UseCases.ApplyGameSettings;
 using Fueler.Content.Services.Persistence;
+using Juce.CoreUnity.ViewStack.Entries;
 
 namespace Fueler.Content.Meta.Ui.Options
 {
@@ -71,9 +71,8 @@ namespace Fueler.Content.Meta.Ui.Options
                     showAnimation,
                     hideAnimation
                     ),
-                new SetAsSelectedRefreshable(firstSelectable),
-                NopRefreshable.Instance,
-                isPopup: false
+                isPopup: false,
+                new ViewStackEntryRefresh(RefreshType.BeforeShow, new SetAsSelectedRefreshable(firstSelectable))
                 );
         }
     }

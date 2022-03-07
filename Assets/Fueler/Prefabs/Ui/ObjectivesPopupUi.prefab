@@ -1,0 +1,1517 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &722769085138297500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3168771622208147142}
+  - component: {fileID: 7991561479563479295}
+  - component: {fileID: 5650678608634545562}
+  m_Layer: 5
+  m_Name: PressAnyKeyText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3168771622208147142
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722769085138297500}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5351470392889347617}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -18, y: 8}
+  m_SizeDelta: {x: 625.7804, y: 36.808}
+  m_Pivot: {x: 1, y: 0}
+--- !u!222 &7991561479563479295
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722769085138297500}
+  m_CullTransparentMesh: 1
+--- !u!114 &5650678608634545562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722769085138297500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: press any key to continue
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 9f76f9873e4e111468b0e070bd66e097, type: 2}
+  m_sharedMaterial: {fileID: -67380637403349598, guid: 9f76f9873e4e111468b0e070bd66e097, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 16.9
+  m_fontSizeBase: 16.9
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 4
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &1280065891754432963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3352336647066000760}
+  m_Layer: 5
+  m_Name: Tweens
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3352336647066000760
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280065891754432963}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6622394548344267160}
+  - {fileID: 6461647347471143347}
+  m_Father: {fileID: 2583868215021238088}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2777881740098484799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5351470392889347617}
+  m_Layer: 5
+  m_Name: Pivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5351470392889347617
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2777881740098484799}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5800669479880896352}
+  - {fileID: 674192843413209146}
+  - {fileID: 3168771622208147142}
+  m_Father: {fileID: 2583868215021238088}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2812012636806154073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6085789883028911730}
+  - component: {fileID: 1600681173728832002}
+  m_Layer: 5
+  m_Name: CollectAstronautsContent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6085789883028911730
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2812012636806154073}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4381777001132412448}
+  - {fileID: 8082666875412335858}
+  m_Father: {fileID: 674192843413209146}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1600681173728832002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2812012636806154073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff02bb40a71782047bbd9ba84be878c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectiveType: 0
+--- !u!1 &3749796830504369886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8082666875412335858}
+  - component: {fileID: 5736251179452304899}
+  - component: {fileID: 5805560184941477736}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8082666875412335858
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3749796830504369886}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6085789883028911730}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 84.2}
+  m_SizeDelta: {x: 60, y: 60}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5736251179452304899
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3749796830504369886}
+  m_CullTransparentMesh: 1
+--- !u!114 &5805560184941477736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3749796830504369886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: c77485b29bd42bb498385e9b8e35ff5b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5007963993292977703
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4060885414177281160}
+  m_Layer: 5
+  m_Name: Animations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4060885414177281160
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5007963993292977703}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 163235889015981241}
+  - {fileID: 3931661778026552832}
+  m_Father: {fileID: 2583868215021238088}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &5366469790612440846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2583868215021238088}
+  - component: {fileID: 702373282969967911}
+  - component: {fileID: 685065461887446482}
+  - component: {fileID: 4210679748935820151}
+  m_Layer: 5
+  m_Name: ObjectivesPopupUi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2583868215021238088
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366469790612440846}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4060885414177281160}
+  - {fileID: 3352336647066000760}
+  - {fileID: 5351470392889347617}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &702373282969967911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366469790612440846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c587b577f03b59d488bb9d5a3d1463a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showAnimation: {fileID: 3956715801917431579}
+  hideAnimation: {fileID: 6237761670293871655}
+  objectivesEntries:
+  - {fileID: 1600681173728832002}
+--- !u!223 &685065461887446482
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366469790612440846}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &4210679748935820151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366469790612440846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!1 &5441019313324587342
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6622394548344267160}
+  - component: {fileID: 6935604138626726008}
+  m_Layer: 5
+  m_Name: ShowTween
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6622394548344267160
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5441019313324587342}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3352336647066000760}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6935604138626726008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5441019313324587342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ef6096a7669654489b5445d8387734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showProgressBars: 0
+  executionMode: 0
+  loopMode: 0
+  loopResetMode: 0
+  loops: 0
+  Components:
+  - id: 0
+  - id: 1
+  - id: 2
+  - id: 3
+  - id: 4
+  - id: 5
+  - id: 6
+  - id: 7
+  - id: 8
+  bindingEnabled: 0
+  bindableDataUid: 
+  references:
+    version: 1
+    00000000:
+      type: {class: GameObjectActiveComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 2777881740098484799}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+    00000001:
+      type: {class: TransformLocalScaleComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 674192843413209146}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {x: 0, y: 0, z: 0}
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 1.9162868
+              outSlope: 1.9162868
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0.059712816
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: -1.8814839
+              outSlope: -1.8814839
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.044753253
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000002:
+      type: {class: WaitAllAboveComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+    00000003:
+      type: {class: UIAlphaComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 7241367698382129778}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 1
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000004:
+      type: {class: WaitAllAboveComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.2
+    00000005:
+      type: {class: UIAlphaComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 8496675404727336879}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.2
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 1
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000006:
+      type: {class: TransformLocalScaleComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 674192843413209146}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {x: 1, y: 1, z: 1}
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 1.9162868
+              outSlope: 1.9162868
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0.059712816
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: -1.8814839
+              outSlope: -1.8814839
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.044753253
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000007:
+      type: {class: WaitAllAboveComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 1
+    00000008:
+      type: {class: UIAlphaComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 722769085138297500}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 1
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+--- !u!1 &6472375234077131704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6461647347471143347}
+  - component: {fileID: 3725406896866374104}
+  m_Layer: 5
+  m_Name: HideTween
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6461647347471143347
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6472375234077131704}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3352336647066000760}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3725406896866374104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6472375234077131704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ef6096a7669654489b5445d8387734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showProgressBars: 0
+  executionMode: 0
+  loopMode: 0
+  loopResetMode: 0
+  loops: 0
+  Components:
+  - id: 0
+  - id: 1
+  - id: 2
+  - id: 3
+  - id: 4
+  - id: 5
+  bindingEnabled: 0
+  bindableDataUid: 
+  references:
+    version: 1
+    00000000:
+      type: {class: UIAlphaComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 722769085138297500}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.2
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 1
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000001:
+      type: {class: UIAlphaComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 8496675404727336879}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.2
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 1
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000002:
+      type: {class: WaitAllAboveComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+    00000003:
+      type: {class: UIAlphaComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 7241367698382129778}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 1
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000004:
+      type: {class: WaitAllAboveComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+    00000005:
+      type: {class: GameObjectActiveComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 2777881740098484799}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+--- !u!1 &7241367698382129778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5800669479880896352}
+  - component: {fileID: 3543672266593047045}
+  - component: {fileID: 6053034604790405318}
+  m_Layer: 5
+  m_Name: Overlay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5800669479880896352
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7241367698382129778}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5351470392889347617}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3543672266593047045
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7241367698382129778}
+  m_CullTransparentMesh: 1
+--- !u!114 &6053034604790405318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7241367698382129778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.0627451, g: 0.078431375, b: 0.15294118, a: 0.5803922}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7994135030019838676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4381777001132412448}
+  - component: {fileID: 5986746554916400751}
+  - component: {fileID: 4433578404822419745}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4381777001132412448
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7994135030019838676}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6085789883028911730}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -9}
+  m_SizeDelta: {x: 530.3719, y: 86.1623}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5986746554916400751
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7994135030019838676}
+  m_CullTransparentMesh: 1
+--- !u!114 &4433578404822419745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7994135030019838676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Collect all the astronauts <sprite="AstronautSpriteAsset" name="Astronaut">
+    before completing the level '
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 9f76f9873e4e111468b0e070bd66e097, type: 2}
+  m_sharedMaterial: {fileID: -67380637403349598, guid: 9f76f9873e4e111468b0e070bd66e097, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 26.6
+  m_fontSizeBase: 26.6
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 8
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &8267469172791307926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 163235889015981241}
+  - component: {fileID: 3956715801917431579}
+  m_Layer: 5
+  m_Name: ShowAnimation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &163235889015981241
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8267469172791307926}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4060885414177281160}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3956715801917431579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8267469172791307926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcdd742cd10a22f44b4056e8606de97d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  play:
+  - {fileID: 6935604138626726008}
+  kill:
+  - {fileID: 3725406896866374104}
+  complete: []
+--- !u!1 &8496675404727336879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 674192843413209146}
+  m_Layer: 5
+  m_Name: Content
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &674192843413209146
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8496675404727336879}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6085789883028911730}
+  m_Father: {fileID: 5351470392889347617}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &8599965431348274656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3931661778026552832}
+  - component: {fileID: 6237761670293871655}
+  m_Layer: 5
+  m_Name: HideAnimation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3931661778026552832
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8599965431348274656}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4060885414177281160}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6237761670293871655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8599965431348274656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcdd742cd10a22f44b4056e8606de97d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  play:
+  - {fileID: 3725406896866374104}
+  kill:
+  - {fileID: 6935604138626726008}
+  complete: []
