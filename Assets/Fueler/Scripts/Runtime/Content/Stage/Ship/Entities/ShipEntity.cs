@@ -16,6 +16,8 @@ namespace Fueler.Content.Stage.Ship.Entities
         public PhysicsCallbacks PhysicsCallbacks => physicsCallbacks;
         public ShipController ShipController => shipController;
 
+        public bool Immortal { get; set; } = false;
+
         public void PlayDestroy()
         {
             destroyTween.Play();
