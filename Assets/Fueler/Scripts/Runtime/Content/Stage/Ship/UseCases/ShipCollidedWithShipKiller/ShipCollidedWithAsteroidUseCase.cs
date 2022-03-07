@@ -1,27 +1,26 @@
-﻿using Fueler.Content.Stage.Asteroids.Entities;
-using Fueler.Content.Stage.General.UseCases.EndStage;
+﻿using Fueler.Content.Stage.General.UseCases.TryEndStage;
 using Fueler.Content.Stage.Level.Data;
 using Fueler.Content.Stage.Ship.Entities;
 using Juce.Core.Disposables;
 using Juce.Core.Repositories;
 
-namespace Fueler.Content.Stage.Asteroids.UseCases.ShipCollidedWithAsteroid
+namespace Fueler.Content.Stage.Ship.UseCases.ShipCollidedWithShipKiller
 {
-    public class ShipCollidedWithAsteroidUseCase : IShipCollidedWithAsteroidUseCase
+    public class ShipCollidedWithShipKillerUseCase : IShipCollidedWithShipKillerUseCase
     {
         private readonly ISingleRepository<IDisposable<ShipEntity>> shipEntityRepository;
-        private readonly IEndStageUseCase endStageUseCase;
+        private readonly ITryEndStageUseCase tryEndStageUseCase;
 
-        public ShipCollidedWithAsteroidUseCase(
+        public ShipCollidedWithShipKillerUseCase(
             ISingleRepository<IDisposable<ShipEntity>> shipEntityRepository,
-            IEndStageUseCase endStageUseCase
+            ITryEndStageUseCase tryEndStageUseCase
             )
         {
             this.shipEntityRepository = shipEntityRepository;
-            this.endStageUseCase = endStageUseCase;
+            this.tryEndStageUseCase = tryEndStageUseCase;
         }
 
-        public void Execute(AsteroidEntity asteroidEntity)
+        public void Execute(ShipKillerEntity shipKillerEntity)
         {
             bool found = shipEntityRepository.TryGet(out IDisposable<ShipEntity> shipEntity);
 
@@ -35,7 +34,7 @@ namespace Fueler.Content.Stage.Asteroids.UseCases.ShipCollidedWithAsteroid
                 return;
             }
 
-            endStageUseCase.Execute(LevelEndData.FromShipDestroyed());
+            tryEndStageUseCase.Execute(LevelEndData.FromShipDestroyed());
         }
     }
 }

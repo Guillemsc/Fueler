@@ -11,7 +11,7 @@ namespace Fueler.Contexts.Shared.UseCases.ApplyGameSettings
         {
             IPersistenceService persistenceService = ServiceLocator.Get<IPersistenceService>();
 
-            GameSettings gameSettings = persistenceService.GameSettingsSerializable.Data;
+            GameSettingsPersistence gameSettings = persistenceService.GameSettingsSerializable.Data;
 
             if (gameSettings.Fullscreen)
             {

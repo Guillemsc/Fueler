@@ -32,7 +32,7 @@ namespace Fueler.Content.Stage.General.UseCases.LoadStage
             ILoadShipUseCase loadShipUseCase,
             ISetShipInitialPositionUseCase setShipInitialPositionUseCase,
             ISetupShipCameraUseCase setupShipCameraUseCase,
-                        IShipCollidedUseCase shipCollidedUseCase,
+            IShipCollidedUseCase shipCollidedUseCase,
             IInitFuelUseCase initFuelUseCase,
             IInitAstronautsUseCase initAstronautsUseCase,
             IShipFuelUsedUseCase shipFuelUsedUseCase
@@ -57,6 +57,7 @@ namespace Fueler.Content.Stage.General.UseCases.LoadStage
             initAstronautsUseCase.Execute(levelEntity);
 
             loadShipUseCase.Execute(out ShipEntity shipEntity);
+            shipEntity.ShipController.CanMove = false;
 
             setShipInitialPositionUseCase.Execute(shipEntity);
 

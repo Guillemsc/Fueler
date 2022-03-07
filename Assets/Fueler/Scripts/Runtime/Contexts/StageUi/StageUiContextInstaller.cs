@@ -1,5 +1,6 @@
 ﻿using Fueler.Content.StageUi.General.Installers;
 using Fueler.Content.StageUi.Ui.Level;
+using Fueler.Content.StageUi.Ui.ObjectivesPopup;
 using Fueler.Context.Shared.Installers;
 using Juce.Core.DI.Builder;
 using Juce.CoreUnity.Contexts;
@@ -22,7 +23,8 @@ namespace Fueler.Contexts.StageUi
 
             container.Bind<IStageUiContextInteractor>()
                 .FromFunction(c => new StageUiContextInteractor(
-                    c.Resolve<ILevelUiInteractor>()
+                    c.Resolve<ILevelUiInteractor>(),
+                    c.Resolve<IObjectivesPopupUiInteractor>()
                     ));
         }
     }

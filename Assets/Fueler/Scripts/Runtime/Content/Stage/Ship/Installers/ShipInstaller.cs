@@ -10,11 +10,9 @@ using Juce.Core.DI.Builder;
 using Juce.Core.Disposables;
 using Juce.Core.Factories;
 using Juce.Core.Repositories;
-using System.Collections.Generic;
-using System;
-using Fueler.Content.Stage.Asteroids.Entities;
-using Fueler.Content.Stage.Asteroids.UseCases.ShipCollidedWithAsteroid;
 using Fueler.Content.Stage.Astrounats.UseCases.ShipCollidedWithAstronaut;
+using Fueler.Content.Stage.Ship.UseCases.ShipCollidedWithShipKiller;
+using Fueler.Content.Stage.General.UseCases.TryEndStage;
 
 namespace Fueler.Content.Stage.Ship.Installers
 {
@@ -48,9 +46,15 @@ namespace Fueler.Content.Stage.Ship.Installers
                     c.Resolve<ISingleRepository<IDisposable<LevelEntity>>>()
                     ));
 
+            container.Bind<IShipCollidedWithShipKillerUseCase>()
+                .FromFunction(c => new ShipCollidedWithShipKillerUseCase(
+                    c.Resolve<ISingleRepository<IDisposable<ShipEntity>>>(),
+                    c.Resolve<ITryEndStageUseCase>()
+                    ));
+
             container.Bind<IShipCollidedUseCase>()
                 .FromFunction(c => new ShipCollidedUseCase(
-                    c.Resolve<IShipCollidedWithAsteroidUseCase>(),
+                    c.Resolve<IShipCollidedWithShipKillerUseCase>(),
                     c.Resolve<IShipCollidedWithAstronautUseCase>()
                     ));
         }

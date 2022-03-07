@@ -17,6 +17,10 @@ using Fueler.Content.Shared.Levels.Configuration;
 using Fueler.Content.Stage.Fuel.UseCases.InitFuel;
 using Fueler.Content.Stage.Astrounats.UseCases.InitAstronauts;
 using Fueler.Content.Stage.Ship.UseCases.ShipCollided;
+using Fueler.Content.Stage.Tutorial.UseCases.TryShowAstronautsTutorialPanel;
+using Fueler.Content.Stage.General.UseCases.IsStageCompleted;
+using Fueler.Content.Stage.General.UseCases.TryEndStage;
+using Fueler.Content.Stage.Astrounats.Data;
 
 namespace Fueler.Content.Stage.General.Installers
 {
@@ -40,9 +44,16 @@ namespace Fueler.Content.Stage.General.Installers
                 ));
 
             container.Bind<IStartStageUseCase>().FromFunction(c => new StartStageUseCase(
+                c.Resolve<ISingleRepository<IDisposable<ShipEntity>>>(),
                 c.Resolve<IUiViewStack>(),
-                c.Resolve<IWaitUnscaledTimeUseCase>()
+                c.Resolve<IWaitUnscaledTimeUseCase>(),
+                c.Resolve<ITryShowAstronautsTutorialPanelUseCase>()
                 ));
+
+            container.Bind<IIsStageCompletedUseCase>()
+                .FromFunction(c => new IsStageCompletedUseCase(
+                    c.Resolve<AstronautsData>()
+                    ));
 
             container.Bind<IEndStageUseCase>().FromFunction(c => new EndStageUseCase(
                 c.Resolve<LevelState>(),
@@ -50,6 +61,12 @@ namespace Fueler.Content.Stage.General.Installers
                 c.Resolve<IUiViewStack>(),
                 c.Resolve<IWaitUnscaledTimeUseCase>()
                 ));
+
+            container.Bind<ITryEndStageUseCase>()
+                .FromFunction(c => new TryEndStageUseCase(
+                    c.Resolve<IIsStageCompletedUseCase>(),
+                    c.Resolve<IEndStageUseCase>()
+                    ));
         }
     }
 }

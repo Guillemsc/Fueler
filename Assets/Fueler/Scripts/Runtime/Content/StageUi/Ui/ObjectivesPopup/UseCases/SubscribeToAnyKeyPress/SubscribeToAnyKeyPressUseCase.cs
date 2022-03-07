@@ -1,34 +1,33 @@
 ﻿using Fueler.Content.StageUi.Ui.ObjectivesPopup.UseCases.HidePanelOnAnyKeyPress;
-using UnityEngine.InputSystem;
+using Juce.Input.InputActions;
 using static UnityEngine.InputSystem.InputAction;
 
 namespace Fueler.Content.StageUi.Ui.ObjectivesPopup.UseCases.SubscribeToAnyKeyPress
 {
     public class SubscribeToAnyKeyPressUseCase : ISubscribeToAnyKeyPressUseCase
     {
+        private readonly AnyKeyInputAction anyKeyWait;
         private readonly IHidePanelOnAnyKeyPressUseCase hidePanelOnAnyKeyPressUseCase;
 
-        private InputAction anyKeyWait;
-
         public SubscribeToAnyKeyPressUseCase(
+            AnyKeyInputAction anyKeyWait,
             IHidePanelOnAnyKeyPressUseCase hidePanelOnAnyKeyPressUseCase
             )
         {
+            this.anyKeyWait = anyKeyWait;
             this.hidePanelOnAnyKeyPressUseCase = hidePanelOnAnyKeyPressUseCase;
         }
 
         public void Execute()
         {
-            anyKeyWait = new InputAction(binding: "/*/<button>", type: InputActionType.Button);
-            anyKeyWait.AddBinding("/<Gamepad>/*/*");
-            anyKeyWait.performed += OnKeyPressed;
-
-            anyKeyWait.Enable();
+            anyKeyWait.InputAction.performed += OnKeyPressed;
+            anyKeyWait.InputAction.Enable();
         }
 
         private void OnKeyPressed(CallbackContext callbackContext)
         {
-            anyKeyWait.Disable();
+            anyKeyWait.InputAction.performed -= OnKeyPressed;
+            anyKeyWait.InputAction.Disable();
 
             hidePanelOnAnyKeyPressUseCase.Execute();
         }

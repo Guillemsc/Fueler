@@ -2,6 +2,7 @@
 using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
 using Fueler.Content.Shared.Time.UseCases.WaitUnscaledTime;
 using Fueler.Content.Stage.General.State;
+using Fueler.Content.Stage.General.UseCases.IsStageCompleted;
 using Fueler.Content.Stage.Level.Data;
 using Fueler.Content.Stage.Ship.Entities;
 using Fueler.Content.StageUi.Ui.LevelCompleted;
@@ -21,6 +22,7 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
         private readonly ISingleRepository<IDisposable<ShipEntity>> shipEntityRepository;
         private readonly IUiViewStack viewStack;
         private readonly IWaitUnscaledTimeUseCase waitUnscaledTimeUseCase;
+        private readonly IIsStageCompletedUseCase canEndStageUseCase;
 
         public EndStageUseCase(
             LevelState levelState,

@@ -34,6 +34,33 @@ namespace Fueler.Content.Stage.Ship.Entities
 
             InputForward();
 
+            InputRotation();
+        }
+
+        private void InputForward()
+        {
+            if(!CanInputForward)
+            {
+                return;
+            }
+
+            Vector2 forward = new Vector2(gameObject.transform.up.x, gameObject.transform.up.y);
+
+            if (Input.GetKey("w"))
+            {
+                currentSpeed += forward * acceleration * Time.deltaTime;
+
+                OnForwardOrBackward?.Invoke();
+            }
+        }
+
+        private void InputRotation()
+        {
+            if(!CanMove)
+            {
+                return;
+            }
+
             if (Input.GetKey("a"))
             {
                 float deltaRotationSpeed = rotationSpeed * Time.deltaTime;
@@ -53,23 +80,6 @@ namespace Fueler.Content.Stage.Ship.Entities
                     0,
                     -deltaRotationSpeed
                     );
-            }
-        }
-
-        private void InputForward()
-        {
-            if(!CanInputForward)
-            {
-                return;
-            }
-
-            Vector2 forward = new Vector2(gameObject.transform.up.x, gameObject.transform.up.y);
-
-            if (Input.GetKey("w"))
-            {
-                currentSpeed += forward * acceleration * Time.deltaTime;
-
-                OnForwardOrBackward?.Invoke();
             }
         }
 

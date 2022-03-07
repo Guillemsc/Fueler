@@ -1,22 +1,23 @@
 ﻿using Fueler.Content.Stage.General.UseCases.EndStage;
+using Fueler.Content.Stage.General.UseCases.TryEndStage;
 using Fueler.Content.Stage.Level.Data;
 
 namespace Fueler.Contexts.Stage.UseCases.End
 {
     public class EndUseCase : IEndUseCase
     {
-        private readonly IEndStageUseCase endLevelUseCase;
+        private readonly ITryEndStageUseCase tryEndStageUseCase;
 
         public EndUseCase(
-            IEndStageUseCase endLevelUseCase
+            ITryEndStageUseCase tryEndStageUseCase
             )
         {
-            this.endLevelUseCase = endLevelUseCase;
+            this.tryEndStageUseCase = tryEndStageUseCase;
         }
 
         public void Execute(LevelEndData levelEndData)
         {
-            endLevelUseCase.Execute(levelEndData);
+            tryEndStageUseCase.Execute(levelEndData);
         }
     }
 }

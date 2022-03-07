@@ -7,11 +7,11 @@ namespace Fueler.Content.Meta.Ui.Options.UseCases.ToggleFullscreenButtonPressed
 {
     public class ToggleFullscreenButtonPressedUseCase : IToggleFullscreenButtonPressedUseCase
     {
-        private readonly SerializableData<GameSettings> gameSettingsSerializable;
+        private readonly SerializableData<GameSettingsPersistence> gameSettingsSerializable;
         private readonly IApplyGameSettingsUseCase applyGameSettingsUseCase;
 
         public ToggleFullscreenButtonPressedUseCase(
-            SerializableData<GameSettings> gameSettingsSerializable,
+            SerializableData<GameSettingsPersistence> gameSettingsSerializable,
             IApplyGameSettingsUseCase applyGameSettingsUseCase
             )
         {

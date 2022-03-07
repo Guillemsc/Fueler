@@ -1,7 +1,7 @@
-﻿using Fueler.Content.Stage.Asteroids.Entities;
-using Fueler.Content.Stage.Asteroids.UseCases.ShipCollidedWithAsteroid;
-using Fueler.Content.Stage.Astrounats.Entities;
+﻿using Fueler.Content.Stage.Astrounats.Entities;
 using Fueler.Content.Stage.Astrounats.UseCases.ShipCollidedWithAstronaut;
+using Fueler.Content.Stage.Ship.Entities;
+using Fueler.Content.Stage.Ship.UseCases.ShipCollidedWithShipKiller;
 using Fueler.Content.Stage.Ship.Visitors;
 using Juce.CoreUnity.Physics;
 
@@ -9,15 +9,15 @@ namespace Fueler.Content.Stage.Ship.UseCases.ShipCollided
 {
     public class ShipCollidedUseCase : IShipCollidedUseCase, IShipColliderVisitor
     {
-        private readonly IShipCollidedWithAsteroidUseCase shipCollidedWithAsteroidUseCase;
+        private readonly IShipCollidedWithShipKillerUseCase shipCollidedWithShipKillerUseCase;
         private readonly IShipCollidedWithAstronautUseCase shipCollidedWithAstronautUseCase;
 
         public ShipCollidedUseCase(
-            IShipCollidedWithAsteroidUseCase shipCollidedWithAsteroidUseCase,
+            IShipCollidedWithShipKillerUseCase shipCollidedWithShipKillerUseCase,
             IShipCollidedWithAstronautUseCase shipCollidedWithAstronautUseCase
             )
         {
-            this.shipCollidedWithAsteroidUseCase = shipCollidedWithAsteroidUseCase;
+            this.shipCollidedWithShipKillerUseCase = shipCollidedWithShipKillerUseCase;
             this.shipCollidedWithAstronautUseCase = shipCollidedWithAstronautUseCase;
         }
 
@@ -32,10 +32,9 @@ namespace Fueler.Content.Stage.Ship.UseCases.ShipCollided
 
             shipCollider.Accept(this);
         }
-
-        public void Visit(AsteroidEntity entity)
+        public void Visit(ShipKillerEntity entity)
         {
-            shipCollidedWithAsteroidUseCase.Execute(entity);
+            shipCollidedWithShipKillerUseCase.Execute(entity);
         }
 
         public void Visit(AstronautEntity entity)

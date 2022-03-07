@@ -1,7 +1,7 @@
 ﻿namespace Fueler.Content.Meta.Ui.Options.Persistence
 {
     [System.Serializable]
-    public class GameSettings
+    public class GameSettingsPersistence
     {
         public static readonly string Path = "GameSettings";
 

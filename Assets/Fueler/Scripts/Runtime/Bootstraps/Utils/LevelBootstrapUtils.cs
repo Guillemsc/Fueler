@@ -1,9 +1,11 @@
-﻿using Fueler.Content.Shared.Levels.Configuration;
+﻿using Fueler.Content.Services.Persistence;
+using Fueler.Content.Shared.Levels.Configuration;
 using Fueler.Context.Shared.Installers;
 using Fueler.Contexts.Shared;
 using Fueler.Contexts.Shared.UseCases.UnloadAndLoadStage;
 using Juce.Core.DI.Builder;
 using Juce.Core.DI.Container;
+using Juce.CoreUnity.Service;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -24,6 +26,9 @@ namespace Fueler.Bootstraps.Utils
                 sharedContextBuilder.InstallContextShared();
             }
             IDIContainer sharedContextContainer = sharedContextBuilder.Build();
+
+            IPersistenceService persistenceService = ServiceLocator.Get<IPersistenceService>();
+            await persistenceService.LoadAll(cancellationToken);
 
             IUnloadAndLoadStageUseCase unloadAndLoadStageUseCase = sharedContextContainer.Resolve<IUnloadAndLoadStageUseCase>();
 

@@ -1,9 +1,9 @@
 ﻿using Fueler.Content.Stage.Ship.Visitors;
 using UnityEngine;
 
-namespace Fueler.Content.Stage.Asteroids.Entities
+namespace Fueler.Content.Stage.Ship.Entities
 {
-    public class AsteroidEntity : MonoBehaviour, IShipCollider
+    public class ShipKillerEntity : MonoBehaviour, IShipCollider
     {
         public void Accept(IShipColliderVisitor visitor)
         {
