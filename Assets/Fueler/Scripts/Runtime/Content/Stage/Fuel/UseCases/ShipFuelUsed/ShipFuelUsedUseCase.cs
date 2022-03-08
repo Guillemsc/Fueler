@@ -29,6 +29,11 @@ namespace Fueler.Content.Stage.Fuel.UseCases.ShipFuelUsed
 
         public void Execute()
         {
+            if (shipFuelData.MaxFuel <= 0)
+            {
+                return;
+            }
+
             decimal currentFuel = shipFuelData.CurrentFuel - (decimal)fuelConfiguration.FuelConsumptionRate * (decimal)Time.deltaTime;
 
             currentFuel = Math.Max(0, currentFuel);

@@ -5,6 +5,9 @@ using Fueler.Content.Stage.Astrounats.Data;
 using Fueler.Content.Services.Persistence;
 using Juce.CoreUnity.ViewStack;
 using Fueler.Content.StageUi.Ui.ObjectivesPopup;
+using Fueler.Content.Stage.Tutorial.UseCases.TryShowTutorialPanels;
+using Fueler.Content.Stage.Tutorial.UseCases.TryShowControlsTutorial;
+using Fueler.Content.Stage.Tutorial.UseCases.TryShowFuelTutorialPanel;
 
 namespace Fueler.Content.Stage.Tutorial.Installers
 {
@@ -18,11 +21,30 @@ namespace Fueler.Content.Stage.Tutorial.Installers
                     c.Resolve<IObjectivesPopupUiInteractor>()
                     ));
 
+            container.Bind<ITryShowControlsTutorialPanelUseCase>()
+                .FromFunction(c => new TryShowControlsTutorialPanelUseCase(
+                    c.Resolve<IPersistenceService>().TutorialSerializable,
+                    c.Resolve<IShowObjectivesPopupTutorialPanelUseCase>()
+                    ));
+
+            container.Bind<ITryShowFuelTutorialPanelUseCase>()
+                .FromFunction(c => new TryShowFuelTutorialPanelUseCase(
+                    c.Resolve<IPersistenceService>().TutorialSerializable,
+                    c.Resolve<IShowObjectivesPopupTutorialPanelUseCase>()
+                    ));
+
             container.Bind<ITryShowAstronautsTutorialPanelUseCase>()
                 .FromFunction(c => new TryShowAstronautsTutorialPanelUseCase(
                     c.Resolve<AstronautsData>(),
                     c.Resolve<IPersistenceService>().TutorialSerializable,
                     c.Resolve<IShowObjectivesPopupTutorialPanelUseCase>()
+                    ));
+
+            container.Bind<ITryShowTutorialPanelsUseCase>()
+                .FromFunction(c => new TryShowTutorialPanelsUseCase(
+                    c.Resolve<ITryShowControlsTutorialPanelUseCase>(),
+                    c.Resolve<ITryShowFuelTutorialPanelUseCase>(),
+                    c.Resolve<ITryShowAstronautsTutorialPanelUseCase>()
                     ));
         }
     }

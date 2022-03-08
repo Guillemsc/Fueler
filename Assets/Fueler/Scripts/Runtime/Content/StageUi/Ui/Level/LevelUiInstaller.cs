@@ -22,6 +22,7 @@ namespace Fueler.Content.StageUi.Ui.Level
 
         [Header("Tween")]
         [SerializeField] private TweenPlayer setFuelTween = default;
+        [SerializeField] private TweenPlayer hideFuelTween = default;
         [SerializeField] private TweenPlayer setAstronautsTween = default;
         [SerializeField] private TweenPlayer hideAstronautsTween = default;
 
@@ -36,7 +37,8 @@ namespace Fueler.Content.StageUi.Ui.Level
 
             container.Bind<ISetFuelUseCase>()
                 .FromFunction(c => new SetFuelUseCase(
-                    setFuelTween
+                    setFuelTween,
+                    hideFuelTween
                     ));
 
             container.Bind<ISetAstronautsUseCase>()

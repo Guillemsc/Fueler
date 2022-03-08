@@ -7,16 +7,25 @@ namespace Fueler.Content.StageUi.Ui.Level.UseCase.SetFuel
     public class SetFuelUseCase : ISetFuelUseCase
     {
         private readonly TweenPlayer setFuelTween;
+        private readonly TweenPlayer hideFuelTween;
 
         public SetFuelUseCase(
-            TweenPlayer setFuelTween
+            TweenPlayer setFuelTween,
+            TweenPlayer hideFuelTween
             )
         {
             this.setFuelTween = setFuelTween;
+            this.hideFuelTween = hideFuelTween;
         }
 
         public void Execute(float maxFuel, float currentFuel)
         {
+            if(maxFuel <= 0)
+            {
+                hideFuelTween.Play();
+                return;
+            }
+
             currentFuel = Math.Min(maxFuel, currentFuel);
             currentFuel = Math.Max(0, currentFuel);
 

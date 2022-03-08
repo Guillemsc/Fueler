@@ -21,6 +21,11 @@ namespace Fueler.Content.Stage.Fuel.UseCases.CheckShipMovementIfNoFuel
 
         public void Execute()
         {
+            if(shipFuelData.MaxFuel <= 0)
+            {
+                return;
+            }
+
             bool found = shipEntityRepository.TryGet(out IDisposable<ShipEntity> shipEntity);
 
             if(!found)

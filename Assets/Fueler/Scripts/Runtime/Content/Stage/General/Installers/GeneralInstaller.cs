@@ -17,10 +17,10 @@ using Fueler.Content.Shared.Levels.Configuration;
 using Fueler.Content.Stage.Fuel.UseCases.InitFuel;
 using Fueler.Content.Stage.Astrounats.UseCases.InitAstronauts;
 using Fueler.Content.Stage.Ship.UseCases.ShipCollided;
-using Fueler.Content.Stage.Tutorial.UseCases.TryShowAstronautsTutorialPanel;
 using Fueler.Content.Stage.General.UseCases.IsStageCompleted;
 using Fueler.Content.Stage.General.UseCases.TryEndStage;
 using Fueler.Content.Stage.Astrounats.Data;
+using Fueler.Content.Stage.Tutorial.UseCases.TryShowTutorialPanels;
 
 namespace Fueler.Content.Stage.General.Installers
 {
@@ -47,7 +47,7 @@ namespace Fueler.Content.Stage.General.Installers
                 c.Resolve<ISingleRepository<IDisposable<ShipEntity>>>(),
                 c.Resolve<IUiViewStack>(),
                 c.Resolve<IWaitUnscaledTimeUseCase>(),
-                c.Resolve<ITryShowAstronautsTutorialPanelUseCase>()
+                c.Resolve<ITryShowTutorialPanelsUseCase>()
                 ));
 
             container.Bind<IIsStageCompletedUseCase>()

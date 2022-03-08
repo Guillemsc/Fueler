@@ -1,47 +1,38 @@
-﻿using Fueler.Content.Stage.Astrounats.Data;
-using Fueler.Content.Stage.Tutorial.Persistence;
+﻿using Fueler.Content.Stage.Tutorial.Persistence;
 using Fueler.Content.Stage.Tutorial.UseCases.ShowObjectivesPopupTutorialPanelUseCase;
 using Fueler.Content.StageUi.Ui.ObjectivesPopup.Enums;
 using Juce.Persistence.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Fueler.Content.Stage.Tutorial.UseCases.TryShowAstronautsTutorialPanel
+namespace Fueler.Content.Stage.Tutorial.UseCases.TryShowFuelTutorialPanel
 {
-    public class TryShowAstronautsTutorialPanelUseCase : ITryShowAstronautsTutorialPanelUseCase
+    public class TryShowFuelTutorialPanelUseCase : ITryShowFuelTutorialPanelUseCase
     {
-        private readonly AstronautsData astronautsData;
         private readonly SerializableData<TutorialPersistence> tutorialSerializable;
         private readonly IShowObjectivesPopupTutorialPanelUseCase showObjectivesPopupTutorialPanelUseCase;
 
-        public TryShowAstronautsTutorialPanelUseCase(
-            AstronautsData astronautsData,
+        public TryShowFuelTutorialPanelUseCase(
             SerializableData<TutorialPersistence> tutorialSerializable,
             IShowObjectivesPopupTutorialPanelUseCase showObjectivesPopupTutorialPanelUseCase
             )
         {
-            this.astronautsData = astronautsData;
             this.tutorialSerializable = tutorialSerializable;
             this.showObjectivesPopupTutorialPanelUseCase = showObjectivesPopupTutorialPanelUseCase;
         }
 
         public async Task Execute(CancellationToken cancellationToken)
         {
-            if(astronautsData.TotalAstronauts == 0)
+            bool alreadySeen = tutorialSerializable.Data.ObjectivesPanelsSeen.Contains(ObjectiveType.Fuel);
+
+            if (alreadySeen)
             {
                 return;
             }
 
-            bool alreadySeen = tutorialSerializable.Data.ObjectivesPanelsSeen.Contains(ObjectiveType.CollectAstronauts);
+            await showObjectivesPopupTutorialPanelUseCase.Execute(ObjectiveType.Fuel, cancellationToken);
 
-            if(alreadySeen)
-            {
-                return;
-            }
-
-            await showObjectivesPopupTutorialPanelUseCase.Execute(ObjectiveType.CollectAstronauts, cancellationToken);
-
-            tutorialSerializable.Data.ObjectivesPanelsSeen.Add(ObjectiveType.CollectAstronauts);
+            tutorialSerializable.Data.ObjectivesPanelsSeen.Add(ObjectiveType.Fuel);
 
             await tutorialSerializable.Save(cancellationToken);
         }

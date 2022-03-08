@@ -2,6 +2,8 @@
 {
     public enum ObjectiveType
     {
-        CollectAstronauts = 0,
+        Controls = 0,
+        CollectAstronauts = 1,
+        Fuel,
     }
 }

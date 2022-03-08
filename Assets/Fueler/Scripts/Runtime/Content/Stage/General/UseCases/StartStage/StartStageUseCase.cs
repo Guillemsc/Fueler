@@ -1,6 +1,6 @@
 ﻿using Fueler.Content.Shared.Time.UseCases.WaitUnscaledTime;
 using Fueler.Content.Stage.Ship.Entities;
-using Fueler.Content.Stage.Tutorial.UseCases.TryShowAstronautsTutorialPanel;
+using Fueler.Content.Stage.Tutorial.UseCases.TryShowTutorialPanels;
 using Fueler.Content.StageUi.Ui.Level;
 using Juce.Core.Disposables;
 using Juce.Core.Repositories;
@@ -16,19 +16,19 @@ namespace Fueler.Content.Stage.General.UseCases.StartStage
         private readonly ISingleRepository<IDisposable<ShipEntity>> shipEntityRepository;
         private readonly IUiViewStack uiViewStack;
         private readonly IWaitUnscaledTimeUseCase waitUnscaledTimeUseCase;
-        private readonly ITryShowAstronautsTutorialPanelUseCase tryShowAstronautsTutorialPanelUseCase;
+        private readonly ITryShowTutorialPanelsUseCase tryShowTutorialPanelsUseCase;
 
         public StartStageUseCase(
             ISingleRepository<IDisposable<ShipEntity>> shipEntityRepository,
             IUiViewStack uiViewStack,
             IWaitUnscaledTimeUseCase waitUnscaledTimeUseCase,
-            ITryShowAstronautsTutorialPanelUseCase tryShowAstronautsTutorialPanelUseCase
+            ITryShowTutorialPanelsUseCase tryShowTutorialPanelsUseCase
             )
         {
             this.shipEntityRepository = shipEntityRepository;
             this.uiViewStack = uiViewStack;
             this.waitUnscaledTimeUseCase = waitUnscaledTimeUseCase;
-            this.tryShowAstronautsTutorialPanelUseCase = tryShowAstronautsTutorialPanelUseCase;
+            this.tryShowTutorialPanelsUseCase = tryShowTutorialPanelsUseCase;
         }
 
         public void Execute()
@@ -40,7 +40,7 @@ namespace Fueler.Content.Stage.General.UseCases.StartStage
         {
             await waitUnscaledTimeUseCase.Execute(TimeSpan.FromSeconds(0.3f), cancellationToken);
 
-            await tryShowAstronautsTutorialPanelUseCase.Execute(cancellationToken);
+            await tryShowTutorialPanelsUseCase.Execute(cancellationToken);
 
             uiViewStack.New().Show<ILevelUiInteractor>(instantly: false).Execute();
 
