@@ -2,6 +2,7 @@
 using Fueler.Content.StageUi.Ui.Level.UseCase.SetAstronauts;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SetFuel;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SubscribeToButtons;
+using Fueler.Content.StageUi.Ui.Level.UseCase.TryPlayLowFuelIndicator;
 using Juce.Core.DI.Builder;
 using Juce.Core.DI.Installers;
 using Juce.CoreUnity.PointerCallback;
@@ -20,14 +21,20 @@ namespace Fueler.Content.StageUi.Ui.Level
         [SerializeField] private TweenPlayerAnimation showAnimation = default;
         [SerializeField] private TweenPlayerAnimation hideAnimation = default;
 
-        [Header("Tween")]
+        [Header("Fueel Tweens")]
         [SerializeField] private TweenPlayer setFuelTween = default;
+        [SerializeField] private TweenPlayer lowFuelTween = default;
         [SerializeField] private TweenPlayer hideFuelTween = default;
+
+        [Header("Astronatus Tweens")]
         [SerializeField] private TweenPlayer setAstronautsTween = default;
         [SerializeField] private TweenPlayer hideAstronautsTween = default;
 
         [Header("Buttons")]
         [SerializeField] private PointerCallbacks replayPointerCallbacks = default;
+
+        [Header("Values")]
+        [SerializeField, Range(0f, 1f)] private float lowFuelIndicatorNormalized = 0.2f;
 
         private IViewStackEntry viewStackEntry;
 
@@ -35,10 +42,17 @@ namespace Fueler.Content.StageUi.Ui.Level
         {
             viewStackEntry = CreateStackEntry();
 
+            container.Bind<ITryPlayLowFuelIndicatorUseCase>()
+                .FromFunction(c => new TryPlayLowFuelIndicatorUseCase(
+                    lowFuelIndicatorNormalized,
+                    lowFuelTween
+                    ));
+
             container.Bind<ISetFuelUseCase>()
                 .FromFunction(c => new SetFuelUseCase(
                     setFuelTween,
-                    hideFuelTween
+                    hideFuelTween,
+                    c.Resolve<ITryPlayLowFuelIndicatorUseCase>()
                     ));
 
             container.Bind<ISetAstronautsUseCase>()
