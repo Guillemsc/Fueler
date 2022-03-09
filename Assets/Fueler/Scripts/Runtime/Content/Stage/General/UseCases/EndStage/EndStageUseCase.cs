@@ -58,6 +58,8 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
                 return;
             }
 
+            shipEntityRepository.Clear();
+
             if (levelEndedData.DestroyShip)
             {
                 shipEntity.Value.ShipController.CanMove = false;

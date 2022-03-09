@@ -5,8 +5,8 @@ namespace Fueler.Content.Stage.Ship.Entities
 {
     public class ShipController : MonoBehaviour
     {
-        [SerializeField] private float acceleration = default;
-        [SerializeField] private float rotationSpeed = default;
+        [SerializeField, Min(0)] private float acceleration = default;
+        [SerializeField, Min(0)] private float rotationSpeed = default;
 
         private Vector2 currentSpeed;
 

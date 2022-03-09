@@ -1,4 +1,5 @@
-﻿using Juce.CoreUnity.Time;
+﻿using Juce.Core.Time;
+using Juce.CoreUnity.Time;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace Fueler.Content.Shared.Time.UseCases.WaitUnscaledTime
     {
         public Task Execute(TimeSpan timeSpan, CancellationToken cancellationToken)
         {
-            IUnityTimer unityTimer = new UnscaledUnityTimer();
+            ITimer unityTimer = new UnscaledUnityTimer();
             unityTimer.Start();
 
             return unityTimer.AwaitTime(timeSpan, cancellationToken);
