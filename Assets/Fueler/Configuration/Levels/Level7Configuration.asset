@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d7ad7fd2c8d0e74e936daadd454d7bb, type: 3}
-  m_Name: ActivePropsLayer-1
+  m_Script: {fileID: 11500000, guid: 72259cfdb7570124e838eaa37e4b396a, type: 3}
+  m_Name: Level7Configuration
   m_EditorClassIdentifier: 
-  layerValue: 9
+  id: 0c4a8e7d-321b-4f24-8729-de523a4069ba
+  levelEntityPrefab: {fileID: 3166591651800058605, guid: 5717a316c91d1154dac5db9bb7bce7f6, type: 3}
+  initialFuel: 100

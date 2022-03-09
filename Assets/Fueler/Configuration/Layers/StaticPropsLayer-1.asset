@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7ad7fd2c8d0e74e936daadd454d7bb, type: 3}
   m_Name: StaticPropsLayer-1
   m_EditorClassIdentifier: 
-  layerValue: 0
+  layerValue: 4

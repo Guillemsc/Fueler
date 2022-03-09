@@ -44,6 +44,11 @@ namespace Fueler.Content.Stage.Ship.Entities
                 return;
             }
 
+            if(!CanMove)
+            {
+                return;
+            }
+
             Vector2 forward = new Vector2(gameObject.transform.up.x, gameObject.transform.up.y);
 
             if (Input.GetKey("w"))
