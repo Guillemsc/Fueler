@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72259cfdb7570124e838eaa37e4b396a, type: 3}
+  m_Name: Level4Configuration
+  m_EditorClassIdentifier: 
+  id: 619d40a4-29d2-4dcc-a7ff-141dd62e688a
+  levelEntityPrefab: {fileID: 0}
+  initialFuel: 100

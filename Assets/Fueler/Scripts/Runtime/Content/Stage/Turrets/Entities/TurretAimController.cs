@@ -30,7 +30,7 @@ namespace Fueler.Content.Stage.Turrets.Entities
 
         private float GetAimAngleDifference()
         {
-            float currentAimAngle = aimPivot.localRotation.eulerAngles.z + angleOffset;
+            float currentAimAngle = aimPivot.rotation.eulerAngles.z + angleOffset;
 
             return Mathf.DeltaAngle(currentAimAngle, targetAimAngle);
         }
@@ -81,7 +81,7 @@ namespace Fueler.Content.Stage.Turrets.Entities
                 currentAimSpeed = 0;
             }
 
-            aimPivot.transform.localRotation *= Quaternion.Euler(0, 0, currentAimSpeedDelta);
+            aimPivot.transform.rotation *= Quaternion.Euler(0, 0, currentAimSpeedDelta);
         }
 
         private void CalculateTargetAimAngle()
