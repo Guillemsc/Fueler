@@ -20,13 +20,7 @@ namespace Fueler.Content.Stage.Turrets.Entities
 
         private void Update()
         {
-            SetShootingEnabled();
             TrySetPlayerTarget();
-        }
-
-        private void SetShootingEnabled()
-        {
-            turretShootController.CanShoot = turretController.Target != null;
         }
 
         private void TrySetPlayerTarget()
@@ -36,10 +30,12 @@ namespace Fueler.Content.Stage.Turrets.Entities
             if(!shipFound)
             {
                 turretController.Target = null;
+                turretShootController.Target = null;
                 return;
             }
 
             turretController.Target = shipEntity.Value.transform;
+            turretShootController.Target = shipEntity.Value.transform;
         }
     }
 }

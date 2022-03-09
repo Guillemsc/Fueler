@@ -1,4 +1,6 @@
 ﻿using Juce.Core.Time;
+using Juce.CoreUnity;
+using Juce.CoreUnity.Guizmos;
 using Juce.CoreUnity.Time;
 using System;
 using UnityEngine;
@@ -14,17 +16,28 @@ namespace Fueler.Content.Stage.Turrets.Entities
         [SerializeField] private TurretBulletController bulletPrefab = default;
 
         [Header("Values")]
+        [SerializeField, Min(0f)] private float minDistanceToShoot = 5f;
         [SerializeField, Range(0f, 180f)] private float minAngleDifferenceToShoot = 20f;
         [SerializeField, Range(0.2f, 10f)] private float shootCooldown = 2f;
         [SerializeField, Min(0f)] private float bulletSpeed = 5f;
 
         private readonly ITimer shootTimer = new ScaledUnityTimer();
 
-        public bool CanShoot { get; set; }
+        public Transform Target { get; set; }
 
         private void Update()
         {
             TryShoot();
+        }
+
+        private bool IsCloseEnough()
+        {
+            if(Target == null)
+            {
+                return false;
+            }
+
+            return Mathf.Abs(Vector3.Distance(transform.position, Target.transform.position)) < minDistanceToShoot;
         }
 
         private bool HasAngleToShoot()
@@ -44,7 +57,14 @@ namespace Fueler.Content.Stage.Turrets.Entities
                 shootTimer.Start();
             }
 
-            if(!CanShoot)
+            if(Target == null)
+            {
+                return;
+            }
+
+            bool isCloseEnough = IsCloseEnough();
+
+            if(!isCloseEnough)
             {
                 return;
             }
@@ -74,6 +94,11 @@ namespace Fueler.Content.Stage.Turrets.Entities
             instance.transform.position = bulletsInitialPositionAndRotation.transform.position;
             instance.transform.rotation = bulletsInitialPositionAndRotation.rotation;
             instance.Speed = bulletSpeed;
+        }
+
+        private void OnDrawGizmos()
+        {
+            GizmosUtils.DrawCircle(transform.position, Vector3.forward, minDistanceToShoot, Color.red);
         }
     }
 }

@@ -248,6 +248,7 @@ MonoBehaviour:
   cameraConfiner: {fileID: 7464818385849429439}
   startingPosition: {fileID: 3787590165253604145}
   endCallback: {fileID: 4475418467887446773}
+  astronatus: []
 --- !u!1 &4527379615095649195
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,6 +409,10 @@ PrefabInstance:
     - target: {fileID: 1846688522532385536, guid: 88a88f6301b6372449e0874eb81fb939, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6586757577165458512, guid: 88a88f6301b6372449e0874eb81fb939, type: 3}
+      propertyPath: minDistanceToShoot
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7973513772723451259, guid: 88a88f6301b6372449e0874eb81fb939, type: 3}
       propertyPath: m_Name
