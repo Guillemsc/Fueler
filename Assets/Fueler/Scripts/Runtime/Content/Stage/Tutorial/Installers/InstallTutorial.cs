@@ -8,6 +8,7 @@ using Fueler.Content.StageUi.Ui.ObjectivesPopup;
 using Fueler.Content.Stage.Tutorial.UseCases.TryShowTutorialPanels;
 using Fueler.Content.Stage.Tutorial.UseCases.TryShowControlsTutorial;
 using Fueler.Content.Stage.Tutorial.UseCases.TryShowFuelTutorialPanel;
+using Fueler.Content.Stage.Fuel.Data;
 
 namespace Fueler.Content.Stage.Tutorial.Installers
 {
@@ -29,6 +30,7 @@ namespace Fueler.Content.Stage.Tutorial.Installers
 
             container.Bind<ITryShowFuelTutorialPanelUseCase>()
                 .FromFunction(c => new TryShowFuelTutorialPanelUseCase(
+                    c.Resolve<FuelData>(),
                     c.Resolve<IPersistenceService>().TutorialSerializable,
                     c.Resolve<IShowObjectivesPopupTutorialPanelUseCase>()
                     ));

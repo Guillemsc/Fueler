@@ -7,6 +7,7 @@ namespace Fueler.Content.Stage.Ship.Entities
     {
         [SerializeField, Min(0)] private float acceleration = default;
         [SerializeField, Min(0)] private float rotationSpeed = default;
+        [SerializeField, Min(0)] private float autobreakStrenght = 4.0f; 
 
         private Vector2 currentSpeed;
 
@@ -95,7 +96,7 @@ namespace Fueler.Content.Stage.Ship.Entities
                 return;
             }
 
-            currentSpeed -= currentSpeed.normalized * acceleration * Time.deltaTime * 3;
+            currentSpeed -= currentSpeed.normalized * acceleration * Time.deltaTime * autobreakStrenght;
         }
 
         private void UpdatePosition()

@@ -67,6 +67,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 0.5
   rotationSpeed: 90
+  autobreakStrenght: 6
 --- !u!114 &2928337161294412800
 MonoBehaviour:
   m_ObjectHideFlags: 0
