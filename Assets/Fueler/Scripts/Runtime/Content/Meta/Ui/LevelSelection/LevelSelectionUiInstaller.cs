@@ -22,6 +22,8 @@ using Fueler.Content.Meta.Ui.LevelSelection.UseCases.SubscribeToButtons;
 using Fueler.Content.Meta.Ui.LevelSelection.UseCases.BackButtonPressed;
 using Juce.CoreUnity.Ui.Others;
 using Fueler.Content.Shared.Levels.UseCases.TryGetLastUncompletedLevel;
+using Fueler.Content.Meta.Ui.LevelSelection.UseCases.LevelPressed;
+using Fueler.Contexts.Shared.UseCases.UnloadMetaAndLoadStage;
 
 namespace Fueler.Content.Meta.Ui.LevelSelection
 {
@@ -86,10 +88,16 @@ namespace Fueler.Content.Meta.Ui.LevelSelection
                     c.Resolve<ISingleRepository<LevelTextButtonWidget>>()
                     ));
 
+            container.Bind<ILevelPressedUseCase>()
+                .FromFunction(c => new LevelPressedUseCase(
+                    c.Resolve<IUnloadMetaAndLoadStageUseCase>()
+                    ));
+
             container.Bind<ITrySpawnLevelEntryUseCase>()
                 .FromFunction(c => new TrySpawnLevelEntryUseCase(
                     c.Resolve<IRepository<IDisposable<LevelTextButtonWidget>>>(),
-                    c.Resolve<IFactory<LevelTextButtonWidgetFactoryDefinition, IDisposable<LevelTextButtonWidget>>>()
+                    c.Resolve<IFactory<LevelTextButtonWidgetFactoryDefinition, IDisposable<LevelTextButtonWidget>>>(),
+                    c.Resolve<ILevelPressedUseCase>()
                     ));
 
             container.Bind<ISpawnLevelEntriesUseCase>()

@@ -15,6 +15,7 @@ namespace Fueler.Content.Meta.Ui.LevelSelection.Widgets
         [SerializeField] private GameObject lockedContent = default;
         [SerializeField] private TMPro.TextMeshProUGUI levelNumberText = default;
 
+        public PointerAndSelectableSubmitCallbacks PointerAndSelectableSubmitCallbacks => pointerAndSelectableSubmitCallbacks;
         public SelectableCallbacks SelectableCallbacks => selectableCallbacks;
         public GameObject UnlockedContent => unlockedContent;
         public GameObject LockedContent => lockedContent;

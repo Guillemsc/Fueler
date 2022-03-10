@@ -1,9 +1,11 @@
 ﻿using Fueler.Content.Meta.Ui.LevelSelection.Factories.LevelTextButton;
+using Fueler.Content.Meta.Ui.LevelSelection.UseCases.LevelPressed;
 using Fueler.Content.Meta.Ui.LevelSelection.Widgets;
 using Fueler.Content.Shared.Levels.Configuration;
 using Juce.Core.Disposables;
 using Juce.Core.Factories;
 using Juce.Core.Repositories;
+using System;
 
 namespace Fueler.Content.Meta.Ui.LevelSelection.UseCases.TrySpawnLevelEntry
 {
@@ -11,14 +13,17 @@ namespace Fueler.Content.Meta.Ui.LevelSelection.UseCases.TrySpawnLevelEntry
     {
         private readonly IRepository<IDisposable<LevelTextButtonWidget>> entriesRepository;
         private readonly IFactory<LevelTextButtonWidgetFactoryDefinition, IDisposable<LevelTextButtonWidget>> entriesFactory;
+        private readonly ILevelPressedUseCase levelPressedUseCase;
 
         public TrySpawnLevelEntryUseCase(
             IRepository<IDisposable<LevelTextButtonWidget>> entriesRepository,
-            IFactory<LevelTextButtonWidgetFactoryDefinition, IDisposable<LevelTextButtonWidget>> entriesFactory
+            IFactory<LevelTextButtonWidgetFactoryDefinition, IDisposable<LevelTextButtonWidget>> entriesFactory,
+            ILevelPressedUseCase levelPressedUseCase
             )
         {
             this.entriesRepository = entriesRepository;
             this.entriesFactory = entriesFactory;
+            this.levelPressedUseCase = levelPressedUseCase;
         }
 
         public bool Execute(
@@ -39,10 +44,18 @@ namespace Fueler.Content.Meta.Ui.LevelSelection.UseCases.TrySpawnLevelEntry
                 levelNumberText = index.ToString();
             }
 
+            Action pressedAction = () => { };
+
+            if(!locked)
+            {
+                pressedAction = () => levelPressedUseCase.Execute(levelConfiguration);
+            }
+
             bool created = entriesFactory.TryCreate(
                 new LevelTextButtonWidgetFactoryDefinition(
                     levelNumberText,
-                    locked
+                    locked,
+                    pressedAction
                     ),
                 out IDisposable<LevelTextButtonWidget> entry
                 );
