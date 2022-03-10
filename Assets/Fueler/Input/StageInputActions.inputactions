@@ -1,0 +1,39 @@
+{
+    "name": "StageInputActions",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "f81f8482-916a-4d5a-89c9-9c11792bd760",
+            "actions": [
+                {
+                    "name": "RestartLevel",
+                    "type": "Button",
+                    "id": "f01c69e2-2c8a-4032-bd6e-fb6cbd678f99",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "41d9a004-0e66-4c38-a7b6-7f43195be3d8",
+                    "path": "<Keyboard>/#(R)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "RestartLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
+            "devices": []
+        }
+    ]
+}

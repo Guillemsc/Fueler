@@ -21,6 +21,11 @@ using Fueler.Content.Stage.General.UseCases.IsStageCompleted;
 using Fueler.Content.Stage.General.UseCases.TryEndStage;
 using Fueler.Content.Stage.Astrounats.Data;
 using Fueler.Content.Stage.Tutorial.UseCases.TryShowTutorialPanels;
+using Fueler.Content.Stage.General.UseCases.SubscribeToStageInputActions;
+using Fueler.Content.Shared.Input;
+using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
+using Fueler.Assets.Fueler.Scripts.Runtime.Content.Stage.General.UseCases.RestartLevelInputPerformed;
+using Fueler.Content.Stage.General.Actors;
 
 namespace Fueler.Content.Stage.General.Installers
 {
@@ -28,10 +33,14 @@ namespace Fueler.Content.Stage.General.Installers
     {
         public static void InstallGeneral(this IDIContainerBuilder container)
         {
+            container.Bind<StageStateData>()
+                .FromNew();
+
             container.Bind<IWaitUnscaledTimeUseCase>()
                 .FromFunction(c => new WaitUnscaledTimeUseCase());
 
             container.Bind<ILoadStageUseCase>().FromFunction(c => new LoadStageUseCase(
+                c.Resolve<StageStateData>(),
                 c.Resolve<ILevelConfiguration>(),
                 c.Resolve<ILoadLevelUseCase>(),
                 c.Resolve<ILoadShipUseCase>(),
@@ -44,6 +53,7 @@ namespace Fueler.Content.Stage.General.Installers
                 ));
 
             container.Bind<IStartStageUseCase>().FromFunction(c => new StartStageUseCase(
+                c.Resolve<StageStateData>(),
                 c.Resolve<ISingleRepository<IDisposable<ShipEntity>>>(),
                 c.Resolve<IUiViewStack>(),
                 c.Resolve<IWaitUnscaledTimeUseCase>(),
@@ -67,6 +77,25 @@ namespace Fueler.Content.Stage.General.Installers
                     c.Resolve<IIsStageCompletedUseCase>(),
                     c.Resolve<IEndStageUseCase>()
                     ));
+
+            container.Bind<StageInputActions>()
+                .FromNew()
+                .WhenInit((c, o) => o.Enable())
+                .WhenDispose(o => o.Disable());
+
+            container.Bind<IRestartLevelInputPerformedUseCase>()
+                .FromFunction(c => new RestartLevelInputPerformedUseCase(
+                    c.Resolve<StageStateData>(),
+                    c.Resolve<IReloadLevelUseCase>()
+                    ));
+
+            container.Bind<ISubscribeToStageInputActionsUseCase>()
+                .FromFunction(c => new SubscribeToStageInputActionsUseCase(
+                    c.Resolve<StageInputActions>(),
+                    c.Resolve<IRestartLevelInputPerformedUseCase>()
+                    ))
+                .WhenInit((c, o) => o.Execute())
+                .NonLazy();
         }
     }
 }

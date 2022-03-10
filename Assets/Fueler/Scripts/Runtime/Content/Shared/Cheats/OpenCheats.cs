@@ -15,7 +15,7 @@ namespace Fueler.Content.Shared.Cheats
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Mouse2))
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Mouse2))
             {
                 SRDebug.Instance.ShowDebugPanel(DefaultTabs.Options);
             }

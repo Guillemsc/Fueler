@@ -2,6 +2,7 @@
 using Fueler.Content.Stage.Astrounats.UseCases.InitAstronauts;
 using Fueler.Content.Stage.Fuel.UseCases.InitFuel;
 using Fueler.Content.Stage.Fuel.UseCases.ShipFuelUsed;
+using Fueler.Content.Stage.General.Actors;
 using Fueler.Content.Stage.General.Entities;
 using Fueler.Content.Stage.General.UseCases.LoadLevel;
 using Fueler.Content.Stage.Ship.Entities;
@@ -16,6 +17,7 @@ namespace Fueler.Content.Stage.General.UseCases.LoadStage
 {
     public class LoadStageUseCase : ILoadStageUseCase
     {
+        private readonly StageStateData stageStateData;
         private readonly ILevelConfiguration levelConfiguration;
         private readonly ILoadLevelUseCase loadLevelUseCase;
         private readonly ILoadShipUseCase loadShipUseCase;
@@ -27,6 +29,7 @@ namespace Fueler.Content.Stage.General.UseCases.LoadStage
         private readonly IShipFuelUsedUseCase shipFuelUsedUseCase;
 
         public LoadStageUseCase(
+            StageStateData stageStateData,
             ILevelConfiguration levelConfiguration,
             ILoadLevelUseCase loadLevelUseCase,
             ILoadShipUseCase loadShipUseCase,
@@ -38,6 +41,7 @@ namespace Fueler.Content.Stage.General.UseCases.LoadStage
             IShipFuelUsedUseCase shipFuelUsedUseCase
             )
         {
+            this.stageStateData = stageStateData;
             this.levelConfiguration = levelConfiguration;
             this.loadLevelUseCase = loadLevelUseCase;
             this.loadShipUseCase = loadShipUseCase;
@@ -65,6 +69,8 @@ namespace Fueler.Content.Stage.General.UseCases.LoadStage
             shipEntity.ShipController.OnForwardOrBackward += shipFuelUsedUseCase.Execute;
 
             setupShipCameraUseCase.Execute(shipEntity);
+
+            stageStateData.Loaded = true;
 
             return Task.CompletedTask;
         }
