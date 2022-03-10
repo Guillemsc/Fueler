@@ -14,10 +14,11 @@ using Fueler.Content.Stage.Astrounats.Installers;
 using Fueler.Content.Stage.Cheats.Installers;
 using Fueler.Content.Stage.Tutorial.Installers;
 using Fueler.Content.Stage.General.UseCases.TryEndStage;
+using Fueler.Content.Stage.Accessibility.Installers;
 
 namespace Fueler.Contexts.Stage
 {
-    public class StageContextInstaller : MonoBehaviour, IContextInstaller<StageContextInstance>
+    public class StageContextInstaller : IContextInstaller<StageContextInstance>
     {
         public void Install(IDIContainerBuilder container, StageContextInstance instance)
         {
@@ -27,6 +28,7 @@ namespace Fueler.Contexts.Stage
             container.InstallServices();
             container.InstallGeneral();
             container.InstallCheats();
+            container.InstallAccessibility();
             container.InstallLevel();
             container.InstallShip();
             container.InstallFuel();

@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Fueler.Contexts.StageUi
 {
-    public class StageUiContextInstaller : MonoBehaviour, IContextInstaller<StageUiContextInstance>
+    public class StageUiContextInstaller : IContextInstaller<StageUiContextInstance>
     {
         public void Install(IDIContainerBuilder container, StageUiContextInstance instance)
         {

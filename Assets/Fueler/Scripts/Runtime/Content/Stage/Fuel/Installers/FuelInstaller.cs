@@ -1,5 +1,6 @@
 ﻿using Fueler.Content.Services.Configuration;
 using Fueler.Content.Shared.Levels.Configuration;
+using Fueler.Content.Stage.Accessibility.UseCases.IsFuelInfinite;
 using Fueler.Content.Stage.Fuel.Data;
 using Fueler.Content.Stage.Fuel.UseCases.CheckShipMovementIfNoFuel;
 using Fueler.Content.Stage.Fuel.UseCases.InitFuel;
@@ -22,7 +23,8 @@ namespace Fueler.Content.Stage.Fuel.Installers
                 .FromFunction(c => new InitFuelUseCase(
                     c.Resolve<FuelData>(),
                     c.Resolve<ILevelUiInteractor>(),
-                    c.Resolve<ILevelConfiguration>()
+                    c.Resolve<ILevelConfiguration>(),
+                    c.Resolve<IIsFuelInfiniteUseCase>()
                     ));
 
             container.Bind<ICheckShipMovementIfNoFuelUseCase>()

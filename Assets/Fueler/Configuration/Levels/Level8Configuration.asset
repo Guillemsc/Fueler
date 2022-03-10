@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Level8Configuration
   m_EditorClassIdentifier: 
   id: 110b35b7-960e-4f2d-9384-55a2eab7a602
-  levelEntityPrefab: {fileID: 0}
+  levelEntityPrefab: {fileID: 3166591651800058605, guid: 9461af3f04b4c254f9a80021a79600fb, type: 3}
   initialFuel: 100

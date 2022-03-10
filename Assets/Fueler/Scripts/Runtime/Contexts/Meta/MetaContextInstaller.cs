@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Fueler.Contexts.Meta
 {
-    public class MetaContextInstaller : MonoBehaviour, IContextInstaller<MetaContextInstance>
+    public class MetaContextInstaller : IContextInstaller<MetaContextInstance>
     {
         public void Install(IDIContainerBuilder container, MetaContextInstance instance)
         {
