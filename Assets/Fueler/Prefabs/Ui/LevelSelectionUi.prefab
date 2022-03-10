@@ -57,11 +57,41 @@ MonoBehaviour:
   - id: 0
   - id: 1
   - id: 2
+  - id: 3
   bindingEnabled: 0
   bindableDataUid: 
   references:
     version: 1
     00000000:
+      type: {class: UIInteractableComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 619067466902909622}
+        interactable:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        blocksRaycast:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+    00000001:
       type: {class: UIAlphaComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
       data:
         folded: 0
@@ -119,7 +149,7 @@ MonoBehaviour:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-    00000001:
+    00000002:
       type: {class: WaitAllAboveComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
       data:
         folded: 0
@@ -130,7 +160,7 @@ MonoBehaviour:
           binded: 0
           bindedVariableName: 
           FallbackValue: 0
-    00000002:
+    00000003:
       type: {class: GameObjectActiveComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
       data:
         folded: 0
@@ -523,6 +553,8 @@ MonoBehaviour:
   Components:
   - id: 0
   - id: 1
+  - id: 2
+  - id: 3
   bindingEnabled: 0
   bindableDataUid: 
   references:
@@ -608,6 +640,46 @@ MonoBehaviour:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
+    00000002:
+      type: {class: WaitAllAboveComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+    00000003:
+      type: {class: UIInteractableComponent, ns: Juce.TweenComponent.Components, asm: Juce.TweenComponent.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 619067466902909622}
+        interactable:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 1
+        blocksRaycast:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
 --- !u!1 &1245033323455855166
 GameObject:
   m_ObjectHideFlags: 0
