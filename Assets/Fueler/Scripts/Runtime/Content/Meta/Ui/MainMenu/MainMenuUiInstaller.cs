@@ -13,9 +13,8 @@ using Fueler.Contexts.Shared.UseCases.UnloadMetaAndLoadStage;
 using Fueler.Content.Shared.Levels.UseCases.TryGetLevelByIndex;
 using Fueler.Content.Services.Configuration;
 using Fueler.Content.Meta.Ui.MainMenu.UseCases.QuitButtonPressed;
-using Juce.Core.Refresh;
 using Juce.CoreUnity.ViewStack.Entries;
-using System.Collections.Generic;
+using Fueler.Content.Meta.Ui.MainMenu.UseCases.LevelsButtonPressed;
 
 namespace Fueler.Content.Meta.Ui.MainMenu
 {
@@ -30,6 +29,7 @@ namespace Fueler.Content.Meta.Ui.MainMenu
 
         [Header("Buttons")]
         [SerializeField] private PointerAndSelectableSubmitCallbacks playButton = default;
+        [SerializeField] private PointerAndSelectableSubmitCallbacks levelsButton = default;
         [SerializeField] private PointerAndSelectableSubmitCallbacks optionsButton = default;
         [SerializeField] private PointerAndSelectableSubmitCallbacks quitButton = default;
 
@@ -50,6 +50,11 @@ namespace Fueler.Content.Meta.Ui.MainMenu
                     c.Resolve<IUnloadMetaAndLoadStageUseCase>()
                     ));
 
+            container.Bind<ILevelsButtonPressedUseCase>()
+                .FromFunction(c => new LevelsButtonPressedUseCase(
+                    c.Resolve<IUiViewStack>()
+                    ));
+
             container.Bind<IOptionsButtonPressedUseCase>()
                 .FromFunction(c => new OptionsButtonPressedUseCase(
                     c.Resolve<IUiViewStack>()
@@ -62,9 +67,11 @@ namespace Fueler.Content.Meta.Ui.MainMenu
             container.Bind<ISubscribeToButtonsUseCase>()
                 .FromFunction(c => new SubscribeToButtonsUseCase(
                     playButton,
+                    levelsButton,
                     optionsButton,
                     quitButton,
                     c.Resolve<IPlayButtonPressedUseCase>(),
+                    c.Resolve<ILevelsButtonPressedUseCase>(),
                     c.Resolve<IOptionsButtonPressedUseCase>(),
                     c.Resolve<IQuitButtonPressedUseCase>()
                     ))
