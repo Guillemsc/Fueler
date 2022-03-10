@@ -14,6 +14,9 @@ namespace Fueler.Content.Meta.Ui.LevelSelection.Factories.LevelTextButton
         protected override void Init(LevelTextButtonWidgetFactoryDefinition definition, LevelTextButtonWidget creation)
         {
             creation.LevelNumberText.text = definition.LevelNumberText;
+
+            creation.UnlockedContent.SetActive(!definition.Locked);
+            creation.LockedContent.SetActive(definition.Locked);
         }
     }
 }

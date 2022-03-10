@@ -1,4 +1,5 @@
-﻿using Fueler.Content.Stage.Tutorial.Persistence;
+﻿using Fueler.Content.Stage.Accessibility.Persistence;
+using Fueler.Content.Stage.Tutorial.Persistence;
 using Juce.Persistence.Serialization;
 using System.IO;
 using UnityEditor;
@@ -21,6 +22,14 @@ namespace Fueler.Content.Shared.Levels.Persistence
             File.Delete(SerializableDataUtils.GetPersistenceDataFilepath(TutorialPersistence.Path));
 
             UnityEngine.Debug.Log("Tutorial user data cleared");
+        }
+
+        [MenuItem("Fueler/ClearLevelsUserData")]
+        public static void ClearLevelsUserData()
+        {
+            File.Delete(SerializableDataUtils.GetPersistenceDataFilepath(LevelsPersistence.Path));
+
+            UnityEngine.Debug.Log("Levels user data cleared");
         }
     }
 }

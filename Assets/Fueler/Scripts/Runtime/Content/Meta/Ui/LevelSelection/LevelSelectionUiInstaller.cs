@@ -12,9 +12,16 @@ using Fueler.Content.Meta.Ui.LevelSelection.Widgets;
 using Juce.Core.Factories;
 using Fueler.Content.Meta.Ui.LevelSelection.Factories.LevelTextButton;
 using Juce.Core.Disposables;
-using Fueler.Content.Meta.Ui.LevelSelection.UseCases.SpawnLevelEntry;
+using Fueler.Content.Meta.Ui.LevelSelection.UseCases.TrySpawnLevelEntry;
 using Fueler.Content.Meta.Ui.LevelSelection.UseCases.SpawnLevelEntries;
 using Fueler.Content.Services.Configuration;
+using Fueler.Content.Shared.Levels.UseCases.IsLevelCompleted;
+using Fueler.Content.Services.Persistence;
+using Fueler.Content.Meta.Ui.LevelSelection.UseCases.SetEntryAsFirstSelected;
+using Fueler.Content.Meta.Ui.LevelSelection.UseCases.SubscribeToButtons;
+using Fueler.Content.Meta.Ui.LevelSelection.UseCases.BackButtonPressed;
+using Juce.CoreUnity.Ui.Others;
+using Fueler.Content.Shared.Levels.UseCases.TryGetLastUncompletedLevel;
 
 namespace Fueler.Content.Meta.Ui.LevelSelection
 {
@@ -27,27 +34,29 @@ namespace Fueler.Content.Meta.Ui.LevelSelection
         [Header("Selectables")]
         [SerializeField] private SelectableCallbacks firstSelectable = default;
 
+        [Header("Buttons")]
+        [SerializeField] private PointerAndSelectableSubmitCallbacks backButton = default;
+
         [Header("LevelTextButtonWidget")]
         [SerializeField] private LevelTextButtonWidget levelTextButtonWidgetPrefab = default;
         [SerializeField] private Transform levelTextButtonWidgetParent = default;
 
-        private IViewStackEntry viewStackEntry;
-
         public void Install(IDIContainerBuilder container)
         {
-            viewStackEntry = CreateStackEntry();
-
-            //container.Bind<ISubscribeToButtonsUseCase>()
-            //    .FromFunction(c => new SubscribeToButtonsUseCase(
-            //        playButton,
-            //        optionsButton,
-            //        quitButton,
-            //        c.Resolve<IPlayButtonPressedUseCase>(),
-            //        c.Resolve<IOptionsButtonPressedUseCase>(),
-            //        c.Resolve<IQuitButtonPressedUseCase>()
-            //        ))
-            //    .WhenInit((c, o) => o.Execute())
-            //    .NonLazy();
+            container.Bind<LevelSelectionUiViewStackEntry>()
+                .FromFunction(c => new LevelSelectionUiViewStackEntry(
+                    typeof(ILevelSelectionUiInteractor),
+                    gameObject.transform,
+                    new TweenPlayerAnimationVisible(
+                        showAnimation,
+                        hideAnimation
+                        ),
+                    isPopup: false,
+                    new ViewStackEntryRefresh(
+                        RefreshType.BeforeShow,
+                        new CallbackRefreshable(() => SelectEntry(c.Resolve<ISingleRepository<LevelTextButtonWidget>>()))
+                        )
+                    ));
 
             container.Bind<IRepository<IDisposable<LevelTextButtonWidget>>>()
                 .FromInstance(new SimpleRepository<IDisposable<LevelTextButtonWidget>>());
@@ -58,8 +67,27 @@ namespace Fueler.Content.Meta.Ui.LevelSelection
                     levelTextButtonWidgetParent
                     ));
 
-            container.Bind<ISpawnLevelEntryUseCase>()
-                .FromFunction(c => new SpawnLevelEntryUseCase(
+            container.Bind<ISingleRepository<LevelTextButtonWidget>>()
+                .FromInstance(new SimpleSingleRepository<LevelTextButtonWidget>());
+
+            container.Bind<IIsLevelCompletedUseCase>()
+                .FromFunction(c => new IsLevelCompletedUseCase(
+                    c.Resolve<IPersistenceService>().LevelsSerializable
+                    ));
+
+            container.Bind<ITryGetLastUncompletedLevelUseCase>()
+                .FromFunction(c => new TryGetLastUncompletedLevelUseCase(
+                    c.Resolve<IConfigurationService>().LevelsConfiguration,
+                    c.Resolve<IIsLevelCompletedUseCase>()
+                    ));
+
+            container.Bind<ISetEntryAsFirstSelectedUseCase>()
+                .FromFunction(c => new SetEntryAsFirstSelectedUseCase(
+                    c.Resolve<ISingleRepository<LevelTextButtonWidget>>()
+                    ));
+
+            container.Bind<ITrySpawnLevelEntryUseCase>()
+                .FromFunction(c => new TrySpawnLevelEntryUseCase(
                     c.Resolve<IRepository<IDisposable<LevelTextButtonWidget>>>(),
                     c.Resolve<IFactory<LevelTextButtonWidgetFactoryDefinition, IDisposable<LevelTextButtonWidget>>>()
                     ));
@@ -67,30 +95,44 @@ namespace Fueler.Content.Meta.Ui.LevelSelection
             container.Bind<ISpawnLevelEntriesUseCase>()
                 .FromFunction(c => new SpawnLevelEntriesUseCase(
                     c.Resolve<IConfigurationService>().LevelsConfiguration,
-                    c.Resolve<ISpawnLevelEntryUseCase>()
+                    c.Resolve<ITrySpawnLevelEntryUseCase>(),
+                    c.Resolve<ISetEntryAsFirstSelectedUseCase>(),
+                    c.Resolve<ITryGetLastUncompletedLevelUseCase>()
+                    ))
+                .WhenInit((c, o) => o.Execute())
+                .NonLazy();
+
+            container.Bind<IBackButtonPressedUseCase>()
+                .FromFunction(c => new BackButtonPressedUseCase(
+                    c.Resolve<IUiViewStack>()
+                    ));
+
+            container.Bind<ISubscribeToButtonsUseCase>()
+                .FromFunction(c => new SubscribeToButtonsUseCase(
+                    backButton,
+                    c.Resolve<IBackButtonPressedUseCase>()
                     ))
                 .WhenInit((c, o) => o.Execute())
                 .NonLazy();
 
             container.Bind<ILevelSelectionUiInteractor>()
                 .FromFunction(c => new LevelSelectionUiInteractor())
-                .WhenInit((c, o) => c.Resolve<IUiViewStack>().Register(viewStackEntry))
-                .WhenDispose((c, o) => c.Resolve<IUiViewStack>().Unregister(viewStackEntry))
+                .WhenInit((c, o) => c.Resolve<IUiViewStack>().Register(c.Resolve<LevelSelectionUiViewStackEntry>()))
+                .WhenDispose((c, o) => c.Resolve<IUiViewStack>().Unregister(c.Resolve<LevelSelectionUiViewStackEntry>()))
                 .NonLazy();
         }
 
-        private IViewStackEntry CreateStackEntry()
+        private void SelectEntry(ISingleRepository<LevelTextButtonWidget> toSelectRepository)
         {
-            return new ViewStackEntry(
-                typeof(ILevelSelectionUiInteractor),
-                gameObject.transform,
-                new TweenPlayerAnimationVisible(
-                    showAnimation,
-                    hideAnimation
-                    ),
-                isPopup: false/*,
-                new ViewStackEntryRefresh(RefreshType.BeforeShow, new SetAsSelectedRefreshable(firstSelectable))*/
-                );
+            bool hasItem = toSelectRepository.TryGet(out LevelTextButtonWidget item);
+
+            if(!hasItem)
+            {
+                new SetAsSelectedRefreshable(firstSelectable).Refresh();
+                return;
+            }
+
+            new SetAsSelectedRefreshable(item.SelectableCallbacks).Refresh();
         }
     }
 }

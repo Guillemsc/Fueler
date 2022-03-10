@@ -26,6 +26,8 @@ using Fueler.Content.Shared.Input;
 using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
 using Fueler.Assets.Fueler.Scripts.Runtime.Content.Stage.General.UseCases.RestartLevelInputPerformed;
 using Fueler.Content.Stage.General.Actors;
+using Fueler.Content.Shared.Levels.UseCases.SetLevelAsCompleted;
+using Fueler.Content.Services.Persistence;
 
 namespace Fueler.Content.Stage.General.Installers
 {
@@ -38,6 +40,11 @@ namespace Fueler.Content.Stage.General.Installers
 
             container.Bind<IWaitUnscaledTimeUseCase>()
                 .FromFunction(c => new WaitUnscaledTimeUseCase());
+
+            container.Bind<ISetLevelAsCompletedUseCase>()
+                .FromFunction(c => new SetLevelAsCompletedUseCase(
+                    c.Resolve<IPersistenceService>().LevelsSerializable
+                    ));
 
             container.Bind<ILoadStageUseCase>().FromFunction(c => new LoadStageUseCase(
                 c.Resolve<StageStateData>(),
@@ -67,9 +74,11 @@ namespace Fueler.Content.Stage.General.Installers
 
             container.Bind<IEndStageUseCase>().FromFunction(c => new EndStageUseCase(
                 c.Resolve<LevelState>(),
+                c.Resolve<ILevelConfiguration>(),
                 c.Resolve<ISingleRepository<IDisposable<ShipEntity>>>(),
                 c.Resolve<IUiViewStack>(),
-                c.Resolve<IWaitUnscaledTimeUseCase>()
+                c.Resolve<IWaitUnscaledTimeUseCase>(),
+                c.Resolve<ISetLevelAsCompletedUseCase>()
                 ));
 
             container.Bind<ITryEndStageUseCase>()

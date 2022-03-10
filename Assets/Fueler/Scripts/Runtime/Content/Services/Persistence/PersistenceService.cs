@@ -12,12 +12,14 @@ namespace Fueler.Content.Services.Persistence
         public SerializableData<GameSettingsPersistence> GameSettingsSerializable { get; }
         public SerializableData<AccessibilityPersistence> AccessibilitySerializable { get; }
         public SerializableData<TutorialPersistence> TutorialSerializable { get; }
+        public SerializableData<LevelsPersistence> LevelsSerializable { get; }
 
         public PersistenceService()
         {
             GameSettingsSerializable = new SerializableData<GameSettingsPersistence>(GameSettingsPersistence.Path);
             AccessibilitySerializable = new SerializableData<AccessibilityPersistence>(AccessibilityPersistence.Path);
             TutorialSerializable = new SerializableData<TutorialPersistence>(TutorialPersistence.Path);
+            LevelsSerializable = new SerializableData<LevelsPersistence>(LevelsPersistence.Path);
         }
 
         public async Task LoadAll(CancellationToken cancellationToken)
@@ -25,6 +27,7 @@ namespace Fueler.Content.Services.Persistence
             await GameSettingsSerializable.Load(cancellationToken);
             await AccessibilitySerializable.Load(cancellationToken);
             await TutorialSerializable.Load(cancellationToken);
+            await LevelsSerializable.Load(cancellationToken);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Fueler.Content.Stage.Tutorial.Persistence
             stringBuilder.AppendLine(string.Format("{0}:", nameof(ObjectivesPanelsSeen)));
             foreach (ObjectiveType objectiveSeen in ObjectivesPanelsSeen)
             {
-                stringBuilder.AppendLine(string.Format("- {0}:", objectiveSeen));
+                stringBuilder.AppendLine(string.Format("- {0}", objectiveSeen));
             }
 
             return stringBuilder.ToString();

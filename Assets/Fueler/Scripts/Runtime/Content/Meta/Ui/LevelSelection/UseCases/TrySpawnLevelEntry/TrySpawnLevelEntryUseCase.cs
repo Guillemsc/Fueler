@@ -5,14 +5,14 @@ using Juce.Core.Disposables;
 using Juce.Core.Factories;
 using Juce.Core.Repositories;
 
-namespace Fueler.Content.Meta.Ui.LevelSelection.UseCases.SpawnLevelEntry
+namespace Fueler.Content.Meta.Ui.LevelSelection.UseCases.TrySpawnLevelEntry
 {
-    public class SpawnLevelEntryUseCase : ISpawnLevelEntryUseCase
+    public class TrySpawnLevelEntryUseCase : ITrySpawnLevelEntryUseCase
     {
         private readonly IRepository<IDisposable<LevelTextButtonWidget>> entriesRepository;
         private readonly IFactory<LevelTextButtonWidgetFactoryDefinition, IDisposable<LevelTextButtonWidget>> entriesFactory;
 
-        public SpawnLevelEntryUseCase(
+        public TrySpawnLevelEntryUseCase(
             IRepository<IDisposable<LevelTextButtonWidget>> entriesRepository,
             IFactory<LevelTextButtonWidgetFactoryDefinition, IDisposable<LevelTextButtonWidget>> entriesFactory
             )
@@ -21,7 +21,12 @@ namespace Fueler.Content.Meta.Ui.LevelSelection.UseCases.SpawnLevelEntry
             this.entriesFactory = entriesFactory;
         }
 
-        public void Execute(int index, ILevelConfiguration levelConfiguration)
+        public bool Execute(
+            int index,
+            bool locked,
+            ILevelConfiguration levelConfiguration, 
+            out LevelTextButtonWidget levelEntry
+            )
         {
             string levelNumberText = string.Empty;
 
@@ -36,17 +41,22 @@ namespace Fueler.Content.Meta.Ui.LevelSelection.UseCases.SpawnLevelEntry
 
             bool created = entriesFactory.TryCreate(
                 new LevelTextButtonWidgetFactoryDefinition(
-                    levelNumberText
+                    levelNumberText,
+                    locked
                     ),
                 out IDisposable<LevelTextButtonWidget> entry
                 );
 
             if(!created)
             {
-                return;
+                levelEntry = default;
+                return false;
             }
 
             entriesRepository.Add(entry);
+
+            levelEntry = entry.Value;
+            return true;
         }
     }
 }

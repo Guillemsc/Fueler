@@ -24,11 +24,11 @@
       "hash": "122aa4b6456e80fb98ca76a835836c635c6bfa41"
     },
     "com.juce.input": {
-      "version": "git+https://github.com/Juce-Assets/Juce-Input#0.0.5",
+      "version": "git+https://github.com/Juce-Assets/Juce-Input#0.0.6",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "fd5a6467fc90ec140f887f835025b5ff0b2448b7"
+      "hash": "ffa9f846cb5ec218feff7bcd4b125874336f333e"
     },
     "com.juce.persistence": {
       "version": "git+https://github.com/Juce-Assets/Juce-Persistence#1.0.2",

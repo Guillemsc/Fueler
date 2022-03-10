@@ -3,12 +3,15 @@
     public class LevelTextButtonWidgetFactoryDefinition 
     {
         public string LevelNumberText { get; }
+        public bool Locked { get; }
 
         public LevelTextButtonWidgetFactoryDefinition(
-            string levelNumberText
+            string levelNumberText,
+            bool locked
             )
         {
             LevelNumberText = levelNumberText;
+            Locked = locked;
         }
     }
 }

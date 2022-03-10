@@ -1,5 +1,7 @@
-﻿using Fueler.Content.Shared.Levels.UseCases.LoadNextLevel;
+﻿using Fueler.Content.Shared.Levels.Configuration;
+using Fueler.Content.Shared.Levels.UseCases.LoadNextLevel;
 using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
+using Fueler.Content.Shared.Levels.UseCases.SetLevelAsCompleted;
 using Fueler.Content.Shared.Time.UseCases.WaitUnscaledTime;
 using Fueler.Content.Stage.General.State;
 using Fueler.Content.Stage.General.UseCases.IsStageCompleted;
@@ -19,22 +21,27 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
     public class EndStageUseCase : IEndStageUseCase
     {
         private readonly LevelState levelState;
+        private readonly ILevelConfiguration levelConfiguration;
         private readonly ISingleRepository<IDisposable<ShipEntity>> shipEntityRepository;
         private readonly IUiViewStack viewStack;
         private readonly IWaitUnscaledTimeUseCase waitUnscaledTimeUseCase;
-        private readonly IIsStageCompletedUseCase canEndStageUseCase;
+        private readonly ISetLevelAsCompletedUseCase setLevelAsCompletedUseCase;
 
         public EndStageUseCase(
             LevelState levelState,
+            ILevelConfiguration levelConfiguration,
             ISingleRepository<IDisposable<ShipEntity>> shipEntityRepository,
             IUiViewStack viewStack,
-            IWaitUnscaledTimeUseCase waitUnscaledTimeUseCase
+            IWaitUnscaledTimeUseCase waitUnscaledTimeUseCase,
+            ISetLevelAsCompletedUseCase setLevelAsCompletedUseCase
             )
         {
             this.levelState = levelState;
+            this.levelConfiguration = levelConfiguration;
             this.shipEntityRepository = shipEntityRepository;
             this.viewStack = viewStack;
             this.waitUnscaledTimeUseCase = waitUnscaledTimeUseCase;
+            this.setLevelAsCompletedUseCase = setLevelAsCompletedUseCase;
         }
 
         public void Execute(LevelEndData levelEndedData)
@@ -69,6 +76,8 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
             {
                 shipEntity.Value.ShipController.Autobreak = true;
             }
+
+            setLevelAsCompletedUseCase.Execute(levelConfiguration);
 
             await waitUnscaledTimeUseCase.Execute(TimeSpan.FromSeconds(1), cancellationToken);
 

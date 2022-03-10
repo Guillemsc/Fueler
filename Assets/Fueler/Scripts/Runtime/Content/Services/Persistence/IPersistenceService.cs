@@ -12,6 +12,7 @@ namespace Fueler.Content.Services.Persistence
         SerializableData<GameSettingsPersistence> GameSettingsSerializable { get; }
         SerializableData<AccessibilityPersistence> AccessibilitySerializable { get; }
         SerializableData<TutorialPersistence> TutorialSerializable { get; }
+        SerializableData<LevelsPersistence> LevelsSerializable { get; }
 
         Task LoadAll(CancellationToken cancellationToken);
     }
