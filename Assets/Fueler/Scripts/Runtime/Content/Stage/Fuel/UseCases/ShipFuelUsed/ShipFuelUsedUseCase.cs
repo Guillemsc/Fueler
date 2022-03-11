@@ -1,6 +1,7 @@
 ﻿using Fueler.Content.Shared.Fuel.Configuration;
 using Fueler.Content.Stage.Fuel.Data;
 using Fueler.Content.Stage.Fuel.UseCases.CheckShipMovementIfNoFuel;
+using Fueler.Content.Stage.Fuel.UseCases.TryShowLowFuelWarning;
 using Fueler.Content.StageUi.Ui.Level;
 using System;
 using UnityEngine;
@@ -12,18 +13,21 @@ namespace Fueler.Content.Stage.Fuel.UseCases.ShipFuelUsed
         private readonly FuelData shipFuelData;
         private readonly ILevelUiInteractor levelUiInteractor;
         private readonly IFuelConfiguration fuelConfiguration;
+        private readonly ITryShowLowFuelWarningUseCase tryShowLowFuelWarningUseCase;
         private readonly ICheckShipMovementIfNoFuelUseCase checkShipMovementIfNoFuelUseCase;
 
         public ShipFuelUsedUseCase(
             FuelData shipFuelData,
             ILevelUiInteractor levelUiInteractor,
             IFuelConfiguration fuelConfiguration,
+            ITryShowLowFuelWarningUseCase tryShowLowFuelWarningUseCase,
             ICheckShipMovementIfNoFuelUseCase checkShipMovementIfNoFuelUseCase
             )
         {
             this.shipFuelData = shipFuelData;
             this.levelUiInteractor = levelUiInteractor;
             this.fuelConfiguration = fuelConfiguration;
+            this.tryShowLowFuelWarningUseCase = tryShowLowFuelWarningUseCase;
             this.checkShipMovementIfNoFuelUseCase = checkShipMovementIfNoFuelUseCase;
         }
 
@@ -41,6 +45,8 @@ namespace Fueler.Content.Stage.Fuel.UseCases.ShipFuelUsed
             shipFuelData.CurrentFuel = currentFuel;
 
             levelUiInteractor.SetFuel(decimal.ToSingle(shipFuelData.MaxFuel), decimal.ToSingle(shipFuelData.CurrentFuel));
+
+            tryShowLowFuelWarningUseCase.Execute();
 
             checkShipMovementIfNoFuelUseCase.Execute();
         }

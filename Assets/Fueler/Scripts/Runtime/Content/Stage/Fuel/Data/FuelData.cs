@@ -4,5 +4,6 @@
     {
         public decimal MaxFuel { get; set; }
         public decimal CurrentFuel { get; set; }
+        public bool ShowedLowFuelWarning { get; set; }
     }
 }

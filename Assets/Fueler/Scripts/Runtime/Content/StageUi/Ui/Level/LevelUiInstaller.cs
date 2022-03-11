@@ -1,10 +1,12 @@
 ﻿using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SetAstronauts;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SetFuel;
+using Fueler.Content.StageUi.Ui.Level.UseCase.ShowToasterText;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SubscribeToButtons;
 using Fueler.Content.StageUi.Ui.Level.UseCase.TryPlayLowFuelIndicator;
 using Juce.Core.DI.Builder;
 using Juce.Core.DI.Installers;
+using Juce.Core.Sequencing;
 using Juce.CoreUnity.PointerCallback;
 using Juce.CoreUnity.TweenComponent;
 using Juce.CoreUnity.ViewStack;
@@ -21,6 +23,9 @@ namespace Fueler.Content.StageUi.Ui.Level
         [SerializeField] private TweenPlayerAnimation showAnimation = default;
         [SerializeField] private TweenPlayerAnimation hideAnimation = default;
 
+        [Header("Buttons")]
+        [SerializeField] private PointerCallbacks replayPointerCallbacks = default;
+
         [Header("Fueel Tweens")]
         [SerializeField] private TweenPlayer setFuelTween = default;
         [SerializeField] private TweenPlayer lowFuelTween = default;
@@ -30,11 +35,12 @@ namespace Fueler.Content.StageUi.Ui.Level
         [SerializeField] private TweenPlayer setAstronautsTween = default;
         [SerializeField] private TweenPlayer hideAstronautsTween = default;
 
-        [Header("Buttons")]
-        [SerializeField] private PointerCallbacks replayPointerCallbacks = default;
+        [Header("Toaster Text Tweens")]
+        [SerializeField] private TweenPlayer showToasterTextTween = default;
+        [SerializeField] private TweenPlayer hideToasterTextTween = default;
 
-        [Header("Values")]
-        [SerializeField, Range(0f, 1f)] private float lowFuelIndicatorNormalized = 0.2f;
+        [Header("Toaster Text Values")]
+        [SerializeField, Min(0f)] private float toasterTextDurationOnScreen = 1f;
 
         private IViewStackEntry viewStackEntry;
 
@@ -44,21 +50,27 @@ namespace Fueler.Content.StageUi.Ui.Level
 
             container.Bind<ITryPlayLowFuelIndicatorUseCase>()
                 .FromFunction(c => new TryPlayLowFuelIndicatorUseCase(
-                    lowFuelIndicatorNormalized,
                     lowFuelTween
                     ));
 
             container.Bind<ISetFuelUseCase>()
                 .FromFunction(c => new SetFuelUseCase(
                     setFuelTween,
-                    hideFuelTween,
-                    c.Resolve<ITryPlayLowFuelIndicatorUseCase>()
+                    hideFuelTween
                     ));
 
             container.Bind<ISetAstronautsUseCase>()
                 .FromFunction(c => new SetAstronautsUseCase(
                     setAstronautsTween,
                     hideAstronautsTween
+                    ));
+
+            container.Bind<IShowToasterTextUseCase>()
+                .FromFunction(c => new ShowToasterTextUseCase(
+                    new Sequencer(),
+                    showToasterTextTween,
+                    hideToasterTextTween,
+                    toasterTextDurationOnScreen
                     ));
 
             container.Bind<ISubscribeToButtonsUseCase>()
@@ -72,7 +84,9 @@ namespace Fueler.Content.StageUi.Ui.Level
             container.Bind<ILevelUiInteractor>()
                 .FromFunction(c => new LevelUiInteractor(
                     c.Resolve<ISetFuelUseCase>(),
-                    c.Resolve<ISetAstronautsUseCase>()
+                    c.Resolve<ITryPlayLowFuelIndicatorUseCase>(),
+                    c.Resolve<ISetAstronautsUseCase>(),
+                    c.Resolve<IShowToasterTextUseCase>()
                     ))
                 .WhenInit((c, o) => c.Resolve<IUiViewStack>().Register(viewStackEntry))
                 .WhenDispose((c, o) => c.Resolve<IUiViewStack>().Unregister(viewStackEntry))

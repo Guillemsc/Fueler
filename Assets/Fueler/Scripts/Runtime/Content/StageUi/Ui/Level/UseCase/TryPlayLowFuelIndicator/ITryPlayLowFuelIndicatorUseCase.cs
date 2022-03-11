@@ -2,6 +2,6 @@
 {
     public interface ITryPlayLowFuelIndicatorUseCase
     {
-        void Execute(float fuelLeftNormalized);
+        void Execute();
     }
 }

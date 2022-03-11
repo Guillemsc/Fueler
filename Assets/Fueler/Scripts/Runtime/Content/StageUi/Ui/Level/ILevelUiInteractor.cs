@@ -3,6 +3,8 @@
     public interface ILevelUiInteractor
     {
         void SetFuel(float maxFuel, float currentFuel);
+        void EnableLowFuelWarning();
         void SetAstronauts(float totalAstronauts, float currentAstronatus);
+        void ShowToasterText(string text);
     }
 }

@@ -3,5 +3,6 @@
     public interface IFuelConfiguration
     {
         float FuelConsumptionRate { get; }
+        float LowFuelIndicatorNormalized { get; }
     }
 }

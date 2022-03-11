@@ -9,17 +9,14 @@ namespace Fueler.Content.StageUi.Ui.Level.UseCase.SetFuel
     {
         private readonly TweenPlayer setFuelTween;
         private readonly TweenPlayer hideFuelTween;
-        private readonly ITryPlayLowFuelIndicatorUseCase tryPlayLowFuelIndicatorUseCase;
 
         public SetFuelUseCase(
             TweenPlayer setFuelTween,
-            TweenPlayer hideFuelTween,
-            ITryPlayLowFuelIndicatorUseCase tryPlayLowFuelIndicatorUseCase
+            TweenPlayer hideFuelTween
             )
         {
             this.setFuelTween = setFuelTween;
             this.hideFuelTween = hideFuelTween;
-            this.tryPlayLowFuelIndicatorUseCase = tryPlayLowFuelIndicatorUseCase;
         }
 
         public void Execute(float maxFuel, float currentFuel)
@@ -50,8 +47,6 @@ namespace Fueler.Content.StageUi.Ui.Level.UseCase.SetFuel
             };
 
             setFuelTween.Play(fuelLeftTweenBinding);
-
-            tryPlayLowFuelIndicatorUseCase.Execute(currentFuelNormalized);
         }
     }
 }
