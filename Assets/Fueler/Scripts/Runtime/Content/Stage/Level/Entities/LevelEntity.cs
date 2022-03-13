@@ -10,14 +10,12 @@ namespace Fueler.Content.Stage.General.Entities
         [Header("Core")]
         [SerializeField] private CompositeCollider2D cameraConfiner = default;
         [SerializeField] private Transform startingPosition = default;
-        [SerializeField] private PhysicsCallbacks endCallback = default;
 
         [Header("Items")]
         [SerializeField] private List<AstronautEntity> astronatus = default;
 
         public CompositeCollider2D CameraConfiner => cameraConfiner;
         public Transform StartingPosition => startingPosition;
-        public PhysicsCallbacks EndCallback => endCallback;
 
         public IReadOnlyList<AstronautEntity> Astronauts => astronatus;
     }
