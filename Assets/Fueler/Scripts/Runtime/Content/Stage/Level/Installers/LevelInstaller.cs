@@ -8,6 +8,9 @@ using Fueler.Content.Stage.General.Entities;
 using Fueler.Content.Stage.General.Factories;
 using Fueler.Content.Stage.General.State;
 using Fueler.Content.Stage.General.UseCases.LoadLevel;
+using Fueler.Content.Stage.General.UseCases.ShipCollidedWithEnd;
+using Fueler.Content.Stage.General.UseCases.TryEndStage;
+using Fueler.Content.Stage.Level.Data;
 using Fueler.Contexts.Shared.UseCases.UnloadAndLoadStage;
 using Fueler.Contexts.Stage;
 using Juce.Core.DI.Builder;
@@ -22,6 +25,7 @@ namespace Fueler.Content.Stage.General.Installers
         public static void InstallLevel(this IDIContainerBuilder container)
         {
             container.Bind<LevelState>().FromNew();
+            container.Bind<LevelMessagesData>().FromNew();
 
             container.Bind<IFactory<LevelEntityFactoryDefinition, IDisposable<LevelEntity>>>().FromFunction(c => new LevelEntityFactory(
                 c.Resolve<StageContextInstance>().LevelEntityParent
@@ -59,6 +63,11 @@ namespace Fueler.Content.Stage.General.Installers
                 c.Resolve<IFactory<LevelEntityFactoryDefinition, IDisposable<LevelEntity>>>(),
                 c.Resolve<ISingleRepository<IDisposable<LevelEntity>>>()
                 ));
+
+            container.Bind<IShipCollidedWithEndUseCase>()
+                .FromFunction(c => new ShipCollidedWithEndUseCase(
+                    c.Resolve<ITryEndStageUseCase>()
+                    ));
         }
     }
 }

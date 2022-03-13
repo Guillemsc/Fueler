@@ -42,7 +42,7 @@ namespace Fueler.Content.Stage.Fuel.UseCases.TryShowLowFuelWarning
 
             shipFuelData.ShowedLowFuelWarning = true;
 
-            levelUiInteractor.ShowToasterText("Low fuel");
+            levelUiInteractor.ShowToasterText("Low energy");
             levelUiInteractor.EnableLowFuelWarning();
         }
     }

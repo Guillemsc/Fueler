@@ -13,6 +13,7 @@ using Juce.Core.Repositories;
 using Fueler.Content.Stage.Astrounats.UseCases.ShipCollidedWithAstronaut;
 using Fueler.Content.Stage.Ship.UseCases.ShipCollidedWithShipKiller;
 using Fueler.Content.Stage.General.UseCases.TryEndStage;
+using Fueler.Content.Stage.General.UseCases.ShipCollidedWithEnd;
 
 namespace Fueler.Content.Stage.Ship.Installers
 {
@@ -54,6 +55,7 @@ namespace Fueler.Content.Stage.Ship.Installers
 
             container.Bind<IShipCollidedUseCase>()
                 .FromFunction(c => new ShipCollidedUseCase(
+                    c.Resolve<IShipCollidedWithEndUseCase>(),
                     c.Resolve<IShipCollidedWithShipKillerUseCase>(),
                     c.Resolve<IShipCollidedWithAstronautUseCase>()
                     ));

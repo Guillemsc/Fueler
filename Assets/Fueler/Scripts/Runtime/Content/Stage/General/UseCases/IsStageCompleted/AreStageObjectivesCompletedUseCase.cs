@@ -1,12 +1,12 @@
 ﻿using Fueler.Content.Stage.Astrounats.Data;
 
-namespace Fueler.Content.Stage.General.UseCases.IsStageCompleted
+namespace Fueler.Content.Stage.General.UseCases.AreStageObjectivesCompleted
 {
-    public class IsStageCompletedUseCase : IIsStageCompletedUseCase
+    public class AreStageObjectivesCompletedUseCase : IAreStageObjectivesCompletedUseCase
     {
         private readonly AstronautsData astronautsData;
 
-        public IsStageCompletedUseCase(
+        public AreStageObjectivesCompletedUseCase(
             AstronautsData astronautsData
             )
         {

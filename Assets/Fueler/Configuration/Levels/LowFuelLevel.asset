@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: LowFuelLevel
   m_EditorClassIdentifier: 
   id: 54baf258-ffb0-48bb-ae39-075d74fa3466
-  levelEntityPrefab: {fileID: 0}
-  initialFuel: 100
+  levelEntityPrefab: {fileID: 3166591651800058605, guid: 93cca6404f2d2644585f7dfbae3e5ec5, type: 3}
+  initialFuel: 15

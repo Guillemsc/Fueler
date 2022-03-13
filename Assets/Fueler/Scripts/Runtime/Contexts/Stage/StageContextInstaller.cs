@@ -5,7 +5,6 @@ using Fueler.Contexts.Stage.UseCases.End;
 using Fueler.Contexts.Stage.UseCases.Load;
 using Juce.Core.DI.Builder;
 using Juce.CoreUnity.Contexts;
-using UnityEngine;
 using Fueler.Contexts.Stage.UseCases.Start;
 using Fueler.Content.Stage.General.UseCases.StartStage;
 using Fueler.Content.Stage.Fuel.Installers;
@@ -53,8 +52,7 @@ namespace Fueler.Contexts.Stage
             container.Bind<IStageContextInteractor>()
                 .FromFunction(c => new StageContextInteractor(
                     c.Resolve<ILoadUseCase>(),
-                    c.Resolve<IStartUseCase>(),
-                    c.Resolve<IEndUseCase>()
+                    c.Resolve<IStartUseCase>()
                     ));
         }
     }

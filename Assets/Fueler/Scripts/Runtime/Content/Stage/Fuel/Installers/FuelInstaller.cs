@@ -1,11 +1,14 @@
 ﻿using Fueler.Content.Services.Configuration;
 using Fueler.Content.Shared.Levels.Configuration;
 using Fueler.Content.Stage.Accessibility.UseCases.IsFuelInfinite;
+using Fueler.Content.Stage.Astrounats.Data;
+using Fueler.Content.Stage.Astrounats.UseCases.TryShowNeedToCollectAllAstronatusToaster;
 using Fueler.Content.Stage.Fuel.Data;
 using Fueler.Content.Stage.Fuel.UseCases.CheckShipMovementIfNoFuel;
 using Fueler.Content.Stage.Fuel.UseCases.InitFuel;
 using Fueler.Content.Stage.Fuel.UseCases.ShipFuelUsed;
 using Fueler.Content.Stage.Fuel.UseCases.TryShowLowFuelWarning;
+using Fueler.Content.Stage.Level.Data;
 using Fueler.Content.Stage.Ship.Entities;
 using Fueler.Content.StageUi.Ui.Level;
 using Juce.Core.DI.Builder;
@@ -48,6 +51,13 @@ namespace Fueler.Content.Stage.Fuel.Installers
                     c.Resolve<IConfigurationService>().FuelConfiguration,
                     c.Resolve<ITryShowLowFuelWarningUseCase>(),
                     c.Resolve<ICheckShipMovementIfNoFuelUseCase>()
+                    ));
+
+            container.Bind<ITryShowNeedToCollectAllAstronatusToasterUseCase>()
+                .FromFunction(c => new TryShowNeedToCollectAllAstronatusToasterUseCase(
+                    c.Resolve<ILevelUiInteractor>(),
+                    c.Resolve<LevelMessagesData>(),
+                    c.Resolve<AstronautsData>()
                     ));
         }
     }

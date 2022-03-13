@@ -17,7 +17,7 @@ using Fueler.Content.Shared.Levels.Configuration;
 using Fueler.Content.Stage.Fuel.UseCases.InitFuel;
 using Fueler.Content.Stage.Astrounats.UseCases.InitAstronauts;
 using Fueler.Content.Stage.Ship.UseCases.ShipCollided;
-using Fueler.Content.Stage.General.UseCases.IsStageCompleted;
+using Fueler.Content.Stage.General.UseCases.AreStageObjectivesCompleted;
 using Fueler.Content.Stage.General.UseCases.TryEndStage;
 using Fueler.Content.Stage.Astrounats.Data;
 using Fueler.Content.Stage.Tutorial.UseCases.TryShowTutorialPanels;
@@ -28,6 +28,7 @@ using Fueler.Assets.Fueler.Scripts.Runtime.Content.Stage.General.UseCases.Restar
 using Fueler.Content.Stage.General.Actors;
 using Fueler.Content.Shared.Levels.UseCases.SetLevelAsCompleted;
 using Fueler.Content.Services.Persistence;
+using Fueler.Content.Stage.Astrounats.UseCases.TryShowNeedToCollectAllAstronatusToaster;
 
 namespace Fueler.Content.Stage.General.Installers
 {
@@ -67,8 +68,8 @@ namespace Fueler.Content.Stage.General.Installers
                 c.Resolve<ITryShowTutorialPanelsUseCase>()
                 ));
 
-            container.Bind<IIsStageCompletedUseCase>()
-                .FromFunction(c => new IsStageCompletedUseCase(
+            container.Bind<IAreStageObjectivesCompletedUseCase>()
+                .FromFunction(c => new AreStageObjectivesCompletedUseCase(
                     c.Resolve<AstronautsData>()
                     ));
 
@@ -83,7 +84,8 @@ namespace Fueler.Content.Stage.General.Installers
 
             container.Bind<ITryEndStageUseCase>()
                 .FromFunction(c => new TryEndStageUseCase(
-                    c.Resolve<IIsStageCompletedUseCase>(),
+                    c.Resolve<ITryShowNeedToCollectAllAstronatusToasterUseCase>(),
+                    c.Resolve<IAreStageObjectivesCompletedUseCase>(),
                     c.Resolve<IEndStageUseCase>()
                     ));
 

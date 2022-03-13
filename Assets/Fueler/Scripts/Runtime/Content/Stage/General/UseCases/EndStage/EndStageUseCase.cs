@@ -4,7 +4,7 @@ using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
 using Fueler.Content.Shared.Levels.UseCases.SetLevelAsCompleted;
 using Fueler.Content.Shared.Time.UseCases.WaitUnscaledTime;
 using Fueler.Content.Stage.General.State;
-using Fueler.Content.Stage.General.UseCases.IsStageCompleted;
+using Fueler.Content.Stage.General.UseCases.AreStageObjectivesCompleted;
 using Fueler.Content.Stage.Level.Data;
 using Fueler.Content.Stage.Ship.Entities;
 using Fueler.Content.StageUi.Ui.LevelCompleted;

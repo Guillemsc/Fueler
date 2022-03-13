@@ -1,6 +1,4 @@
-﻿using Fueler.Content.Stage.Level.Data;
-using Fueler.Contexts.Stage.UseCases.End;
-using Fueler.Contexts.Stage.UseCases.Load;
+﻿using Fueler.Contexts.Stage.UseCases.Load;
 using Fueler.Contexts.Stage.UseCases.Start;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,17 +9,14 @@ namespace Fueler.Contexts.Stage
     {
         private readonly ILoadUseCase loadUseCase;
         private readonly IStartUseCase startUseCase;
-        private readonly IEndUseCase endUseCase;
 
         public StageContextInteractor(
             ILoadUseCase loadUseCase,
-            IStartUseCase startUseCase,
-            IEndUseCase endUseCase
+            IStartUseCase startUseCase
             )
         {
             this.loadUseCase = loadUseCase;
             this.startUseCase = startUseCase;
-            this.endUseCase = endUseCase;
         }
 
         public Task Load(CancellationToken cancellationToken)
@@ -32,11 +27,6 @@ namespace Fueler.Contexts.Stage
         public void Start()
         {
             startUseCase.Execute();
-        }
-
-        public void End(LevelEndData levelEndData)
-        {
-            endUseCase.Execute(levelEndData);
         }
     }
 }

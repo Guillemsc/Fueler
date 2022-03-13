@@ -1,6 +1,4 @@
-﻿using Fueler.Content.Shared.Levels.Configuration;
-using Fueler.Content.Stage.Level.Data;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 
 namespace Fueler.Contexts.Stage
@@ -9,6 +7,5 @@ namespace Fueler.Contexts.Stage
     {
         Task Load(CancellationToken cancellationToken);
         void Start();
-        void End(LevelEndData levelEndData);
     }
 }

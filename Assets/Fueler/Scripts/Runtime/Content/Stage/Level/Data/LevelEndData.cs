@@ -10,7 +10,7 @@
       
         }
 
-        public static LevelEndData FromCompleted()
+        public static LevelEndData FromDestination()
         {
             return new LevelEndData()
             {

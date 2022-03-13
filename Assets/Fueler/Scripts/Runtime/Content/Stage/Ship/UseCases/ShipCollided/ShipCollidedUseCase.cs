@@ -1,5 +1,7 @@
 ﻿using Fueler.Content.Stage.Astrounats.Entities;
 using Fueler.Content.Stage.Astrounats.UseCases.ShipCollidedWithAstronaut;
+using Fueler.Content.Stage.General.Entities;
+using Fueler.Content.Stage.General.UseCases.ShipCollidedWithEnd;
 using Fueler.Content.Stage.Ship.Entities;
 using Fueler.Content.Stage.Ship.UseCases.ShipCollidedWithShipKiller;
 using Fueler.Content.Stage.Ship.Visitors;
@@ -9,14 +11,17 @@ namespace Fueler.Content.Stage.Ship.UseCases.ShipCollided
 {
     public class ShipCollidedUseCase : IShipCollidedUseCase, IShipColliderVisitor
     {
+        private readonly IShipCollidedWithEndUseCase shipCollidedWithEndUseCase;
         private readonly IShipCollidedWithShipKillerUseCase shipCollidedWithShipKillerUseCase;
         private readonly IShipCollidedWithAstronautUseCase shipCollidedWithAstronautUseCase;
 
         public ShipCollidedUseCase(
+            IShipCollidedWithEndUseCase shipCollidedWithEndUseCase,
             IShipCollidedWithShipKillerUseCase shipCollidedWithShipKillerUseCase,
             IShipCollidedWithAstronautUseCase shipCollidedWithAstronautUseCase
             )
         {
+            this.shipCollidedWithEndUseCase = shipCollidedWithEndUseCase;
             this.shipCollidedWithShipKillerUseCase = shipCollidedWithShipKillerUseCase;
             this.shipCollidedWithAstronautUseCase = shipCollidedWithAstronautUseCase;
         }
@@ -32,6 +37,12 @@ namespace Fueler.Content.Stage.Ship.UseCases.ShipCollided
 
             shipCollider.Accept(this);
         }
+
+        public void Visit(LevelEndEntity entity)
+        {
+            shipCollidedWithEndUseCase.Execute();
+        }
+
         public void Visit(ShipKillerEntity entity)
         {
             shipCollidedWithShipKillerUseCase.Execute(entity);
