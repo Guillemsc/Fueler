@@ -1,20 +1,21 @@
 ﻿using Fueler.Content.Stage.Cheats.UseCases.GetImmortality;
 using Fueler.Content.Stage.Cheats.UseCases.SetImmortality;
 using Fueler.Content.Stage.Cheats.UseCases.SetMaxFuel;
+using Juce.Cheats.Core;
+using Juce.Cheats.WidgetsInteractors;
 using Juce.Core.Repositories;
-using SRDebugger;
 
 namespace Fueler.Content.Stage.Cheats.UseCases.AddCheats
 {
     public class AddCheatsUseCase : IAddCheatsUseCase
     {
-        private readonly IRepository<OptionDefinition> optionsDefinitionsRepository;
+        private readonly IRepository<IWidgetInteractor> optionsDefinitionsRepository;
         private readonly ISetImmortalityUseCase setImmortalityUseCase;
         private readonly IGetImmortalityUseCase getImmortalityUseCase;
         private readonly ISetMaxFuelUseCase setMaxFuelUseCase;
 
         public AddCheatsUseCase(
-            IRepository<OptionDefinition> optionsDefinitionsRepository,
+            IRepository<IWidgetInteractor> optionsDefinitionsRepository,
             ISetImmortalityUseCase setImmortalityUseCase,
             IGetImmortalityUseCase getImmortalityUseCase,
             ISetMaxFuelUseCase setMaxFuelUseCase
@@ -28,19 +29,10 @@ namespace Fueler.Content.Stage.Cheats.UseCases.AddCheats
 
         public void Execute()
         {
-            OptionDefinition immortality = OptionDefinition.Create(
-               $"Immortality",
-               getImmortalityUseCase.Execute,
-               setImmortalityUseCase.Execute
-               );
-            SRDebug.Instance.AddOption(immortality);
+            IWidgetInteractor immortality = JuceCheats.AddAction("Immortal", () => setImmortalityUseCase.Execute(true));
             optionsDefinitionsRepository.Add(immortality);
 
-            OptionDefinition maxFuel = OptionDefinition.FromMethod(
-                $"Set Max Fuel",
-                setMaxFuelUseCase.Execute
-                );
-            SRDebug.Instance.AddOption(maxFuel);
+            IWidgetInteractor maxFuel = JuceCheats.AddAction("Set Max Fuel", setMaxFuelUseCase.Execute);
             optionsDefinitionsRepository.Add(maxFuel);
         }
     }

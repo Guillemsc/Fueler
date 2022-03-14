@@ -1,4 +1,4 @@
-﻿using SRDebugger;
+﻿using Juce.Cheats.Core;
 using UnityEngine;
 
 namespace Fueler.Content.Shared.Cheats
@@ -8,16 +8,11 @@ namespace Fueler.Content.Shared.Cheats
 
 #if DEVELOPMENT_BUILD || UNITY_EDITOR
 
-        private void Awake()
-        {
-            SRDebug.Init();
-        }
-
         private void Update()
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.Mouse2))
             {
-                SRDebug.Instance.ShowDebugPanel(DefaultTabs.Options);
+                JuceCheats.Toggle();
             }
         }
 #endif

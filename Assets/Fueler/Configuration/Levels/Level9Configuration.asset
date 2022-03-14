@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Level9Configuration
   m_EditorClassIdentifier: 
   id: 0bc09d80-62a0-4989-ba3a-fe39769386d1
-  levelEntityPrefab: {fileID: 0}
-  initialFuel: 100
+  levelEntityPrefab: {fileID: 3166591651800058605, guid: 01d63e8fdf5670744a026c61ddec83a1, type: 3}
+  initialFuel: 50

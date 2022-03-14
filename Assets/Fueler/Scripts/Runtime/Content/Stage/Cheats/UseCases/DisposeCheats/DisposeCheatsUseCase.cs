@@ -1,14 +1,15 @@
-﻿using Juce.Core.Repositories;
-using SRDebugger;
+﻿using Juce.Cheats.Core;
+using Juce.Cheats.WidgetsInteractors;
+using Juce.Core.Repositories;
 
 namespace Fueler.Content.Stage.Cheats.UseCases.DisposeCheats
 {
     public class DisposeCheatsUseCase : IDisposeCheatsUseCase
     {
-        private readonly IRepository<OptionDefinition> optionsDefinitionsRepository;
+        private readonly IRepository<IWidgetInteractor> optionsDefinitionsRepository;
 
         public DisposeCheatsUseCase(
-            IRepository<OptionDefinition> optionsDefinitionsRepository
+            IRepository<IWidgetInteractor> optionsDefinitionsRepository
             )
         {
             this.optionsDefinitionsRepository = optionsDefinitionsRepository;
@@ -16,9 +17,9 @@ namespace Fueler.Content.Stage.Cheats.UseCases.DisposeCheats
 
         public void Execute()
         {
-            foreach (OptionDefinition definition in optionsDefinitionsRepository.Items)
+            foreach (IWidgetInteractor definition in optionsDefinitionsRepository.Items)
             {
-                SRDebug.Instance.RemoveOption(definition);
+                JuceCheats.Remove(definition);
             }
 
             optionsDefinitionsRepository.Clear();
