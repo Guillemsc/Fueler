@@ -1,6 +1,9 @@
 # Fueler
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Twitter Follow](https://img.shields.io/badge/twitter-%406uillem-blue.svg?style=flat&label=Follow)](https://twitter.com/6uillem)
+[![Discord](https://img.shields.io/discord/768962092296044614.svg)](https://discord.gg/dbG7zKA)
+[![Release](https://img.shields.io/github/release/Guillemsc/Fueler.svg)](https://github.com//Guillemsc/Fueler/releases/latest)
+
 <img title="" src="https://github.com/Guillemsc/Fueler/blob/main/Assets/Fueler/Misc/LogosPanel.png" alt="Logo" data-align="inline">
 
 Welcome to Fueler: a small videogame about completing levels while maneuvering a cute ship through a circuit of asteroids.
