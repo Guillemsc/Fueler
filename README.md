@@ -5,6 +5,8 @@
 
 Welcome to Fueler: a small videogame about completing levels while maneuvering a cute ship through a circuit of asteroids.
 
+This repository can serve begginers or more advanced developers understand how professional projects could be approached from an scalable point of view. Here we use patterns, system and ways of building, gathered from professionals with years of experience working with Unity.
+
 <img title="" src="https://github.com/Guillemsc/Fueler/blob/main/Assets/Fueler/Misc/General.png" alt="Logo" data-align="inline">
 
 ## Installing
