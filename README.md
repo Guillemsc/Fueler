@@ -5,6 +5,8 @@
 
 Welcome to Fueler: a small videogame about completing levels while maneuvering a cute ship through a circuit of asteroids.
 
+<img title="" src="https://github.com/Guillemsc/Fueler/blob/main/Assets/Fueler/Misc/General.png" alt="Logo" data-align="inline">
+
 ## Installing
 Just clone this repository. Open with Unity 2020.3.3f1 or similar. All the depencences are already setup on the manifest.json.
 
