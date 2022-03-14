@@ -18,6 +18,8 @@ namespace Fueler.Content.Meta.Ui.LevelSelection.Factories.LevelTextButton
             creation.UnlockedContent.SetActive(!definition.Locked);
             creation.LockedContent.SetActive(definition.Locked);
 
+            creation.SelectableCallbacks.interactable = !definition.Locked;
+
             creation.PointerAndSelectableSubmitCallbacks.OnSubmit += definition.OnSubmit;
         }
     }

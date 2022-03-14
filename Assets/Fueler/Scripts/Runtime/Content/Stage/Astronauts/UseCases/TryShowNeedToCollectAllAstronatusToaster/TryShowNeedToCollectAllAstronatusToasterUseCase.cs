@@ -1,5 +1,5 @@
 ﻿using Fueler.Content.Stage.Astrounats.Data;
-using Fueler.Content.Stage.Level.Data;
+using Fueler.Content.Stage.General.Data;
 using Fueler.Content.StageUi.Ui.Level;
 
 namespace Fueler.Content.Stage.Astrounats.UseCases.TryShowNeedToCollectAllAstronatusToaster
@@ -7,12 +7,12 @@ namespace Fueler.Content.Stage.Astrounats.UseCases.TryShowNeedToCollectAllAstron
     public class TryShowNeedToCollectAllAstronatusToasterUseCase : ITryShowNeedToCollectAllAstronatusToasterUseCase
     {
         private readonly ILevelUiInteractor levelUiInteractor;
-        private readonly LevelMessagesData levelMessagesData;
+        private readonly StageMessagesData levelMessagesData;
         private readonly AstronautsData astronautsData;
 
         public TryShowNeedToCollectAllAstronatusToasterUseCase(
             ILevelUiInteractor levelUiInteractor,
-            LevelMessagesData levelMessagesData,
+            StageMessagesData levelMessagesData,
             AstronautsData astronautsData
             )
         {

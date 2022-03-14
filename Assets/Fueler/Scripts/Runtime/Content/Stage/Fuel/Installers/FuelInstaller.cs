@@ -8,6 +8,8 @@ using Fueler.Content.Stage.Fuel.UseCases.CheckShipMovementIfNoFuel;
 using Fueler.Content.Stage.Fuel.UseCases.InitFuel;
 using Fueler.Content.Stage.Fuel.UseCases.ShipFuelUsed;
 using Fueler.Content.Stage.Fuel.UseCases.TryShowLowFuelWarning;
+using Fueler.Content.Stage.Fuel.UseCases.TryShowNoFuelWarning;
+using Fueler.Content.Stage.General.Data;
 using Fueler.Content.Stage.Level.Data;
 using Fueler.Content.Stage.Ship.Entities;
 using Fueler.Content.StageUi.Ui.Level;
@@ -44,19 +46,27 @@ namespace Fueler.Content.Stage.Fuel.Installers
                     c.Resolve<IConfigurationService>().FuelConfiguration
                     ));
 
+            container.Bind<ITryShowNoFuelWarningUseCase>()
+                .FromFunction(c => new TryShowNoFuelWarningUseCase(
+                    c.Resolve<StageMessagesData>(),
+                    c.Resolve<FuelData>(),
+                    c.Resolve<ILevelUiInteractor>()
+                    ));
+
             container.Bind<IShipFuelUsedUseCase>()
                 .FromFunction(c => new ShipFuelUsedUseCase(
                     c.Resolve<FuelData>(),
                     c.Resolve<ILevelUiInteractor>(),
                     c.Resolve<IConfigurationService>().FuelConfiguration,
                     c.Resolve<ITryShowLowFuelWarningUseCase>(),
+                    c.Resolve<ITryShowNoFuelWarningUseCase>(),
                     c.Resolve<ICheckShipMovementIfNoFuelUseCase>()
                     ));
 
             container.Bind<ITryShowNeedToCollectAllAstronatusToasterUseCase>()
                 .FromFunction(c => new TryShowNeedToCollectAllAstronatusToasterUseCase(
                     c.Resolve<ILevelUiInteractor>(),
-                    c.Resolve<LevelMessagesData>(),
+                    c.Resolve<StageMessagesData>(),
                     c.Resolve<AstronautsData>()
                     ));
         }

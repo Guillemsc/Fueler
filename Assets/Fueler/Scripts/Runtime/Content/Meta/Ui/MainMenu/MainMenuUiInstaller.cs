@@ -15,6 +15,10 @@ using Fueler.Content.Services.Configuration;
 using Fueler.Content.Meta.Ui.MainMenu.UseCases.QuitButtonPressed;
 using Juce.CoreUnity.ViewStack.Entries;
 using Fueler.Content.Meta.Ui.MainMenu.UseCases.LevelsButtonPressed;
+using Fueler.Content.Shared.Levels.UseCases.IsFirstTimeExperience;
+using Fueler.Content.Services.Persistence;
+using Fueler.Content.Meta.Ui.MainMenu.UseCases.RefreshFirstTimeExperience;
+using Juce.Core.Refresh;
 
 namespace Fueler.Content.Meta.Ui.MainMenu
 {
@@ -33,15 +37,43 @@ namespace Fueler.Content.Meta.Ui.MainMenu
         [SerializeField] private PointerAndSelectableSubmitCallbacks optionsButton = default;
         [SerializeField] private PointerAndSelectableSubmitCallbacks quitButton = default;
 
-        private IViewStackEntry viewStackEntry;
+        [Header("First Time User Experience")]
+        [SerializeField] private TMPro.TextMeshProUGUI playButtonText = default;
+        [SerializeField] private GameObject levelsButtonGameObject = default;
+        [SerializeField] private string firstTimeExperiencePlayText = default;
+        [SerializeField] private string nonFirstTimeExperiencePlayText = default;
 
         public void Install(IDIContainerBuilder container)
         {
-            viewStackEntry = CreateStackEntry();
+            container.Bind<MainMenuUiViewStackEntry>()
+                .FromFunction(c => new MainMenuUiViewStackEntry(
+                    typeof(IMainMenuUiInteractor),
+                    gameObject.transform,
+                    new TweenPlayerAnimationVisible(
+                        showAnimation,
+                        hideAnimation
+                        ),
+                    isPopup: false,
+                    new ViewStackEntryRefresh(
+                        RefreshType.BeforeShow,
+                        new SetAsSelectedRefreshable(firstSelectable)
+                        ),
+                    new ViewStackEntryRefresh(
+                        RefreshType.BeforeShow,
+                        new CallbackRefreshable(
+                            c.Resolve<IRefreshFirstTimeExperienceUseCase>().Execute
+                            )
+                        )
+                    ));
 
             container.Bind<ITryGetLevelByIndexUseCase>()
                 .FromFunction(c => new TryGetLevelByIndexUseCase(
                     c.Resolve<IConfigurationService>().LevelsConfiguration
+                    ));
+
+            container.Bind<IIsFirstTimeExperienceUseCase>()
+                .FromFunction(c => new IsFirstTimeExperienceUseCase(
+                    c.Resolve<IPersistenceService>().LevelsSerializable
                     ));
 
             container.Bind<IPlayButtonPressedUseCase>()
@@ -64,6 +96,15 @@ namespace Fueler.Content.Meta.Ui.MainMenu
                 .FromFunction(c => new QuitButtonPressedUseCase(
                     ));
 
+            container.Bind<IRefreshFirstTimeExperienceUseCase>()
+                .FromFunction(c => new RefreshFirstTimeExperienceUseCase(
+                    playButtonText,
+                    levelsButtonGameObject,
+                    firstTimeExperiencePlayText,
+                    nonFirstTimeExperiencePlayText,
+                    c.Resolve<IIsFirstTimeExperienceUseCase>()
+                    ));
+
             container.Bind<ISubscribeToButtonsUseCase>()
                 .FromFunction(c => new SubscribeToButtonsUseCase(
                     playButton,
@@ -80,23 +121,9 @@ namespace Fueler.Content.Meta.Ui.MainMenu
 
             container.Bind<IMainMenuUiInteractor>()
                 .FromFunction(c => new MainMenuUiInteractor())
-                .WhenInit((c, o) => c.Resolve<IUiViewStack>().Register(viewStackEntry))
-                .WhenDispose((c, o) => c.Resolve<IUiViewStack>().Unregister(viewStackEntry))
+                .WhenInit((c, o) => c.Resolve<IUiViewStack>().Register(c.Resolve<MainMenuUiViewStackEntry>()))
+                .WhenDispose((c, o) => c.Resolve<IUiViewStack>().Unregister(c.Resolve<MainMenuUiViewStackEntry>()))
                 .NonLazy();
-        }
-
-        private IViewStackEntry CreateStackEntry()
-        {
-            return new ViewStackEntry(
-                typeof(IMainMenuUiInteractor),
-                gameObject.transform,
-                new TweenPlayerAnimationVisible(
-                    showAnimation,
-                    hideAnimation
-                    ),
-                isPopup: false,
-                new ViewStackEntryRefresh(RefreshType.BeforeShow, new SetAsSelectedRefreshable(firstSelectable))
-                );
         }
     }
 }
