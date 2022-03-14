@@ -7,6 +7,7 @@ Welcome to Fueler: a small videogame about completing levels while maneuvering a
 
 ## Cheats
 You can open the cheats inside Unity pressing the middle button of the mouse:
+For obvious reasons, this is not avaliable on final builds.
 
 <img title="" src="https://github.com/Guillemsc/Fueler/blob/main/Assets/Fueler/Misc/OpenCheats.png" alt="Logo" data-align="inline">
 
