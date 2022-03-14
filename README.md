@@ -36,4 +36,6 @@ For obvious reasons, this is not avaliable on final builds.
 
 <img title="" src="https://github.com/Guillemsc/Fueler/blob/main/Assets/Fueler/Misc/OpenCheats.png" alt="Logo" data-align="inline">
 
+## Contributors
 
+- Guillem SC - [@Guillemsc](https://github.com/Guillemsc)
