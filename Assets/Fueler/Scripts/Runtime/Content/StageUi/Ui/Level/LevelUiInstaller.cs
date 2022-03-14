@@ -26,7 +26,7 @@ namespace Fueler.Content.StageUi.Ui.Level
         [Header("Buttons")]
         [SerializeField] private PointerCallbacks replayPointerCallbacks = default;
 
-        [Header("Fueel Tweens")]
+        [Header("Fuel Tweens")]
         [SerializeField] private TweenPlayer setFuelTween = default;
         [SerializeField] private TweenPlayer lowFuelTween = default;
         [SerializeField] private TweenPlayer hideFuelTween = default;

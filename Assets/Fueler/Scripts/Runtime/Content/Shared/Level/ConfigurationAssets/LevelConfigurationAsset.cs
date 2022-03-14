@@ -8,6 +8,8 @@ namespace Fueler.Content.Shared.Levels.ConfigurationAssets
     [CreateAssetMenu(fileName = "LevelConfiguration", menuName = "Fueler/Configuration/Level")]
     public class LevelConfigurationAsset : ScriptableObject
     {
+        [SerializeField, TextArea] private string description = default;
+
         [Header("Uid")]
         [SerializeField] private string id = Guid.NewGuid().ToString();
 
