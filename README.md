@@ -10,15 +10,18 @@ Just clone this repository. Open with Unity 2020.3.3f1 or similar. All the depen
 
 ## Normal flow
 To run the game with the normal flow, just open the scene MainBootstrap and press play. Everything will run normally from there.
+
 <img title="" src="https://github.com/Guillemsc/Fueler/blob/main/Assets/Fueler/Misc/MainBootstrapFolder.png" alt="Logo" data-align="inline">
 
 ## Levels
 You can directly play levels by: 
 - Going into Assets/Fueler/Configuration/Levels.
 - Select any of the levels on the folder.
+
 <img title="" src="https://github.com/Guillemsc/Fueler/blob/main/Assets/Fueler/Misc/LevelsFolder.png" alt="Logo" data-align="inline">
 
 - On the inspector that will open, press play.
+
 <img title="" src="https://github.com/Guillemsc/Fueler/blob/main/Assets/Fueler/Misc/LevelPressPlay.png" alt="Logo" data-align="inline">
 
 ## Cheats
