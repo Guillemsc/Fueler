@@ -27,6 +27,30 @@ namespace Fueler.Content.Shared.Input
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""RotateShipLeft"",
+                    ""type"": ""Value"",
+                    ""id"": ""d9da90c9-3d70-4142-a1c0-8018fec48316"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RotateShipRight"",
+                    ""type"": ""Value"",
+                    ""id"": ""96aac5cf-fb23-48fb-8a12-fe9aa793db31"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MoveShipForward"",
+                    ""type"": ""Value"",
+                    ""id"": ""4c0dd1c3-143e-44ef-ab55-c3d05ab5a30f"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -38,6 +62,105 @@ namespace Fueler.Content.Shared.Input
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""RestartLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1de18040-7e53-42e2-9e9d-1e4daf7e4ff3"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateShipLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b5505408-bdf5-41b9-a793-1e03ad8306e9"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateShipLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35b0dea3-a147-4c5d-8ef1-32ed41d09007"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateShipLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a150c6eb-02e0-4445-9728-acd4da8e46b9"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateShipRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""45dd418f-2843-4220-bf3c-daea46aa841c"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateShipRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""246a0cd3-1656-46cb-b21d-78509a914384"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateShipRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0a32ee76-99d5-410c-bd56-b317e3782196"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveShipForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""51433100-f67b-4562-b9d6-8ae4dbdc3226"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveShipForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ad1da896-7a9b-48d6-bdb7-e1dcc7b78ed1"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveShipForward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -55,6 +178,9 @@ namespace Fueler.Content.Shared.Input
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_RestartLevel = m_Player.FindAction("RestartLevel", throwIfNotFound: true);
+            m_Player_RotateShipLeft = m_Player.FindAction("RotateShipLeft", throwIfNotFound: true);
+            m_Player_RotateShipRight = m_Player.FindAction("RotateShipRight", throwIfNotFound: true);
+            m_Player_MoveShipForward = m_Player.FindAction("MoveShipForward", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -105,11 +231,17 @@ namespace Fueler.Content.Shared.Input
         private readonly InputActionMap m_Player;
         private IPlayerActions m_PlayerActionsCallbackInterface;
         private readonly InputAction m_Player_RestartLevel;
+        private readonly InputAction m_Player_RotateShipLeft;
+        private readonly InputAction m_Player_RotateShipRight;
+        private readonly InputAction m_Player_MoveShipForward;
         public struct PlayerActions
         {
             private @StageInputActions m_Wrapper;
             public PlayerActions(@StageInputActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @RestartLevel => m_Wrapper.m_Player_RestartLevel;
+            public InputAction @RotateShipLeft => m_Wrapper.m_Player_RotateShipLeft;
+            public InputAction @RotateShipRight => m_Wrapper.m_Player_RotateShipRight;
+            public InputAction @MoveShipForward => m_Wrapper.m_Player_MoveShipForward;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -122,6 +254,15 @@ namespace Fueler.Content.Shared.Input
                     @RestartLevel.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestartLevel;
                     @RestartLevel.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestartLevel;
                     @RestartLevel.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestartLevel;
+                    @RotateShipLeft.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateShipLeft;
+                    @RotateShipLeft.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateShipLeft;
+                    @RotateShipLeft.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateShipLeft;
+                    @RotateShipRight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateShipRight;
+                    @RotateShipRight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateShipRight;
+                    @RotateShipRight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateShipRight;
+                    @MoveShipForward.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveShipForward;
+                    @MoveShipForward.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveShipForward;
+                    @MoveShipForward.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveShipForward;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -129,6 +270,15 @@ namespace Fueler.Content.Shared.Input
                     @RestartLevel.started += instance.OnRestartLevel;
                     @RestartLevel.performed += instance.OnRestartLevel;
                     @RestartLevel.canceled += instance.OnRestartLevel;
+                    @RotateShipLeft.started += instance.OnRotateShipLeft;
+                    @RotateShipLeft.performed += instance.OnRotateShipLeft;
+                    @RotateShipLeft.canceled += instance.OnRotateShipLeft;
+                    @RotateShipRight.started += instance.OnRotateShipRight;
+                    @RotateShipRight.performed += instance.OnRotateShipRight;
+                    @RotateShipRight.canceled += instance.OnRotateShipRight;
+                    @MoveShipForward.started += instance.OnMoveShipForward;
+                    @MoveShipForward.performed += instance.OnMoveShipForward;
+                    @MoveShipForward.canceled += instance.OnMoveShipForward;
                 }
             }
         }
@@ -145,6 +295,9 @@ namespace Fueler.Content.Shared.Input
         public interface IPlayerActions
         {
             void OnRestartLevel(InputAction.CallbackContext context);
+            void OnRotateShipLeft(InputAction.CallbackContext context);
+            void OnRotateShipRight(InputAction.CallbackContext context);
+            void OnMoveShipForward(InputAction.CallbackContext context);
         }
     }
 }

@@ -396,7 +396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4577578539981616818
 RectTransform:
   m_ObjectHideFlags: 0
@@ -485,7 +485,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6085789883028911730
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1943,8 +1943,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2187585482858091768}
-  - component: {fileID: 3620654004416437732}
+  - component: {fileID: 3778238388838317164}
   - component: {fileID: 803463086022084067}
+  - component: {fileID: 3620654004416437732}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1971,14 +1972,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -29.779}
   m_SizeDelta: {x: 530.3719, y: 49.7202}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &3620654004416437732
-CanvasRenderer:
+--- !u!114 &3778238388838317164
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7150194055834998511}
-  m_CullTransparentMesh: 1
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d11d46765d4a0e438fc7d45c81f7193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 803463086022084067}
+  inputActionAsset: {fileID: -944628639613478452, guid: f07654b6f4f2bf74496ebb3682886148, type: 3}
+  deviceControlSchemeIconsList:
+  - {fileID: 11400000, guid: 4f8305a4f0889a1429648d670f8cca0c, type: 2}
+  - {fileID: 11400000, guid: 6ef5687ea530e994e99909c13c91d959, type: 2}
+  verbose: 0
 --- !u!114 &803463086022084067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1999,7 +2010,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <color=#00E4C0>w, a, d</color> to move
+  m_text: <input>MoveShipForward</input>, <input>RotateShipLeft</input>, <input>RotateShipRight</input>
+    to move
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f76f9873e4e111468b0e070bd66e097, type: 2}
   m_sharedMaterial: {fileID: -67380637403349598, guid: 9f76f9873e4e111468b0e070bd66e097, type: 2}
@@ -2068,6 +2080,14 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &3620654004416437732
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7150194055834998511}
+  m_CullTransparentMesh: 1
 --- !u!1 &7241367698382129778
 GameObject:
   m_ObjectHideFlags: 0
