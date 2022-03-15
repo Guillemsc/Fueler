@@ -11,7 +11,14 @@ namespace Fueler.Content.Shared.Levels.Persistence
         [MenuItem("Fueler/ClearAllUserData")]
         public static void ClearAllUserData()
         {
-            Directory.Delete(SerializableDataUtils.GetPersistenceDataFolder(), recursive: true);
+            string directory = SerializableDataUtils.GetPersistenceDataFolder();
+
+            if (!Directory.Exists(directory))
+            {
+                return;
+            }
+
+            Directory.Delete(directory, recursive: true);
 
             UnityEngine.Debug.Log("User data cleared");
         }

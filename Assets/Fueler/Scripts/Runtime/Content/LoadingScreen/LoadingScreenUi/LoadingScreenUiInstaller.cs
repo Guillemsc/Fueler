@@ -1,7 +1,9 @@
 ﻿using Fueler.Content.LoadingScreen.LoadingScreenUi.UseCases.SetVisible;
 using Juce.Core.DI.Builder;
 using Juce.Core.DI.Installers;
+using Juce.CoreUnity.ViewStack;
 using Juce.TweenComponent;
+using JuceUnity.Core.DI.Extensions;
 using UnityEngine;
 
 namespace Fueler.Content.LoadingScreen.LoadingScreenUi

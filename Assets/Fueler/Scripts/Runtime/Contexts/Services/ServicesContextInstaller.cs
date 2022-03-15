@@ -1,4 +1,5 @@
-﻿using Fueler.Content.Services.Configuration;
+﻿using Fueler.Content.Services.Cheats.Installers;
+using Fueler.Content.Services.Configuration;
 using Fueler.Content.Services.Persistence;
 using Fueler.Content.Services.Ship;
 using Juce.Core.DI.Builder;
@@ -12,6 +13,8 @@ namespace Fueler.Contexts.Services
     {
         public void Install(IDIContainerBuilder container, ServicesContextInstance instance)
         {
+            container.InstallCheats();
+
             container.Bind<IConfigurationService>()
                 .FromInstance(new ConfigurationService(
                     instance.FuelerConfigurationAsset.LevelsConfigurationAsset.ToConfiguration(),

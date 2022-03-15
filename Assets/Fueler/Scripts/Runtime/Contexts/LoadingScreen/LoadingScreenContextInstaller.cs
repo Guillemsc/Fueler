@@ -2,6 +2,8 @@ using Fueler.Content.LoadingScreen.LoadingScreenUi;
 using Fueler.Context.LoadingScreen.UseCases.Show;
 using Juce.Core.DI.Builder;
 using Juce.CoreUnity.Contexts;
+using Juce.CoreUnity.ViewStack;
+using JuceUnity.Core.DI.Extensions;
 
 namespace Fueler.Contexts.LoadingScreen
 {
@@ -11,8 +13,11 @@ namespace Fueler.Contexts.LoadingScreen
         {
             container.Bind(instance.LoadingScreenUiInstaller);
 
+            container.Bind<IUiViewStack>().FromServicesLocator();
+
             container.Bind<IShowUseCase>()
                 .FromFunction(c => new ShowUseCase(
+                    c.Resolve<IUiViewStack>(),
                     c.Resolve<ILoadingScreenUiInteractor>()
                     ));
 
