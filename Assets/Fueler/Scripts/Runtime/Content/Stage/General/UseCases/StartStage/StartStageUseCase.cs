@@ -1,5 +1,5 @@
 ﻿using Fueler.Content.Shared.Time.UseCases.WaitUnscaledTime;
-using Fueler.Content.Stage.General.Actors;
+using Fueler.Content.Stage.General.Data;
 using Fueler.Content.Stage.Ship.Entities;
 using Fueler.Content.Stage.Tutorial.UseCases.TryShowTutorialPanels;
 using Fueler.Content.StageUi.Ui.Level;

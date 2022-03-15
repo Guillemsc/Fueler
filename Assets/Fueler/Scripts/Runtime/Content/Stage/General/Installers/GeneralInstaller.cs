@@ -7,7 +7,6 @@ using Fueler.Content.Stage.Ship.UseCases.SetupShipCamera;
 using Fueler.Content.Shared.Time.UseCases.WaitUnscaledTime;
 using Fueler.Content.Stage.General.UseCases.StartStage;
 using Fueler.Content.Stage.General.UseCases.EndStage;
-using Fueler.Content.Stage.General.State;
 using Juce.Core.Repositories;
 using Juce.CoreUnity.ViewStack;
 using Juce.Core.Disposables;
@@ -25,10 +24,12 @@ using Fueler.Content.Stage.General.UseCases.SubscribeToStageInputActions;
 using Fueler.Content.Shared.Input;
 using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
 using Fueler.Assets.Fueler.Scripts.Runtime.Content.Stage.General.UseCases.RestartLevelInputPerformed;
-using Fueler.Content.Stage.General.Actors;
 using Fueler.Content.Shared.Levels.UseCases.SetLevelAsCompleted;
 using Fueler.Content.Services.Persistence;
 using Fueler.Content.Stage.Astrounats.UseCases.TryShowNeedToCollectAllAstronatusToaster;
+using Fueler.Content.Stage.General.Data;
+using Fueler.Content.Stage.General.UseCases.SubscribeToStageUi;
+using Fueler.Content.StageUi.Ui.Level;
 
 namespace Fueler.Content.Stage.General.Installers
 {
@@ -36,8 +37,8 @@ namespace Fueler.Content.Stage.General.Installers
     {
         public static void InstallGeneral(this IDIContainerBuilder container)
         {
-            container.Bind<StageStateData>()
-                .FromNew();
+            container.Bind<StageStateData>().FromNew();
+            container.Bind<StageMessagesData>().FromNew();
 
             container.Bind<IWaitUnscaledTimeUseCase>()
                 .FromFunction(c => new WaitUnscaledTimeUseCase());
@@ -74,7 +75,7 @@ namespace Fueler.Content.Stage.General.Installers
                     ));
 
             container.Bind<IEndStageUseCase>().FromFunction(c => new EndStageUseCase(
-                c.Resolve<LevelState>(),
+                c.Resolve<StageStateData>(),
                 c.Resolve<ILevelConfiguration>(),
                 c.Resolve<ISingleRepository<IDisposable<ShipEntity>>>(),
                 c.Resolve<IUiViewStack>(),
@@ -99,6 +100,14 @@ namespace Fueler.Content.Stage.General.Installers
                     c.Resolve<StageStateData>(),
                     c.Resolve<IReloadLevelUseCase>()
                     ));
+
+            container.Bind<ISubscribeToStageUiUseCase>()
+                .FromFunction(c => new SubscribeToStageUiUseCase(
+                    c.Resolve<ILevelUiInteractor>(),
+                    c.Resolve<IRestartLevelInputPerformedUseCase>()
+                    ))
+                .WhenInit((c, o) => o.Execute())
+                .NonLazy(); ;
 
             container.Bind<ISubscribeToStageInputActionsUseCase>()
                 .FromFunction(c => new SubscribeToStageInputActionsUseCase(

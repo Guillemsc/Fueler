@@ -1,10 +1,7 @@
 ﻿using Fueler.Content.Shared.Levels.Configuration;
-using Fueler.Content.Shared.Levels.UseCases.LoadNextLevel;
-using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
 using Fueler.Content.Shared.Levels.UseCases.SetLevelAsCompleted;
 using Fueler.Content.Shared.Time.UseCases.WaitUnscaledTime;
-using Fueler.Content.Stage.General.State;
-using Fueler.Content.Stage.General.UseCases.AreStageObjectivesCompleted;
+using Fueler.Content.Stage.General.Data;
 using Fueler.Content.Stage.Level.Data;
 using Fueler.Content.Stage.Ship.Entities;
 using Fueler.Content.StageUi.Ui.LevelCompleted;
@@ -20,7 +17,7 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
 {
     public class EndStageUseCase : IEndStageUseCase
     {
-        private readonly LevelState levelState;
+        private readonly StageStateData stageStateData;
         private readonly ILevelConfiguration levelConfiguration;
         private readonly ISingleRepository<IDisposable<ShipEntity>> shipEntityRepository;
         private readonly IUiViewStack viewStack;
@@ -28,7 +25,7 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
         private readonly ISetLevelAsCompletedUseCase setLevelAsCompletedUseCase;
 
         public EndStageUseCase(
-            LevelState levelState,
+            StageStateData stageStateData,
             ILevelConfiguration levelConfiguration,
             ISingleRepository<IDisposable<ShipEntity>> shipEntityRepository,
             IUiViewStack viewStack,
@@ -36,7 +33,7 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
             ISetLevelAsCompletedUseCase setLevelAsCompletedUseCase
             )
         {
-            this.levelState = levelState;
+            this.stageStateData = stageStateData;
             this.levelConfiguration = levelConfiguration;
             this.shipEntityRepository = shipEntityRepository;
             this.viewStack = viewStack;
@@ -51,12 +48,12 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
 
         private async Task Run(LevelEndData levelEndedData, CancellationToken cancellationToken)
         {
-            if (levelState.Finished)
+            if (stageStateData.Finished)
             {
                 return;
             }
 
-            levelState.Finished = true;
+            stageStateData.Finished = true;
 
             bool found = shipEntityRepository.TryGet(out IDisposable<ShipEntity> shipEntity);
 

@@ -1,24 +1,29 @@
-﻿using Fueler.Content.StageUi.Ui.Level.UseCase.SetAstronauts;
+﻿using Fueler.Content.StageUi.Ui.Level.Events;
+using Fueler.Content.StageUi.Ui.Level.UseCase.SetAstronauts;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SetFuel;
 using Fueler.Content.StageUi.Ui.Level.UseCase.ShowToasterText;
 using Fueler.Content.StageUi.Ui.Level.UseCase.TryPlayLowFuelIndicator;
+using System;
 
 namespace Fueler.Content.StageUi.Ui.Level
 {
     public class LevelUiInteractor : ILevelUiInteractor
     {
+        private readonly LevelUiEvents levelUiEvents;
         private readonly ISetFuelUseCase setFuelUseCase;
         private readonly ITryPlayLowFuelIndicatorUseCase tryPlayLowFuelIndicatorUseCase;
         private readonly ISetAstronautsUseCase setAstronautsUseCase;
         private readonly IShowToasterTextUseCase showToasterTextUseCase;
 
         public LevelUiInteractor(
+            LevelUiEvents levelUiEvents,
             ISetFuelUseCase setFuelUseCase,
             ITryPlayLowFuelIndicatorUseCase tryPlayLowFuelIndicatorUseCase,
             ISetAstronautsUseCase setAstronautsUseCase,
             IShowToasterTextUseCase showToasterTextUseCase
             )
         {
+            this.levelUiEvents = levelUiEvents;
             this.setFuelUseCase = setFuelUseCase;
             this.tryPlayLowFuelIndicatorUseCase = tryPlayLowFuelIndicatorUseCase;
             this.setAstronautsUseCase = setAstronautsUseCase;
@@ -43,6 +48,11 @@ namespace Fueler.Content.StageUi.Ui.Level
         public void ShowToasterText(string text)
         {
             showToasterTextUseCase.Execute(text);
+        }
+
+        public void SubscribeOnRestart(Action onRestart)
+        {
+            levelUiEvents.OnRestart += onRestart;
         }
     }
 }

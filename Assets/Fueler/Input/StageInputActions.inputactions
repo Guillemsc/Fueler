@@ -42,10 +42,21 @@
                 {
                     "name": "",
                     "id": "41d9a004-0e66-4c38-a7b6-7f43195be3d8",
-                    "path": "<Keyboard>/#(R)",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "RestartLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "536f7991-5884-4215-a481-6494d01dce3e",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "RestartLevel",
                     "isComposite": false,
                     "isPartOfComposite": false

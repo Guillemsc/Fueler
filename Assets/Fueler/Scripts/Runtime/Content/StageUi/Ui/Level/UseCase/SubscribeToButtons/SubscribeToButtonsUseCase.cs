@@ -1,4 +1,4 @@
-﻿using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
+﻿using Fueler.Content.StageUi.Ui.Level.UseCase.RestartLevelButtonPressed;
 using Juce.CoreUnity.PointerCallback;
 using UnityEngine.EventSystems;
 
@@ -7,15 +7,15 @@ namespace Fueler.Content.StageUi.Ui.Level.UseCase.SubscribeToButtons
     public class SubscribeToButtonsUseCase : ISubscribeToButtonsUseCase
     {
         private readonly PointerCallbacks replayPointerCallbacks;
-        private readonly IReloadLevelUseCase reloadLevelUseCase;
+        private readonly IRestartLevelButtonPressedUseCase restartLevelButtonPressedUseCase;
 
         public SubscribeToButtonsUseCase(
             PointerCallbacks replayPointerCallbacks,
-            IReloadLevelUseCase reloadLevelUseCase
+            IRestartLevelButtonPressedUseCase restartLevelButtonPressedUseCase
             )
         {
             this.replayPointerCallbacks = replayPointerCallbacks;
-            this.reloadLevelUseCase = reloadLevelUseCase;
+            this.restartLevelButtonPressedUseCase = restartLevelButtonPressedUseCase;
         }
 
         public void Execute()
@@ -25,7 +25,7 @@ namespace Fueler.Content.StageUi.Ui.Level.UseCase.SubscribeToButtons
 
         private void OnReplayPointerCallbacksClick(PointerCallbacks pointerCallbacks, PointerEventData pointerEventData)
         {
-            reloadLevelUseCase.Execute();
+            restartLevelButtonPressedUseCase.Execute();
         }
     }
 }

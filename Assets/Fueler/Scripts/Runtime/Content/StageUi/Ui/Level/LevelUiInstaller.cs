@@ -1,4 +1,6 @@
 ﻿using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
+using Fueler.Content.StageUi.Ui.Level.Events;
+using Fueler.Content.StageUi.Ui.Level.UseCase.RestartLevelButtonPressed;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SetAstronauts;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SetFuel;
 using Fueler.Content.StageUi.Ui.Level.UseCase.ShowToasterText;
@@ -48,6 +50,8 @@ namespace Fueler.Content.StageUi.Ui.Level
         {
             viewStackEntry = CreateStackEntry();
 
+            container.Bind<LevelUiEvents>().FromNew();
+
             container.Bind<ITryPlayLowFuelIndicatorUseCase>()
                 .FromFunction(c => new TryPlayLowFuelIndicatorUseCase(
                     lowFuelTween
@@ -73,16 +77,22 @@ namespace Fueler.Content.StageUi.Ui.Level
                     toasterTextDurationOnScreen
                     ));
 
+            container.Bind<IRestartLevelButtonPressedUseCase>()
+                .FromFunction(c => new RestartLevelButtonPressedUseCase(
+                    c.Resolve<LevelUiEvents>()
+                    ));
+
             container.Bind<ISubscribeToButtonsUseCase>()
                 .FromFunction(c => new SubscribeToButtonsUseCase(
                     replayPointerCallbacks,
-                    c.Resolve<IReloadLevelUseCase>()
+                    c.Resolve<IRestartLevelButtonPressedUseCase>()
                     ))
                 .WhenInit((c, o) => o.Execute())
                 .NonLazy();
 
             container.Bind<ILevelUiInteractor>()
                 .FromFunction(c => new LevelUiInteractor(
+                    c.Resolve<LevelUiEvents>(),
                     c.Resolve<ISetFuelUseCase>(),
                     c.Resolve<ITryPlayLowFuelIndicatorUseCase>(),
                     c.Resolve<ISetAstronautsUseCase>(),

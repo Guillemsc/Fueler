@@ -3,6 +3,7 @@ using Fueler.Content.Stage.Astrounats.UseCases.InitAstronauts;
 using Fueler.Content.Stage.Fuel.UseCases.InitFuel;
 using Fueler.Content.Stage.Fuel.UseCases.ShipFuelUsed;
 using Fueler.Content.Stage.General.Actors;
+using Fueler.Content.Stage.General.Data;
 using Fueler.Content.Stage.General.Entities;
 using Fueler.Content.Stage.General.UseCases.LoadLevel;
 using Fueler.Content.Stage.Ship.Entities;
