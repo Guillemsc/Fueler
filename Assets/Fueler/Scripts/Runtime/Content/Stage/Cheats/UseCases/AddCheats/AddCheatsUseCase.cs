@@ -29,7 +29,11 @@ namespace Fueler.Content.Stage.Cheats.UseCases.AddCheats
 
         public void Execute()
         {
-            IWidgetInteractor immortality = JuceCheats.AddAction("Immortal", () => setImmortalityUseCase.Execute(true));
+            IWidgetInteractor immortality = JuceCheats.AddToggle(
+                "Immortal", 
+                () => getImmortalityUseCase.Execute(),
+                (bool value) => setImmortalityUseCase.Execute(value)
+                );
             optionsDefinitionsRepository.Add(immortality);
 
             IWidgetInteractor maxFuel = JuceCheats.AddAction("Set Max Fuel", setMaxFuelUseCase.Execute);
