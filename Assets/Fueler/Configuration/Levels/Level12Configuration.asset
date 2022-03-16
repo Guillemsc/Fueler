@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72259cfdb7570124e838eaa37e4b396a, type: 3}
-  m_Name: Level1Configuration
+  m_Name: Level12Configuration
   m_EditorClassIdentifier: 
-  description: First level, meant to teach ship movement
-  id: e851a46c-ff37-4f64-bfea-70d44383c608
-  levelEntityPrefab: {fileID: 3166591651800058605, guid: 93cca6404f2d2644585f7dfbae3e5ec5, type: 3}
-  initialFuel: 0
+  description: 
+  id: 595020c1-552a-48e8-bd0a-b048bc0c1ce0
+  levelEntityPrefab: {fileID: 3166591651800058605, guid: efa64cf699b9f3248853aeb52a1c3946, type: 3}
+  initialFuel: 150

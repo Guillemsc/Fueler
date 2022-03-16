@@ -51,7 +51,7 @@ namespace Fueler.Content.StageUi.Ui.Level.UseCase.ShowToasterText
             await hideToasterTextTween.Play(cancellationToken);
 
             timer.Restart();
-            await timer.AwaitReach(TimeSpan.FromSeconds(2), cancellationToken);
+            await timer.AwaitReach(TimeSpan.FromSeconds(0.5f), cancellationToken);
         }
     }
 }
