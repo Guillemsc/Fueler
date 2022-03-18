@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72259cfdb7570124e838eaa37e4b396a, type: 3}
   m_Name: Level10Configuration
   m_EditorClassIdentifier: 
-  description: Advanced level for the hard-introduction of the rotating blade
+  description: Medium level for the hard-introduction of the rotating blade
   id: cb0695e7-dd05-4126-86d8-2caf6f14fd8b
   levelEntityPrefab: {fileID: 3166591651800058605, guid: aad9c54074db9594cafd97b1bbfaab61, type: 3}
-  initialFuel: 70
+  initialFuel: 60

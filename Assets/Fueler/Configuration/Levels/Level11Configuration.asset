@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72259cfdb7570124e838eaa37e4b396a, type: 3}
   m_Name: Level11Configuration
   m_EditorClassIdentifier: 
-  description: 
+  description: Very easy level that serves as introcution for the astronaut collection.
   id: 36432d92-eb19-4706-b0f4-1b91810ff0d8
   levelEntityPrefab: {fileID: 3166591651800058605, guid: 57a07219c6b35ac429a0664a21cfd7e7, type: 3}
   initialFuel: 65

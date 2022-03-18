@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72259cfdb7570124e838eaa37e4b396a, type: 3}
   m_Name: Level4Configuration
   m_EditorClassIdentifier: 
+  description: Super hard level in terms of traversal. Narrow spaces. Fuel not super
+    relevant
   id: 619d40a4-29d2-4dcc-a7ff-141dd62e688a
-  levelEntityPrefab: {fileID: 0}
+  levelEntityPrefab: {fileID: 3166591651800058605, guid: ea91b55efd84d5940b2f3270290e64e8, type: 3}
   initialFuel: 100

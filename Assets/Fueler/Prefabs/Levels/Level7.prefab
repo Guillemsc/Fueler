@@ -77,16 +77,16 @@ CompositeCollider2D:
     - - X: 336557243
         Y: -84100400
       - X: 336557243
-        Y: 92558768
+        Y: 69469200
       - X: -17895928
-        Y: 92558475
+        Y: 69468907
       - X: -17895635
         Y: -84100400
   m_CompositePaths:
     m_Paths:
     - - {x: 33.655697, y: -8.41004}
-      - {x: 33.655697, y: 9.255877}
-      - {x: -1.7895929, y: 9.255818}
+      - {x: 33.655697, y: 6.94692}
+      - {x: -1.7895929, y: 6.9468617}
       - {x: -1.7895342, y: -8.41004}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
@@ -103,7 +103,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 15.933081, y: 0.42291784}
+  m_Offset: {x: 15.933081, y: -0.7315595}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -114,7 +114,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 35.445347, y: 17.665916}
+  m_Size: {x: 35.445347, y: 15.35696}
   m_EdgeRadius: 0
 --- !u!1 &3166591651111348723
 GameObject:
@@ -248,11 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraConfiner: {fileID: 7001529205471425382}
   startingPosition: {fileID: 3787590165253604145}
-  endCallback: {fileID: 4475418467887446773}
-  astronatus:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  astronatus: []
 --- !u!1 &4527379615095649195
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,7 +428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.41
+      value: 7.19
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -472,15 +468,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: bulletSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
-      propertyPath: shootCooldown
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
+      propertyPath: shootCooldown
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: minDistanceToShoot
-      value: 9.94
+      value: 5.46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
@@ -754,7 +750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.20572
+      value: -6.2
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -794,15 +790,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: bulletSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
-      propertyPath: shootCooldown
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
+      propertyPath: shootCooldown
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: minDistanceToShoot
-      value: 9.94
+      value: 7.88
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
@@ -952,7 +948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.41
+      value: 7.19
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -992,15 +988,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: bulletSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
-      propertyPath: shootCooldown
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
+      propertyPath: shootCooldown
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: minDistanceToShoot
-      value: 9.94
+      value: 5.46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
@@ -2080,7 +2076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.20572
+      value: -6.2
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2120,15 +2116,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: bulletSpeed
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: shootCooldown
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: minDistanceToShoot
-      value: 9.94
+      value: 7.88
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
@@ -2154,7 +2150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.20572
+      value: -6.2
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2194,15 +2190,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: bulletSpeed
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: shootCooldown
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: minDistanceToShoot
-      value: 9.94
+      value: 7.88
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
@@ -2290,7 +2286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.20572
+      value: -6.2
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2330,15 +2326,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: bulletSpeed
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: shootCooldown
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: minDistanceToShoot
-      value: 9.94
+      value: 7.88
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
@@ -2612,7 +2608,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.41
+      value: 7.19
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2652,15 +2648,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: bulletSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
-      propertyPath: shootCooldown
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
+      propertyPath: shootCooldown
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: minDistanceToShoot
-      value: 9.94
+      value: 5.46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
@@ -2686,7 +2682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.41
+      value: 7.19
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2726,15 +2722,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: bulletSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
-      propertyPath: shootCooldown
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
+      propertyPath: shootCooldown
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: minDistanceToShoot
-      value: 9.94
+      value: 5.46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
@@ -4124,7 +4120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.41
+      value: 7.19
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4164,15 +4160,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: bulletSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
-      propertyPath: shootCooldown
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
+      propertyPath: shootCooldown
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: minDistanceToShoot
-      value: 9.94
+      value: 5.46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
@@ -4694,7 +4690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.41
+      value: 7.19
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4734,15 +4730,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: bulletSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
-      propertyPath: shootCooldown
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
+      propertyPath: shootCooldown
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: minDistanceToShoot
-      value: 9.94
+      value: 5.46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
@@ -5140,7 +5136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.41
+      value: 7.19
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5180,15 +5176,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: bulletSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
-      propertyPath: shootCooldown
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
+      propertyPath: shootCooldown
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: minDistanceToShoot
-      value: 9.94
+      value: 5.46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
@@ -5462,7 +5458,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.20572
+      value: -6.2
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5502,15 +5498,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: bulletSpeed
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: shootCooldown
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: minDistanceToShoot
-      value: 9.94
+      value: 7.88
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
@@ -5886,17 +5882,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b7e5eac6bb084a4486cd54fe7c7e5d0, type: 3}
---- !u!114 &4475418467887446773 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6446030507862732742, guid: 0b7e5eac6bb084a4486cd54fe7c7e5d0, type: 3}
-  m_PrefabInstance: {fileID: 7453184680118605107}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d2955120046c3e429a618b0307cfbeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &109189976237808602 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7416562506751692521, guid: 0b7e5eac6bb084a4486cd54fe7c7e5d0, type: 3}
@@ -5981,7 +5966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.41
+      value: 7.19
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6021,15 +6006,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: bulletSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
-      propertyPath: shootCooldown
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
+      propertyPath: shootCooldown
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: minDistanceToShoot
-      value: 9.94
+      value: 5.46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
@@ -6117,7 +6102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.20572
+      value: -6.2
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6157,15 +6142,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: bulletSpeed
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: shootCooldown
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: minDistanceToShoot
-      value: 9.94
+      value: 7.88
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
@@ -6377,7 +6362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.20572
+      value: -6.2
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6417,15 +6402,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: bulletSpeed
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: shootCooldown
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: minDistanceToShoot
-      value: 9.94
+      value: 6.32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
@@ -6761,7 +6746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.20572
+      value: -6.2
       objectReference: {fileID: 0}
     - target: {fileID: 366551651419705553, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6801,15 +6786,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: bulletSpeed
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: shootCooldown
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6711077634568888721, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
       propertyPath: minDistanceToShoot
-      value: 9.94
+      value: 7.88
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d15cc51aad47545bc4cfe1597adc1e, type: 3}
