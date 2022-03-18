@@ -16,7 +16,11 @@ namespace Fueler.Content.Meta.Ui.MainMenu.UseCases.OptionsButtonPressed
 
         public void Execute()
         {
-            uiViewStack.New().Show<IOptionsUiInteractor>(instantly: false).HideAndPush<IMainMenuUiInteractor>(instantly: true).Execute();
+            uiViewStack.New()
+                .SetInteractable<IMainMenuUiInteractor>(false)
+                .Show<IOptionsUiInteractor>(instantly: false)
+                .HideAndPush<IMainMenuUiInteractor>(instantly: true)
+                .Execute();
         }
     }
 }

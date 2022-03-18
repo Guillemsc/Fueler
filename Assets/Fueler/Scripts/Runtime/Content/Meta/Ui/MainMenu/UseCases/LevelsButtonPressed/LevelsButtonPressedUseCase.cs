@@ -16,7 +16,11 @@ namespace Fueler.Content.Meta.Ui.MainMenu.UseCases.LevelsButtonPressed
 
         public void Execute()
         {
-            uiViewStack.New().Show<ILevelSelectionUiInteractor>(instantly: false).HideAndPush<IMainMenuUiInteractor>(instantly: true).Execute();
+            uiViewStack.New()
+                .SetInteractable<IMainMenuUiInteractor>(false)
+                .Show<ILevelSelectionUiInteractor>(instantly: false)
+                .HideAndPush<IMainMenuUiInteractor>(instantly: true)
+                .Execute();
         }
     }
 }
