@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level5Configuration
   m_EditorClassIdentifier: 
   description: Hard level about collecting astronatus on an open space with shooting
-    canons. Fuel is hard to get  right. Traversal not super hard
+    canons. Fuel is hard to get right. Traversal not super hard
   id: 079f7afc-e5fe-4e99-a6db-4bd6bb504144
   levelEntityPrefab: {fileID: 3166591651800058605, guid: a76742af3e58244458342e5c58c45b64, type: 3}
   initialFuel: 100
