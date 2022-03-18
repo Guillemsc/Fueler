@@ -10,6 +10,7 @@
     "com.juce.tween": "git+https://github.com/Juce-Assets/Juce-Tween#1.6.2",
     "com.juce.tweencomponent": "git+https://github.com/Juce-Assets/Juce-TweenPlayer#1.4.1",
     "com.juce.utils": "git+https://github.com/Juce-Assets/Juce-Utils#1.4.4",
+    "com.coffee.ui-particle": "https://github.com/mob-sakai/ParticleEffectForUGUI.git",
     "com.unity.2d.animation": "5.0.4",
     "com.unity.2d.pixel-perfect": "4.0.1",
     "com.unity.2d.psdimporter": "4.0.2",

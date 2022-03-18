@@ -30,6 +30,9 @@ using Fueler.Content.Stage.Astrounats.UseCases.TryShowNeedToCollectAllAstronatus
 using Fueler.Content.Stage.General.Data;
 using Fueler.Content.Stage.General.UseCases.SubscribeToStageUi;
 using Fueler.Content.StageUi.Ui.Level;
+using Fueler.Content.Shared.Levels.UseCases.IsLevelCompleted;
+using Fueler.Content.Shared.Levels.UseCases.IsLastLevel;
+using Fueler.Content.Services.Configuration;
 
 namespace Fueler.Content.Stage.General.Installers
 {
@@ -46,6 +49,11 @@ namespace Fueler.Content.Stage.General.Installers
             container.Bind<ISetLevelAsCompletedUseCase>()
                 .FromFunction(c => new SetLevelAsCompletedUseCase(
                     c.Resolve<IPersistenceService>().LevelsSerializable
+                    ));
+
+            container.Bind<IIsLastLevelUseCase>()
+                .FromFunction(c => new IsLastLevelUseCase(
+                    c.Resolve<IConfigurationService>().LevelsConfiguration
                     ));
 
             container.Bind<ILoadStageUseCase>().FromFunction(c => new LoadStageUseCase(
@@ -80,7 +88,8 @@ namespace Fueler.Content.Stage.General.Installers
                 c.Resolve<ISingleRepository<IDisposable<ShipEntity>>>(),
                 c.Resolve<IUiViewStack>(),
                 c.Resolve<IWaitUnscaledTimeUseCase>(),
-                c.Resolve<ISetLevelAsCompletedUseCase>()
+                c.Resolve<ISetLevelAsCompletedUseCase>(),
+                c.Resolve<IIsLastLevelUseCase>()
                 ));
 
             container.Bind<ITryEndStageUseCase>()

@@ -1,4 +1,4 @@
-﻿namespace Fueler.Content.Meta.Ui.LevelCompleted.UseCases.BackToMainMenuButtonPressed
+﻿namespace Fueler.Content.StageUi.Ui.LevelCompleted.UseCases.BackToMainMenuButtonPressed
 {
     public interface IBackToMainMenuButtonPressedUseCase
     {

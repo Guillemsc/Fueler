@@ -1,9 +1,5 @@
-﻿using Fueler.Content.Shared.Levels.UseCases.LoadNextLevel;
-using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
-using Fueler.Content.StageUi.Ui.LevelCompleted.UseCases.BackToMainMenuButtonPressed;
-using Fueler.Content.StageUi.Ui.LevelCompleted.UseCases.ContinueButtonPressed;
-using Fueler.Content.StageUi.Ui.LevelCompleted.UseCases.TryAgainButtonPressed;
-using Fueler.Content.StageUi.Ui.LevelCompleted.UseCases.SubscribeToButtons;
+﻿using Fueler.Content.StageUi.Ui.AllLevelsCompleted.UseCase.SubscribeToButtons;
+using Fueler.Content.StageUi.Ui.AllLevelsCompleted.UseCases.ContinueButtonPressed;
 using Fueler.Contexts.Shared.UseCases.UnloadStageAndLoadMeta;
 using Juce.Core.DI.Builder;
 using Juce.Core.DI.Installers;
@@ -15,9 +11,9 @@ using Juce.CoreUnity.ViewStack.Entries;
 using Juce.CoreUnity.Visibles;
 using UnityEngine;
 
-namespace Fueler.Content.StageUi.Ui.LevelCompleted
+namespace Fueler.Content.StageUi.Ui.AllLevelsCompleted
 {
-    public class LevelCompletedUiInstaller : MonoBehaviour, IInstaller
+    public class AllLevelsCompletedUiInstaller : MonoBehaviour, IInstaller
     {
         [Header("Animations")]
         [SerializeField] private TweenPlayerAnimation showAnimation = default;
@@ -28,8 +24,6 @@ namespace Fueler.Content.StageUi.Ui.LevelCompleted
 
         [Header("Buttons")]
         [SerializeField] private PointerAndSelectableSubmitCallbacks continueButton = default;
-        [SerializeField] private PointerAndSelectableSubmitCallbacks tryAgainButton = default;
-        [SerializeField] private PointerAndSelectableSubmitCallbacks backToMainMenuButton = default;
 
         private IViewStackEntry viewStackEntry;
 
@@ -39,33 +33,19 @@ namespace Fueler.Content.StageUi.Ui.LevelCompleted
 
             container.Bind<IContinueButtonPressedUseCase>()
                 .FromFunction(c => new ContinueButtonPressedUseCase(
-                    c.Resolve<ILoadNextLevelUseCase>()
-                    ));
-
-            container.Bind<ITryAgainButtonPressedUseCase>()
-                .FromFunction(c => new TryAgainButtonPressedUseCase(
-                 c.Resolve<IReloadLevelUseCase>()
-                 ));
-
-            container.Bind<IBackToMainMenuButtonPressedUseCase>()
-                .FromFunction(c => new BackToMainMenuButtonPressedUseCase(
                     c.Resolve<IUnloadStageAndLoadMetaUseCase>()
                     ));
 
             container.Bind<ISubscribeToButtonsUseCase>()
                 .FromFunction(c => new SubscribeToButtonsUseCase(
                     continueButton,
-                    tryAgainButton,
-                    backToMainMenuButton,
-                    c.Resolve<IContinueButtonPressedUseCase>(),
-                    c.Resolve<ITryAgainButtonPressedUseCase>(),
-                    c.Resolve<IBackToMainMenuButtonPressedUseCase>()
+                    c.Resolve<IContinueButtonPressedUseCase>()
                     ))
                 .WhenInit((c, o) => o.Execute())
                 .NonLazy();
 
-            container.Bind<ILevelCompletedUiInteractor>()
-                .FromFunction(c => new LevelCompletedUiInteractor())
+            container.Bind<IAllLevelsCompletedUiInteractor>()
+                .FromFunction(c => new AllLevelsCompletedUiInteractor())
                 .WhenInit((c, o) => c.Resolve<IUiViewStack>().Register(viewStackEntry))
                 .WhenDispose((c, o) => c.Resolve<IUiViewStack>().Unregister(viewStackEntry))
                 .NonLazy();
@@ -74,13 +54,13 @@ namespace Fueler.Content.StageUi.Ui.LevelCompleted
         private IViewStackEntry CreateStackEntry()
         {
             return new ViewStackEntry(
-                typeof(ILevelCompletedUiInteractor),
+                typeof(IAllLevelsCompletedUiInteractor),
                 gameObject.transform,
                 new TweenPlayerAnimationVisible(
                     showAnimation,
                     hideAnimation
                     ),
-                isPopup : false,
+                isPopup: false,
                 new ViewStackEntryRefresh(RefreshType.BeforeShow, new SetAsSelectedRefreshable(firstSelectable))
                 );
         }

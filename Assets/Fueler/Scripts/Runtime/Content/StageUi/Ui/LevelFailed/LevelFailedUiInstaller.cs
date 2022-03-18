@@ -1,11 +1,10 @@
-﻿using Fueler.Content.Meta.Ui.LevelFailed.UseCases.BackToMainMenuButtonPressed;
-using Fueler.Content.Meta.Ui.LevelFailed.UseCases.SubscribeToButtons;
-using Fueler.Content.Meta.Ui.LevelFailed.UseCases.TryAgainButtonPressed;
+﻿using Fueler.Content.StageUi.Ui.LevelFailed.UseCases.BackToMainMenuButtonPressed;
+using Fueler.Content.StageUi.Ui.LevelFailed.UseCases.SubscribeToButtons;
+using Fueler.Content.StageUi.Ui.LevelFailed.UseCases.TryAgainButtonPressed;
 using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
 using Fueler.Contexts.Shared.UseCases.UnloadStageAndLoadMeta;
 using Juce.Core.DI.Builder;
 using Juce.Core.DI.Installers;
-using Juce.Core.Refresh;
 using Juce.CoreUnity.TweenComponent;
 using Juce.CoreUnity.Ui.Others;
 using Juce.CoreUnity.Ui.SelectableCallback;

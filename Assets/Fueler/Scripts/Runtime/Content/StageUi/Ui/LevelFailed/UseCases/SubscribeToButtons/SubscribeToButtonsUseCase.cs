@@ -1,8 +1,8 @@
-﻿using Fueler.Content.Meta.Ui.LevelFailed.UseCases.BackToMainMenuButtonPressed;
-using Fueler.Content.Meta.Ui.LevelFailed.UseCases.TryAgainButtonPressed;
+﻿using Fueler.Content.StageUi.Ui.LevelFailed.UseCases.BackToMainMenuButtonPressed;
+using Fueler.Content.StageUi.Ui.LevelFailed.UseCases.TryAgainButtonPressed;
 using Juce.CoreUnity.Ui.Others;
 
-namespace Fueler.Content.Meta.Ui.LevelFailed.UseCases.SubscribeToButtons
+namespace Fueler.Content.StageUi.Ui.LevelFailed.UseCases.SubscribeToButtons
 {
     public class SubscribeToButtonsUseCase : ISubscribeToButtonsUseCase
     {

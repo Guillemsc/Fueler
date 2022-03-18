@@ -1,4 +1,4 @@
-﻿namespace Fueler.Content.Meta.Ui.LevelCompleted.UseCases.TryAgainButtonPressed
+﻿namespace Fueler.Content.StageUi.Ui.LevelCompleted.UseCases.TryAgainButtonPressed
 {
     public interface ITryAgainButtonPressedUseCase
     {

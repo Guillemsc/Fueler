@@ -1,6 +1,6 @@
 ﻿using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
 
-namespace Fueler.Content.Meta.Ui.LevelCompleted.UseCases.TryAgainButtonPressed
+namespace Fueler.Content.StageUi.Ui.LevelCompleted.UseCases.TryAgainButtonPressed
 {
     public class TryAgainButtonPressedUseCase : ITryAgainButtonPressedUseCase
     {

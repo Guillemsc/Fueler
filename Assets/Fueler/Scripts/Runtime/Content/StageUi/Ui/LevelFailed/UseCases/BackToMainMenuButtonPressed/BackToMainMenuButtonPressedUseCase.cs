@@ -1,7 +1,7 @@
 ﻿using Fueler.Contexts.Shared.UseCases.UnloadStageAndLoadMeta;
 using System.Threading;
 
-namespace Fueler.Content.Meta.Ui.LevelFailed.UseCases.BackToMainMenuButtonPressed
+namespace Fueler.Content.StageUi.Ui.LevelFailed.UseCases.BackToMainMenuButtonPressed
 {
     public class BackToMainMenuButtonPressedUseCase : IBackToMainMenuButtonPressedUseCase
     {
@@ -16,7 +16,7 @@ namespace Fueler.Content.Meta.Ui.LevelFailed.UseCases.BackToMainMenuButtonPresse
 
         public void Execute()
         {
-            unloadStageAndLoadMetaUseCase.Execute(CancellationToken.None);
+            unloadStageAndLoadMetaUseCase.Execute(CancellationToken.None).RunAsync();
         }
     }
 }

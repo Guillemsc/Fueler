@@ -1,6 +1,6 @@
 ﻿using Fueler.Content.Shared.Levels.UseCases.LoadNextLevel;
 
-namespace Fueler.Content.Meta.Ui.LevelCompleted.UseCases.ContinueButtonPressed
+namespace Fueler.Content.StageUi.Ui.LevelCompleted.UseCases.ContinueButtonPressed
 {
     public class ContinueButtonPressedUseCase : IContinueButtonPressedUseCase
     {

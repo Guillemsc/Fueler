@@ -1,4 +1,4 @@
-﻿namespace Fueler.Content.Meta.Ui.LevelFailed.UseCases.SubscribeToButtons
+﻿namespace Fueler.Content.StageUi.Ui.LevelFailed.UseCases.SubscribeToButtons
 {
     public interface ISubscribeToButtonsUseCase
     {
