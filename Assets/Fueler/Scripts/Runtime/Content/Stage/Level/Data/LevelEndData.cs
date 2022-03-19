@@ -27,5 +27,14 @@
                 DestroyShip = true
             };
         }
+
+        public static LevelEndData FromRanOutOfTime()
+        {
+            return new LevelEndData()
+            {
+                Completed = false,
+                DestroyShip = false,
+            };
+        }
     }
 }

@@ -14,6 +14,7 @@ using Fueler.Content.Stage.Cheats.Installers;
 using Fueler.Content.Stage.Tutorial.Installers;
 using Fueler.Content.Stage.General.UseCases.TryEndStage;
 using Fueler.Content.Stage.Accessibility.Installers;
+using Fueler.Content.Stage.Time.Installers;
 
 namespace Fueler.Contexts.Stage
 {
@@ -32,6 +33,7 @@ namespace Fueler.Contexts.Stage
             container.InstallShip();
             container.InstallFuel();
             container.InstallAstronauts();
+            container.InstallTime();
             container.InstallTutorial();
 
             container.Bind<ILoadUseCase>()

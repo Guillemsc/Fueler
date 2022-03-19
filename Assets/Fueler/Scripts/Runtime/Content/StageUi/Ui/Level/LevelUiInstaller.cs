@@ -1,8 +1,9 @@
-﻿using Fueler.Content.Shared.Levels.UseCases.ReloadLevel;
-using Fueler.Content.StageUi.Ui.Level.Events;
+﻿using Fueler.Content.StageUi.Ui.Level.Events;
+using Fueler.Content.StageUi.Ui.Level.UseCase.HideTimer;
 using Fueler.Content.StageUi.Ui.Level.UseCase.RestartLevelButtonPressed;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SetAstronauts;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SetFuel;
+using Fueler.Content.StageUi.Ui.Level.UseCase.SetTimerTime;
 using Fueler.Content.StageUi.Ui.Level.UseCase.ShowToasterText;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SubscribeToButtons;
 using Fueler.Content.StageUi.Ui.Level.UseCase.TryPlayLowFuelIndicator;
@@ -37,6 +38,10 @@ namespace Fueler.Content.StageUi.Ui.Level
         [SerializeField] private TweenPlayer setAstronautsTween = default;
         [SerializeField] private TweenPlayer hideAstronautsTween = default;
 
+        [Header("Timer Tweens")]
+        [SerializeField] private TweenPlayer setTimerTimeTween = default;
+        [SerializeField] private TweenPlayer hideTimerTween = default;
+
         [Header("Toaster Text Tweens")]
         [SerializeField] private TweenPlayer showToasterTextTween = default;
         [SerializeField] private TweenPlayer hideToasterTextTween = default;
@@ -69,6 +74,16 @@ namespace Fueler.Content.StageUi.Ui.Level
                     hideAstronautsTween
                     ));
 
+            container.Bind<ISetTimerTimeUseCase>()
+                .FromFunction(c => new SetTimerTimeUseCase(
+                    setTimerTimeTween
+                    ));
+
+            container.Bind<IHideTimerUseCase>()
+                .FromFunction(c => new HideTimerUseCase(
+                    hideTimerTween
+                    ));
+
             container.Bind<IShowToasterTextUseCase>()
                 .FromFunction(c => new ShowToasterTextUseCase(
                     new Sequencer(),
@@ -96,6 +111,8 @@ namespace Fueler.Content.StageUi.Ui.Level
                     c.Resolve<ISetFuelUseCase>(),
                     c.Resolve<ITryPlayLowFuelIndicatorUseCase>(),
                     c.Resolve<ISetAstronautsUseCase>(),
+                    c.Resolve<ISetTimerTimeUseCase>(),
+                    c.Resolve<IHideTimerUseCase>(),
                     c.Resolve<IShowToasterTextUseCase>()
                     ))
                 .WhenInit((c, o) => c.Resolve<IUiViewStack>().Register(viewStackEntry))

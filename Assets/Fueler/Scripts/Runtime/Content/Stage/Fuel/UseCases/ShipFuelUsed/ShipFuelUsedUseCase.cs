@@ -5,7 +5,6 @@ using Fueler.Content.Stage.Fuel.UseCases.TryShowLowFuelWarning;
 using Fueler.Content.Stage.Fuel.UseCases.TryShowNoFuelWarning;
 using Fueler.Content.StageUi.Ui.Level;
 using System;
-using UnityEngine;
 
 namespace Fueler.Content.Stage.Fuel.UseCases.ShipFuelUsed
 {
@@ -42,7 +41,7 @@ namespace Fueler.Content.Stage.Fuel.UseCases.ShipFuelUsed
                 return;
             }
 
-            decimal currentFuel = shipFuelData.CurrentFuel - (decimal)fuelConfiguration.FuelConsumptionRate * (decimal)Time.deltaTime;
+            decimal currentFuel = shipFuelData.CurrentFuel - (decimal)fuelConfiguration.FuelConsumptionRate * (decimal)UnityEngine.Time.deltaTime;
 
             currentFuel = Math.Max(0, currentFuel);
 

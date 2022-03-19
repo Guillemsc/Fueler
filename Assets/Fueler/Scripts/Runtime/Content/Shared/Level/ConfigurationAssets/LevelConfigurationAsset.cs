@@ -18,13 +18,15 @@ namespace Fueler.Content.Shared.Levels.ConfigurationAssets
 
         [Header("Values")]
         [SerializeField, Min(0)] private int initialFuel = 100;
+        [SerializeField, Min(0)] private int maxTime = 0;
 
         public ILevelConfiguration ToConfiguration()
         {
             return new LevelConfiguration(
                 Guid.Parse(id), 
                 levelEntityPrefab,
-                initialFuel
+                initialFuel,
+                maxTime
                 );
         }
     }

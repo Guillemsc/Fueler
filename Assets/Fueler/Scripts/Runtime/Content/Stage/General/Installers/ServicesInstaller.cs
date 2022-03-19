@@ -7,6 +7,7 @@ using Fueler.Content.Services.Ship;
 using Juce.Core.Repositories;
 using Juce.Core.Disposables;
 using Fueler.Content.Stage.Ship.Entities;
+using Juce.CoreUnity.Tickables;
 
 namespace Fueler.Content.Stage.General.Installers
 {
@@ -17,6 +18,7 @@ namespace Fueler.Content.Stage.General.Installers
             container.Bind<IUiViewStack>().FromServicesLocator();
             container.Bind<IPersistenceService>().FromServicesLocator();
             container.Bind<IConfigurationService>().FromServicesLocator();
+            container.Bind<ITickablesService>().FromServicesLocator();
 
             container.Bind<IShipService, ShipService>()
                 .FromFunction(c => new ShipService(

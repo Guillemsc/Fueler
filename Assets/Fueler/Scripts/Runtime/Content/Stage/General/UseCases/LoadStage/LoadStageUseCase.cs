@@ -11,6 +11,8 @@ using Fueler.Content.Stage.Ship.UseCases.LoadShip;
 using Fueler.Content.Stage.Ship.UseCases.SetShipInitialPosition;
 using Fueler.Content.Stage.Ship.UseCases.SetupShipCamera;
 using Fueler.Content.Stage.Ship.UseCases.ShipCollided;
+using Fueler.Content.Stage.Ship.UseCases.ShipMoves;
+using Fueler.Content.Stage.Time.UseCases.InitTime;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -27,7 +29,8 @@ namespace Fueler.Content.Stage.General.UseCases.LoadStage
         private readonly IShipCollidedUseCase shipCollidedUseCase;
         private readonly IInitFuelUseCase initFuelUseCase;
         private readonly IInitAstronautsUseCase initAstronautsUseCase;
-        private readonly IShipFuelUsedUseCase shipFuelUsedUseCase;
+        private readonly IInitTimeUseCase initTimeUseCase;
+        private readonly IShipMovesUseCase shipMovesUseCase;
 
         public LoadStageUseCase(
             StageStateData stageStateData,
@@ -39,7 +42,8 @@ namespace Fueler.Content.Stage.General.UseCases.LoadStage
             IShipCollidedUseCase shipCollidedUseCase,
             IInitFuelUseCase initFuelUseCase,
             IInitAstronautsUseCase initAstronautsUseCase,
-            IShipFuelUsedUseCase shipFuelUsedUseCase
+            IInitTimeUseCase initTimeUseCase,
+            IShipMovesUseCase shipMovesUseCase
             )
         {
             this.stageStateData = stageStateData;
@@ -51,7 +55,8 @@ namespace Fueler.Content.Stage.General.UseCases.LoadStage
             this.shipCollidedUseCase = shipCollidedUseCase;
             this.initFuelUseCase = initFuelUseCase;
             this.initAstronautsUseCase = initAstronautsUseCase;
-            this.shipFuelUsedUseCase = shipFuelUsedUseCase;
+            this.initTimeUseCase = initTimeUseCase;
+            this.shipMovesUseCase = shipMovesUseCase;
         }
 
         public Task Execute(CancellationToken cancellationToken)
@@ -60,6 +65,7 @@ namespace Fueler.Content.Stage.General.UseCases.LoadStage
 
             initFuelUseCase.Execute();
             initAstronautsUseCase.Execute(levelEntity);
+            initTimeUseCase.Execute();
 
             loadShipUseCase.Execute(out ShipEntity shipEntity);
             shipEntity.ShipController.CanMove = false;
@@ -67,7 +73,7 @@ namespace Fueler.Content.Stage.General.UseCases.LoadStage
             setShipInitialPositionUseCase.Execute(shipEntity);
 
             shipEntity.PhysicsCallbacks.OnPhysicsTriggerEnter2D += shipCollidedUseCase.Execute;
-            shipEntity.ShipController.OnForwardOrBackward += shipFuelUsedUseCase.Execute;
+            shipEntity.ShipController.OnForwardOrBackward += shipMovesUseCase.Execute;
 
             setupShipCameraUseCase.Execute(shipEntity);
 

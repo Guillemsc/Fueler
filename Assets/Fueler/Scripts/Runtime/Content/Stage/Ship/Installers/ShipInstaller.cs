@@ -14,6 +14,9 @@ using Fueler.Content.Stage.Astrounats.UseCases.ShipCollidedWithAstronaut;
 using Fueler.Content.Stage.Ship.UseCases.ShipCollidedWithShipKiller;
 using Fueler.Content.Stage.General.UseCases.TryEndStage;
 using Fueler.Content.Stage.General.UseCases.ShipCollidedWithEnd;
+using Fueler.Content.Stage.Ship.UseCases.ShipMoves;
+using Fueler.Content.Stage.Fuel.UseCases.ShipFuelUsed;
+using Fueler.Content.Stage.Time.UseCases.TryStartTime;
 
 namespace Fueler.Content.Stage.Ship.Installers
 {
@@ -45,6 +48,12 @@ namespace Fueler.Content.Stage.Ship.Installers
                     c.Resolve<StageContextInstance>().ShipVirtualCamera,
                     c.Resolve<StageContextInstance>().CameraConfiner,
                     c.Resolve<ISingleRepository<IDisposable<LevelEntity>>>()
+                    ));
+
+            container.Bind<IShipMovesUseCase>()
+                .FromFunction(c => new ShipMovesUseCase(
+                    c.Resolve<IShipFuelUsedUseCase>(),
+                    c.Resolve<ITryStartTimeUseCase>()
                     ));
 
             container.Bind<IShipCollidedWithShipKillerUseCase>()

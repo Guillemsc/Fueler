@@ -13,7 +13,7 @@ namespace Fueler.Content.Stage.Turrets.Entities
 
         private void MoveForward()
         {
-            float speedDelta = Speed * Time.deltaTime;
+            float speedDelta = Speed * UnityEngine.Time.deltaTime;
 
             transform.position += -transform.up * speedDelta;
         }

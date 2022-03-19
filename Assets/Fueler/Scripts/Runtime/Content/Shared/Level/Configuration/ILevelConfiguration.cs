@@ -8,5 +8,6 @@ namespace Fueler.Content.Shared.Levels.Configuration
         Guid Id { get; }
         LevelEntity LevelEntityPrefab { get; }
         int InitialFuel { get; }
+        int MaxTime { get; }
     }
 }

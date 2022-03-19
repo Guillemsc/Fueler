@@ -4,6 +4,7 @@ using Fueler.Content.Services.Persistence;
 using Fueler.Content.Services.Ship;
 using Juce.Core.DI.Builder;
 using Juce.CoreUnity.Contexts;
+using Juce.CoreUnity.Tickables;
 using Juce.CoreUnity.ViewStack;
 using JuceUnity.Core.DI.Extensions;
 
@@ -25,6 +26,11 @@ namespace Fueler.Contexts.Services
 
             container.Bind<IPersistenceService>()
                 .FromInstance(new PersistenceService())
+                .ToServicesLocator()
+                .NonLazy();
+
+            container.Bind<ITickablesService>()
+                .FromInstance(instance.TickablesService)
                 .ToServicesLocator()
                 .NonLazy();
 

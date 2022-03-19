@@ -11,7 +11,6 @@ using Juce.Core.Repositories;
 using Juce.CoreUnity.ViewStack;
 using Juce.Core.Disposables;
 using Fueler.Content.Stage.Ship.Entities;
-using Fueler.Content.Stage.Fuel.UseCases.ShipFuelUsed;
 using Fueler.Content.Shared.Levels.Configuration;
 using Fueler.Content.Stage.Fuel.UseCases.InitFuel;
 using Fueler.Content.Stage.Astrounats.UseCases.InitAstronauts;
@@ -30,9 +29,10 @@ using Fueler.Content.Stage.Astrounats.UseCases.TryShowNeedToCollectAllAstronatus
 using Fueler.Content.Stage.General.Data;
 using Fueler.Content.Stage.General.UseCases.SubscribeToStageUi;
 using Fueler.Content.StageUi.Ui.Level;
-using Fueler.Content.Shared.Levels.UseCases.IsLevelCompleted;
 using Fueler.Content.Shared.Levels.UseCases.IsLastLevel;
 using Fueler.Content.Services.Configuration;
+using Fueler.Content.Stage.Time.UseCases.InitTime;
+using Fueler.Content.Stage.Ship.UseCases.ShipMoves;
 
 namespace Fueler.Content.Stage.General.Installers
 {
@@ -66,7 +66,8 @@ namespace Fueler.Content.Stage.General.Installers
                 c.Resolve<IShipCollidedUseCase>(),
                 c.Resolve<IInitFuelUseCase>(),
                 c.Resolve<IInitAstronautsUseCase>(),
-                c.Resolve<IShipFuelUsedUseCase>()
+                c.Resolve<IInitTimeUseCase>(),
+                c.Resolve<IShipMovesUseCase>()
                 ));
 
             container.Bind<IStartStageUseCase>().FromFunction(c => new StartStageUseCase(

@@ -82,7 +82,7 @@ namespace Fueler.Content.Stage.Ship.Entities
 
             if (moveForwardValue > 0f)
             {
-                currentSpeed += forward * acceleration * Time.deltaTime;
+                currentSpeed += forward * acceleration * UnityEngine.Time.deltaTime;
 
                 OnForwardOrBackward?.Invoke();
             }
@@ -100,7 +100,7 @@ namespace Fueler.Content.Stage.Ship.Entities
 
             if (rotateLeftValue > 0f)
             {
-                float deltaRotationSpeed = rotationSpeed * Time.deltaTime;
+                float deltaRotationSpeed = rotationSpeed * UnityEngine.Time.deltaTime;
 
                 gameObject.transform.localRotation *= Quaternion.Euler(
                     0,
@@ -110,7 +110,7 @@ namespace Fueler.Content.Stage.Ship.Entities
             }
             else if (rotateRightValue > 0f)
             {
-                float deltaRotationSpeed = rotationSpeed * Time.deltaTime;
+                float deltaRotationSpeed = rotationSpeed * UnityEngine.Time.deltaTime;
 
                 gameObject.transform.localRotation *= Quaternion.Euler(
                     0,
@@ -127,7 +127,7 @@ namespace Fueler.Content.Stage.Ship.Entities
                 return;
             }
 
-            currentSpeed -= currentSpeed.normalized * acceleration * Time.deltaTime * autobreakStrenght;
+            currentSpeed -= currentSpeed.normalized * acceleration * UnityEngine.Time.deltaTime * autobreakStrenght;
         }
 
         private void UpdatePosition()
@@ -137,7 +137,7 @@ namespace Fueler.Content.Stage.Ship.Entities
                 return;
             }
 
-            Vector2 deltaCurrentSpeed = currentSpeed * Time.deltaTime;
+            Vector2 deltaCurrentSpeed = currentSpeed * UnityEngine.Time.deltaTime;
 
             gameObject.transform.position += new Vector3(
                 deltaCurrentSpeed.x,

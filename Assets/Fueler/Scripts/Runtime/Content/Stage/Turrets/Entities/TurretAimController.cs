@@ -67,11 +67,11 @@ namespace Fueler.Content.Stage.Turrets.Entities
                 direction = -direction;
             }
 
-            currentAimSpeed += aimAcceleration * Time.deltaTime * direction;
+            currentAimSpeed += aimAcceleration * UnityEngine.Time.deltaTime * direction;
 
             currentAimSpeed = Mathf.Clamp(currentAimSpeed, -aimMaxVelocity, aimMaxVelocity);
 
-            float currentAimSpeedDelta = currentAimSpeed * Time.deltaTime;
+            float currentAimSpeedDelta = currentAimSpeed * UnityEngine.Time.deltaTime;
 
             bool speedIsBiggerThanDistance = Math.Abs(TargetAngleDifference) <= Math.Abs(currentAimSpeedDelta);
 
