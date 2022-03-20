@@ -1,4 +1,5 @@
 ﻿using Fueler.Content.Stage.Time.Data;
+using Fueler.Content.Stage.Time.UseCases.TryShowLowTimeWarning;
 using Fueler.Content.StageUi.Ui.Level;
 
 namespace Fueler.Content.Stage.Time.UseCases.UpdateTime
@@ -7,14 +8,17 @@ namespace Fueler.Content.Stage.Time.UseCases.UpdateTime
     {
         private readonly TimeData timeData;
         private readonly ILevelUiInteractor levelUiInteractor;
+        private readonly ITryShowLowTimeWarningUseCase tryShowLowTimeWarningUseCase;
 
         public UpdateTimeUseCase(
             TimeData timeData,
-            ILevelUiInteractor levelUiInteractor
+            ILevelUiInteractor levelUiInteractor,
+            ITryShowLowTimeWarningUseCase tryShowLowTimeWarningUseCase
             )
         {
             this.timeData = timeData;
             this.levelUiInteractor = levelUiInteractor;
+            this.tryShowLowTimeWarningUseCase = tryShowLowTimeWarningUseCase;
         }
 
         public void Execute()
@@ -46,6 +50,8 @@ namespace Fueler.Content.Stage.Time.UseCases.UpdateTime
             timeData.TimeLeft = timeLeft;
 
             levelUiInteractor.SetTime(timeData.TimeLeft);
+
+            tryShowLowTimeWarningUseCase.Execute();
         }
     }
 }

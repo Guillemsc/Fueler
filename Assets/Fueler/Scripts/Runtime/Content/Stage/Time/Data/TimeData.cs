@@ -7,6 +7,7 @@ namespace Fueler.Content.Stage.Time.Data
     {
         public int MaxTime { get; set; }
         public int TimeLeft { get; set; }
-        public ITimer Timer { get; } = new ScaledUnityTimer(); 
+        public ITimer Timer { get; } = new ScaledUnityTimer();
+        public bool ShowedLowTimeWarning { get; set; }
     }
 }

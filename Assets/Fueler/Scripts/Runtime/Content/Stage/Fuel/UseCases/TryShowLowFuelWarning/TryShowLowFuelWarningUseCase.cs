@@ -1,6 +1,7 @@
 ﻿using Fueler.Content.Shared.Fuel.Configuration;
 using Fueler.Content.Stage.Fuel.Data;
 using Fueler.Content.StageUi.Ui.Level;
+using Fueler.Content.StageUi.Ui.Level.Enums;
 
 namespace Fueler.Content.Stage.Fuel.UseCases.TryShowLowFuelWarning
 {
@@ -42,7 +43,11 @@ namespace Fueler.Content.Stage.Fuel.UseCases.TryShowLowFuelWarning
 
             shipFuelData.ShowedLowFuelWarning = true;
 
-            levelUiInteractor.ShowToasterText("Low energy");
+            levelUiInteractor.ShowToasterText(
+                "Low energy",
+                ToasterTextDuration.Short
+                );
+
             levelUiInteractor.EnableLowFuelWarning();
         }
     }

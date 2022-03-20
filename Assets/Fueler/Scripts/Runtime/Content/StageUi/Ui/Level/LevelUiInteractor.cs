@@ -1,10 +1,12 @@
-﻿using Fueler.Content.StageUi.Ui.Level.Events;
+﻿using Fueler.Content.StageUi.Ui.Level.Enums;
+using Fueler.Content.StageUi.Ui.Level.Events;
 using Fueler.Content.StageUi.Ui.Level.UseCase.HideTimer;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SetAstronauts;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SetFuel;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SetTimerTime;
 using Fueler.Content.StageUi.Ui.Level.UseCase.ShowToasterText;
 using Fueler.Content.StageUi.Ui.Level.UseCase.TryPlayLowFuelIndicator;
+using Fueler.Content.StageUi.Ui.Level.UseCase.TryPlayLowTimeIndicator;
 using System;
 
 namespace Fueler.Content.StageUi.Ui.Level
@@ -17,6 +19,7 @@ namespace Fueler.Content.StageUi.Ui.Level
         private readonly ISetAstronautsUseCase setAstronautsUseCase;
         private readonly ISetTimerTimeUseCase setTimerTimeUseCase;
         private readonly IHideTimerUseCase hideTimerUseCase;
+        private readonly ITryPlayLowTimeIndicatorUseCase tryPlayLowTimeIndicatorUseCase;
         private readonly IShowToasterTextUseCase showToasterTextUseCase;
 
         public LevelUiInteractor(
@@ -26,6 +29,7 @@ namespace Fueler.Content.StageUi.Ui.Level
             ISetAstronautsUseCase setAstronautsUseCase,
             ISetTimerTimeUseCase setTimerTimeUseCase,
             IHideTimerUseCase hideTimerUseCase,
+            ITryPlayLowTimeIndicatorUseCase tryPlayLowTimeIndicatorUseCase,
             IShowToasterTextUseCase showToasterTextUseCase
             )
         {
@@ -35,6 +39,7 @@ namespace Fueler.Content.StageUi.Ui.Level
             this.setAstronautsUseCase = setAstronautsUseCase;
             this.setTimerTimeUseCase = setTimerTimeUseCase;
             this.hideTimerUseCase = hideTimerUseCase;
+            this.tryPlayLowTimeIndicatorUseCase = tryPlayLowTimeIndicatorUseCase;
             this.showToasterTextUseCase = showToasterTextUseCase;
         }
 
@@ -63,9 +68,14 @@ namespace Fueler.Content.StageUi.Ui.Level
             hideTimerUseCase.Execute();
         }
 
-        public void ShowToasterText(string text)
+        public void EnableLowTimeWarning()
         {
-            showToasterTextUseCase.Execute(text);
+            tryPlayLowTimeIndicatorUseCase.Execute();
+        }
+
+        public void ShowToasterText(string text, ToasterTextDuration toasterTextDuration)
+        {
+            showToasterTextUseCase.Execute(text, toasterTextDuration);
         }
 
         public void SubscribeOnRestart(Action onRestart)

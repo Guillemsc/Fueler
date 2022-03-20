@@ -1,6 +1,7 @@
 ﻿using Fueler.Content.Stage.Astrounats.Data;
 using Fueler.Content.Stage.General.Data;
 using Fueler.Content.StageUi.Ui.Level;
+using Fueler.Content.StageUi.Ui.Level.Enums;
 
 namespace Fueler.Content.Stage.Astrounats.UseCases.TryShowNeedToCollectAllAstronatusToaster
 {
@@ -40,7 +41,10 @@ namespace Fueler.Content.Stage.Astrounats.UseCases.TryShowNeedToCollectAllAstron
                 return;
             }
 
-            levelUiInteractor.ShowToasterText("Collect all the astronatus before completing the level!");
+            levelUiInteractor.ShowToasterText(
+                "Collect all the astronatus before completing the level!",
+                ToasterTextDuration.Long
+                );
         }
     }
 }

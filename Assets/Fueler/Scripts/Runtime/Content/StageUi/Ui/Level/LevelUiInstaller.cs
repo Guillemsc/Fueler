@@ -7,6 +7,7 @@ using Fueler.Content.StageUi.Ui.Level.UseCase.SetTimerTime;
 using Fueler.Content.StageUi.Ui.Level.UseCase.ShowToasterText;
 using Fueler.Content.StageUi.Ui.Level.UseCase.SubscribeToButtons;
 using Fueler.Content.StageUi.Ui.Level.UseCase.TryPlayLowFuelIndicator;
+using Fueler.Content.StageUi.Ui.Level.UseCase.TryPlayLowTimeIndicator;
 using Juce.Core.DI.Builder;
 using Juce.Core.DI.Installers;
 using Juce.Core.Sequencing;
@@ -40,6 +41,7 @@ namespace Fueler.Content.StageUi.Ui.Level
 
         [Header("Timer Tweens")]
         [SerializeField] private TweenPlayer setTimerTimeTween = default;
+        [SerializeField] private TweenPlayer lowTimeTween = default;
         [SerializeField] private TweenPlayer hideTimerTween = default;
 
         [Header("Toaster Text Tweens")]
@@ -47,7 +49,9 @@ namespace Fueler.Content.StageUi.Ui.Level
         [SerializeField] private TweenPlayer hideToasterTextTween = default;
 
         [Header("Toaster Text Values")]
-        [SerializeField, Min(0f)] private float toasterTextDurationOnScreen = 1f;
+        [SerializeField, Min(0f)] private float toasterTextLongDurationOnScreen = 1f;
+        [SerializeField, Min(0f)] private float toasterTextMediumDurationOnScreen = 0.6f;
+        [SerializeField, Min(0f)] private float toasterTextShortDurationOnScreen = 0.3f;
 
         private IViewStackEntry viewStackEntry;
 
@@ -60,6 +64,11 @@ namespace Fueler.Content.StageUi.Ui.Level
             container.Bind<ITryPlayLowFuelIndicatorUseCase>()
                 .FromFunction(c => new TryPlayLowFuelIndicatorUseCase(
                     lowFuelTween
+                    ));
+
+            container.Bind<ITryPlayLowTimeIndicatorUseCase>()
+                .FromFunction(c => new TryPlayLowTimeIndicatorUseCase(
+                    lowTimeTween
                     ));
 
             container.Bind<ISetFuelUseCase>()
@@ -89,7 +98,9 @@ namespace Fueler.Content.StageUi.Ui.Level
                     new Sequencer(),
                     showToasterTextTween,
                     hideToasterTextTween,
-                    toasterTextDurationOnScreen
+                    toasterTextLongDurationOnScreen,
+                    toasterTextMediumDurationOnScreen,
+                    toasterTextShortDurationOnScreen
                     ));
 
             container.Bind<IRestartLevelButtonPressedUseCase>()
@@ -113,6 +124,7 @@ namespace Fueler.Content.StageUi.Ui.Level
                     c.Resolve<ISetAstronautsUseCase>(),
                     c.Resolve<ISetTimerTimeUseCase>(),
                     c.Resolve<IHideTimerUseCase>(),
+                    c.Resolve<ITryPlayLowTimeIndicatorUseCase>(),
                     c.Resolve<IShowToasterTextUseCase>()
                     ))
                 .WhenInit((c, o) => c.Resolve<IUiViewStack>().Register(viewStackEntry))

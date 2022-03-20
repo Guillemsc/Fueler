@@ -1,6 +1,7 @@
 ﻿using Fueler.Content.Stage.Fuel.Data;
 using Fueler.Content.Stage.General.Data;
 using Fueler.Content.StageUi.Ui.Level;
+using Fueler.Content.StageUi.Ui.Level.Enums;
 
 namespace Fueler.Content.Stage.Fuel.UseCases.TryShowNoFuelWarning
 {
@@ -40,7 +41,10 @@ namespace Fueler.Content.Stage.Fuel.UseCases.TryShowNoFuelWarning
 
             stageMessagesData.NoFuelToasterShown = true;
 
-            levelUiInteractor.ShowToasterText("No energy left");
+            levelUiInteractor.ShowToasterText(
+                "No energy left", 
+                ToasterTextDuration.Medium
+                );
         }
     }
 }
