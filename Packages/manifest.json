@@ -3,7 +3,7 @@
     "com.coffee.ui-particle": "https://github.com/mob-sakai/ParticleEffectForUGUI.git",
     "com.juce.cheats": "git+https://github.com/Juce-Assets/Juce-Cheats#0.0.4",
     "com.juce.core": "git+https://github.com/Juce-Assets/Juce-Core#1.2.12",
-    "com.juce.coreunity": "git+https://github.com/Juce-Assets/Juce-CoreUnity#1.3.14",
+    "com.juce.coreunity": "git+https://github.com/Juce-Assets/Juce-CoreUnity#1.3.16",
     "com.juce.implementationselector": "git+https://github.com/Juce-Assets/Juce-ImplementationSelector#1.0.4",
     "com.juce.input": "git+https://github.com/Juce-Assets/Juce-Input#0.1.1",
     "com.juce.persistence": "git+https://github.com/Juce-Assets/Juce-Persistence#1.0.2",

@@ -16,4 +16,4 @@ MonoBehaviour:
   id: e851a46c-ff37-4f64-bfea-70d44383c608
   levelEntityPrefab: {fileID: 3166591651800058605, guid: 93cca6404f2d2644585f7dfbae3e5ec5, type: 3}
   initialFuel: 0
-  maxTime: 4
+  maxTime: 0
