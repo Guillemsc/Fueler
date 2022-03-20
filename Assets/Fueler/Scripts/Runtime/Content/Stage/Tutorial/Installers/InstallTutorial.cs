@@ -9,6 +9,8 @@ using Fueler.Content.Stage.Tutorial.UseCases.TryShowTutorialPanels;
 using Fueler.Content.Stage.Tutorial.UseCases.TryShowControlsTutorial;
 using Fueler.Content.Stage.Tutorial.UseCases.TryShowFuelTutorialPanel;
 using Fueler.Content.Stage.Fuel.Data;
+using Fueler.Content.Stage.Tutorial.UseCases.TryShowTimeTutorialPanel;
+using Fueler.Content.Stage.Time.Data;
 
 namespace Fueler.Content.Stage.Tutorial.Installers
 {
@@ -42,11 +44,19 @@ namespace Fueler.Content.Stage.Tutorial.Installers
                     c.Resolve<IShowObjectivesPopupTutorialPanelUseCase>()
                     ));
 
+            container.Bind<ITryShowTimeTutorialPanelUseCase>()
+                .FromFunction(c => new TryShowTimeTutorialPanelUseCase(
+                    c.Resolve<TimeData>(),
+                    c.Resolve<IPersistenceService>().TutorialSerializable,
+                    c.Resolve<IShowObjectivesPopupTutorialPanelUseCase>()
+                    ));
+
             container.Bind<ITryShowTutorialPanelsUseCase>()
                 .FromFunction(c => new TryShowTutorialPanelsUseCase(
                     c.Resolve<ITryShowControlsTutorialPanelUseCase>(),
                     c.Resolve<ITryShowFuelTutorialPanelUseCase>(),
-                    c.Resolve<ITryShowAstronautsTutorialPanelUseCase>()
+                    c.Resolve<ITryShowAstronautsTutorialPanelUseCase>(),
+                    c.Resolve<ITryShowTimeTutorialPanelUseCase>()
                     ));
         }
     }

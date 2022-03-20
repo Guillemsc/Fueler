@@ -4,6 +4,7 @@
     {
         Controls = 0,
         CollectAstronauts = 1,
-        Fuel,
+        Fuel = 2,
+        Time = 3,
     }
 }
