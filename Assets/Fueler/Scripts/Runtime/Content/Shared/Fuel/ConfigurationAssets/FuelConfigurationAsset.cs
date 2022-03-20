@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Fueler.Content.Shared.Fuel.ConfigurationAssets
 {
-    [CreateAssetMenu(fileName = "Fuel", menuName = "Fueler/Configuration/Fuel")]
+    [CreateAssetMenu(fileName = "FuelConfiguration", menuName = "Fueler/Configuration/Fuel")]
     public class FuelConfigurationAsset : ScriptableObject
     {
         [SerializeField] private float fuelConsumptionRate = default;

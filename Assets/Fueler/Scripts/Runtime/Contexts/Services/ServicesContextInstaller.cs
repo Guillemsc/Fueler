@@ -19,7 +19,8 @@ namespace Fueler.Contexts.Services
             container.Bind<IConfigurationService>()
                 .FromInstance(new ConfigurationService(
                     instance.FuelerConfigurationAsset.LevelsConfigurationAsset.ToConfiguration(),
-                    instance.FuelerConfigurationAsset.FuelConfigurationAsset.ToConfiguration()
+                    instance.FuelerConfigurationAsset.FuelConfigurationAsset.ToConfiguration(),
+                    instance.FuelerConfigurationAsset.TimeConfigurationAsset.ToConfiguration()
                     ))
                 .ToServicesLocator()
                 .NonLazy(); 

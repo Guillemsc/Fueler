@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelsConfigurationAsset: {fileID: 11400000, guid: beeb37d9a3b5cd34d879afdcb63a140c, type: 2}
   fuelConfigurationAsset: {fileID: 11400000, guid: cc752bef0dfa5b94288818a0044103aa, type: 2}
+  timeConfigurationAsset: {fileID: 11400000, guid: b3471df67cfd47544b8be8cd6ab5f0c1, type: 2}
