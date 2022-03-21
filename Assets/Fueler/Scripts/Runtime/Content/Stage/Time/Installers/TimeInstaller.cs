@@ -5,6 +5,7 @@ using Fueler.Content.Stage.General.UseCases.TryEndStage;
 using Fueler.Content.Stage.Time.Data;
 using Fueler.Content.Stage.Time.Tickables.UpdateTime;
 using Fueler.Content.Stage.Time.UseCases.InitTime;
+using Fueler.Content.Stage.Time.UseCases.StopTime;
 using Fueler.Content.Stage.Time.UseCases.TryEndStageIfTimeRunOut;
 using Fueler.Content.Stage.Time.UseCases.TryShowLowTimeWarning;
 using Fueler.Content.Stage.Time.UseCases.TryStartTime;
@@ -62,6 +63,11 @@ namespace Fueler.Content.Stage.Time.Installers
                 .WhenInit((c, o) => c.Resolve<ITickablesService>().Add(o))
                 .WhenDispose((c, o) => c.Resolve<ITickablesService>().Remove(o))
                 .NonLazy();
+
+            container.Bind<IStopTimeUseCase>()
+                .FromFunction(c => new StopTimeUseCase(
+                    c.Resolve<TimeData>()
+                    ));
         }
     }
 }

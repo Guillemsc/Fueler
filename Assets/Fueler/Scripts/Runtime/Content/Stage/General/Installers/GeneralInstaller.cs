@@ -33,6 +33,7 @@ using Fueler.Content.Shared.Levels.UseCases.IsLastLevel;
 using Fueler.Content.Services.Configuration;
 using Fueler.Content.Stage.Time.UseCases.InitTime;
 using Fueler.Content.Stage.Ship.UseCases.ShipMoves;
+using Fueler.Content.Stage.Time.UseCases.StopTime;
 
 namespace Fueler.Content.Stage.General.Installers
 {
@@ -89,6 +90,7 @@ namespace Fueler.Content.Stage.General.Installers
                 c.Resolve<ISingleRepository<IDisposable<ShipEntity>>>(),
                 c.Resolve<IUiViewStack>(),
                 c.Resolve<IWaitUnscaledTimeUseCase>(),
+                c.Resolve<IStopTimeUseCase>(),
                 c.Resolve<ISetLevelAsCompletedUseCase>(),
                 c.Resolve<IIsLastLevelUseCase>()
                 ));

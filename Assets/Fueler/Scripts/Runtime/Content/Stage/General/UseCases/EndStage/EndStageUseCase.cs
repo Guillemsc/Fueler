@@ -5,6 +5,7 @@ using Fueler.Content.Shared.Time.UseCases.WaitUnscaledTime;
 using Fueler.Content.Stage.General.Data;
 using Fueler.Content.Stage.Level.Data;
 using Fueler.Content.Stage.Ship.Entities;
+using Fueler.Content.Stage.Time.UseCases.StopTime;
 using Fueler.Content.StageUi.Ui.AllLevelsCompleted;
 using Fueler.Content.StageUi.Ui.LevelCompleted;
 using Fueler.Content.StageUi.Ui.LevelFailed;
@@ -24,6 +25,7 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
         private readonly ISingleRepository<IDisposable<ShipEntity>> shipEntityRepository;
         private readonly IUiViewStack viewStack;
         private readonly IWaitUnscaledTimeUseCase waitUnscaledTimeUseCase;
+        private readonly IStopTimeUseCase stopTimeUseCase;
         private readonly ISetLevelAsCompletedUseCase setLevelAsCompletedUseCase;
         private readonly IIsLastLevelUseCase isLastLevelUseCase;
 
@@ -33,6 +35,7 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
             ISingleRepository<IDisposable<ShipEntity>> shipEntityRepository,
             IUiViewStack viewStack,
             IWaitUnscaledTimeUseCase waitUnscaledTimeUseCase,
+            IStopTimeUseCase stopTimeUseCase,
             ISetLevelAsCompletedUseCase setLevelAsCompletedUseCase,
             IIsLastLevelUseCase isLastLevelUseCase
             )
@@ -42,6 +45,7 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
             this.shipEntityRepository = shipEntityRepository;
             this.viewStack = viewStack;
             this.waitUnscaledTimeUseCase = waitUnscaledTimeUseCase;
+            this.stopTimeUseCase = stopTimeUseCase;
             this.setLevelAsCompletedUseCase = setLevelAsCompletedUseCase;
             this.isLastLevelUseCase = isLastLevelUseCase;
         }
@@ -59,6 +63,8 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
             }
 
             stageStateData.Finished = true;
+
+            stopTimeUseCase.Execute();
 
             bool found = shipEntityRepository.TryGet(out IDisposable<ShipEntity> shipEntity);
 

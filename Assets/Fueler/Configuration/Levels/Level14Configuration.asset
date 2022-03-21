@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72259cfdb7570124e838eaa37e4b396a, type: 3}
+  m_Name: Level14Configuration
+  m_EditorClassIdentifier: 
+  description: Level that tries to mimic a circuit. Only uses time. Quite easy.
+  id: e5752964-f449-4967-9751-b08cf8197a5e
+  levelEntityPrefab: {fileID: 3166591651800058605, guid: 9d726118773f56a45b0e7406e3dc301e, type: 3}
+  initialFuel: 0
+  maxTime: 60
