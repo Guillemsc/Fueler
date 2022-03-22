@@ -3,6 +3,7 @@ using JuceUnity.Core.DI.Extensions;
 using Juce.CoreUnity.ViewStack;
 using Fueler.Content.Services.Configuration;
 using Fueler.Content.Services.Persistence;
+using Fueler.Content.Services.Audio;
 
 namespace Fueler.Content.Meta.General.Installers
 {
@@ -12,6 +13,7 @@ namespace Fueler.Content.Meta.General.Installers
         {
             container.Bind<IConfigurationService>().FromServicesLocator();
             container.Bind<IPersistenceService>().FromServicesLocator();
+            container.Bind<IAudioService>().FromServicesLocator();
             container.Bind<IUiViewStack>().FromServicesLocator();
         }
     }

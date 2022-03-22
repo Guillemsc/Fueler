@@ -1,4 +1,5 @@
-﻿using Fueler.Content.Shared.Levels.Configuration;
+﻿using Fueler.Content.Services.MetaAudio;
+using Fueler.Content.Shared.Levels.Configuration;
 using Fueler.Contexts.LoadingScreen;
 using Fueler.Contexts.Meta;
 using Fueler.Contexts.Shared.UseCases.LoadStage;
@@ -28,20 +29,32 @@ namespace Fueler.Contexts.Shared.UseCases.UnloadMetaAndLoadStage
 
             ITaskLoadingToken loadingToken = await loadingScreen.Value.Show(cancellationToken);
 
-            bool metaFound = ServiceLocator.TryGet(
-             out ITaskDisposable<IMetaContextInteractor> meta
-             );
-
-            if (metaFound)
-            {
-                await meta.Dispose();
-            }
+            await TryUnloadMeta();
 
             IStageContextInteractor stageInteractor = await loadStageUseCase.Execute(levelConfiguration, cancellationToken);
 
             await loadingToken.Complete();
 
             stageInteractor.Start();
+        }
+
+        private Task TryUnloadMeta()
+        {
+            bool metaFound = ServiceLocator.TryGet(
+                out ITaskDisposable<IMetaContextInteractor> meta
+                );
+
+            if(!metaFound)
+            {
+                return Task.CompletedTask;
+            }
+
+            IMetaAudioService metaAudioService = ServiceLocator.Get<IMetaAudioService>();
+
+            return Task.WhenAll(
+                metaAudioService.Stop(CancellationToken.None),
+                meta.Dispose()
+                );
         }
     }
 }

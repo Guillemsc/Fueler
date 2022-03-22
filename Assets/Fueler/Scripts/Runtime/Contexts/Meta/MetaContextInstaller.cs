@@ -3,7 +3,6 @@ using Fueler.Content.Meta.Ui.MainMenu;
 using Fueler.Context.Shared.Installers;
 using Juce.Core.DI.Builder;
 using Juce.CoreUnity.Contexts;
-using UnityEngine;
 
 namespace Fueler.Contexts.Meta
 {

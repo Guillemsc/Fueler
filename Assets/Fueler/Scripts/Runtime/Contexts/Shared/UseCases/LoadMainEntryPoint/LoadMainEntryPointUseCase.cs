@@ -1,5 +1,6 @@
 ﻿using Fueler.Content.Meta.Ui.MainMenu;
 using Fueler.Content.Meta.Ui.SplashScreen;
+using Fueler.Content.Services.MetaAudio;
 using Fueler.Content.Services.Persistence;
 using Fueler.Contexts.LoadingScreen;
 using Fueler.Contexts.Shared.UseCases.ApplyGameSettings;
@@ -38,15 +39,23 @@ namespace Fueler.Contexts.Shared.UseCases.LoadMainEntryPoint
 
             await contextFactories.Meta.Create();
 
-            IUiViewStack viewStack = ServiceLocator.Get<IUiViewStack>();
-
             await loadingToken.Complete();
+
+            IUiViewStack viewStack = ServiceLocator.Get<IUiViewStack>();
 
             await viewStack.New()
                 .Show<ISplashScreenUiInteractor>(instantly: false)
                 .Hide<ISplashScreenUiInteractor>(instantly: false)
+                .Callback(StartMetaAudio)
                 .Show<IMainMenuUiInteractor>(instantly: false)
                 .Execute(cancellationToken);
+        }
+
+        private void StartMetaAudio()
+        {
+            IMetaAudioService metaAudioService = ServiceLocator.Get<IMetaAudioService>();
+
+            metaAudioService.Play(CancellationToken.None).RunAsync();
         }
     }
 }

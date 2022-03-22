@@ -1,7 +1,10 @@
-﻿using Fueler.Content.Services.Cheats.Installers;
+﻿using Fueler.Content.Services.Audio;
+using Fueler.Content.Services.Cheats.Installers;
 using Fueler.Content.Services.Configuration;
+using Fueler.Content.Services.MetaAudio;
 using Fueler.Content.Services.Persistence;
 using Fueler.Content.Services.Ship;
+using Fueler.Content.Services.StageAudio;
 using Juce.Core.DI.Builder;
 using Juce.CoreUnity.Contexts;
 using Juce.CoreUnity.Tickables;
@@ -32,6 +35,21 @@ namespace Fueler.Contexts.Services
 
             container.Bind<ITickablesService>()
                 .FromInstance(instance.TickablesService)
+                .ToServicesLocator()
+                .NonLazy();
+
+            container.Bind<IAudioService>()
+                .FromInstance(instance.AudioService)
+                .ToServicesLocator()
+                .NonLazy();
+
+            container.Bind<IMetaAudioService>()
+                .FromInstance(instance.MetaAudioService)
+                .ToServicesLocator()
+                .NonLazy();
+
+            container.Bind<IStageAudioService>()
+                .FromInstance(instance.StageAudioService)
                 .ToServicesLocator()
                 .NonLazy();
 

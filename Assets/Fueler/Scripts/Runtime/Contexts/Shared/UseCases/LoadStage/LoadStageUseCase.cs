@@ -1,4 +1,5 @@
-﻿using Fueler.Content.Shared.Levels.Configuration;
+﻿using Fueler.Content.Services.StageAudio;
+using Fueler.Content.Shared.Levels.Configuration;
 using Fueler.Contexts.Stage;
 using Fueler.Contexts.StageUi;
 using Juce.Core.DI.Builder;
@@ -30,6 +31,9 @@ namespace Fueler.Contexts.Shared.UseCases.LoadStage
                 );
 
             await stageInteractor.Value.Load(cancellationToken);
+
+            IStageAudioService stageAudioService = ServiceLocator.Get<IStageAudioService>();
+            stageAudioService.Play(cancellationToken).RunAsync();
 
             return stageInteractor.Value;
         }

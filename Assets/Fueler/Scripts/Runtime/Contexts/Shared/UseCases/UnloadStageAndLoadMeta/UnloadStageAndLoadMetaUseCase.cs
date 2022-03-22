@@ -1,4 +1,5 @@
 ﻿using Fueler.Content.Meta.Ui.MainMenu;
+using Fueler.Content.Services.MetaAudio;
 using Fueler.Contexts.LoadingScreen;
 using Fueler.Contexts.Shared.UseCases.UnloadStage;
 using Juce.Core.Disposables;
@@ -35,10 +36,18 @@ namespace Fueler.Contexts.Shared.UseCases.UnloadStageAndLoadMeta
             IUiViewStack viewStack = ServiceLocator.Get<IUiViewStack>();
 
             await viewStack.New()
+                .Callback(StartMetaAudio)
                 .Show<IMainMenuUiInteractor>(instantly: true)
                 .Execute(cancellationToken);
 
             await loadingToken.Complete();
+        }
+
+        private void StartMetaAudio()
+        {
+            IMetaAudioService metaAudioService = ServiceLocator.Get<IMetaAudioService>();
+
+            metaAudioService.Play(CancellationToken.None).RunAsync();
         }
     }
 }
