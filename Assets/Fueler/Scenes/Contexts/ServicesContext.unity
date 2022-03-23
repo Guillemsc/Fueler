@@ -153,7 +153,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioService: {fileID: 2138934364}
-  metaAudioClip: {fileID: 8300000, guid: cc6cab8c51deb8246b2d770a6c67a47d, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: cc6cab8c51deb8246b2d770a6c67a47d, type: 3}
+  - {fileID: 8300000, guid: 43ab7249803d9d34596d2fdc21258794, type: 3}
+  - {fileID: 8300000, guid: 2be19f571f78a6d4b81966a604321080, type: 3}
+  - {fileID: 8300000, guid: aae70e69bd204bc43859944331b57ef5, type: 3}
+  - {fileID: 8300000, guid: d4a3833239257324ab63a7a437c10078, type: 3}
   fadeInTime: 1
   fadeOutTime: 0.3
 --- !u!4 &788017840
@@ -782,7 +787,7 @@ MonoBehaviour:
   channels:
   - audioChannelId: {fileID: 11400000, guid: 6bf00bddc42e2b349994f0dff9d63ac0, type: 2}
     audioSource: {fileID: 1993128370}
-    volume: 0.3
+    volume: 0.2
     cooldown: 0
     allowMultipleSimultaneous: 0
   - audioChannelId: {fileID: 11400000, guid: a8a5aee17bc606441943573321e1c90f, type: 2}

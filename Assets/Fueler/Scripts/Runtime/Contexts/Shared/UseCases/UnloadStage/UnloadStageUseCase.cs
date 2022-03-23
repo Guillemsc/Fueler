@@ -10,13 +10,11 @@ namespace Fueler.Contexts.Shared.UseCases.UnloadStage
 {
     public class UnloadStageUseCase : IUnloadStageUseCase
     {
-        public Task Execute(CancellationToken cancellationToken)
+        public Task Execute(bool isReload, CancellationToken cancellationToken)
         {
-            IStageAudioService stageAudioService = ServiceLocator.Get<IStageAudioService>();
-
             return Task.WhenAll(
                 UnloadContexts(),
-                stageAudioService.Stop(cancellationToken)
+                StopAudio(isReload, cancellationToken)
                 );
         }
 
@@ -39,6 +37,18 @@ namespace Fueler.Contexts.Shared.UseCases.UnloadStage
             {
                 await stageUi.Dispose();
             }
+        }
+
+        private Task StopAudio(bool isReload, CancellationToken cancellationToken)
+        {
+            if(isReload)
+            {
+                return Task.CompletedTask;
+            }
+
+            IStageAudioService stageAudioService = ServiceLocator.Get<IStageAudioService>();
+
+            return stageAudioService.Stop(cancellationToken);
         }
     }
 }

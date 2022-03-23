@@ -6,6 +6,10 @@ namespace Fueler.Contexts.Shared.UseCases.UnloadAndLoadStage
 {
     public interface IUnloadAndLoadStageUseCase
     {
-        Task Execute(ILevelConfiguration levelConfiguration, CancellationToken cancellationToken);
+        Task Execute(
+            ILevelConfiguration levelConfiguration,
+            bool isReload,
+            CancellationToken cancellationToken
+            );
     }
 }

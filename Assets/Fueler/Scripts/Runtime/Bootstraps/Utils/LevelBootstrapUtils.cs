@@ -32,7 +32,7 @@ namespace Fueler.Bootstraps.Utils
 
             IUnloadAndLoadStageUseCase unloadAndLoadStageUseCase = sharedContextContainer.Resolve<IUnloadAndLoadStageUseCase>();
 
-            await unloadAndLoadStageUseCase.Execute(levelConfiguration, cancellationToken);
+            await unloadAndLoadStageUseCase.Execute(levelConfiguration, isReload: false, cancellationToken);
         }
     }
 }

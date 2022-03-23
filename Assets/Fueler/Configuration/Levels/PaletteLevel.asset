@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72259cfdb7570124e838eaa37e4b396a, type: 3}
   m_Name: PaletteLevel
   m_EditorClassIdentifier: 
+  description: 
   id: 3d6b7318-b390-4366-bd62-ba0fcb5fecbe
   levelEntityPrefab: {fileID: 3166591651800058605, guid: 31707d2c5f79d364a990cc7cc9c79e8c, type: 3}
   initialFuel: 99999
+  maxTime: 10

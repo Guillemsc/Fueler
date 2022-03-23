@@ -16,4 +16,5 @@ MonoBehaviour:
     The objective is to be stisfactory.
   id: 795cfadd-daf7-48c3-858c-39d710aa57e2
   levelEntityPrefab: {fileID: 3166591651800058605, guid: f3beb3ac7bd407f4e8581f9a062e595e, type: 3}
-  initialFuel: 100
+  initialFuel: 110
+  maxTime: 80

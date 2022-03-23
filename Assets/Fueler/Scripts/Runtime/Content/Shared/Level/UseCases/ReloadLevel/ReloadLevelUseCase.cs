@@ -22,6 +22,7 @@ namespace Fueler.Content.Shared.Levels.UseCases.ReloadLevel
         {
             unloadAndLoadStageUseCase.Execute(
                 levelConfiguration,
+                isReload: true,
                 CancellationToken.None
                 ).RunAsync();
         }

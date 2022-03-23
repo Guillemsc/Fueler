@@ -25,13 +25,17 @@ namespace Fueler.Contexts.Shared.UseCases.UnloadAndLoadStage
             this.unloadStageUseCase = unloadStageUseCase;
         }
 
-        public async Task Execute(ILevelConfiguration levelConfiguration, CancellationToken cancellationToken)
+        public async Task Execute(
+            ILevelConfiguration levelConfiguration,
+            bool isReload,
+            CancellationToken cancellationToken
+            )
         {
             ITaskDisposable<ILoadingScreenContextInteractor> loadingScreen = ServiceLocator.Get<ITaskDisposable<ILoadingScreenContextInteractor>>();
 
             ITaskLoadingToken loadingToken = await loadingScreen.Value.Show(cancellationToken);
 
-            await unloadStageUseCase.Execute(cancellationToken);
+            await unloadStageUseCase.Execute(isReload, cancellationToken);
 
             IStageContextInteractor stageInteractor = await loadStageUseCase.Execute(levelConfiguration, cancellationToken);
 

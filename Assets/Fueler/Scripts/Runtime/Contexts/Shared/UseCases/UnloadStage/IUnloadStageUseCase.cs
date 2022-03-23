@@ -5,6 +5,6 @@ namespace Fueler.Contexts.Shared.UseCases.UnloadStage
 {
     public interface IUnloadStageUseCase
     {
-        Task Execute(CancellationToken cancellationToken);
+        Task Execute(bool isReload, CancellationToken cancellationToken);
     }
 }

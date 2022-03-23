@@ -1,4 +1,5 @@
 ﻿using Fueler.Content.Services.Audio;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace Fueler.Content.Services.StageAudio
         [SerializeField] private AudioService audioService = default;
 
         [Header("Values")]
-        [SerializeField] private AudioClip metaAudioClip = default;
+        [SerializeField] private List<AudioClip> audioClips = default;
         [SerializeField] private float fadeInTime = 1.0f;
         [SerializeField] private float fadeOutTime = 0.5f;
 
@@ -26,8 +27,10 @@ namespace Fueler.Content.Services.StageAudio
 
             isPlaying = true;
 
+            AudioClip randomClip = GetRandom();
+
             return audioService.StartFade(
-                metaAudioClip,
+                randomClip,
                 audioService.GeneralMusicChannelId,
                 fadeInTime,
                 cancellationToken
@@ -48,6 +51,13 @@ namespace Fueler.Content.Services.StageAudio
                 fadeOutTime,
                 cancellationToken
                 );
+        }
+
+        public AudioClip GetRandom()
+        {
+            int randomIndex = UnityEngine.Random.Range(0, audioClips.Count);
+
+            return audioClips[randomIndex];
         }
     }
 }

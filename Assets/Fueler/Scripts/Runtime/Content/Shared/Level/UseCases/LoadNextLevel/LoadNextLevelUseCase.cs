@@ -61,7 +61,7 @@ namespace Fueler.Content.Shared.Levels.UseCases.LoadNextLevel
                 UnityEngine.Debug.Log($"Level with index {nextLevelIndex} not found. Loading fallback");
             }
 
-            unloadAndLoadStageUseCase.Execute(nextLevelConfiguration, CancellationToken.None).RunAsync();
+            unloadAndLoadStageUseCase.Execute(nextLevelConfiguration, isReload: false, CancellationToken.None).RunAsync();
         }
     }
 }

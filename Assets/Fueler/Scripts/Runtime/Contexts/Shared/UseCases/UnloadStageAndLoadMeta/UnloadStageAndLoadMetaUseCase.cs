@@ -30,7 +30,7 @@ namespace Fueler.Contexts.Shared.UseCases.UnloadStageAndLoadMeta
 
             IContextFactories contextFactories = ServiceLocator.Get<IContextFactories>();
 
-            await unloadStageUseCase.Execute(cancellationToken);
+            await unloadStageUseCase.Execute(isReload: false, cancellationToken);
             await contextFactories.Meta.Create();
 
             IUiViewStack viewStack = ServiceLocator.Get<IUiViewStack>();
