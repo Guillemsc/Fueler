@@ -1,7 +1,9 @@
-﻿namespace Fueler.Content.Stage.General.UseCases.ShipCollidedWithEnd
+﻿using Fueler.Content.Stage.General.Entities;
+
+namespace Fueler.Content.Stage.General.UseCases.ShipCollidedWithEnd
 {
     public interface IShipCollidedWithEndUseCase
     {
-        void Execute();
+        void Execute(LevelEndEntity entity);
     }
 }

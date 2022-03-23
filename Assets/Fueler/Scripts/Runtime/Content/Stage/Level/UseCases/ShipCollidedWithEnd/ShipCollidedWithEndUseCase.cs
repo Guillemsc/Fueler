@@ -1,4 +1,5 @@
-﻿using Fueler.Content.Stage.General.UseCases.TryEndStage;
+﻿using Fueler.Content.Stage.General.Entities;
+using Fueler.Content.Stage.General.UseCases.TryEndStage;
 using Fueler.Content.Stage.Level.Data;
 
 namespace Fueler.Content.Stage.General.UseCases.ShipCollidedWithEnd
@@ -14,9 +15,9 @@ namespace Fueler.Content.Stage.General.UseCases.ShipCollidedWithEnd
             this.tryEndStageUseCase = tryEndStageUseCase;
         }
 
-        public void Execute()
+        public void Execute(LevelEndEntity entity)
         {
-            tryEndStageUseCase.Execute(LevelEndData.FromDestination());
+            tryEndStageUseCase.Execute(new ReachedEndDestinationLevelFinishedCause(entity));
         }
     }
 }

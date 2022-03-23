@@ -40,7 +40,7 @@ namespace Fueler.Content.Stage.Ship.UseCases.ShipCollided
 
         public void Visit(LevelEndEntity entity)
         {
-            shipCollidedWithEndUseCase.Execute();
+            shipCollidedWithEndUseCase.Execute(entity);
         }
 
         public void Visit(ShipKillerEntity entity)

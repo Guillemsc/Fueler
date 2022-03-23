@@ -34,7 +34,7 @@ namespace Fueler.Content.Stage.Ship.UseCases.ShipCollidedWithShipKiller
                 return;
             }
 
-            tryEndStageUseCase.Execute(LevelEndData.FromShipDestroyed());
+            tryEndStageUseCase.Execute(ShipDestroyedLevelFinishedCause.Instance);
         }
     }
 }

@@ -5,7 +5,7 @@ using Fueler.Content.Stage.Level.Data;
 
 namespace Fueler.Content.Stage.General.UseCases.TryEndStage
 {
-    public class TryEndStageUseCase : ITryEndStageUseCase
+    public class TryEndStageUseCase : ITryEndStageUseCase, ILevelFinishedCauseVisitor
     {
         private readonly ITryShowNeedToCollectAllAstronatusToasterUseCase tryShowNeedToCollectAllAstronatusToasterUseCase;
         private readonly IAreStageObjectivesCompletedUseCase areStageObjectivesCompletedUseCase;
@@ -22,23 +22,32 @@ namespace Fueler.Content.Stage.General.UseCases.TryEndStage
             this.endStageUseCase = endStageUseCase;
         }
 
-        public void Execute(LevelEndData levelEndedData)
+        public void Execute(ILevelFinishedCause levelFinishedCause)
         {
-            if(levelEndedData.DestroyShip)
-            {
-                endStageUseCase.Execute(levelEndedData);
-                return;
-            }
+            levelFinishedCause.Accept(this);
+        }
 
+        public void Visit(ReachedEndDestinationLevelFinishedCause cause)
+        {
             bool isCompleted = areStageObjectivesCompletedUseCase.Execute();
 
-            if(!isCompleted)
+            if (!isCompleted)
             {
                 tryShowNeedToCollectAllAstronatusToasterUseCase.Execute();
                 return;
             }
 
-            endStageUseCase.Execute(levelEndedData);
+            endStageUseCase.Execute(cause);
+        }
+
+        public void Visit(RanOutOfTimeLevelFinishedCause cause)
+        {
+            endStageUseCase.Execute(cause);
+        }
+
+        public void Visit(ShipDestroyedLevelFinishedCause cause)
+        {
+            endStageUseCase.Execute(cause);
         }
     }
 }

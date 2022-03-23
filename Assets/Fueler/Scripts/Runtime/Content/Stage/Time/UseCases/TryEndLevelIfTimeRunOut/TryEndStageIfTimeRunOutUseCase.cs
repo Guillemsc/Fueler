@@ -44,7 +44,7 @@ namespace Fueler.Content.Stage.Time.UseCases.TryEndStageIfTimeRunOut
                 return;
             }
 
-            tryEndStageUseCase.Execute(LevelEndData.FromRanOutOfTime());
+            tryEndStageUseCase.Execute(RanOutOfTimeLevelFinishedCause.Instance);
         }
     }
 }

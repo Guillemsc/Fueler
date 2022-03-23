@@ -1,7 +1,6 @@
 using Fueler.Content.Stage.General.Installers;
 using Fueler.Content.Stage.General.UseCases.LoadStage;
 using Fueler.Content.Stage.Ship.Installers;
-using Fueler.Contexts.Stage.UseCases.End;
 using Fueler.Contexts.Stage.UseCases.Load;
 using Juce.Core.DI.Builder;
 using Juce.CoreUnity.Contexts;
@@ -44,11 +43,6 @@ namespace Fueler.Contexts.Stage
             container.Bind<IStartUseCase>()
                 .FromFunction(c => new StartUseCase(
                     c.Resolve<IStartStageUseCase>()
-                    ));
-
-            container.Bind<IEndUseCase>()
-                .FromFunction(c => new EndUseCase(
-                    c.Resolve<ITryEndStageUseCase>()
                     ));
 
             container.Bind<IStageContextInteractor>()
