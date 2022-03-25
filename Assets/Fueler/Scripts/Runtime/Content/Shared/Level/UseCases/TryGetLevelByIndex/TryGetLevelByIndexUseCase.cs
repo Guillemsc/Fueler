@@ -21,6 +21,12 @@ namespace Fueler.Content.Shared.Levels.UseCases.TryGetLevelByIndex
                 return false;
             }
 
+            if(levelIndex < 0)
+            {
+                levelConfiguration = default;
+                return false;
+            }
+
             levelConfiguration = levelsConfiguration.Levels[levelIndex];
             return true;
         }

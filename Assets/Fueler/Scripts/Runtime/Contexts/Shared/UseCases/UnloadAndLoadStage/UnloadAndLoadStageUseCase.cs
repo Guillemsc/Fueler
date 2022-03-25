@@ -16,6 +16,8 @@ namespace Fueler.Contexts.Shared.UseCases.UnloadAndLoadStage
         private readonly ILoadStageUseCase loadStageUseCase;
         private readonly IUnloadStageUseCase unloadStageUseCase;
 
+        private bool loading;
+
         public UnloadAndLoadStageUseCase(
             ILoadStageUseCase loadStageUseCase,
             IUnloadStageUseCase unloadStageUseCase
@@ -31,6 +33,13 @@ namespace Fueler.Contexts.Shared.UseCases.UnloadAndLoadStage
             CancellationToken cancellationToken
             )
         {
+            if(loading)
+            {
+                return;
+            }
+
+            loading = true;
+
             ITaskDisposable<ILoadingScreenContextInteractor> loadingScreen = ServiceLocator.Get<ITaskDisposable<ILoadingScreenContextInteractor>>();
 
             ITaskLoadingToken loadingToken = await loadingScreen.Value.Show(cancellationToken);
@@ -42,6 +51,8 @@ namespace Fueler.Contexts.Shared.UseCases.UnloadAndLoadStage
             await loadingToken.Complete();
 
             stageInteractor.Start();
+
+            loading = false;
         }
     }
 }

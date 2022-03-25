@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72259cfdb7570124e838eaa37e4b396a, type: 3}
-  m_Name: Level2Configuration
+  m_Name: Level15Configuration
   m_EditorClassIdentifier: 
-  description: Simple level that uses fuel and teaches how to contol the ship
-  id: 403e098e-6b8d-488a-baf8-543c169cfe0a
-  levelEntityPrefab: {fileID: 3166591651800058605, guid: 030498c186f970a428acb677747ac950, type: 3}
-  initialFuel: 100
+  description: Introduction to blades
+  id: bf99f8f8-41bc-41ec-9c85-533285fb6354
+  levelEntityPrefab: {fileID: 3166591651800058605, guid: dc935c05d65a6b2479182875f07c4137, type: 3}
+  initialFuel: 0
   maxTime: 0

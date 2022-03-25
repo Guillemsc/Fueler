@@ -10,6 +10,10 @@ using Fueler.Content.Stage.Cheats.UseCases.SetMaxFuel;
 using Fueler.Content.Stage.Fuel.Data;
 using Fueler.Content.Stage.Fuel.UseCases.ShipFuelUsed;
 using Juce.Cheats.WidgetsInteractors;
+using Fueler.Content.Stage.Cheats.UseCases.NextLevel;
+using Fueler.Content.Shared.Levels.UseCases.LoadNextLevel;
+using Fueler.Content.Stage.Cheats.UseCases.PreviousLevel;
+using Fueler.Content.Shared.Levels.UseCases.LoadPreviousLevel;
 
 namespace Fueler.Content.Stage.Cheats.Installers
 {
@@ -25,7 +29,9 @@ namespace Fueler.Content.Stage.Cheats.Installers
                     c.Resolve<IRepository<IWidgetInteractor>>(),
                     c.Resolve<ISetImmortalityUseCase>(),
                     c.Resolve<IGetImmortalityUseCase>(),
-                    c.Resolve<ISetMaxFuelUseCase>()
+                    c.Resolve<ISetMaxFuelUseCase>(),
+                    c.Resolve<INextLevelUseCase>(),
+                    c.Resolve<IPreviousLevelUseCase>()
                     ))
                 .WhenInit((c, o) => o.Execute())
                 .NonLazy();
@@ -51,6 +57,16 @@ namespace Fueler.Content.Stage.Cheats.Installers
                 .FromFunction(c => new SetMaxFuelUseCase(
                     c.Resolve<FuelData>(),
                     c.Resolve<IShipFuelUsedUseCase>()
+                    ));
+
+            container.Bind<INextLevelUseCase>()
+                .FromFunction(c => new NextLevelUseCase(
+                    c.Resolve<ILoadNextLevelUseCase>()
+                    ));
+
+            container.Bind<IPreviousLevelUseCase>()
+                .FromFunction(c => new PreviousLevelUseCase(
+                    c.Resolve<ILoadPreviousLevelUseCase>()
                     ));
         }
     }
