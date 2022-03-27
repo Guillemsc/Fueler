@@ -1,21 +1,26 @@
-﻿using Fueler.Content.Meta.Ui.Options.UseCases.UpdateInfiniteFuelOnOffText;
+﻿using Fueler.Content.Meta.Ui.Options.UseCases.UpdateAudioFxToggleText;
+using Fueler.Content.Meta.Ui.Options.UseCases.UpdateAudioMusicToggleText;
 
 namespace Fueler.Content.Meta.Ui.Options.UseCases.InitFromPersistence
 {
     public class InitFromPersistenceUseCase : IInitFromPersistenceUseCase
     {
-        private readonly IUpdateInfiniteFuelOnOffTextUseCase updateInfiniteFuelOnOffTextUseCase;
+        private readonly IUpdateAudioFxToggleTextUseCase updateAudioFxToggleTextUseCase;
+        private readonly IUpdateAudioMusicToggleTextUseCase updateAudioMusicToggleTextUseCase;
 
         public InitFromPersistenceUseCase(
-            IUpdateInfiniteFuelOnOffTextUseCase updateInfiniteFuelOnOffTextUseCase
+            IUpdateAudioFxToggleTextUseCase updateAudioFxToggleTextUseCase,
+            IUpdateAudioMusicToggleTextUseCase updateAudioMusicToggleTextUseCase
             )
         {
-            this.updateInfiniteFuelOnOffTextUseCase = updateInfiniteFuelOnOffTextUseCase;
+            this.updateAudioFxToggleTextUseCase = updateAudioFxToggleTextUseCase;
+            this.updateAudioMusicToggleTextUseCase = updateAudioMusicToggleTextUseCase;
         }
 
         public void Execute()
         {
-            updateInfiniteFuelOnOffTextUseCase.Execute();
+            updateAudioFxToggleTextUseCase.Execute();
+            updateAudioMusicToggleTextUseCase.Execute();
         }
     }
 }

@@ -12,11 +12,12 @@ using Fueler.Content.Meta.Ui.Options.UseCases.ToggleFullscreenButtonPressed;
 using Fueler.Contexts.Shared.UseCases.ApplyGameSettings;
 using Fueler.Content.Services.Persistence;
 using Juce.CoreUnity.ViewStack.Entries;
-using Fueler.Content.Meta.Ui.Options.UseCases.InfiniteFuelOnOffButtonPressed;
-using Fueler.Content.Meta.Ui.Options.UseCases.AudioOnOffButtonPressed;
-using Fueler.Content.Meta.Ui.Options.UseCases.UpdateInfiniteFuelOnOffText;
 using Fueler.Content.Meta.Ui.Options.UseCases.InitFromPersistence;
 using Juce.Core.Refresh;
+using Fueler.Content.Meta.Ui.Options.UseCases.ToggleAudioFxButtonPressed;
+using Fueler.Content.Meta.Ui.Options.UseCases.ToggleAudioMusicButtonPressed;
+using Fueler.Content.Meta.Ui.Options.UseCases.UpdateAudioFxToggleText;
+using Fueler.Content.Meta.Ui.Options.UseCases.UpdateAudioMusicToggleText;
 
 namespace Fueler.Content.Meta.Ui.Options
 {
@@ -30,15 +31,20 @@ namespace Fueler.Content.Meta.Ui.Options
         [SerializeField] private SelectableCallbacks firstSelectable = default;
 
         [Header("Buttons")]
-        [SerializeField] private PointerAndSelectableSubmitCallbacks infiniteFuelOnOffButton = default;
         [SerializeField] private PointerAndSelectableSubmitCallbacks toggleFullscreenButton = default;
-        [SerializeField] private PointerAndSelectableSubmitCallbacks audioOnOffButton = default;
+        [SerializeField] private PointerAndSelectableSubmitCallbacks toggleAudioFxButton = default;
+        [SerializeField] private PointerAndSelectableSubmitCallbacks toggleAudioMusicButton = default;
         [SerializeField] private PointerAndSelectableSubmitCallbacks backButton = default;
 
-        [Header("InfiniteFuel")]
-        [SerializeField] private TMPro.TextMeshProUGUI infiniteFuelOnOffText = default;
-        [SerializeField] private string infiniteFuelTextOn = default;
-        [SerializeField] private string infiniteFuelTextOff = default;
+        [Header("Audio Fx")]
+        [SerializeField] private TMPro.TextMeshProUGUI toggleAudioFxOnOffText = default;
+        [SerializeField] private string audioFxTextEnabled = default;
+        [SerializeField] private string audioFxTextDisabled = default;
+
+        [Header("Audio Musix")]
+        [SerializeField] private TMPro.TextMeshProUGUI toggleAudioMusicOnOffText = default;
+        [SerializeField] private string audioMusicTextEnabled = default;
+        [SerializeField] private string audioMusicTextDisabled = default;
 
         public void Install(IDIContainerBuilder container)
         {
@@ -63,21 +69,24 @@ namespace Fueler.Content.Meta.Ui.Options
 
             container.Bind<IInitFromPersistenceUseCase>()
                 .FromFunction(c => new InitFromPersistenceUseCase(
-                    c.Resolve<IUpdateInfiniteFuelOnOffTextUseCase>()
+                    c.Resolve<IUpdateAudioFxToggleTextUseCase>(),
+                    c.Resolve<IUpdateAudioMusicToggleTextUseCase>()
                     ));
 
-            container.Bind<IUpdateInfiniteFuelOnOffTextUseCase>()
-                .FromFunction(c => new UpdateInfiniteFuelOnOffTextUseCase(
-                    c.Resolve<IPersistenceService>().AccessibilitySerializable,
-                    infiniteFuelOnOffText,
-                    infiniteFuelTextOn,
-                    infiniteFuelTextOff
+            container.Bind<IUpdateAudioFxToggleTextUseCase>()
+                .FromFunction(c => new UpdateAudioFxToggleTextUseCase(
+                    c.Resolve<IPersistenceService>().GameSettingsSerializable,
+                    toggleAudioFxOnOffText,
+                    audioFxTextEnabled,
+                    audioFxTextDisabled
                     ));
 
-            container.Bind<IInfiniteFuelOnOffButtonPressedUseCase>()
-                .FromFunction(c => new InfiniteFuelOnOffButtonPressedUseCase(
-                    c.Resolve<IPersistenceService>().AccessibilitySerializable,
-                    c.Resolve<IUpdateInfiniteFuelOnOffTextUseCase>()
+            container.Bind<IUpdateAudioMusicToggleTextUseCase>()
+                .FromFunction(c => new UpdateAudioMusicToggleTextUseCase(
+                    c.Resolve<IPersistenceService>().GameSettingsSerializable,
+                    toggleAudioMusicOnOffText,
+                    audioMusicTextEnabled,
+                    audioMusicTextDisabled
                     ));
 
             container.Bind<IToggleFullscreenButtonPressedUseCase>()
@@ -86,9 +95,18 @@ namespace Fueler.Content.Meta.Ui.Options
                     c.Resolve<IApplyGameSettingsUseCase>()
                     ));
 
-            container.Bind<IAudioOnOffButtonPressedUseCase>()
-                .FromFunction(c => new AudioOnOffButtonPressedUseCase(
-                    c.Resolve<IPersistenceService>().GameSettingsSerializable
+            container.Bind<IToggleAudioFxButtonPressedUseCase>()
+                .FromFunction(c => new ToggleAudioFxButtonPressedUseCase(
+                    c.Resolve<IPersistenceService>().GameSettingsSerializable,
+                    c.Resolve<IApplyGameSettingsUseCase>(),
+                    c.Resolve<IUpdateAudioFxToggleTextUseCase>()
+                    ));
+
+            container.Bind<IToggleAudioMusicButtonPressedUseCase>()
+                .FromFunction(c => new ToggleAudioMusicButtonPressedUseCase(
+                    c.Resolve<IPersistenceService>().GameSettingsSerializable,
+                    c.Resolve<IApplyGameSettingsUseCase>(),
+                    c.Resolve<IUpdateAudioMusicToggleTextUseCase>()
                     ));
 
             container.Bind<IBackButtonPressedUseCase>()
@@ -98,13 +116,13 @@ namespace Fueler.Content.Meta.Ui.Options
 
             container.Bind<ISubscribeToButtonsUseCase>()
                 .FromFunction(c => new SubscribeToButtonsUseCase(
-                    infiniteFuelOnOffButton,
                     toggleFullscreenButton,
-                    audioOnOffButton,
+                    toggleAudioFxButton,
+                    toggleAudioMusicButton,
                     backButton,
-                    c.Resolve<IInfiniteFuelOnOffButtonPressedUseCase>(),
                     c.Resolve<IToggleFullscreenButtonPressedUseCase>(),
-                    c.Resolve<IAudioOnOffButtonPressedUseCase>(),
+                    c.Resolve<IToggleAudioFxButtonPressedUseCase>(),
+                    c.Resolve<IToggleAudioMusicButtonPressedUseCase>(),
                     c.Resolve<IBackButtonPressedUseCase>()
                     ))
                 .WhenInit((c, o) => o.Execute())

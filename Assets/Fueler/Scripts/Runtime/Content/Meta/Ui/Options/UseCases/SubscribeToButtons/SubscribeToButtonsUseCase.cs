@@ -1,6 +1,6 @@
-﻿using Fueler.Content.Meta.Ui.Options.UseCases.AudioOnOffButtonPressed;
-using Fueler.Content.Meta.Ui.Options.UseCases.BackButtonPressed;
-using Fueler.Content.Meta.Ui.Options.UseCases.InfiniteFuelOnOffButtonPressed;
+﻿using Fueler.Content.Meta.Ui.Options.UseCases.BackButtonPressed;
+using Fueler.Content.Meta.Ui.Options.UseCases.ToggleAudioFxButtonPressed;
+using Fueler.Content.Meta.Ui.Options.UseCases.ToggleAudioMusicButtonPressed;
 using Fueler.Content.Meta.Ui.Options.UseCases.ToggleFullscreenButtonPressed;
 using Juce.CoreUnity.Ui.Others;
 
@@ -8,41 +8,41 @@ namespace Fueler.Content.Meta.Ui.Options.UseCases.SubscribeToButtons
 {
     public class SubscribeToButtonsUseCase : ISubscribeToButtonsUseCase
     {
-        private readonly PointerAndSelectableSubmitCallbacks infiniteFuelOnOffButton;
         private readonly PointerAndSelectableSubmitCallbacks toggleFullscreenButton;
-        private readonly PointerAndSelectableSubmitCallbacks audioOnOffButton;
+        private readonly PointerAndSelectableSubmitCallbacks toggleAudioFxButton;
+        private readonly PointerAndSelectableSubmitCallbacks toggleAudioMusicButton;
         private readonly PointerAndSelectableSubmitCallbacks backButton;
-        private readonly IInfiniteFuelOnOffButtonPressedUseCase infiniteFuelOnOffButtonPressedUseCase;
         private readonly IToggleFullscreenButtonPressedUseCase toggleFullscreenButtonPressedUseCase;
-        private readonly IAudioOnOffButtonPressedUseCase audioOnOffButtonPressedUseCase;
+        private readonly IToggleAudioFxButtonPressedUseCase toggleAudioFxButtonPressedUseCase;
+        private readonly IToggleAudioMusicButtonPressedUseCase toggleAudioMusicButtonPressedUseCase;
         private readonly IBackButtonPressedUseCase backButtonPressedUseCase;
 
         public SubscribeToButtonsUseCase(
-            PointerAndSelectableSubmitCallbacks infiniteFuelOnOffButton,
             PointerAndSelectableSubmitCallbacks toggleFullscreenButton,
-            PointerAndSelectableSubmitCallbacks audioOnOffButton,
+            PointerAndSelectableSubmitCallbacks toggleAudioFxButton,
+            PointerAndSelectableSubmitCallbacks toggleAudioMusicButton,
             PointerAndSelectableSubmitCallbacks backButton,
-            IInfiniteFuelOnOffButtonPressedUseCase infiniteFuelOnOffButtonPressedUseCase,
             IToggleFullscreenButtonPressedUseCase toggleFullscreenButtonPressedUseCase,
-            IAudioOnOffButtonPressedUseCase audioOnOffButtonPressedUseCase,
+            IToggleAudioFxButtonPressedUseCase toggleAudioFxButtonPressedUseCase,
+            IToggleAudioMusicButtonPressedUseCase toggleAudioMusicButtonPressedUseCase,
             IBackButtonPressedUseCase backButtonPressedUseCase
             )
         {
-            this.infiniteFuelOnOffButton = infiniteFuelOnOffButton;
             this.toggleFullscreenButton = toggleFullscreenButton;
-            this.audioOnOffButton = audioOnOffButton;
+            this.toggleAudioFxButton = toggleAudioFxButton;
+            this.toggleAudioMusicButton = toggleAudioMusicButton;
             this.backButton = backButton;
-            this.infiniteFuelOnOffButtonPressedUseCase = infiniteFuelOnOffButtonPressedUseCase;
             this.toggleFullscreenButtonPressedUseCase = toggleFullscreenButtonPressedUseCase;
-            this.audioOnOffButtonPressedUseCase = audioOnOffButtonPressedUseCase;
+            this.toggleAudioFxButtonPressedUseCase = toggleAudioFxButtonPressedUseCase;
+            this.toggleAudioMusicButtonPressedUseCase = toggleAudioMusicButtonPressedUseCase;
             this.backButtonPressedUseCase = backButtonPressedUseCase;
         }
 
         public void Execute()
         {
-            infiniteFuelOnOffButton.OnSubmit += infiniteFuelOnOffButtonPressedUseCase.Execute;
             toggleFullscreenButton.OnSubmit += toggleFullscreenButtonPressedUseCase.Execute;
-            audioOnOffButton.OnSubmit += audioOnOffButtonPressedUseCase.Execute;
+            toggleAudioFxButton.OnSubmit += toggleAudioFxButtonPressedUseCase.Execute;
+            toggleAudioMusicButton.OnSubmit += toggleAudioMusicButtonPressedUseCase.Execute;
             backButton.OnSubmit += backButtonPressedUseCase.Execute;
         }
     }
