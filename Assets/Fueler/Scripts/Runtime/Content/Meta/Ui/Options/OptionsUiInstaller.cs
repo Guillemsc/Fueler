@@ -18,6 +18,7 @@ using Fueler.Content.Meta.Ui.Options.UseCases.ToggleAudioFxButtonPressed;
 using Fueler.Content.Meta.Ui.Options.UseCases.ToggleAudioMusicButtonPressed;
 using Fueler.Content.Meta.Ui.Options.UseCases.UpdateAudioFxToggleText;
 using Fueler.Content.Meta.Ui.Options.UseCases.UpdateAudioMusicToggleText;
+using Fueler.Content.Meta.Ui.Options.UseCases.AccessibilityButtonPressed;
 
 namespace Fueler.Content.Meta.Ui.Options
 {
@@ -31,6 +32,7 @@ namespace Fueler.Content.Meta.Ui.Options
         [SerializeField] private SelectableCallbacks firstSelectable = default;
 
         [Header("Buttons")]
+        [SerializeField] private PointerAndSelectableSubmitCallbacks accessibilityButton = default;
         [SerializeField] private PointerAndSelectableSubmitCallbacks toggleFullscreenButton = default;
         [SerializeField] private PointerAndSelectableSubmitCallbacks toggleAudioFxButton = default;
         [SerializeField] private PointerAndSelectableSubmitCallbacks toggleAudioMusicButton = default;
@@ -89,6 +91,11 @@ namespace Fueler.Content.Meta.Ui.Options
                     audioMusicTextDisabled
                     ));
 
+            container.Bind<IAccessibilityButtonPressedUseCase>()
+                .FromFunction(c => new AccessibilityButtonPressedUseCase(
+                    c.Resolve<IUiViewStack>()
+                    ));
+
             container.Bind<IToggleFullscreenButtonPressedUseCase>()
                 .FromFunction(c => new ToggleFullscreenButtonPressedUseCase(
                     c.Resolve<IPersistenceService>().GameSettingsSerializable,
@@ -116,10 +123,12 @@ namespace Fueler.Content.Meta.Ui.Options
 
             container.Bind<ISubscribeToButtonsUseCase>()
                 .FromFunction(c => new SubscribeToButtonsUseCase(
+                    accessibilityButton,
                     toggleFullscreenButton,
                     toggleAudioFxButton,
                     toggleAudioMusicButton,
                     backButton,
+                    c.Resolve<IAccessibilityButtonPressedUseCase>(),
                     c.Resolve<IToggleFullscreenButtonPressedUseCase>(),
                     c.Resolve<IToggleAudioFxButtonPressedUseCase>(),
                     c.Resolve<IToggleAudioMusicButtonPressedUseCase>(),

@@ -29,14 +29,14 @@ namespace Fueler.Content.Stage.Fuel.UseCases.InitFuel
         {
             bool isInfinite = isFuelInfiniteUseCase.Execute();
 
-            if (!isInfinite)
+            if (isInfinite)
             {
-                shipFuelData.MaxFuel = levelConfiguration.InitialFuel;
+                shipFuelData.MaxFuel = 0;
                 shipFuelData.CurrentFuel = shipFuelData.MaxFuel;
             }
             else
             {
-                shipFuelData.MaxFuel = 0;
+                shipFuelData.MaxFuel = levelConfiguration.InitialFuel;
                 shipFuelData.CurrentFuel = shipFuelData.MaxFuel;
             }
 

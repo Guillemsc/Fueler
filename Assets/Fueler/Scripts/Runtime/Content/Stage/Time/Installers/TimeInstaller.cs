@@ -1,5 +1,6 @@
 ﻿using Fueler.Content.Services.Configuration;
 using Fueler.Content.Shared.Levels.Configuration;
+using Fueler.Content.Stage.Accessibility.UseCases.IsTimeInfinite;
 using Fueler.Content.Stage.General.Data;
 using Fueler.Content.Stage.General.UseCases.TryEndStage;
 using Fueler.Content.Stage.Time.Data;
@@ -26,7 +27,8 @@ namespace Fueler.Content.Stage.Time.Installers
                 .FromFunction(c => new InitTimeUseCase(
                     c.Resolve<TimeData>(),
                     c.Resolve<ILevelUiInteractor>(),
-                    c.Resolve<ILevelConfiguration>()
+                    c.Resolve<ILevelConfiguration>(),
+                    c.Resolve<IIsTimeInfiniteUseCase>()
                     ));
 
             container.Bind<ITryStartTimeUseCase>()
