@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace Fueler.Content.Services.Audio
 {
@@ -18,9 +19,15 @@ namespace Fueler.Content.Services.Audio
         [Header("Static channels")]
         [SerializeField] private AudioChannelId generalMusicChannelId = default;
 
+        [Header("Mixer groups")]
+        [SerializeField] private AudioMixer audioMixer = default;
+        [SerializeField] private string musicMixerAudioAttenuationParameter = default;
+        [SerializeField] private string fxMixerAudioAttenuationParameter = default;
+
         private readonly Dictionary<AudioChannel, ITimer> cooldownTimers = new Dictionary<AudioChannel, ITimer>();
 
         public AudioChannelId GeneralMusicChannelId => generalMusicChannelId;
+
 
         public void Play(AudioClip audioClip, AudioChannelId audioChannelId, bool useCooldown = true)
         {
@@ -49,6 +56,8 @@ namespace Fueler.Content.Services.Audio
             {
                 return;
             }
+
+            audioChannel.AudioSource.outputAudioMixerGroup = audioChannel.AudioMixerGroup;
 
             if (audioChannel.AllowMultipleSimultaneous)
             {
@@ -126,6 +135,20 @@ namespace Fueler.Content.Services.Audio
             tween.Play();
 
             return tween.AwaitCompleteOrKill(cancellationToken);
+        }
+
+        public void SetMusicMuted(bool muted)
+        {
+            float newValue = muted ? float.MinValue : 0f;
+
+            audioMixer.SetFloat(musicMixerAudioAttenuationParameter, newValue);
+        }
+
+        public void SetFxMuted(bool muted)
+        {
+            float newValue = muted ? float.MinValue : 0f;
+
+            audioMixer.SetFloat(fxMixerAudioAttenuationParameter, newValue);
         }
 
         private bool TryGetChannel(AudioChannelId audioChannelId, out AudioChannel audioChannel)

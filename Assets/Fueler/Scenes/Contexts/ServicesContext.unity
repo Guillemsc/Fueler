@@ -787,15 +787,20 @@ MonoBehaviour:
   channels:
   - audioChannelId: {fileID: 11400000, guid: 6bf00bddc42e2b349994f0dff9d63ac0, type: 2}
     audioSource: {fileID: 1993128370}
+    audioMixerGroup: {fileID: -1032845898456507834, guid: 1933319f4459b674cad9eee6ffc942f1, type: 2}
     volume: 0.2
     cooldown: 0
     allowMultipleSimultaneous: 0
   - audioChannelId: {fileID: 11400000, guid: a8a5aee17bc606441943573321e1c90f, type: 2}
     audioSource: {fileID: 932353619}
+    audioMixerGroup: {fileID: 7372341130414966504, guid: 1933319f4459b674cad9eee6ffc942f1, type: 2}
     volume: 0.3
     cooldown: 0.05
     allowMultipleSimultaneous: 0
   generalMusicChannelId: {fileID: 11400000, guid: 6bf00bddc42e2b349994f0dff9d63ac0, type: 2}
+  audioMixer: {fileID: 24100000, guid: 1933319f4459b674cad9eee6ffc942f1, type: 2}
+  musicMixerAudioAttenuationParameter: AudioAttenuation
+  fxMixerAudioAttenuationParameter: FxAttenuation
 --- !u!4 &2138934365
 Transform:
   m_ObjectHideFlags: 0

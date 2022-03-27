@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Audio;
 
 namespace Fueler.Content.Shared.Audio.Channels
 {
@@ -8,6 +9,7 @@ namespace Fueler.Content.Shared.Audio.Channels
         [Header("References")]
         [SerializeField] private AudioChannelId audioChannelId = default;
         [SerializeField] private AudioSource audioSource = default;
+        [SerializeField] private AudioMixerGroup audioMixerGroup = default;
 
         [Header("Values")]
         [SerializeField] private float volume = 0.6f;
@@ -16,6 +18,7 @@ namespace Fueler.Content.Shared.Audio.Channels
 
         public AudioChannelId AudioChannelId => audioChannelId;
         public AudioSource AudioSource => audioSource;
+        public AudioMixerGroup AudioMixerGroup => audioMixerGroup;
 
         public float Volume => volume;
         public float Cooldown => cooldown;

@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-3672665357922182661
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 957fbc5f387776a49acbf819000ea83e
+  m_EffectName: Highpass Simple
+  m_MixLevel: 416349ec63da0dd45a264edfe6ccbcc8
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: 8a8fb98707a101e4b937a20bd20369c7
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &-1032845898456507834
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -34,7 +50,11 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 5f3e3e7f2f0101c439e041e0322af71a
+    name: AudioAttenuation
+  - guid: 1c8a7e748347e40449d3f781fa29a821
+    name: FxAttenuation
   m_AudioMixerGroupViews:
   - guids:
     - 5247e2132f3aa33468b22c3f9b925899
