@@ -3,13 +3,13 @@ using Fueler.Content.Stage.Accessibility.Persistence;
 using Juce.Persistence.Serialization;
 using System.Threading;
 
-namespace Fueler.Content.Shared.Levels.UseCases.SetLevelAsCompleted
+namespace Fueler.Content.Shared.Levels.UseCases.SetLevelAsLastPlayedLevel
 {
-    public class SetLevelAsCompletedUseCase : ISetLevelAsCompletedUseCase
+    public class SetLevelAsLastPlayedLevelUseCase : ISetLevelAsLastPlayedLevelUseCase
     {
         private readonly SerializableData<LevelsPersistence> levelsSerializable;
 
-        public SetLevelAsCompletedUseCase(
+        public SetLevelAsLastPlayedLevelUseCase(
             SerializableData<LevelsPersistence> levelsSerializable
             )
         {
@@ -18,21 +18,15 @@ namespace Fueler.Content.Shared.Levels.UseCases.SetLevelAsCompleted
 
         public void Execute(ILevelConfiguration levelConfiguration, bool serialize)
         {
-            bool alreadyAdded = levelsSerializable.Data.CompletedLevels.Contains(levelConfiguration.Id);
+            bool isSameLevel = levelsSerializable.Data.LastPlayedLevel == levelConfiguration.Id;
 
-            if(alreadyAdded)
+            if(isSameLevel)
             {
                 return;
             }
 
-            levelsSerializable.Data.CompletedLevels.Add(levelConfiguration.Id);
-
-            bool isLastPlayedLevel = levelsSerializable.Data.LastPlayedLevel == levelConfiguration.Id;
-
-            if (isLastPlayedLevel)
-            {
-                levelsSerializable.Data.LastPlayedLevelCompleted = true;
-            }
+            levelsSerializable.Data.LastPlayedLevel = levelConfiguration.Id;
+            levelsSerializable.Data.LastPlayedLevelCompleted = false;
 
             if (serialize)
             {

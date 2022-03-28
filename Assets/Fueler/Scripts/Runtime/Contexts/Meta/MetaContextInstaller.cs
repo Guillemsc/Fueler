@@ -12,6 +12,7 @@ namespace Fueler.Contexts.Meta
         {
             container.InstallContextShared();
             container.InstallServices();
+            container.InstallGeneral();
 
             container.Bind(instance.SplashScreenUiInstaller);
             container.Bind(instance.MainMenuUiInstaller);

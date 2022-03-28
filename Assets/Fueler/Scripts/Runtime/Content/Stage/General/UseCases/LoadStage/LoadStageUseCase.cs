@@ -1,4 +1,5 @@
 ﻿using Fueler.Content.Shared.Levels.Configuration;
+using Fueler.Content.Shared.Levels.UseCases.SetLevelAsLastPlayedLevel;
 using Fueler.Content.Stage.Astrounats.UseCases.InitAstronauts;
 using Fueler.Content.Stage.Fuel.UseCases.InitFuel;
 using Fueler.Content.Stage.Fuel.UseCases.ShipFuelUsed;
@@ -31,6 +32,7 @@ namespace Fueler.Content.Stage.General.UseCases.LoadStage
         private readonly IInitAstronautsUseCase initAstronautsUseCase;
         private readonly IInitTimeUseCase initTimeUseCase;
         private readonly IShipMovesUseCase shipMovesUseCase;
+        private readonly ISetLevelAsLastPlayedLevelUseCase setLevelAsLastPlayedLevelUseCase;
 
         public LoadStageUseCase(
             StageStateData stageStateData,
@@ -43,7 +45,8 @@ namespace Fueler.Content.Stage.General.UseCases.LoadStage
             IInitFuelUseCase initFuelUseCase,
             IInitAstronautsUseCase initAstronautsUseCase,
             IInitTimeUseCase initTimeUseCase,
-            IShipMovesUseCase shipMovesUseCase
+            IShipMovesUseCase shipMovesUseCase,
+            ISetLevelAsLastPlayedLevelUseCase setLevelAsLastPlayedLevelUseCase
             )
         {
             this.stageStateData = stageStateData;
@@ -57,10 +60,13 @@ namespace Fueler.Content.Stage.General.UseCases.LoadStage
             this.initAstronautsUseCase = initAstronautsUseCase;
             this.initTimeUseCase = initTimeUseCase;
             this.shipMovesUseCase = shipMovesUseCase;
+            this.setLevelAsLastPlayedLevelUseCase = setLevelAsLastPlayedLevelUseCase;
         }
 
         public Task Execute(CancellationToken cancellationToken)
         {
+            setLevelAsLastPlayedLevelUseCase.Execute(levelConfiguration, serialize: true);
+
             loadLevelUseCase.Execute(levelConfiguration.LevelEntityPrefab, out LevelEntity levelEntity);
 
             initFuelUseCase.Execute();

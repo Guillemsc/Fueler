@@ -1,8 +1,8 @@
 ﻿using Fueler.Content.Shared.Levels.Configuration;
 
-namespace Fueler.Content.Shared.Levels.UseCases.SetLevelAsCompleted
+namespace Fueler.Content.Shared.Levels.UseCases.SetLevelAsLastPlayedLevel
 {
-    public interface ISetLevelAsCompletedUseCase
+    public interface ISetLevelAsLastPlayedLevelUseCase
     {
         void Execute(ILevelConfiguration levelConfiguration, bool serialize);
     }

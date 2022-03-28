@@ -11,14 +11,14 @@ using Fueler.Content.Meta.Ui.MainMenu.UseCases.OptionsButtonPressed;
 using Fueler.Content.Meta.Ui.MainMenu.UseCases.PlayButtonPressed;
 using Fueler.Contexts.Shared.UseCases.UnloadMetaAndLoadStage;
 using Fueler.Content.Shared.Levels.UseCases.TryGetLevelByIndex;
-using Fueler.Content.Services.Configuration;
 using Fueler.Content.Meta.Ui.MainMenu.UseCases.QuitButtonPressed;
 using Juce.CoreUnity.ViewStack.Entries;
 using Fueler.Content.Meta.Ui.MainMenu.UseCases.LevelsButtonPressed;
 using Fueler.Content.Shared.Levels.UseCases.IsFirstTimeExperience;
-using Fueler.Content.Services.Persistence;
 using Fueler.Content.Meta.Ui.MainMenu.UseCases.RefreshFirstTimeExperience;
 using Juce.Core.Refresh;
+using Fueler.Content.Shared.Levels.UseCases.GetLastPlayedLevel;
+using Fueler.Content.Shared.Levels.UseCases.TryGetLevelIndexByLevelId;
 
 namespace Fueler.Content.Meta.Ui.MainMenu
 {
@@ -66,19 +66,12 @@ namespace Fueler.Content.Meta.Ui.MainMenu
                         )
                     ));
 
-            container.Bind<ITryGetLevelByIndexUseCase>()
-                .FromFunction(c => new TryGetLevelByIndexUseCase(
-                    c.Resolve<IConfigurationService>().LevelsConfiguration
-                    ));
-
-            container.Bind<IIsFirstTimeExperienceUseCase>()
-                .FromFunction(c => new IsFirstTimeExperienceUseCase(
-                    c.Resolve<IPersistenceService>().LevelsSerializable
-                    ));
-
             container.Bind<IPlayButtonPressedUseCase>()
                 .FromFunction(c => new PlayButtonPressedUseCase(
                     c.Resolve<ITryGetLevelByIndexUseCase>(),
+                    c.Resolve<IIsFirstTimeExperienceUseCase>(),
+                    c.Resolve<IGetLastPlayedLevelUseCase>(),
+                    c.Resolve<ITryGetLevelIndexByLevelIdUseCase>(),
                     c.Resolve<IUnloadMetaAndLoadStageUseCase>()
                     ));
 

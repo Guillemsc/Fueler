@@ -34,6 +34,7 @@ using Fueler.Content.Services.Configuration;
 using Fueler.Content.Stage.Time.UseCases.InitTime;
 using Fueler.Content.Stage.Ship.UseCases.ShipMoves;
 using Fueler.Content.Stage.Time.UseCases.StopTime;
+using Fueler.Content.Shared.Levels.UseCases.SetLevelAsLastPlayedLevel;
 
 namespace Fueler.Content.Stage.General.Installers
 {
@@ -49,6 +50,11 @@ namespace Fueler.Content.Stage.General.Installers
 
             container.Bind<ISetLevelAsCompletedUseCase>()
                 .FromFunction(c => new SetLevelAsCompletedUseCase(
+                    c.Resolve<IPersistenceService>().LevelsSerializable
+                    ));
+
+            container.Bind<ISetLevelAsLastPlayedLevelUseCase>()
+                .FromFunction(c => new SetLevelAsLastPlayedLevelUseCase(
                     c.Resolve<IPersistenceService>().LevelsSerializable
                     ));
 
@@ -68,7 +74,8 @@ namespace Fueler.Content.Stage.General.Installers
                 c.Resolve<IInitFuelUseCase>(),
                 c.Resolve<IInitAstronautsUseCase>(),
                 c.Resolve<IInitTimeUseCase>(),
-                c.Resolve<IShipMovesUseCase>()
+                c.Resolve<IShipMovesUseCase>(),
+                c.Resolve<ISetLevelAsLastPlayedLevelUseCase>()
                 ));
 
             container.Bind<IStartStageUseCase>().FromFunction(c => new StartStageUseCase(

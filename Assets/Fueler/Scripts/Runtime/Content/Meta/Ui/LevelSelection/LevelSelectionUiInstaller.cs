@@ -72,17 +72,6 @@ namespace Fueler.Content.Meta.Ui.LevelSelection
             container.Bind<ISingleRepository<LevelTextButtonWidget>>()
                 .FromInstance(new SimpleSingleRepository<LevelTextButtonWidget>());
 
-            container.Bind<IIsLevelCompletedUseCase>()
-                .FromFunction(c => new IsLevelCompletedUseCase(
-                    c.Resolve<IPersistenceService>().LevelsSerializable
-                    ));
-
-            container.Bind<ITryGetLastUncompletedLevelUseCase>()
-                .FromFunction(c => new TryGetLastUncompletedLevelUseCase(
-                    c.Resolve<IConfigurationService>().LevelsConfiguration,
-                    c.Resolve<IIsLevelCompletedUseCase>()
-                    ));
-
             container.Bind<ISetEntryAsFirstSelectedUseCase>()
                 .FromFunction(c => new SetEntryAsFirstSelectedUseCase(
                     c.Resolve<ISingleRepository<LevelTextButtonWidget>>()

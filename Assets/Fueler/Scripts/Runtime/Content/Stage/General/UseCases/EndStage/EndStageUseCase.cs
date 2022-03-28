@@ -1,6 +1,7 @@
 ﻿using Fueler.Content.Shared.Levels.Configuration;
 using Fueler.Content.Shared.Levels.UseCases.IsLastLevel;
 using Fueler.Content.Shared.Levels.UseCases.SetLevelAsCompleted;
+using Fueler.Content.Shared.Levels.UseCases.SetLevelAsLastPlayedLevel;
 using Fueler.Content.Shared.Time.UseCases.WaitUnscaledTime;
 using Fueler.Content.Stage.General.Data;
 using Fueler.Content.Stage.General.Entities;
@@ -118,7 +119,7 @@ namespace Fueler.Content.Stage.General.UseCases.EndStage
 
         private async Task CompletedFlow(CancellationToken cancellationToken)
         {
-            setLevelAsCompletedUseCase.Execute(levelConfiguration);
+            setLevelAsCompletedUseCase.Execute(levelConfiguration, serialize: true);
 
             await waitUnscaledTimeUseCase.Execute(TimeSpan.FromSeconds(1), cancellationToken);
 
