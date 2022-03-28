@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72259cfdb7570124e838eaa37e4b396a, type: 3}
-  m_Name: Level9Configuration
+  m_Name: Level16Configuration
   m_EditorClassIdentifier: 
-  description: Fuel management level. Tries to make you aim to the end when you run
-    out of fuel on the final straight.
-  id: 0bc09d80-62a0-4989-ba3a-fe39769386d1
-  levelEntityPrefab: {fileID: 3166591651800058605, guid: 01d63e8fdf5670744a026c61ddec83a1, type: 3}
-  initialFuel: 50
-  maxTime: 60
+  description: Difficult level about going on a straight line with blades in it
+  id: a982ab3e-d0e4-417d-9209-4dba84998439
+  levelEntityPrefab: {fileID: 3166591651800058605, guid: 439a3d6aacba72542b3752e1eaa7cae4, type: 3}
+  initialFuel: 55
+  maxTime: 20

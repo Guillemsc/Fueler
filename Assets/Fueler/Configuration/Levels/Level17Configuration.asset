@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72259cfdb7570124e838eaa37e4b396a, type: 3}
-  m_Name: Level9Configuration
+  m_Name: Level17Configuration
   m_EditorClassIdentifier: 
-  description: Fuel management level. Tries to make you aim to the end when you run
-    out of fuel on the final straight.
-  id: 0bc09d80-62a0-4989-ba3a-fe39769386d1
-  levelEntityPrefab: {fileID: 3166591651800058605, guid: 01d63e8fdf5670744a026c61ddec83a1, type: 3}
-  initialFuel: 50
-  maxTime: 60
+  description: 
+  id: 1b466e7d-4553-41a7-b417-d523989ec9b9
+  levelEntityPrefab: {fileID: 3166591651800058605, guid: 445deb57f54778748bc19eaa370bd912, type: 3}
+  initialFuel: 100
+  maxTime: 0
