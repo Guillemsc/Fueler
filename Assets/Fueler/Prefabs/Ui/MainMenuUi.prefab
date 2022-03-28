@@ -894,8 +894,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 173}
-  m_SizeDelta: {x: 437.3557, y: 50}
+  m_AnchoredPosition: {x: 4.2201e-10, y: 151}
+  m_SizeDelta: {x: 927, y: 107.1589}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7543595463551210882
 CanvasRenderer:
@@ -925,7 +925,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: fueler
+  m_text: "rockety \nrocket"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f76f9873e4e111468b0e070bd66e097, type: 2}
   m_sharedMaterial: {fileID: -67380637403349598, guid: 9f76f9873e4e111468b0e070bd66e097, type: 2}
@@ -952,8 +952,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.09
-  m_fontSizeBase: 46.09
+  m_fontSize: 53.56
+  m_fontSizeBase: 53.56
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -962,9 +962,9 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 52.8
+  m_characterSpacing: 20.8
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -28.4
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
