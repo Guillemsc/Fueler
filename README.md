@@ -14,8 +14,18 @@ The game makes heavy use of https://github.com/Juce-Assets, a set of libraries b
 
 <img title="" src="https://github.com/Guillemsc/Fueler/blob/main/Assets/Fueler/Misc/General.png" alt="Logo" data-align="inline">
 
+## Gameplay
+
+Traverse space with this small spaceship, but be careful, there are a lot of dangers ahead! If you don't drive carefully, you may end up in a million pieces after colliding with one of the asteroids
+
+The ship is affected by zero gravity. Any force you add to it, it will be kept until you add an opposite force. You will need to properly administrate how you spend the ship's energy, since you can end up using it all, and drifting hopelessly through space.
+
+Warning! Some astronauts that were performing some very important investigation got lost in the maze of asteroids and need your help! Collect all the astronauts on a level before reaching the destination.
+
+Space is dangerous and there is so much to do before returning home. Complete the level before the time is up.
+
 ## Installing
-Just clone this repository. Open with Unity 2020.3.3f1 or similar. All the depencences are already setup on the manifest.json.
+Just clone this repository. Open with Unity 2020.3.31f or similar. All the depencences are already setup on the manifest.json.
 
 ## Normal flow
 To run the game with the normal flow, just open the scene MainBootstrap and press play. Everything will run normally from there.
