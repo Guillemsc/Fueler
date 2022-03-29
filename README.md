@@ -12,7 +12,9 @@ This repository can serve begginers or more advanced developers understand how p
 
 The game makes heavy use of https://github.com/Juce-Assets, a set of libraries built to reuse common aspects of game development.
 
-<img title="" src="https://github.com/Guillemsc/Fueler/blob/main/Assets/Fueler/Misc/General.png" alt="Logo" data-align="inline">
+<p align="center">
+  <img title="" src="https://github.com/Guillemsc/Fueler/blob/main/Assets/Fueler/Misc/Gif2.gif" alt="Logo">
+</p>
 
 ## Gameplay
 
