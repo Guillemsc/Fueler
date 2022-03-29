@@ -11,7 +11,8 @@
                     "id": "f01c69e2-2c8a-4032-bd6e-fb6cbd678f99",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "RotateShipLeft",
@@ -19,7 +20,8 @@
                     "id": "d9da90c9-3d70-4142-a1c0-8018fec48316",
                     "expectedControlType": "Axis",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "RotateShipRight",
@@ -27,7 +29,8 @@
                     "id": "96aac5cf-fb23-48fb-8a12-fe9aa793db31",
                     "expectedControlType": "Axis",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "MoveShipForward",
@@ -35,7 +38,8 @@
                     "id": "4c0dd1c3-143e-44ef-ab55-c3d05ab5a30f",
                     "expectedControlType": "Axis",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -75,7 +79,7 @@
                 {
                     "name": "",
                     "id": "b5505408-bdf5-41b9-a793-1e03ad8306e9",
-                    "path": "<Keyboard>/rightArrow",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

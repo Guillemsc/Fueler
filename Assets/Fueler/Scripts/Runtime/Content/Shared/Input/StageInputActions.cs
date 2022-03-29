@@ -103,7 +103,7 @@ namespace Fueler.Content.Shared.Input
                 {
                     ""name"": """",
                     ""id"": ""b5505408-bdf5-41b9-a793-1e03ad8306e9"",
-                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
