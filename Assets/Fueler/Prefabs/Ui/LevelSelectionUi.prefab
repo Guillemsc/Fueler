@@ -978,6 +978,7 @@ GameObject:
   - component: {fileID: 8455591989246346500}
   - component: {fileID: 4944488203456636902}
   - component: {fileID: 4948300658339711567}
+  - component: {fileID: 7153643243989847819}
   m_Layer: 0
   m_Name: ScrollbarVertical
   m_TagString: Untagged
@@ -1092,6 +1093,21 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7153643243989847819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2155577077979702502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe5df303402c5e44a210def87d6455b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollbar: {fileID: 4948300658339711567}
+  scrollRectContent: {fileID: 3535450391663244150}
+  stepDistance: 50
 --- !u!1 &3158733308709782954
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,17 +1843,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1255927386441126278, guid: 052e44c3a70d97a43bdf48c55159ed41, type: 3}
   m_PrefabInstance: {fileID: 3527289021220465485}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8727237858665418021 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5327215453266568808, guid: 052e44c3a70d97a43bdf48c55159ed41, type: 3}
-  m_PrefabInstance: {fileID: 3527289021220465485}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e54521a031011e41b62657f39b785f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6683761650477028030 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7796310819418208755, guid: 052e44c3a70d97a43bdf48c55159ed41, type: 3}
@@ -1847,5 +1852,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1698b3d29207bd94b902965cc8590b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8727237858665418021 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5327215453266568808, guid: 052e44c3a70d97a43bdf48c55159ed41, type: 3}
+  m_PrefabInstance: {fileID: 3527289021220465485}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e54521a031011e41b62657f39b785f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
