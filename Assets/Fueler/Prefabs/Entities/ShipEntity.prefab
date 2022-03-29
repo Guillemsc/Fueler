@@ -69,7 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 0.5
   rotationSpeed: 90
-  autobreakStrenght: 6
+  autobreakTime: 0.6
 --- !u!114 &2928337161294412800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +88,7 @@ MonoBehaviour:
   audioSource2: {fileID: 3408770887841658796}
   fadeInDuration: 0.2
   fadeOutDuration: 0.2
+  continuousCinemachineImpulse: {fileID: 5975038137445476188}
 --- !u!50 &8228470614023280437
 Rigidbody2D:
   serializedVersion: 4
@@ -265,6 +266,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1414697678687611318}
   - {fileID: 2341299029062555170}
   m_Father: {fileID: 723830707984323120}
   m_RootOrder: 5
@@ -10525,7 +10527,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5054140229383919916}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4864538230704829149
 MonoBehaviour:
@@ -10585,6 +10587,115 @@ MonoBehaviour:
     m_ImpactRadius: 100
     m_DirectionMode: 0
     m_DissipationMode: 2
+    m_DissipationDistance: 1000
+    m_PropagationSpeed: 343
+--- !u!1 &5453118839530663373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1414697678687611318}
+  - component: {fileID: 5975038137445476188}
+  m_Layer: 0
+  m_Name: ThrustImpulse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1414697678687611318
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5453118839530663373}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5054140229383919916}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5975038137445476188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5453118839530663373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 918645bf94e7a7f4092aff690fcb94df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impulseDefinition:
+    m_ImpulseChannel: 1
+    m_RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+    m_AmplitudeGain: 0.4
+    m_FrequencyGain: 0.1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 1
+          outSlope: 1
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 1
+          outSlope: 1
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: -0.9855318
+          outSlope: -1
+          tangentMode: 69
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.04272363
+        - serializedVersion: 3
+          time: 1
+          value: 0
+          inSlope: -1
+          outSlope: -0.97710174
+          tangentMode: 69
+          weightedMode: 0
+          inWeight: 0.052069485
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 4
+      m_SustainTime: 0
+      m_DecayTime: 1.5
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 1
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
 --- !u!1 &5880471850016563020

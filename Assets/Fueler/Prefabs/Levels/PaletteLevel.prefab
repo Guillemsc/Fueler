@@ -247,8 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraConfiner: {fileID: 7464818385849429439}
   startingPosition: {fileID: 3787590165253604145}
-  astronatus:
-  - {fileID: 1911623159118603293}
+  astronatus: []
 --- !u!1 &4527379615095649195
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,17 +424,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1846688522532385536, guid: 88a88f6301b6372449e0874eb81fb939, type: 3}
   m_PrefabInstance: {fileID: 7424044882690147900}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1911623159118603293 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9043494537349112353, guid: 88a88f6301b6372449e0874eb81fb939, type: 3}
-  m_PrefabInstance: {fileID: 7424044882690147900}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae9c61bb2fd6b86429f8a6c388d91b87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7453184680118605107
 PrefabInstance:
   m_ObjectHideFlags: 0

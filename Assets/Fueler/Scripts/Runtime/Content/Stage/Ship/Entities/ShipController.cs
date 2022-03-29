@@ -1,8 +1,8 @@
 using Fueler.Content.Shared.Input;
+using Juce.Core.Time;
+using Juce.CoreUnity.Time;
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static UnityEngine.InputSystem.InputAction;
 
 namespace Fueler.Content.Stage.Ship.Entities
 {
@@ -10,11 +10,14 @@ namespace Fueler.Content.Stage.Ship.Entities
     {
         [SerializeField, Min(0)] private float acceleration = default;
         [SerializeField, Min(0)] private float rotationSpeed = default;
-        [SerializeField, Min(0)] private float autobreakStrenght = 4.0f;
+        [SerializeField, Min(0)] private float autobreakTime = 0.4f;
 
         private @StageInputActions stageInputActions;
 
         private Vector2 currentSpeed;
+
+        private Vector2 startingAutobreakSpeed;
+        private ITimer autobreakTimer = new ScaledUnityTimer();
 
         public bool CanInputForward { get; set; } = true;
         public bool Autobreak { get; set; }
@@ -36,22 +39,6 @@ namespace Fueler.Content.Stage.Ship.Entities
 
             UpdatePosition();
         }
-
-        private void OnMoveShipForward(CallbackContext callbackContext)
-        {
-
-        }
-
-        private void OnRotateShipLeft(CallbackContext callbackContext)
-        {
-
-        }
-
-        private void OnRotateShipRight(CallbackContext callbackContext)
-        {
-
-        }
-
         private void UpdateInput()
         {
             if(Autobreak)
@@ -127,7 +114,32 @@ namespace Fueler.Content.Stage.Ship.Entities
                 return;
             }
 
-            currentSpeed -= currentSpeed.normalized * acceleration * UnityEngine.Time.deltaTime * autobreakStrenght;
+            if(!autobreakTimer.Started)
+            {
+                autobreakTimer.Start();
+                startingAutobreakSpeed = startingAutobreakSpeed = currentSpeed;
+            }
+
+            float currentSeconds = (float)autobreakTimer.Time.TotalSeconds;
+
+            if(currentSeconds > autobreakTime)
+            {
+                currentSpeed = Vector2.zero;
+                return;
+            }
+
+            float autobreakNormalizedTime = 0f;
+
+            if(autobreakTime > 0)
+            {
+                autobreakNormalizedTime = (float)autobreakTimer.Time.TotalSeconds / autobreakTime;
+            }
+
+            UnityEngine.Debug.Log(autobreakNormalizedTime);
+
+            Vector2 newCurrentSpeed = Vector2.Lerp(startingAutobreakSpeed, Vector2.zero, autobreakNormalizedTime);
+
+            currentSpeed = newCurrentSpeed;
         }
 
         private void UpdatePosition()

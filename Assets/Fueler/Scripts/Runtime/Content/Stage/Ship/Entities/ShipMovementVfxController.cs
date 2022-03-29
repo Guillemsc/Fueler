@@ -1,4 +1,5 @@
-﻿using Juce.Tweening;
+﻿using Fueler.Content.Shared.Cinemachine;
+using Juce.Tweening;
 using UnityEngine;
 
 namespace Fueler.Content.Stage.Ship.Entities
@@ -16,6 +17,9 @@ namespace Fueler.Content.Stage.Ship.Entities
         [SerializeField] private AudioSource audioSource2 = default;
         [SerializeField] private float fadeInDuration = 0.3f;
         [SerializeField] private float fadeOutDuration = 0.3f;
+
+        [Header("Camera shake")]
+        [SerializeField] private ContinuousCinemachineImpulse continuousCinemachineImpulse = default;
 
         private bool needsToPlay;
         private bool playing;
@@ -55,6 +59,8 @@ namespace Fueler.Content.Stage.Ship.Entities
             particle.Play();
 
             StartAudio();
+
+            continuousCinemachineImpulse.Active = true;
         }
 
         private void TryStop()
@@ -75,6 +81,8 @@ namespace Fueler.Content.Stage.Ship.Entities
             particle.Stop(withChildren: true, ParticleSystemStopBehavior.StopEmitting);
 
             StopAudio();
+
+            continuousCinemachineImpulse.Active = false;
         }
 
         private void StartAudio()
