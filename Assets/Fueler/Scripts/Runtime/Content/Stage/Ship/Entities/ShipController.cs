@@ -135,8 +135,6 @@ namespace Fueler.Content.Stage.Ship.Entities
                 autobreakNormalizedTime = (float)autobreakTimer.Time.TotalSeconds / autobreakTime;
             }
 
-            UnityEngine.Debug.Log(autobreakNormalizedTime);
-
             Vector2 newCurrentSpeed = Vector2.Lerp(startingAutobreakSpeed, Vector2.zero, autobreakNormalizedTime);
 
             currentSpeed = newCurrentSpeed;
