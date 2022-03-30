@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72259cfdb7570124e838eaa37e4b396a, type: 3}
+  m_Name: Level20Configuration
+  m_EditorClassIdentifier: 
+  description: 
+  id: 89958005-4fb5-4134-96bc-1d036dea77a8
+  levelEntityPrefab: {fileID: 3166591651800058605, guid: 31c4f990026f1ab48bc1c03ed529431f, type: 3}
+  initialFuel: 0
+  maxTime: 0
