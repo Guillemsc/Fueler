@@ -5,7 +5,7 @@
     "com.juce.core": "git+https://github.com/Juce-Assets/Juce-Core#1.2.12",
     "com.juce.coreunity": "git+https://github.com/Juce-Assets/Juce-CoreUnity#1.3.27",
     "com.juce.implementationselector": "git+https://github.com/Juce-Assets/Juce-ImplementationSelector#1.0.4",
-    "com.juce.input": "git+https://github.com/Juce-Assets/Juce-Input#0.1.6",
+    "com.juce.input": "git+https://github.com/Juce-Assets/Juce-Input#0.1.7",
     "com.juce.persistence": "git+https://github.com/Juce-Assets/Juce-Persistence#1.0.2",
     "com.juce.scenemanagement": "git+https://github.com/Juce-Assets/Juce-SceneManagement#1.1.1",
     "com.juce.tween": "git+https://github.com/Juce-Assets/Juce-Tween#1.6.7",
