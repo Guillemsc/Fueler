@@ -26,6 +26,10 @@ Warning! Some astronauts that were performing some very important investigation 
 
 Space is dangerous and there is so much to do before returning home. Complete the level before the time is up.
 
+<p align="center">
+  <img title="" src="https://github.com/Guillemsc/Fueler/blob/main/Assets/Fueler/Misc/Gif1.gif" alt="Logo">
+</p>
+
 ## Installing
 Just clone this repository. Open with Unity 2020.3.31f or similar. All the depencences are already setup on the manifest.json.
 
