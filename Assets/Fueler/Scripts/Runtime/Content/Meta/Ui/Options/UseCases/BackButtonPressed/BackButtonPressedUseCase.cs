@@ -17,8 +17,10 @@ namespace Fueler.Content.Meta.Ui.Options.UseCases.BackButtonPressed
         {
             uiViewStack.New()
                 .ShowLastBehindForeground(instantly: true)
+                .CurrentSetInteractable(false)
                 .Hide<IOptionsUiInteractor>(instantly: false)
                 .MoveCurrentToForeground()
+                .CurrentSetInteractable(true)
                 .Execute();
         }
     }

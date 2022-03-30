@@ -26,6 +26,8 @@ namespace Fueler.Contexts.Shared.UseCases.ApplyGameSettings
 
             audioService.SetMusicMuted(!gameSettings.AudioMusicEnabled);
             audioService.SetFxMuted(!gameSettings.AudioFxEnabled);
+
+            QualitySettings.vSyncCount = 1;
         }
     }
 }

@@ -17,8 +17,10 @@ namespace Fueler.Content.Meta.Ui.Accessibility.UseCases.BackButtonPressed
         {
             uiViewStack.New()
                 .ShowLastBehindForeground(instantly: true)
+                .CurrentSetInteractable(false)
                 .Hide<IAccessibilityUiInteractor>(instantly: false)
                 .MoveCurrentToForeground()
+                .CurrentSetInteractable(true)
                 .Execute();
         }
     }
