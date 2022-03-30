@@ -59,23 +59,23 @@
       "hash": "6239423e788c5e18e081b178755feef3a79aee2b"
     },
     "com.juce.tween": {
-      "version": "git+https://github.com/Juce-Assets/Juce-Tween#1.6.4",
+      "version": "git+https://github.com/Juce-Assets/Juce-Tween#1.6.7",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.juce.utils": "https://github.com/Juce-Assets/Juce-Utils#1.3.2"
       },
-      "hash": "7822a6d975b4beb44518a57d83cc878ca6f2e984"
+      "hash": "7146e61580b916ec7476e62a6211551c24650ccd"
     },
     "com.juce.tweencomponent": {
-      "version": "git+https://github.com/Juce-Assets/Juce-TweenPlayer#1.4.3",
+      "version": "git+https://github.com/Juce-Assets/Juce-TweenPlayer#1.5.8",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.juce.utils": "https://github.com/Juce-Assets/Juce-Utils#1.3.1",
         "com.juce.tween": "https://github.com/Juce-Assets/Juce-Tween#1.6.2"
       },
-      "hash": "db6a74b7e12170d8985365116ac87a2158af642d"
+      "hash": "e24363cb88e27ae1312a8042017f65d281f97df5"
     },
     "com.juce.utils": {
       "version": "git+https://github.com/Juce-Assets/Juce-Utils#1.4.5",

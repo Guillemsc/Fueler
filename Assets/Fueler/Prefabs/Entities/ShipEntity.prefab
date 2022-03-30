@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ec03e8769548b4419ceb0861611fc90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 0.5
+  acceleration: 0.7
   rotationSpeed: 90
   autobreakTime: 0.6
 --- !u!114 &2928337161294412800
@@ -571,6 +571,12 @@ MonoBehaviour:
           bindedVariableName: 
           FallbackValue: {fileID: 5351355547952817406}
         delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        playIfCompletingInstantly:
           bindingEnabled: 0
           wantsToBeBinded: 0
           binded: 0
