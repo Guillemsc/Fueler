@@ -8,7 +8,7 @@
 
 Welcome to Fueler: a small videogame about completing levels while maneuvering a cute ship through a circuit of asteroids.
 
-This repository can serve begginers or more advanced developers understand how professional projects could be approached from an scalable point of view. Here we use patterns, system and ways of building, gathered from professionals with years of experience working with Unity.
+This repository can serve beginners or more advanced developers understand how professional projects could be approached from an scalable point of view. Here we use patterns, system and ways of building, gathered from professionals with years of experience working with Unity.
 
 Also avaliable at [Itch.io](https://guillemsc.itch.io/rockety-rocket).
 
